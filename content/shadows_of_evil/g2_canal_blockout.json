@@ -1,0 +1,429 @@
+{
+  "schemaVersion": 1,
+  "map": "soe",
+  "phase": "G2",
+  "district": "canals",
+  "status": "provisional_blockout_spec",
+  "scalePolicy": "Topology- and traversal-first clean-room blockout. Global coordinates are provisional until timing/sightline calibration.",
+  "attach": {
+    "g1Door": "junction_to_canal_stub",
+    "gateCenter": [
+      320,
+      448,
+      64
+    ],
+    "forwardAxis": "+Y",
+    "localOrigin": [
+      320,
+      464,
+      0
+    ]
+  },
+  "proposedGlobalBounds": {
+    "mins": [
+      -896,
+      -576,
+      -160
+    ],
+    "maxs": [
+      1120,
+      1664,
+      544
+    ]
+  },
+  "subregions": [
+    {
+      "id": "canal_entry",
+      "label": "Canal entry / Civil Protector side",
+      "mins": [
+        128,
+        464,
+        0
+      ],
+      "maxs": [
+        640,
+        704,
+        192
+      ]
+    },
+    {
+      "id": "canal_lower",
+      "label": "Lower canal / Badge route",
+      "mins": [
+        64,
+        704,
+        -96
+      ],
+      "maxs": [
+        704,
+        1136,
+        128
+      ]
+    },
+    {
+      "id": "canal_high",
+      "label": "Canal High Street / elevated walkways",
+      "mins": [
+        64,
+        720,
+        128
+      ],
+      "maxs": [
+        704,
+        1232,
+        336
+      ]
+    },
+    {
+      "id": "ruby_rabbit",
+      "label": "Ruby Rabbit 3-floor ritual building",
+      "mins": [
+        -208,
+        832,
+        0
+      ],
+      "maxs": [
+        64,
+        1216,
+        416
+      ]
+    },
+    {
+      "id": "canal_station",
+      "label": "Canal Tram Station",
+      "mins": [
+        224,
+        1216,
+        0
+      ],
+      "maxs": [
+        704,
+        1568,
+        320
+      ]
+    },
+    {
+      "id": "canal_rift",
+      "label": "Canal Rift surface portal pocket",
+      "mins": [
+        64,
+        768,
+        -64
+      ],
+      "maxs": [
+        224,
+        928,
+        128
+      ]
+    }
+  ],
+  "routeContracts": [
+    "Junction gate -> first Canal combat area",
+    "first area -> lower canal",
+    "lower canal -> Badge Beast interaction",
+    "lower canal -> surface Rift portal",
+    "lower canal -> stairs/door to High Street",
+    "High Street -> randomized district perk room",
+    "High Street -> shield-part and fuse spawn corridor",
+    "High Street -> Canal Station",
+    "Ruby Rabbit grapple entry -> interior power panel -> human stairs/front access",
+    "Ruby Rabbit -> ritual table",
+    "station -> tram platform and symbol-view segment"
+  ],
+  "gameplayAnchors": [
+    {
+      "classname": "soe_civil_call_panel",
+      "origin": [
+        520,
+        608,
+        48
+      ],
+      "style": 2,
+      "cost": 2000,
+      "targetname": "soe_g2_civil_panel_canal"
+    },
+    {
+      "classname": "soe_beast_pedestal",
+      "origin": [
+        224,
+        624,
+        32
+      ],
+      "targetname": "soe_g2_beast_canal_entry"
+    },
+    {
+      "classname": "soe_beast_pedestal",
+      "origin": [
+        592,
+        960,
+        32
+      ],
+      "targetname": "soe_g2_beast_canal_lower"
+    },
+    {
+      "classname": "soe_beast_pedestal",
+      "origin": [
+        208,
+        1088,
+        176
+      ],
+      "targetname": "soe_g2_beast_canal_high"
+    },
+    {
+      "classname": "soe_beast_smash",
+      "origin": [
+        176,
+        880,
+        -24
+      ],
+      "targetname": "soe_g2_badge_smash",
+      "target": "soe_g2_badge_pickup"
+    },
+    {
+      "classname": "soe_quest_pickup",
+      "origin": [
+        192,
+        880,
+        -40
+      ],
+      "style": 3,
+      "spawnflags": 1,
+      "targetname": "soe_g2_badge_pickup",
+      "useprint_string_1": "Hold %b to Pick Up Detective's Badge"
+    },
+    {
+      "classname": "soe_beast_grapple",
+      "origin": [
+        32,
+        1016,
+        176
+      ],
+      "target": "soe_g2_ruby_grapple_dest"
+    },
+    {
+      "classname": "info_notnull",
+      "origin": [
+        -80,
+        1016,
+        272
+      ],
+      "targetname": "soe_g2_ruby_grapple_dest"
+    },
+    {
+      "classname": "soe_beast_shock",
+      "origin": [
+        -48,
+        1080,
+        240
+      ],
+      "targetname": "soe_g2_ruby_power",
+      "target": "soe_g2_ruby_access_blocker"
+    },
+    {
+      "classname": "soe_ritual_controller",
+      "origin": [
+        -96,
+        1120,
+        272
+      ],
+      "style": 2,
+      "wait": 20,
+      "targetname": "soe_g2_ruby_ritual"
+    },
+    {
+      "classname": "soe_ritual_keeper_spawn",
+      "origin": [
+        -160,
+        1080,
+        272
+      ],
+      "style": 2,
+      "targetname": "soe_g2_ruby_keeper_a"
+    },
+    {
+      "classname": "soe_ritual_keeper_spawn",
+      "origin": [
+        -32,
+        1080,
+        272
+      ],
+      "style": 2,
+      "targetname": "soe_g2_ruby_keeper_b"
+    },
+    {
+      "classname": "soe_ritual_keeper_spawn",
+      "origin": [
+        -160,
+        1160,
+        272
+      ],
+      "style": 2,
+      "targetname": "soe_g2_ruby_keeper_c"
+    },
+    {
+      "classname": "soe_ritual_keeper_spawn",
+      "origin": [
+        -32,
+        1160,
+        272
+      ],
+      "style": 2,
+      "targetname": "soe_g2_ruby_keeper_d"
+    },
+    {
+      "classname": "perk_random",
+      "origin": [
+        384,
+        1040,
+        176
+      ],
+      "spawnflags": 14,
+      "targetname": "soe_g2_canal_perk_slot"
+    },
+    {
+      "classname": "soe_perk_power_panel",
+      "origin": [
+        416,
+        1040,
+        184
+      ],
+      "target": "soe_g2_canal_perk_slot",
+      "targetname": "soe_g2_canal_perk_power"
+    },
+    {
+      "classname": "info_notnull",
+      "origin": [
+        128,
+        832,
+        -32
+      ],
+      "targetname": "soe_g2_canal_rift_portal_anchor"
+    },
+    {
+      "classname": "info_notnull",
+      "origin": [
+        448,
+        1328,
+        48
+      ],
+      "targetname": "soe_g2_canal_tram_platform_anchor"
+    },
+    {
+      "classname": "info_notnull",
+      "origin": [
+        520,
+        1376,
+        96
+      ],
+      "targetname": "soe_g2_canal_symbol_sightline_anchor"
+    },
+    {
+      "classname": "info_notnull",
+      "origin": [
+        48,
+        1112,
+        48
+      ],
+      "targetname": "soe_g2_canal_build_table_anchor"
+    }
+  ],
+  "randomized": [
+    {
+      "group": 103,
+      "system": "Fumigator",
+      "entity": "soe_fumigator_pickup",
+      "candidates": [
+        [
+          176,
+          560,
+          40
+        ],
+        [
+          592,
+          792,
+          40
+        ]
+      ]
+    },
+    {
+      "group": 201,
+      "system": "Rocket Shield Canals base",
+      "entity": "soe_shield_part",
+      "style": 2,
+      "candidates": [
+        [
+          176,
+          1016,
+          184
+        ],
+        [
+          320,
+          1088,
+          184
+        ],
+        [
+          544,
+          1136,
+          184
+        ]
+      ]
+    },
+    {
+      "group": 301,
+      "system": "Civil Protector Canal fuse",
+      "entity": "soe_civil_fuse",
+      "style": 1,
+      "candidates": [
+        [
+          272,
+          1192,
+          184
+        ],
+        [
+          416,
+          1248,
+          184
+        ],
+        [
+          560,
+          1296,
+          184
+        ]
+      ]
+    }
+  ],
+  "buildableAnchors": {
+    "table": [
+      48,
+      1112,
+      48
+    ],
+    "entitiesPlanned": [
+      "soe_shield_build_table",
+      "soe_servant_build_table"
+    ],
+    "note": "G2 will co-locate mapper-facing build systems at the Canal workbench after interaction volumes are checked."
+  },
+  "riftPolicy": "G2 places and collision-tests the surface Rift pocket but does not enable teleport to the underground Rift until G5 exists, preventing a portal-to-nowhere softlock.",
+  "tramPolicy": "G2 builds the Canal station/platform and symbol sightline envelope, but moving Tram runtime is integrated in G7 after all three stations exist.",
+  "acceptance": [
+    "player can travel Junction -> lower canal -> High Street -> station without unintended jumps",
+    "Badge requires Beast smash before human pickup",
+    "Ruby Rabbit grapple lands in open space and its power interaction opens human access",
+    "Ruby Rabbit ritual style 2 has four Keeper spawn markers and produces Gateworm 2 progression",
+    "rotating perk slot uses native perk_random trio and separate Beast power panel",
+    "Fumigator group 103 resolves exactly one of two candidates",
+    "Canal shield part group 201 resolves exactly one of three style-2 candidates",
+    "Canal fuse group 301 resolves exactly one of three style-1 candidates",
+    "Margwa-sized 160-unit traversal envelope exists through major lower/high lanes",
+    "surface Rift is visibly present but cannot teleport until G5",
+    "station platform leaves room for later moving Tram collision"
+  ],
+  "references": [
+    "https://codzombified.blogspot.com/2015/12/shadows-of-evil-canal-district-map.html",
+    "https://codzombified.blogspot.com/2015/12/ruby-rabbit-map-layout-shadows-of-evil.html",
+    "https://codzombified.blogspot.com/2015/12/canal-district-high-street-map-layout.html",
+    "https://www.codzombiesguides.com/main-quests/black-ops-3/shadows-of-evil/",
+    "https://codzombie.com/atlas/shadows-of-evil"
+  ]
+}
