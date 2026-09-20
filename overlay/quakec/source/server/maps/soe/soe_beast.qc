@@ -60,6 +60,7 @@ void(entity who) SoE_EndBeast =
 
     who.soe_beast_active = false;
     who.soe_beast_until = 0;
+    who.soe_finale_beast_meter = 0;
     who.soe_grapple_active = false;
     who.soe_grapple_target = world;
 
@@ -81,6 +82,11 @@ void(entity who) SoE_BeginBeast =
     who.soe_beast_charges = who.soe_beast_charges - 1;
     who.soe_beast_active = true;
     who.soe_beast_until = time + 25;
+
+    if (soe_finale_active)
+        who.soe_finale_beast_meter = 100;
+    else
+        who.soe_finale_beast_meter = 0;
     who.soe_beast_return_origin = who.origin;
     who.soe_grapple_active = false;
     who.soe_grapple_target = world;
@@ -93,13 +99,21 @@ void(entity who, float percent) SoE_BeastDrain =
     if (!who.soe_beast_active)
         return;
 
+    if (soe_finale_active) {
+        who.soe_finale_beast_meter = who.soe_finale_beast_meter - percent;
+
+        if (who.soe_finale_beast_meter <= 0)
+            SoE_EndBeast(who);
+
+        return;
+    }
+
     float remaining = who.soe_beast_until - time;
     if (remaining <= 0)
         return;
 
     // A normal Beast transformation is 25 seconds. A canonical melee action
-    // drains roughly three percent of the timer; callers may pass other
-    // percentages for finale damage/other mechanics.
+    // drains roughly three percent of the timer.
     remaining = remaining - (25 * (percent / 100));
     who.soe_beast_until = time + remaining;
 
