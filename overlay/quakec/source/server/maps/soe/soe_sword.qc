@@ -370,7 +370,7 @@ void() SoE_RebornKeeperTouch =
     // First interaction after obtaining the Sword gives the character Arch-Ovum.
     if (!other.soe_reborn_has_arch_ovum && other.soe_reborn_ritual_mask == 0) {
         other.soe_reborn_has_arch_ovum = true;
-        other.soe_reborn_global_circle_bit = 0;
+        other.soe_reborn_active_circle_bit = 0;
         other.soe_reborn_last_ritual_round = -1;
         SoE_FireEntityTargets(self);
         return;
