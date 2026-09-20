@@ -347,7 +347,7 @@ float() SoE_SpawnMargwaProxy =
 
     if (soe_reborn_active_owner != world && soe_reborn_spawn_tag_remaining > 0) {
         slot.soe_reborn_owner = soe_reborn_active_owner;
-        slot.soe_reborn_circle_bit = soe_reborn_active_circle_bit;
+        slot.soe_reborn_circle_bit = soe_reborn_global_circle_bit;
         soe_reborn_spawn_tag_remaining = soe_reborn_spawn_tag_remaining - 1;
         soe_last_margwa_spawn_was_reborn = true;
 
