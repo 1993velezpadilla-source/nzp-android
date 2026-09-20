@@ -163,6 +163,11 @@ required_runtime_symbols = {
     "soe_round_skip_shadowman": "opening Shadowman round-skip target",
     "soe_icarus_trigger": "post-PaP Icarus flyover trigger",
     "soe_richtofen_jumpscare_target": "scoped ship-window jumpscare target",
+    "soe_scrap_piece": "ten-piece scrap mural discovery",
+    "soe_cipher": "five cipher discovery/reveal",
+    "soe_lore_device": "twelve telephone/portal lore devices",
+    "soe_shadowman_sighting": "Shadowman sighting challenge",
+    "soe_noir_portrait": "shootable Noir portrait toggle",
 }
 for symbol, description in required_runtime_symbols.items():
     if symbol not in qc_text:
