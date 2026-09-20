@@ -92,6 +92,20 @@ def stair_boxes(x0, y0, z0, count, step_run, step_rise, width, direction=1):
     return out
 
 
+def stair_boxes_y(x0, y0, z0, count, step_run, step_rise, width, direction=1):
+    out = []
+    for i in range(count):
+        if direction > 0:
+            y1 = y0 + i * step_run
+            y2 = y1 + step_run
+        else:
+            y2 = y0 - i * step_run
+            y1 = y2 - step_run
+        z2 = z0 + (i + 1) * step_rise
+        out.append(((x0, y1, z0), (x0 + width, y2, z2)))
+    return out
+
+
 def generate(spec):
     entities = []
     world_brushes = []
@@ -107,8 +121,10 @@ def generate(spec):
     ]
 
     # Easy Street facade masses leave a central playable street.
+    # The north facade is split to create a real Nero landing/ritual cavity.
     world_brushes += [
-        box_brush((-832,224,0), (-112,304,224), WALL_TEX),
+        box_brush((-832,224,0), (-480,304,224), WALL_TEX),
+        box_brush((-208,224,0), (-112,304,224), WALL_TEX),
         box_brush((-832,-304,0), (-112,-224,224), WALL_TEX),
         box_brush((-832,-224,0), (-768,224,224), WALL_TEX),
         # Junction framing/building masses.
@@ -122,11 +138,18 @@ def generate(spec):
         box_brush((656,-144,0), (720,144,160), BLOCK_TEX),
     ]
 
-    # Nero elevated landing + crude Beast-only visual platform.
+    # Nero landing + ritual room. The human staircase is static geometry,
+    # but its entrance stays blocked until the Beast shock opens a target-only
+    # func_door below. A second target-only blocker proxies the Beast-smash room door.
     world_brushes += [
-        box_brush((-432,208,144), (-256,304,160), BLOCK_TEX),
-        box_brush((-288,224,160), (-240,288,224), WALL_TEX),
+        box_brush((-464,208,144), (-240,480,160), BLOCK_TEX),
+        box_brush((-464,208,160), (-448,480,320), WALL_TEX),
+        box_brush((-256,208,160), (-240,480,320), WALL_TEX),
+        box_brush((-464,464,160), (-240,480,320), WALL_TEX),
+        box_brush((-464,208,320), (-240,480,336), CEILING_TEX),
     ]
+    for mins, maxs in stair_boxes_y(-416, 64, 0, 8, 18, 18, 128, direction=1):
+        world_brushes.append(box_brush(mins, maxs, BLOCK_TEX))
 
     # Junction tram crossing: thin visible rails, kept low enough to step over.
     world_brushes += [
@@ -216,6 +239,14 @@ def generate(spec):
             wait=4, lip=8, distance=96, dmg=0, health=0, spawnflags=0
         ))
 
+    # Target-only blockers and other mapper-controlled brush entities.
+    for b in spec.get("brushEntities", []):
+        keys = dict(b.get("keys", {}))
+        texture = b.get("texture", BLOCK_TEX)
+        entities.append(brush_entity(
+            b["classname"], b["mins"], b["maxs"], texture, **keys
+        ))
+
     # SoE mapper-facing anchors.
     for a in spec["anchors"]:
         keys = {k:v for k,v in a.items() if k not in {"classname","origin"}}
@@ -223,7 +254,7 @@ def generate(spec):
 
     # Basic lighting to make blockout readable.
     for org, brightness in [
-        ((-640,0,192),300),((-320,0,192),280),((64,0,192),300),
+        ((-640,0,192),300),((-320,0,192),280),((-352,400,264),240),((64,0,192),300),
         ((320,0,208),320),((544,0,192),260),((240,320,176),220),((240,-320,176),220)
     ]:
         entities.append(point_entity("light", org, _light=brightness, wait=1, style=0))
