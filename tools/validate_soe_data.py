@@ -15,6 +15,10 @@ FILES = {
     "districts": "district_fidelity.json",
     "provenance": "provenance.json",
     "enemies": "enemies.json",
+    "world": "world_objects.json",
+    "beast": "beast_mode.json",
+    "buildables": "buildables.json",
+    "finale": "finale.json",
 }
 
 data = {}
@@ -27,7 +31,7 @@ for name, filename in FILES.items():
 if data["manifest"]["id"] != "soe":
     raise SystemExit("manifest id must be soe")
 
-for name in ("quest", "side", "audit", "lore", "achievements", "districts", "enemies"):
+for name in ("quest", "side", "audit", "lore", "achievements", "districts", "enemies", "world", "beast", "buildables", "finale"):
     if data[name].get("map") != "soe":
         raise SystemExit(f"{name} map id mismatch")
 
@@ -80,6 +84,23 @@ for expected in {"zombie", "keeper", "parasite", "insanity_elemental", "margwa",
     if expected not in enemy_ids:
         raise SystemExit(f"missing enemy behavior inventory: {expected}")
 
+if len(data["world"]["wallWeapons"]) != 13:
+    raise SystemExit("wall-weapon/equipment inventory must retain 13 SoE wall purchases")
+if len(data["world"]["gobbleGumMachines"]) != 8:
+    raise SystemExit("all eight SoE GobbleGum locations must remain tracked")
+if len(data["world"]["riftPortals"]) != 3:
+    raise SystemExit("all three district Rift portals must remain tracked")
+if "bowie_knife" not in {w["id"] for w in data["world"]["wallWeapons"]}:
+    raise SystemExit("Bowie Knife placement was dropped")
+if data["beast"]["core"]["normalDurationSeconds"] != 25:
+    raise SystemExit("Beast Mode canonical duration changed unexpectedly")
+if len(data["finale"]["flagDefense"]["sites"]) != 4 or sum(len(v) for v in data["finale"]["flagDefense"]["sites"].values()) != 8:
+    raise SystemExit("all eight flag-defense sites must remain tracked")
+if data["finale"]["fourPlayerFinale"]["originalRequiresPlayers"] != 4:
+    raise SystemExit("Classic finale must preserve four-player requirement")
+if len(data["side"]["sideQuests"]) < 16:
+    raise SystemExit("one or more tracked SoE side quests/events disappeared")
+
 # Make sure the project never silently switches to bundling the unfinished binary.
 source = data["manifest"]["sourceGeometry"]
 if source.get("redistribution") != "do_not_bundle_without_permission":
@@ -97,5 +118,6 @@ print(
     f"{data['lore']['scrapMural']['pieceCount']} scrap placements, "
     f"{data['lore']['telephoneMessages']['count']} phone/portal messages, "
     f"{len(data['achievements']['challenges'])} challenges, "
-    f"{len(data['districts']['districts'])} world regions"
+    f"{len(data['districts']['districts'])} world regions, "
+    f"{len(data['world']['wallWeapons'])} wall purchases"
 )
