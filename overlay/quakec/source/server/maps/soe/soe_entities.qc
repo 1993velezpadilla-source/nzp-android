@@ -265,19 +265,27 @@ void() SoE_RitualComplete =
     soe_ritual_active = false;
     self.state = 2;
 
-    if (self.style == 1)
+    if (self.style == 1) {
         soe_ritual_nero = true;
-    else if (self.style == 2)
+        soe_has_lawyers_pen = false;
+    }
+    else if (self.style == 2) {
         soe_ritual_jackie = true;
-    else if (self.style == 3)
+        soe_has_detective_badge = false;
+    }
+    else if (self.style == 3) {
         soe_ritual_jessica = true;
-    else if (self.style == 4)
+        soe_has_toupee = false;
+    }
+    else if (self.style == 4) {
         soe_ritual_floyd = true;
+        soe_has_champ_belt = false;
+    }
 
+    SoE_RitualRuntimeComplete(self);
     SoE_MarkRitualComplete();
 
-    // Completion targets can spawn a Gateworm pickup, alter arena doors,
-    // stop Keeper spawners, play the completion FX, etc.
+    // Completion targets alter arena doors / sacrifice FX / room state.
     SoE_FireEntityTargets(self);
 };
 
@@ -298,6 +306,8 @@ void() SoE_RitualTouch =
         other.semi_actions |= SEMIACTION_USE;
         self.state = 1;
         soe_ritual_active = true;
+
+        SoE_RitualRuntimeStart(self);
 
         self.think = SoE_RitualComplete;
         self.nextthink = time + (self.wait > 0 ? self.wait : 15);
