@@ -10,6 +10,7 @@ void(entity who, entity active_ent, float useprint_index, float cost) Player_Use
 float(entity who, entity active_ent) Player_UseButtonPressed;
 float(entity them, entity me) PlayerIsLooking;
 void() SUB_UseTargets;
+void(entity ent) SoE_FireEntityTargets;
 
 #define SOE_PICKUP_SUMMONING_KEY    1
 #define SOE_PICKUP_LAWYERS_PEN      2
