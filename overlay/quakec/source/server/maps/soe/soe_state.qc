@@ -62,7 +62,7 @@ entity soe_reborn_pending_owner;
 vector soe_reborn_pending_origin;
 float soe_reborn_pending_circle_bit;
 entity soe_reborn_active_owner;
-float soe_reborn_active_circle_bit;
+float soe_reborn_global_circle_bit;
 float soe_reborn_margwas_alive;
 float soe_reborn_spawn_tag_remaining;
 float soe_last_margwa_spawn_was_reborn;
@@ -124,7 +124,7 @@ void() SoE_ResetQuestState =
     soe_reborn_pending_origin = '0 0 0';
     soe_reborn_pending_circle_bit = 0;
     soe_reborn_active_owner = world;
-    soe_reborn_active_circle_bit = 0;
+    soe_reborn_global_circle_bit = 0;
     soe_reborn_margwas_alive = 0;
     soe_reborn_spawn_tag_remaining = 0;
     soe_last_margwa_spawn_was_reborn = false;
