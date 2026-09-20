@@ -37,6 +37,7 @@ entity() getFreeZombieEnt;
 void(entity where) spawn_a_zombieB;
 entity(entity blarg) find_new_enemy;
 entity(vector org, float counts_round) SoE_SpawnParasite;
+void(vector death_origin) SoE_OnCountedSpecialDeath;
 void(entity victim, entity attacker, float damage, float d_style) DamageHandler;
 void(entity who, float value, float impacted_by_2x_points) Player_ChangeScore;
 
@@ -251,13 +252,11 @@ float(entity victim, entity attacker, float damage, float d_style) SoE_HandleSpe
         if (victim.health <= 0 || instakill_finished > time) {
             if (attacker.classname == "player") {
                 attacker.kills = attacker.kills + 1;
-                Player_ChangeScore(attacker, 50, true);
+                Player_ChangeScore(attacker, 70, true);
             }
 
-            if (victim.soe_counts_round) {
-                Remaining_Zombies = Remaining_Zombies - 1;
-                Current_Zombies = Current_Zombies - 1;
-            }
+            if (victim.soe_counts_round)
+                SoE_OnCountedSpecialDeath(victim.origin);
 
             remove(victim);
         }
