@@ -19,6 +19,8 @@ FILES = {
     "beast": "beast_mode.json",
     "buildables": "buildables.json",
     "finale": "finale.json",
+    "geometry": "geometry_reconstruction.json",
+    "topology": "topology_graph.json",
 }
 
 data = {}
@@ -31,7 +33,7 @@ for name, filename in FILES.items():
 if data["manifest"]["id"] != "soe":
     raise SystemExit("manifest id must be soe")
 
-for name in ("quest", "side", "audit", "lore", "achievements", "districts", "enemies", "world", "beast", "buildables", "finale"):
+for name in ("quest", "side", "audit", "lore", "achievements", "districts", "enemies", "world", "beast", "buildables", "finale", "geometry", "topology"):
     if data[name].get("map") != "soe":
         raise SystemExit(f"{name} map id mismatch")
 
@@ -106,6 +108,42 @@ if not mask_quest:
     raise SystemExit("Margwa Mask side quest is missing")
 if mask_quest.get("requiredMargwaKills") != 6 or mask_quest.get("targetCount") != 6 or mask_quest.get("maxTramRides") != 2:
     raise SystemExit("Margwa Mask canonical 6-kill / 6-target / 2-ride rules changed")
+
+
+# Geometry/topology anti-regression.
+if data["geometry"].get("strategy") != "clean-room modular reconstruction":
+    raise SystemExit("SoE geometry strategy must remain clean-room modular reconstruction")
+
+nodes = {node["id"] for node in data["topology"]["nodes"]}
+required_nodes = {
+    "spawn_alley", "junction", "canal_lower", "footlight_lower", "waterfront_lower",
+    "canal_station", "footlight_station", "waterfront_station", "rift", "sacred_place"
+}
+if not required_nodes.issubset(nodes):
+    raise SystemExit("major Morg City topology node was dropped")
+
+edge_pairs = {(edge["from"], edge["to"]) for edge in data["topology"]["edges"]}
+for pair in {
+    ("spawn_alley", "junction"),
+    ("junction", "canal_gate"),
+    ("junction", "footlight_gate"),
+    ("junction", "waterfront_gate"),
+    ("canal_rift_portal", "rift"),
+    ("footlight_rift_portal", "rift"),
+    ("waterfront_rift_portal", "rift"),
+    ("rift", "sacred_place"),
+}:
+    if pair not in edge_pairs:
+        raise SystemExit(f"major Morg City topology edge was dropped: {pair[0]} -> {pair[1]}")
+
+tram_pairs = {(seg["from"], seg["to"]) for seg in data["topology"]["tramSegments"]}
+for pair in {
+    ("canal_station", "footlight_station"),
+    ("footlight_station", "waterfront_station"),
+    ("waterfront_station", "canal_station"),
+}:
+    if pair not in tram_pairs:
+        raise SystemExit(f"tram topology segment missing: {pair[0]} -> {pair[1]}")
 
 
 # Runtime coverage anti-regression: documented critical systems must have
