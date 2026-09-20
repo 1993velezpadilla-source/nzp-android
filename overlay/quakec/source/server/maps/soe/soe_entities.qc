@@ -16,6 +16,7 @@ void() SUB_UseTargets;
 #define SOE_PICKUP_DETECTIVE_BADGE   3
 #define SOE_PICKUP_TOUPEE            4
 #define SOE_PICKUP_CHAMP_BELT        5
+#define SOE_PICKUP_MARGWA_HEART       6
 
 float(entity ent) SoE_PlayerCanUseEntity =
 {
@@ -202,6 +203,8 @@ void() SoE_QuestPickupTouch =
         soe_has_toupee = true;
     else if (self.style == SOE_PICKUP_CHAMP_BELT)
         soe_has_champ_belt = true;
+    else if (self.style == SOE_PICKUP_MARGWA_HEART)
+        soe_has_margwa_heart = true;
 
     SoE_FireEntityTargets(self);
     self.solid = SOLID_NOT;
