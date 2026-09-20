@@ -168,6 +168,13 @@ if by_name["soe_g2_badge_smash"].get("target") != "soe_g2_badge_gate":
     raise SystemExit("Canal Badge smash must feed the same two-hit counter")
 if by_name["soe_g2_badge_pickup"].get("spawnflags") != 1:
     raise SystemExit("Detective Badge must start dormant")
+ruby_grapple_z = by_name["soe_g2_ruby_grapple_dest"]["origin"][2]
+ruby_ritual_z = by_name["soe_g2_ruby_ritual"]["origin"][2]
+ruby_power_z = by_name["soe_g2_ruby_power"]["origin"][2]
+if not (ruby_grapple_z > ruby_ritual_z > ruby_power_z):
+    raise SystemExit("Ruby Rabbit vertical contract must be grapple top floor -> ritual second floor -> power ground floor")
+if set(data["g2"].get("rubyRabbitFloorContract", {})) != {"groundFloor", "secondFloor", "thirdFloor", "sourceStatus"}:
+    raise SystemExit("Ruby Rabbit three-floor contract metadata is incomplete")
 random_groups = {r["group"]: len(r["candidates"]) for r in data["g2"].get("randomized", [])}
 if random_groups != {103: 2, 201: 3, 301: 3}:
     raise SystemExit("Canal randomized spawn groups changed unexpectedly")
