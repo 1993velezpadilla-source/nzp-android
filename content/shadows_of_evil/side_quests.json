@@ -118,9 +118,18 @@
         "trip_mines"
       ],
       "steps": [
-        "Kill zombie with Trip Mine at three Holly's Cream Cakes carts: Junction, Canals, Footlight"
+        "Buy Trip Mines outside/left side of Anvil Boxing Gym",
+        "Choose a visual path implicitly by damaging the opposing pastry carts; helping Holly means damage Devil-O-Donuts carts, helping Devil means damage Holly's Cream Cakes carts",
+        "Holly's carts: Junction near Stamin-Up; Canals by Peep Show around corner from Civil Protector panel; Footlight in front of rotating perk machine on upper level",
+        "Devil-O-Donuts carts: Junction near GobbleGum machine; Canals near GobbleGum machine; Footlight up stairs/left from perk area; Waterfront near Championship Belt drop",
+        "Damaging a cart belonging to the side you are helping locks the upgrade out for the rest of the match",
+        "Complete every opposing cart for the chosen route"
       ],
-      "reward": "Doughnut Trip Mines"
+      "reward": "Upgraded pastry Trip Mines: same mechanics for both routes, larger/stronger blast plus visual doughnuts/cakes",
+      "variants": [
+        "Holly's Cream Cakes",
+        "Devil-O-Donuts"
+      ]
     },
     {
       "id": "noir_filter",
@@ -136,6 +145,29 @@
         "Support twelve telephone/portal messages with progression gates"
       ],
       "reward": "lore playback hooks"
+    },
+    {
+      "id": "richtofen_jumpscare",
+      "requirements": [
+        "pack_a_punch_unlocked",
+        "scoped_sniper"
+      ],
+      "steps": [
+        "From Waterfront/Boxing Gym harbor sightline, aim a scoped sniper at the glowing window on the large ship"
+      ],
+      "reward": "Zombie Richtofen visual jump-scare event",
+      "copyrightRule": "recreate visual effect with project-owned/cleared art; do not bundle ripped Treyarch imagery/audio"
+    },
+    {
+      "id": "mob_plane_flyover",
+      "requirements": [
+        "pack_a_punch_unlocked"
+      ],
+      "steps": [
+        "First player return to Junction after Pack-a-Punch opens"
+      ],
+      "reward": "Icarus/Mob-of-the-Dead plane fly-over from Waterfront direction toward Canals",
+      "copyrightRule": "use clean/project-owned plane asset"
     }
   ],
   "environmentalSystems": [
