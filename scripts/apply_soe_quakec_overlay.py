@@ -97,10 +97,10 @@ revive_patch = '''    // Shadows of Evil: Beast Mode instantly revives a teammat
         Player_AddScore(other, downed_player.requirespower, false);
         downed_player.revives++;
 
-        entity old_self = self;
+        entity soe_old_self = self;
         self = downed_player;
         GetUp();
-        self = old_self;
+        self = soe_old_self;
 
         DisableReviveIcon(downed_player.playernum);
         SoE_EndBeast(other);
