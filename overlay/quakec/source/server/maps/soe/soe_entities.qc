@@ -20,6 +20,32 @@ void() SUB_UseTargets;
 #define SOE_PICKUP_XENOMATTER          7
 #define SOE_PICKUP_MARGWA_TENTACLE     8
 
+void() SoE_PoweredDoorUse =
+{
+    if (self.activated)
+        return;
+
+    self.activated = true;
+    self.solid = SOLID_NOT;
+    self.use = SUB_Null;
+
+    if (self.model != "")
+        setmodel(self, "");
+
+    SoE_FireEntityTargets(self);
+};
+
+void() soe_powered_door =
+{
+    self.movetype = MOVETYPE_NONE;
+    self.solid = SOLID_BSP;
+    self.use = SoE_PoweredDoorUse;
+    self.activated = false;
+
+    if (self.model != "")
+        setmodel(self, self.model);
+};
+
 float(entity ent) SoE_PlayerCanUseEntity =
 {
     if (!soe_active || other.classname != "player" || other.downed)
