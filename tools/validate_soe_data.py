@@ -25,6 +25,7 @@ FILES = {
     "g2": "g2_canal_blockout.json",
     "g3": "g3_footlight_blockout.json",
     "g4": "g4_waterfront_blockout.json",
+    "g5": "g5_rift_blockout.json",
 }
 
 data = {}
@@ -37,7 +38,7 @@ for name, filename in FILES.items():
 if data["manifest"]["id"] != "soe":
     raise SystemExit("manifest id must be soe")
 
-for name in ("quest", "side", "audit", "lore", "achievements", "districts", "enemies", "world", "beast", "buildables", "finale", "geometry", "topology", "g1", "g2", "g3", "g4"):
+for name in ("quest", "side", "audit", "lore", "achievements", "districts", "enemies", "world", "beast", "buildables", "finale", "geometry", "topology", "g1", "g2", "g3", "g4", "g5"):
     if data[name].get("map") != "soe":
         raise SystemExit(f"{name} map id mismatch")
 
@@ -230,6 +231,37 @@ g4_random = {r["group"]: len(r["candidates"]) for r in data["g4"].get("randomize
 if g4_random != {203: 3, 303: 3}:
     raise SystemExit("Waterfront shield/fuse randomized groups changed unexpectedly")
 
+# G5 Rift/Subway contract.
+if data["g5"].get("phase") != "G5" or data["g5"].get("district") != "rift_subway":
+    raise SystemExit("Rift G5 blockout metadata changed unexpectedly")
+g5_anchors = data["g5"].get("gameplayAnchors", [])
+g5_by_name = {a.get("targetname"): a for a in g5_anchors if a.get("targetname")}
+for required in {
+    "soe_g5_widows_machine", "soe_g5_widows_power", "soe_g5_mule_machine", "soe_g5_mule_power",
+    "soe_g5_junction_shortcut_power", "soe_g5_civil_fusebox", "soe_g5_sword_wall_gate",
+    "soe_g5_sword_altar", "soe_g5_rift_ovum_crate_smash", "soe_g5_rift_ovum_statue",
+    "soe_g5_first_entry", "soe_g5_guard_a", "soe_g5_guard_b", "soe_g5_guard_c"
+}:
+    if required not in g5_by_name:
+        raise SystemExit(f"Rift G5 anchor missing: {required}")
+if g5_by_name["soe_g5_widows_machine"].get("cost") != 4000:
+    raise SystemExit("Widow's Wine must cost 4000")
+if g5_by_name["soe_g5_widows_power"].get("target") != "soe_g5_widows_machine":
+    raise SystemExit("Widow's Wine must require its dedicated Beast power")
+if g5_by_name["soe_g5_mule_power"].get("target") != "soe_g5_mule_machine":
+    raise SystemExit("Mule Kick must require its dedicated Beast power")
+if g5_by_name["soe_g5_rift_ovum_statue"].get("style") != 1:
+    raise SystemExit("Rift Ovum statue must occupy style bit 1")
+if g5_by_name["soe_g5_rift_ovum_crate_smash"].get("target") != "soe_g5_rift_ovum_statue":
+    raise SystemExit("Rift Ovum crate must reveal the statue")
+glyphs = data["g5"].get("glyphs", [])
+if sorted(g.get("style") for g in glyphs) != list(range(9)):
+    raise SystemExit("Rift Sword wall must contain exactly glyph IDs 0..8")
+if any(g.get("target") != "soe_g5_sword_wall_gate" for g in glyphs):
+    raise SystemExit("Every Rift glyph must route through the guarded wall gate")
+if any("Widow's Wine is not treated as a Pack-a-Punch prerequisite" == x for x in data["g5"].get("acceptance", [])) is False:
+    raise SystemExit("Rift contract must preserve Widow's Wine as optional for Pack-a-Punch")
+
 # Runtime coverage anti-regression: documented critical systems must have
 # mapper-facing/runtime implementations, not just JSON descriptions.
 overlay_dir = ROOT / "overlay" / "quakec" / "source" / "server" / "maps" / "soe"
@@ -246,6 +278,10 @@ required_runtime_symbols = {
     "soe_beast_grapple": "Beast grapple interaction",
     "soe_target_counter": "multi-action map target counter",
     "soe_powered_door": "Beast-powered geometry door",
+    "soe_widows_wine_machine": "Widow Wine machine",
+    "soe_rift_first_entry": "Rift first entry trigger",
+    "soe_rift_guard_spawn": "Rift Keeper spawn marker",
+    "soe_sword_wall_gate": "validated sword glyph wall gate",
     "soe_ritual_controller": "district ritual controller",
     "soe_ritual_keeper_spawn": "ritual Keeper spawns",
     "soe_gateworm_pedestal": "Sacred Place Gateworm pedestal",
@@ -307,6 +343,8 @@ if 'mapname == "soe_g3"' not in qc_text:
     raise SystemExit("SoE G3 blockout must activate the Shadows runtime")
 if 'mapname == "soe_g4"' not in qc_text:
     raise SystemExit("SoE G4 blockout must activate the Shadows runtime")
+if 'mapname == "soe_g5"' not in qc_text:
+    raise SystemExit("SoE G5 blockout must activate the Shadows runtime")
 
 patcher = (ROOT / "scripts" / "apply_soe_quakec_overlay.py").read_text(encoding="utf-8")
 for hook in {
