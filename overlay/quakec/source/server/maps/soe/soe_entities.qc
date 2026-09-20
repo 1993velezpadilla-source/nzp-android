@@ -227,6 +227,16 @@ void() SoE_QuestPickupTouch =
         setmodel(self, "");
 };
 
+void() SoE_QuestPickupEnableUse =
+{
+    // Mapper contract: spawnflag 1 means the pickup starts dormant and only
+    // becomes collectible after another entity targets it (for example the
+    // Summoning Key truck/crate Beast smash).
+    self.solid = SOLID_TRIGGER;
+    self.touch = SoE_QuestPickupTouch;
+    self.use = SUB_Null;
+};
+
 void() soe_quest_pickup =
 {
     if (self.useprint_string_1 == "")
@@ -234,13 +244,20 @@ void() soe_quest_pickup =
 
     self.useprint_index_1 = Useprint_Register(self.useprint_string_1, self.useprint_color_1);
     self.movetype = MOVETYPE_NONE;
-    self.solid = SOLID_TRIGGER;
-    self.touch = SoE_QuestPickupTouch;
 
     if (self.model != "")
         setmodel(self, self.model);
     else
         setsize(self, '-16 -16 -16', '16 16 16');
+
+    if (self.spawnflags & 1) {
+        self.solid = SOLID_NOT;
+        self.touch = SUB_Null;
+        self.use = SoE_QuestPickupEnableUse;
+    } else {
+        self.solid = SOLID_TRIGGER;
+        self.touch = SoE_QuestPickupTouch;
+    }
 };
 
 float(float ritual_id) SoE_RitualItemReady =
