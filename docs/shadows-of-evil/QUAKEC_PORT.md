@@ -38,3 +38,9 @@ Pinned QuakeC: `04bd544172e16193162277a7c356c827e9653b06`
 - `impulse 34`: Rocket Shield boost. Requires its own shield action/button when the player has a shield.
 - `impulse 35`: Li'l Arnie tactical throw. **Requires a dedicated Li'l Arnie HUD button**, not a weapon slot or generic grenade toggle.
 - Both controls must participate in Custom HUD move/scale/opacity editing and expose current per-player state to the HUD.
+
+
+### SoE secondary equipment presentation
+- Trip Mine uses the existing secondary-equipment slot/count and `impulse 33` on Shadows of Evil.
+- Android must swap the old Betty icon/name to **Trip Mine** whenever `soe_active && player.soe_has_tripmines`.
+- Do not create a second Trip Mine button; the standard secondary-equipment control is reused.
