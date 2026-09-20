@@ -171,7 +171,26 @@
       "variants": [
         "Holly's Cream Cakes",
         "Devil-O-Donuts"
-      ]
+      ],
+      "runtimeEntities": [
+        "soe_tripmine_wallbuy",
+        "soe_tripmine_cart"
+      ],
+      "baseCharges": 2,
+      "inputImpulse": 33,
+      "routes": {
+        "helpHolly": {
+          "requiredCartBrand": "Devil-O-Donuts",
+          "requiredCartCount": 4,
+          "rewardVisual": "cream-cake style"
+        },
+        "helpDevil": {
+          "requiredCartBrand": "Holly's Cream Cakes",
+          "requiredCartCount": 3,
+          "rewardVisual": "doughnut style"
+        }
+      },
+      "lockoutRule": "After a route is chosen by the first valid cart hit, triggering a cart from the side being helped permanently locks the upgrade for that match."
     },
     {
       "id": "noir_filter",
