@@ -28,7 +28,7 @@ jobs:
           git -C .upstream/quakec checkout --detach 04bd544172e16193162277a7c356c827e9653b06
 
       - name: Install QuakeC build dependencies
-        run: python3 -m pip install pandas
+        run: python3 -m pip install colorama==0.4.6 fastcrc==0.3.0 pandas==2.1.4
 
       - name: Apply SoE overlay
         run: python3 scripts/apply_soe_quakec_overlay.py .upstream/quakec
