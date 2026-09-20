@@ -30,6 +30,7 @@ include_lines = [
     "maps/soe/soe_beast.qc\n",
     "maps/soe/soe_entities.qc\n",
     "maps/soe/soe_tram.qc\n",
+    "maps/soe/soe_specials.qc\n",
 ]
 if not all(line in text for line in include_lines):
     if include_anchor not in text:
@@ -51,7 +52,7 @@ if init_call not in text:
 
 # Per-frame Beast/grapple/finale runtime hook.
 frame_anchor = "\tframecount = framecount + 1;\n"
-frame_call = "\tSoE_Frame();\n"
+frame_call = "\tSoE_Frame();\n\tSoE_ProcessSpecialSpawns();\n"
 if frame_call not in text:
     if frame_anchor not in text:
         raise SystemExit("StartFrame hook anchor changed; inspect pinned upstream")
@@ -115,5 +116,68 @@ if "Shadows of Evil: Beast Mode instantly revives" not in text:
         raise SystemExit("revive hook anchor changed; inspect pinned upstream")
     text = text.replace(revive_anchor, revive_patch, 1)
     last_stand_qc.write_text(text, encoding="utf-8")
+
+
+# Special-enemy AI update: keep stock pathfinding/movement, layer SoE state on top.
+ai_qc = root / "source" / "server" / "ai" / "ai_core.qc"
+text = ai_qc.read_text(encoding="utf-8")
+special_ai_anchor = "void() Zombie_AI = {\n"
+special_ai_call = "void() Zombie_AI = {\n\tSoE_UpdateSpecialAI();\n"
+if special_ai_call not in text:
+    if special_ai_anchor not in text:
+        raise SystemExit("Zombie_AI hook anchor changed; inspect pinned upstream")
+    text = text.replace(special_ai_anchor, special_ai_call, 1)
+    ai_qc.write_text(text, encoding="utf-8")
+
+# Special damage runs before generic zombie HP / Insta-Kill logic.
+damage_qc = root / "source" / "server" / "damage.qc"
+text = damage_qc.read_text(encoding="utf-8")
+damage_anchor = "void(entity victim, entity attacker, float damage, float d_style) DamageHandler = {\n"
+damage_call = damage_anchor + "\tif (SoE_HandleSpecialDamage(victim, attacker, damage, d_style))\n\t\treturn;\n\n"
+if "SoE_HandleSpecialDamage(victim, attacker, damage, d_style)" not in text:
+    if damage_anchor not in text:
+        raise SystemExit("DamageHandler hook anchor changed; inspect pinned upstream")
+    text = text.replace(damage_anchor, damage_call, 1)
+    damage_qc.write_text(text, encoding="utf-8")
+
+# Pooled zombie entities must never retain Margwa state when reused normally.
+zombie_qc = root / "source" / "server" / "ai" / "zombie_core.qc"
+text = zombie_qc.read_text(encoding="utf-8")
+pool_anchor = '''\tszombie = getFreeZombieEnt();
+\tif(szombie == world || zombie_spawn_timer > time)
+'''
+pool_patch = '''\tszombie = getFreeZombieEnt();
+\tif (szombie != world)
+\t\tSoE_ClearSpecialState(szombie);
+\tif(szombie == world || zombie_spawn_timer > time)
+'''
+if "SoE_ClearSpecialState(szombie);" not in text:
+    if pool_anchor not in text:
+        raise SystemExit("zombie pool reset anchor changed; inspect pinned upstream")
+    text = text.replace(pool_anchor, pool_patch, 1)
+    zombie_qc.write_text(text, encoding="utf-8")
+
+# Margwas are canonically immune to Nuke. Skip them in the Nuke watcher chain.
+powerups_qc = root / "source" / "server" / "entities" / "powerups.qc"
+text = powerups_qc.read_text(encoding="utf-8")
+nuke_anchor = '''\t// play explosion effects
+\tPU_NukeExplode(self.origin + '0 0 13');
+'''
+nuke_patch = '''\t// Shadows of Evil Margwas are immune to Nuke; advance without killing.
+\tif (SoE_IsNukeImmune(self)) {
+\t\tself = oldself;
+\t\tself.goaldummy = findfloat(self.goaldummy, iszomb, 1);
+\t\tself.nextthink = time + 0.01;
+\t\treturn;
+\t}
+
+\t// play explosion effects
+\tPU_NukeExplode(self.origin + '0 0 13');
+'''
+if "Shadows of Evil Margwas are immune to Nuke" not in text:
+    if nuke_anchor not in text:
+        raise SystemExit("Nuke hook anchor changed; inspect pinned upstream")
+    text = text.replace(nuke_anchor, nuke_patch, 1)
+    powerups_qc.write_text(text, encoding="utf-8")
 
 print("Shadows of Evil QuakeC overlay applied")
