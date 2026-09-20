@@ -71,4 +71,48 @@ if "\tSoE_ResetBeastCharges();\n" not in text:
         text = text.replace(round_anchor, round_anchor + round_calls, 1)
     rounds_qc.write_text(text, encoding="utf-8")
 
+
+# Normal NZ:P zombies/dogs must ignore a player while they are in Beast Mode.
+ai_qc = root / "source" / "server" / "ai" / "ai_core.qc"
+text = ai_qc.read_text(encoding="utf-8")
+target_anchor = 'if (targets.downed == true || targets.is_spectator == true) {'
+target_patch = 'if (targets.downed == true || targets.is_spectator == true || SoE_IsBeast(targets)) {'
+if target_patch not in text:
+    if target_anchor not in text:
+        raise SystemExit("AI target filter anchor changed; inspect pinned upstream")
+    text = text.replace(target_anchor, target_patch, 1)
+    ai_qc.write_text(text, encoding="utf-8")
+
+# Beast Mode revives are instant in Shadows of Evil and immediately end Beast.
+last_stand_qc = root / "source" / "server" / "player" / "last_stand.qc"
+text = last_stand_qc.read_text(encoding="utf-8")
+revive_anchor = '''    // No one is actively reviving the downed team mate.
+    if (self.owner.beingrevived == false) {
+'''
+revive_patch = '''    // Shadows of Evil: Beast Mode instantly revives a teammate, then ends Beast.
+    if (SoE_IsBeast(other)) {
+        entity downed_player = self.owner;
+        Player_AddScore(other, downed_player.requirespower, false);
+        downed_player.revives++;
+
+        entity old_self = self;
+        self = downed_player;
+        GetUp();
+        self = old_self;
+
+        DisableReviveIcon(downed_player.playernum);
+        SoE_EndBeast(other);
+        remove(self);
+        return;
+    }
+
+    // No one is actively being revived.
+    if (self.owner.beingrevived == false) {
+'''
+if "Shadows of Evil: Beast Mode instantly revives" not in text:
+    if revive_anchor not in text:
+        raise SystemExit("revive hook anchor changed; inspect pinned upstream")
+    text = text.replace(revive_anchor, revive_patch, 1)
+    last_stand_qc.write_text(text, encoding="utf-8")
+
 print("Shadows of Evil QuakeC overlay applied")
