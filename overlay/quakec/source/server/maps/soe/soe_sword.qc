@@ -316,6 +316,17 @@ void(entity dead_enemy) SoE_SwordOnEnemyDeath =
     slots to Nero/Jackie/Jessica/Floyd presentation without changing logic.
 */
 
+
+float(float mask) SoE_RebornCompletedCircleCount =
+{
+    float count = 0;
+    if (mask & 1) count = count + 1;
+    if (mask & 2) count = count + 1;
+    if (mask & 4) count = count + 1;
+    if (mask & 8) count = count + 1;
+    return count;
+};
+
 float() SoE_AllActiveSwordOwnersUpgraded =
 {
     entity player = find(world, classname, "player");
@@ -422,10 +433,8 @@ void() SoE_RebornCircleTouch =
     if (other.soe_reborn_ritual_mask & circle_bit)
         return;
 
-    // Only one quest-owned Margwa may be pending globally at a time. This
-    // prevents a regular pooled spawn from accidentally receiving another
-    // player's ownership tag.
-    if (soe_reborn_pending_owner != world)
+    // Only one Arch-Ovum ritual may run globally at a time.
+    if (soe_reborn_active_owner != world)
         return;
 
     if (!PlayerIsLooking(other, self))
@@ -440,10 +449,24 @@ void() SoE_RebornCircleTouch =
     other.soe_reborn_active_circle_bit = circle_bit;
     other.soe_reborn_last_ritual_round = rounds;
 
+    float completed = SoE_RebornCompletedCircleCount(other.soe_reborn_ritual_mask);
+    float margwa_count = 2;
+
+    // Canonical upgrade pacing: first red-circle ritual spawns one Margwa;
+    // the following three spawn two each, for seven total per player.
+    if (completed == 0)
+        margwa_count = 1;
+
+    soe_reborn_active_owner = other;
+    soe_reborn_active_circle_bit = circle_bit;
+    soe_reborn_margwas_alive = margwa_count;
+    soe_reborn_spawn_tag_remaining = margwa_count;
+
     soe_reborn_pending_owner = other;
     soe_reborn_pending_origin = self.origin;
     soe_reborn_pending_circle_bit = circle_bit;
-    soe_scripted_margwa_pending = soe_scripted_margwa_pending + 1;
+
+    soe_scripted_margwa_pending = soe_scripted_margwa_pending + margwa_count;
 
     SoE_FireEntityTargets(self);
 };
@@ -485,11 +508,24 @@ void(entity margwa) SoE_RebornOnMargwaKilled =
         owner.soe_reborn_active_circle_bit != circle_bit)
         return;
 
+    margwa.soe_reborn_owner = world;
+    margwa.soe_reborn_circle_bit = 0;
+
+    if (soe_reborn_margwas_alive > 0)
+        soe_reborn_margwas_alive = soe_reborn_margwas_alive - 1;
+
+    // The ritual completes only when all Margwas spawned by that circle die.
+    if (soe_reborn_margwas_alive > 0)
+        return;
+
     owner.soe_reborn_ritual_mask = owner.soe_reborn_ritual_mask | circle_bit;
     owner.soe_reborn_active_circle_bit = 0;
 
-    margwa.soe_reborn_owner = world;
-    margwa.soe_reborn_circle_bit = 0;
+    soe_reborn_active_owner = world;
+    soe_reborn_active_circle_bit = 0;
+    soe_reborn_spawn_tag_remaining = 0;
+    soe_reborn_pending_owner = world;
+    soe_reborn_pending_circle_bit = 0;
 
     // FX/arena cleanup is mapper-driven by entities that watch the completed
     // player's state; gameplay ownership remains per-player.
