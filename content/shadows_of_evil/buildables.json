@@ -110,9 +110,10 @@
     "requirement": "12 successful shield-boost groups; each qualifying boost kills at least 10 zombies",
     "failureRule": "a boost below the required kill threshold resets current streak/progress according to original challenge behavior",
     "reward": [
-      "higher shield durability",
-      "4 rocket charges"
-    ]
+      "4 rocket charges instead of 3",
+      "no shield-durability increase"
+    ],
+    "note": "Detailed Shadows of Evil guides consistently describe the Goddard upgrade as a boost-count upgrade, not extra shield health."
   },
   "apothiconServant": {
     "parts": [
