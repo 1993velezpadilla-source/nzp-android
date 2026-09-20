@@ -1,0 +1,146 @@
+/*
+    Shadows of Evil map-state foundation for NZ:P.
+
+    This file intentionally contains only clean-room gameplay state and hooks.
+    It does not contain Treyarch assets, scripts, dialogue, or leaked map data.
+
+    Target upstream: nzp-team/quakec
+    Pin: 04bd544172e16193162277a7c356c827e9653b06
+*/
+
+#define SOE_QUEST_NONE                  0
+#define SOE_QUEST_RITUALS               1
+#define SOE_QUEST_PAP_OPEN              2
+#define SOE_QUEST_SWORDS                3
+#define SOE_QUEST_REBORN_SWORDS         4
+#define SOE_QUEST_FLAGS                 5
+#define SOE_QUEST_SHADOWMAN             6
+#define SOE_QUEST_FINALE                7
+#define SOE_QUEST_COMPLETE              8
+
+float soe_active;
+float soe_quest_stage;
+
+float soe_ritual_nero;
+float soe_ritual_jackie;
+float soe_ritual_jessica;
+float soe_ritual_floyd;
+float soe_gateworm_count;
+float soe_pap_unlocked;
+
+float soe_tram_symbol_a;
+float soe_tram_symbol_b;
+float soe_tram_symbol_c;
+
+float soe_flag_district;
+float soe_flag_defense_index;
+
+float soe_finale_active;
+float soe_giant_gateworm_hit;
+float soe_station_shock_mask;
+float soe_keeper_shock_mask;
+
+float soe_scripted_margwa_pending;
+
+float() SoE_IsMap =
+{
+    return (mapname == "soe" || mapname == "shadows_of_evil" || mapname == "zm_zod");
+};
+
+void() SoE_ResetQuestState =
+{
+    soe_quest_stage = SOE_QUEST_NONE;
+
+    soe_ritual_nero = false;
+    soe_ritual_jackie = false;
+    soe_ritual_jessica = false;
+    soe_ritual_floyd = false;
+    soe_gateworm_count = 0;
+    soe_pap_unlocked = false;
+
+    soe_tram_symbol_a = -1;
+    soe_tram_symbol_b = -1;
+    soe_tram_symbol_c = -1;
+
+    soe_flag_district = 0;
+    soe_flag_defense_index = 0;
+
+    soe_finale_active = false;
+    soe_giant_gateworm_hit = false;
+    soe_station_shock_mask = 0;
+    soe_keeper_shock_mask = 0;
+
+    soe_scripted_margwa_pending = 0;
+};
+
+void() SoE_Init =
+{
+    soe_active = SoE_IsMap();
+
+    if (!soe_active)
+        return;
+
+    SoE_ResetQuestState();
+    soe_quest_stage = SOE_QUEST_RITUALS;
+
+    // Shadows of Evil does not use the classic global power-switch flow.
+    // Individual Beast-powered interactions will be implemented by the
+    // dedicated SoE entity modules.
+    isPowerOn = false;
+};
+
+void() SoE_OnNewRound =
+{
+    if (!soe_active)
+        return;
+
+    // Canonical regular Margwa scheduling begins at round 8.
+    // This queue is consumed by the dedicated Margwa spawner once that
+    // module is connected to the AI layer.
+    if (rounds == 8)
+        soe_scripted_margwa_pending = soe_scripted_margwa_pending + 1;
+};
+
+void() SoE_MarkRitualComplete =
+{
+    if (!soe_active)
+        return;
+
+    // Map entities set one of the ritual flags before calling this helper.
+    soe_gateworm_count =
+        soe_ritual_nero +
+        soe_ritual_jackie +
+        soe_ritual_jessica +
+        soe_ritual_floyd;
+
+    // Original behavior: scripted Margwas after ritual #2 and #4.
+    if (soe_gateworm_count == 2 || soe_gateworm_count == 4)
+        soe_scripted_margwa_pending = soe_scripted_margwa_pending + 1;
+};
+
+void() SoE_UnlockPackAPunch =
+{
+    if (!soe_active || soe_gateworm_count < 4)
+        return;
+
+    soe_pap_unlocked = true;
+    soe_quest_stage = SOE_QUEST_PAP_OPEN;
+};
+
+void() SoE_StartFinale =
+{
+    if (!soe_active)
+        return;
+
+    soe_finale_active = true;
+    soe_quest_stage = SOE_QUEST_FINALE;
+};
+
+void() SoE_CompleteQuest =
+{
+    if (!soe_active)
+        return;
+
+    soe_finale_active = false;
+    soe_quest_stage = SOE_QUEST_COMPLETE;
+};
