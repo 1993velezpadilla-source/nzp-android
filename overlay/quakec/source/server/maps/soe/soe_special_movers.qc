@@ -6,6 +6,7 @@
 */
 
 .float soe_projectile_expire;
+.float soe_spawn_counts_round;
 
 entity(entity seeker, float allow_beast) SoE_FindSpecialTarget =
 {
@@ -216,8 +217,9 @@ void() SoE_ElementalThink =
         return;
     }
 
-    self.velocity_x = normalize(planar)_x * 280;
-    self.velocity_y = normalize(planar)_y * 280;
+    vector direction = normalize(planar);
+    self.velocity_x = direction_x * 280;
+    self.velocity_y = direction_y * 280;
     self.angles_y = vectoyaw(planar);
 
     self.nextthink = time + 0.05;
@@ -260,7 +262,7 @@ entity(vector org, entity target, float counts_round) SoE_SpawnElemental =
 void() SoE_ElementalWarningFinish =
 {
     // If the warning survived the telegraph window, drop the Elemental.
-    SoE_SpawnElemental(self.soe_spawn_origin, self.enemy, self.soe_counts_round);
+    SoE_SpawnElemental(self.soe_spawn_origin, self.enemy, self.soe_spawn_counts_round);
     remove(self);
 };
 
@@ -269,7 +271,8 @@ entity(vector org, entity target, float counts_round) SoE_SpawnElementalWarning 
     entity warning = spawn();
     warning.classname = "soe_elemental_warning";
     warning.soe_special_type = SOE_SPECIAL_ELEMENTAL;
-    warning.soe_counts_round = counts_round;
+    warning.soe_counts_round = false;
+    warning.soe_spawn_counts_round = counts_round;
     warning.movetype = MOVETYPE_NONE;
     warning.solid = SOLID_BBOX;
     warning.takedamage = DAMAGE_YES;
@@ -287,4 +290,12 @@ entity(vector org, entity target, float counts_round) SoE_SpawnElementalWarning 
     warning.nextthink = time + 0.8;
 
     return warning;
+};
+
+
+void() soe_spawn_air =
+{
+    self.solid = SOLID_NOT;
+    self.movetype = MOVETYPE_NONE;
+    setsize(self, '0 0 0', '0 0 0');
 };
