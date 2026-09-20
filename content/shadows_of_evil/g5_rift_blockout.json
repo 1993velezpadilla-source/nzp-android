@@ -1,0 +1,539 @@
+{
+  "schemaVersion": 1,
+  "map": "soe",
+  "phase": "G5",
+  "district": "rift_subway",
+  "status": "provisional_blockout_spec",
+  "scalePolicy": "Topology- and traversal-first clean-room blockout. Coordinates remain provisional until first-person timing/sightline calibration.",
+  "proposedBounds": {
+    "mins": [
+      -768,
+      -640,
+      -192
+    ],
+    "maxs": [
+      768,
+      640,
+      512
+    ]
+  },
+  "subregions": [
+    {
+      "id": "rift_lower",
+      "label": "Lower Rift / broken subway floor",
+      "mins": [
+        -640,
+        -384,
+        -96
+      ],
+      "maxs": [
+        640,
+        320,
+        160
+      ]
+    },
+    {
+      "id": "rift_upper",
+      "label": "Upper concourse / Mule Kick / Junction shortcut",
+      "mins": [
+        -352,
+        160,
+        128
+      ],
+      "maxs": [
+        352,
+        544,
+        352
+      ]
+    },
+    {
+      "id": "rift_portal_canal",
+      "label": "Canal underground portal counterpart",
+      "mins": [
+        -608,
+        -256,
+        -32
+      ],
+      "maxs": [
+        -400,
+        -64,
+        160
+      ]
+    },
+    {
+      "id": "rift_portal_waterfront",
+      "label": "Waterfront underground portal counterpart",
+      "mins": [
+        -320,
+        256,
+        128
+      ],
+      "maxs": [
+        -96,
+        480,
+        320
+      ]
+    },
+    {
+      "id": "rift_portal_footlight",
+      "label": "Footlight underground portal counterpart",
+      "mins": [
+        400,
+        -256,
+        -32
+      ],
+      "maxs": [
+        608,
+        -64,
+        160
+      ]
+    },
+    {
+      "id": "rift_sword_wall",
+      "label": "Nine-symbol wall and hidden sword/Ovum altar",
+      "mins": [
+        -96,
+        -32,
+        -16
+      ],
+      "maxs": [
+        160,
+        192,
+        160
+      ]
+    },
+    {
+      "id": "rift_train",
+      "label": "Derelict subway-car / platform circulation",
+      "mins": [
+        176,
+        -352,
+        -32
+      ],
+      "maxs": [
+        608,
+        224,
+        192
+      ]
+    },
+    {
+      "id": "rift_junction_shortcut",
+      "label": "Beast-powered stairs/door back to Junction",
+      "mins": [
+        -160,
+        416,
+        128
+      ],
+      "maxs": [
+        160,
+        576,
+        320
+      ]
+    },
+    {
+      "id": "rift_sacred_gate",
+      "label": "Blocked approach to Sacred Place; G6 owns interior",
+      "mins": [
+        -192,
+        -576,
+        -64
+      ],
+      "maxs": [
+        192,
+        -384,
+        192
+      ]
+    }
+  ],
+  "routeContracts": [
+    "Canal surface Rift -> Canal underground counterpart beside Widow's Wine",
+    "Waterfront surface Rift -> underground counterpart up the stairs from Widow's Wine",
+    "Footlight surface Rift -> underground counterpart opposite the Widow's Wine side",
+    "all three arrival paths converge into the lower subway loop",
+    "lower subway -> two flights upward to Mule Kick and Junction shortcut",
+    "Beast shock in upper concourse opens the Junction/Rift shortcut",
+    "nine-symbol Sword wall sits beneath/near the stair structure",
+    "Sword wall opens only after the three correct tram glyphs; one wrong glyph resets/locks until next round",
+    "Rift Ovum statue sits opposite the Sword/Ovum wall and starts hidden behind a Beast-smash crate",
+    "Civil Protector fuse box is accessible in the underground after collecting all three district fuses",
+    "Sacred Place approach is represented but remains physically sealed until G6 integration"
+  ],
+  "gameplayAnchors": [
+    {
+      "classname": "soe_beast_pedestal",
+      "origin": [
+        -16,
+        32,
+        32
+      ],
+      "targetname": "soe_g5_beast_rift"
+    },
+    {
+      "classname": "soe_widows_wine_machine",
+      "origin": [
+        -368,
+        -160,
+        40
+      ],
+      "cost": 4000,
+      "targetname": "soe_g5_widows_machine"
+    },
+    {
+      "classname": "soe_beast_shock",
+      "origin": [
+        -336,
+        -160,
+        72
+      ],
+      "target": "soe_g5_widows_machine",
+      "targetname": "soe_g5_widows_power"
+    },
+    {
+      "classname": "perk_mule",
+      "origin": [
+        -112,
+        320,
+        176
+      ],
+      "targetname": "soe_g5_mule_machine",
+      "model": "models/machines/hl_scale/mulekick.mdl"
+    },
+    {
+      "classname": "soe_perk_power_panel",
+      "origin": [
+        -80,
+        320,
+        184
+      ],
+      "target": "soe_g5_mule_machine",
+      "targetname": "soe_g5_mule_power"
+    },
+    {
+      "classname": "soe_beast_shock",
+      "origin": [
+        32,
+        496,
+        184
+      ],
+      "target": "soe_g5_junction_access",
+      "targetname": "soe_g5_junction_shortcut_power"
+    },
+    {
+      "classname": "soe_civil_fusebox",
+      "origin": [
+        352,
+        176,
+        48
+      ],
+      "targetname": "soe_g5_civil_fusebox"
+    },
+    {
+      "classname": "soe_rift_destination",
+      "origin": [
+        -480,
+        -144,
+        32
+      ],
+      "targetname": "soe_g5_arrival_canal",
+      "angles": [
+        0,
+        0,
+        0
+      ]
+    },
+    {
+      "classname": "soe_rift_destination",
+      "origin": [
+        -208,
+        352,
+        176
+      ],
+      "targetname": "soe_g5_arrival_waterfront",
+      "angles": [
+        0,
+        270,
+        0
+      ]
+    },
+    {
+      "classname": "soe_rift_destination",
+      "origin": [
+        480,
+        -144,
+        32
+      ],
+      "targetname": "soe_g5_arrival_footlight",
+      "angles": [
+        0,
+        180,
+        0
+      ]
+    },
+    {
+      "classname": "soe_sword_wall_gate",
+      "origin": [
+        32,
+        112,
+        48
+      ],
+      "targetname": "soe_g5_sword_wall_gate",
+      "target": "soe_g5_sword_wall"
+    },
+    {
+      "classname": "soe_sword_altar",
+      "origin": [
+        32,
+        160,
+        40
+      ],
+      "targetname": "soe_g5_sword_altar"
+    },
+    {
+      "classname": "soe_beast_smash",
+      "origin": [
+        0,
+        -144,
+        40
+      ],
+      "target": "soe_g5_rift_ovum_statue",
+      "targetname": "soe_g5_rift_ovum_crate_smash"
+    },
+    {
+      "classname": "soe_sword_statue",
+      "origin": [
+        0,
+        -176,
+        32
+      ],
+      "style": 1,
+      "targetname": "soe_g5_rift_ovum_statue"
+    },
+    {
+      "classname": "soe_rift_first_entry",
+      "origin": [
+        0,
+        -64,
+        40
+      ],
+      "targetname": "soe_g5_first_entry"
+    },
+    {
+      "classname": "soe_rift_guard_spawn",
+      "origin": [
+        -160,
+        -16,
+        40
+      ],
+      "targetname": "soe_g5_guard_a"
+    },
+    {
+      "classname": "soe_rift_guard_spawn",
+      "origin": [
+        160,
+        -16,
+        40
+      ],
+      "targetname": "soe_g5_guard_b"
+    },
+    {
+      "classname": "soe_rift_guard_spawn",
+      "origin": [
+        0,
+        224,
+        40
+      ],
+      "targetname": "soe_g5_guard_c"
+    },
+    {
+      "classname": "mystery_box_tp_spot",
+      "origin": [
+        -496,
+        -304,
+        32
+      ],
+      "targetname": "soe_g5_box_spot",
+      "model": "models/machines/mystery.mdl",
+      "angles": [
+        0,
+        90,
+        0
+      ]
+    },
+    {
+      "classname": "info_notnull",
+      "origin": [
+        -144,
+        448,
+        176
+      ],
+      "targetname": "soe_g5_microphone_secret_anchor"
+    },
+    {
+      "classname": "info_notnull",
+      "origin": [
+        0,
+        -496,
+        32
+      ],
+      "targetname": "soe_g5_sacred_place_gate_anchor"
+    }
+  ],
+  "glyphs": [
+    {
+      "classname": "soe_sword_glyph",
+      "style": 0,
+      "origin": [
+        -56,
+        96,
+        72
+      ],
+      "target": "soe_g5_sword_wall_gate"
+    },
+    {
+      "classname": "soe_sword_glyph",
+      "style": 1,
+      "origin": [
+        -28,
+        96,
+        72
+      ],
+      "target": "soe_g5_sword_wall_gate"
+    },
+    {
+      "classname": "soe_sword_glyph",
+      "style": 2,
+      "origin": [
+        0,
+        96,
+        72
+      ],
+      "target": "soe_g5_sword_wall_gate"
+    },
+    {
+      "classname": "soe_sword_glyph",
+      "style": 3,
+      "origin": [
+        28,
+        96,
+        72
+      ],
+      "target": "soe_g5_sword_wall_gate"
+    },
+    {
+      "classname": "soe_sword_glyph",
+      "style": 4,
+      "origin": [
+        56,
+        96,
+        72
+      ],
+      "target": "soe_g5_sword_wall_gate"
+    },
+    {
+      "classname": "soe_sword_glyph",
+      "style": 5,
+      "origin": [
+        -42,
+        96,
+        100
+      ],
+      "target": "soe_g5_sword_wall_gate"
+    },
+    {
+      "classname": "soe_sword_glyph",
+      "style": 6,
+      "origin": [
+        -14,
+        96,
+        100
+      ],
+      "target": "soe_g5_sword_wall_gate"
+    },
+    {
+      "classname": "soe_sword_glyph",
+      "style": 7,
+      "origin": [
+        14,
+        96,
+        100
+      ],
+      "target": "soe_g5_sword_wall_gate"
+    },
+    {
+      "classname": "soe_sword_glyph",
+      "style": 8,
+      "origin": [
+        42,
+        96,
+        100
+      ],
+      "target": "soe_g5_sword_wall_gate"
+    }
+  ],
+  "poweredGeometry": [
+    {
+      "classname": "soe_powered_door",
+      "targetname": "soe_g5_junction_access",
+      "mins": [
+        -64,
+        528,
+        128
+      ],
+      "maxs": [
+        64,
+        552,
+        240
+      ]
+    },
+    {
+      "classname": "soe_powered_door",
+      "targetname": "soe_g5_sword_wall",
+      "mins": [
+        -80,
+        128,
+        0
+      ],
+      "maxs": [
+        80,
+        152,
+        128
+      ]
+    }
+  ],
+  "placeholderOnly": [
+    {
+      "id": "widows_machine_art",
+      "reason": "gameplay machine is functional but uses a clean placeholder visual until cleared/open Widow's Wine art is integrated"
+    },
+    {
+      "id": "keeper_art",
+      "reason": "Rift first-entry Keepers use clean placeholder visuals"
+    },
+    {
+      "id": "sacred_place_interior",
+      "reason": "geometry belongs to G6 and must not be faked inside G5"
+    }
+  ],
+  "acceptance": [
+    "all three Rift destination markers are spatially distinct and feed one underground loop",
+    "first human arrival can trigger exactly one three-Keeper encounter per match",
+    "Widow's Wine costs 4000 and remains unusable until its Beast power shock",
+    "Mule Kick uses native NZ:P perk runtime and remains unusable until its dedicated Beast panel",
+    "Junction shortcut is physically closed until Beast shock",
+    "all nine sword glyph IDs 0..8 exist exactly once",
+    "wrong Sword glyph cannot open the wall; verified three-glyph completion is required",
+    "Sword altar is physically behind the gated symbol wall",
+    "Rift Ovum statue style 1 starts hidden and is revealed by Beast smash",
+    "Civil Protector fusebox is present",
+    "Sacred Place entrance envelope is reserved and sealed for G6",
+    "Widow's Wine is not treated as a Pack-a-Punch prerequisite"
+  ],
+  "references": [
+    "https://codzombified.blogspot.com/2015/12/the-rift-area-map-layout-for-shadows-of.html",
+    "https://steamcommunity.com/sharedfiles/filedetails/?id=563005850",
+    "https://steamcommunity.com/sharedfiles/filedetails/?id=549918207",
+    "https://steamcommunity.com/sharedfiles/filedetails/?id=550319350",
+    "https://www.codzombie.com/maps/shadows-of-evil",
+    "https://mmmrkennedy.com/games/BO3/shadows_of_evil/shadows_of_evil_guide"
+  ]
+}
