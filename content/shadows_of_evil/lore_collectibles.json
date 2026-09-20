@@ -1,0 +1,174 @@
+{
+  "schemaVersion": 1,
+  "map": "soe",
+  "ciphers": {
+    "count": 5,
+    "entries": [
+      {
+        "id": "cipher_1",
+        "placementStatus": "needs coordinate pass",
+        "behavior": "static environmental cipher",
+        "contentPolicy": "recreate visual cipher; do not embed guide plaintext in gameplay"
+      },
+      {
+        "id": "cipher_2",
+        "area": "Waterfront / Anvil Boxing Gym",
+        "interaction": "shoot down specific wall picture to reveal",
+        "contentPolicy": "recreate visual cipher"
+      },
+      {
+        "id": "cipher_3",
+        "area": "Waterfront District",
+        "interaction": "press use on brick near district perk location",
+        "contentPolicy": "recreate visual cipher"
+      },
+      {
+        "id": "cipher_4",
+        "placementStatus": "needs coordinate pass",
+        "behavior": "static environmental cipher",
+        "contentPolicy": "recreate visual cipher"
+      },
+      {
+        "id": "cipher_5",
+        "placementStatus": "two visible placements reported",
+        "behavior": "static environmental cipher",
+        "contentPolicy": "recreate visual cipher"
+      }
+    ]
+  },
+  "scrapMural": {
+    "pieceCount": 10,
+    "assembledMeaning": "Richtofen notes/drawings about universes/timelines with four coordinates foreshadowing later locations",
+    "pieces": [
+      {
+        "id": 1,
+        "area": "Nero's Landing",
+        "placement": "second floor near exit, on floor among papers"
+      },
+      {
+        "id": 2,
+        "area": "Black Lace Burlesque",
+        "placement": "right of ritual table when facing exit, on first table"
+      },
+      {
+        "id": 3,
+        "area": "Ruby Rabbit",
+        "placement": "ritual-table floor, on table"
+      },
+      {
+        "id": 4,
+        "area": "Anvil Boxing Gym",
+        "placement": "back of room, second floor, near window on notice-board-like surface"
+      },
+      {
+        "id": 5,
+        "area": "Junction",
+        "placement": "far end toward market, on box"
+      },
+      {
+        "id": 6,
+        "area": "Junction / canal market entrance",
+        "placement": "on box beside box carrying a broken perk bottle"
+      },
+      {
+        "id": 7,
+        "area": "Easy Street",
+        "placement": "left of Quick Revive, on crate among papers"
+      },
+      {
+        "id": 8,
+        "area": "Waterfront Train Station",
+        "placement": "platform/train gap closest to stairs; train must be present/open station access"
+      },
+      {
+        "id": 9,
+        "area": "Sacred Place / Pack-a-Punch",
+        "placement": "rock edge reached before one Gateworm wall formation; visibility changes after wall forms",
+        "missable": true
+      },
+      {
+        "id": 10,
+        "area": "Footlight District",
+        "placement": "upper-right corner of ticket station near theatre entrance when entering from lower alley"
+      }
+    ]
+  },
+  "telephoneMessages": {
+    "count": 12,
+    "copyrightRule": "implement triggers and locations; do not bundle Treyarch voice recordings without rights",
+    "entries": [
+      {
+        "area": "Footlight Train Station",
+        "gate": "activated by traveling station-to-station"
+      },
+      {
+        "area": "Canal Train Station",
+        "gate": "activated by traveling station-to-station"
+      },
+      {
+        "area": "Waterfront Train Station",
+        "gate": "activated by traveling station-to-station"
+      },
+      {
+        "area": "Junction",
+        "gate": "none"
+      },
+      {
+        "area": "Canal High Street",
+        "gate": "none"
+      },
+      {
+        "area": "Waterfront High Street",
+        "gate": "none"
+      },
+      {
+        "area": "Footlight High Street",
+        "gate": "none"
+      },
+      {
+        "area": "Nero's Landing",
+        "gate": "corresponding ritual progression"
+      },
+      {
+        "area": "Ruby Rabbit",
+        "gate": "corresponding ritual progression"
+      },
+      {
+        "area": "Anvil Boxing Gym",
+        "gate": "corresponding ritual progression"
+      },
+      {
+        "area": "Black Lace Burlesque",
+        "gate": "corresponding ritual progression"
+      },
+      {
+        "area": "Rift",
+        "device": "portal rather than telephone",
+        "gate": "ritual progression"
+      }
+    ]
+  },
+  "worldLoreEvents": [
+    {
+      "id": "icarus_flyby",
+      "event": "Icarus plane from Mob of the Dead flies overhead during major quest progression"
+    },
+    {
+      "id": "sal_deluca_tag",
+      "area": "Junction edge by Easy Street",
+      "event": "explode grenade near black suit in window, tag moves to box, use grants 500 points"
+    },
+    {
+      "id": "escape_from_tomb_poster",
+      "event": "Mob of the Dead theatre-poster reference appears in map dressing"
+    },
+    {
+      "id": "proximity_dialogue",
+      "event": "character-to-character conversations can trigger when players stand close as a round passes"
+    },
+    {
+      "id": "shadowman_sightings",
+      "event": "track visible Shadowman appearances; supports From the Shadows challenge"
+    }
+  ]
+}
