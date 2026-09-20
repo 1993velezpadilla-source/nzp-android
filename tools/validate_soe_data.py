@@ -21,6 +21,8 @@ FILES = {
     "finale": "finale.json",
     "geometry": "geometry_reconstruction.json",
     "topology": "topology_graph.json",
+    "g1": "g1_blockout.json",
+    "g2": "g2_canal_blockout.json",
 }
 
 data = {}
@@ -33,7 +35,7 @@ for name, filename in FILES.items():
 if data["manifest"]["id"] != "soe":
     raise SystemExit("manifest id must be soe")
 
-for name in ("quest", "side", "audit", "lore", "achievements", "districts", "enemies", "world", "beast", "buildables", "finale", "geometry", "topology"):
+for name in ("quest", "side", "audit", "lore", "achievements", "districts", "enemies", "world", "beast", "buildables", "finale", "geometry", "topology", "g1", "g2"):
     if data[name].get("map") != "soe":
         raise SystemExit(f"{name} map id mismatch")
 
@@ -146,6 +148,30 @@ for pair in {
         raise SystemExit(f"tram topology segment missing: {pair[0]} -> {pair[1]}")
 
 
+# G2 Canal blockout contract.
+if data["g2"].get("phase") != "G2" or data["g2"].get("district") != "canals":
+    raise SystemExit("Canal G2 blockout metadata changed unexpectedly")
+anchors = data["g2"].get("gameplayAnchors", [])
+by_name = {a.get("targetname"): a for a in anchors if a.get("targetname")}
+for required in {
+    "soe_g2_badge_smash", "soe_g2_badge_power", "soe_g2_badge_gate",
+    "soe_g2_badge_pickup", "soe_g2_ruby_power", "soe_g2_ruby_ritual",
+    "soe_g2_canal_perk_slot", "soe_g2_canal_perk_power"
+}:
+    if required not in by_name:
+        raise SystemExit(f"Canal G2 anchor missing: {required}")
+if by_name["soe_g2_badge_gate"].get("soe_required_hits") != 2:
+    raise SystemExit("Detective Badge must require exactly two Beast actions")
+if by_name["soe_g2_badge_power"].get("target") != "soe_g2_badge_gate" or by_name["soe_g2_badge_power"].get("target2") != "soe_g2_badge_grate":
+    raise SystemExit("Canal Badge shock must drive both the counter and physical grate")
+if by_name["soe_g2_badge_smash"].get("target") != "soe_g2_badge_gate":
+    raise SystemExit("Canal Badge smash must feed the same two-hit counter")
+if by_name["soe_g2_badge_pickup"].get("spawnflags") != 1:
+    raise SystemExit("Detective Badge must start dormant")
+random_groups = {r["group"]: len(r["candidates"]) for r in data["g2"].get("randomized", [])}
+if random_groups != {103: 2, 201: 3, 301: 3}:
+    raise SystemExit("Canal randomized spawn groups changed unexpectedly")
+
 # Runtime coverage anti-regression: documented critical systems must have
 # mapper-facing/runtime implementations, not just JSON descriptions.
 overlay_dir = ROOT / "overlay" / "quakec" / "source" / "server" / "maps" / "soe"
@@ -161,6 +187,7 @@ required_runtime_symbols = {
     "soe_beast_smash": "Beast smash interaction",
     "soe_beast_grapple": "Beast grapple interaction",
     "soe_target_counter": "multi-action map target counter",
+    "soe_powered_door": "Beast-powered geometry door",
     "soe_ritual_controller": "district ritual controller",
     "soe_ritual_keeper_spawn": "ritual Keeper spawns",
     "soe_gateworm_pedestal": "Sacred Place Gateworm pedestal",
@@ -216,6 +243,8 @@ for symbol, description in required_runtime_symbols.items():
 
 if 'mapname == "soe_g1"' not in qc_text:
     raise SystemExit("SoE G1 blockout must activate the Shadows runtime")
+if 'mapname == "soe_g2"' not in qc_text:
+    raise SystemExit("SoE G2 blockout must activate the Shadows runtime")
 
 patcher = (ROOT / "scripts" / "apply_soe_quakec_overlay.py").read_text(encoding="utf-8")
 for hook in {
