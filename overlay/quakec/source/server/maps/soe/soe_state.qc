@@ -93,6 +93,7 @@ void(entity margwa) SoE_FinaleOnMargwaKilled;
 void(entity margwa) SoE_MargwaMaskOnMargwaKilled;
 void() SoE_MargwaMaskOnTramRideStart;
 float(entity victim, entity attacker, float damage, float d_style) SoE_HandleMargwaMaskHeartDamage;
+float(entity victim, entity attacker, float damage, float d_style) SoE_HandleFlagShadowmanDamage;
 void() SoE_ResetSideQuests;
 void(entity controller) SoE_RitualRuntimeStart;
 void(entity controller) SoE_RitualRuntimeComplete;
