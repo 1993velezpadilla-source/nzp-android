@@ -1,0 +1,156 @@
+{
+  "schemaVersion": 1,
+  "map": "soe",
+  "sideQuests": [
+    {
+      "id": "free_500",
+      "requirements": [
+        "easy_street_exit_open"
+      ],
+      "steps": [
+        "Cook grenade at white laundry ticket",
+        "Collect displaced ticket"
+      ],
+      "reward": "500 points"
+    },
+    {
+      "id": "civil_protector",
+      "requirements": [],
+      "steps": [
+        "Collect one fuse in each of Canal, Footlight, Waterfront",
+        "Install all three at Rift master switch",
+        "Pay 2000 at emergency response panel"
+      ],
+      "reward": "temporary allied Civil Protector; can revive players"
+    },
+    {
+      "id": "rocket_shield",
+      "steps": [
+        "Collect one shield part in each district from randomized spawn set",
+        "Build at one of three workbenches"
+      ],
+      "reward": "Rocket Shield"
+    },
+    {
+      "id": "goddard_apparatus",
+      "requirements": [
+        "rocket_shield"
+      ],
+      "steps": [
+        "Score twelve shield-boost attacks killing at least ten zombies each"
+      ],
+      "reward": "four-boost upgraded shield"
+    },
+    {
+      "id": "apothicon_servant",
+      "steps": [
+        "First Margwa heart",
+        "Xenomatter from Parasites/Insanity Elementals after late early-game threshold",
+        "Tentacle from mature purple Harvest Pod",
+        "Build at workbench"
+      ],
+      "reward": "Apothicon Servant; add copies to box pool after build"
+    },
+    {
+      "id": "free_mega_gobblegum",
+      "requirements": [
+        "widows_wine"
+      ],
+      "steps": [
+        "Throw Widow's Wine grenade into each of four lion mouths in Canal room",
+        "Collect grey orb",
+        "Place at candy/ice-cream shop plate",
+        "Wait full rounds"
+      ],
+      "reward": "free Mega GobbleGum hook"
+    },
+    {
+      "id": "margwa_head",
+      "requirements": [
+        "apothicon_sword"
+      ],
+      "steps": [
+        "During at most two tram rides shoot six hidden Margwa-heart targets",
+        "Collect hidden sparkling Margwa Head at ritual site"
+      ],
+      "reward": "wearable Margwa damage resistance"
+    },
+    {
+      "id": "snakeskin_boots",
+      "steps": [
+        "Activate three wooden radios/clocks: Anvil Gym, Footlight station, Ruby Rabbit"
+      ],
+      "reward": "music event hook; copyrighted song not bundled"
+    },
+    {
+      "id": "cold_hard_cash",
+      "steps": [
+        "Collect microphone stand in Nero's room",
+        "Collect cable in Canals",
+        "Collect microphone in Rift tunnel",
+        "Assemble on Black Lace stage"
+      ],
+      "reward": "music event hook; copyrighted song not bundled"
+    },
+    {
+      "id": "round_skip",
+      "steps": [
+        "At game start shoot Shadowman repeatedly"
+      ],
+      "reward": "conditional jump to round 5/10/15 plus points"
+    },
+    {
+      "id": "lil_arnie_upgrade",
+      "requirements": [
+        "four_rituals_complete",
+        "lil_arnies"
+      ],
+      "steps": [
+        "Get 100 Lil' Arnie kills",
+        "Throw Arnies at top hat, cane, bow tie props",
+        "Throw fourth Arnie on Burlesque ritual table"
+      ],
+      "reward": "upgraded Lil' Arnies and dance event"
+    },
+    {
+      "id": "tripmine_upgrade",
+      "requirements": [
+        "trip_mines"
+      ],
+      "steps": [
+        "Kill zombie with Trip Mine at three Holly's Cream Cakes carts: Junction, Canals, Footlight"
+      ],
+      "reward": "Doughnut Trip Mines"
+    },
+    {
+      "id": "noir_filter",
+      "steps": [
+        "Open Anvil Boxing Gym in Beast Mode",
+        "Interact with paired boxing-gym photographs while Beast"
+      ],
+      "reward": "black-and-white screen filter until restart"
+    },
+    {
+      "id": "telephone_lore",
+      "steps": [
+        "Support twelve telephone/portal messages with progression gates"
+      ],
+      "reward": "lore playback hooks"
+    }
+  ],
+  "environmentalSystems": [
+    "district-specific Beast pedestals and charge rules",
+    "district-specific perk-power panels",
+    "broken bottle indicators showing rotating Jug/Speed/Double Tap locations",
+    "Harvest Pod maturation: green/yellow -> red -> purple",
+    "four-player inventory handling for Fumigators and quest items",
+    "tram Bootlegger wallbuy",
+    "Rift portals and on-foot Rift entry",
+    "three buildable tables",
+    "Mystery Box spawn/move logic",
+    "wall weapons and prices",
+    "character-specific ritual ghosts and sword upgrades",
+    "Shadowman appearances after rituals",
+    "round-8+ Margwa scheduling and ritual/boss overrides"
+  ]
+}
