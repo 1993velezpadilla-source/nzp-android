@@ -7,7 +7,7 @@
     },
     "portableSolo": {
       "minPlayersForFinale": 1,
-      "finaleSynchronizationWindowSeconds": 20
+      "finaleSynchronizationWindowSeconds": 30
     }
   },
   "states": [
@@ -217,16 +217,16 @@
     {
       "id": "train_gateworm_hit",
       "requires": [
-        "infinite_margwa_phase"
+        "station_shocks"
       ],
-      "objective": "Call tram through Junction to strike giant Gateworm"
+      "objective": "Call the tram through Junction while rails are electrified so it removes/crushes the giant Gateworm"
     },
     {
       "id": "station_shocks",
       "requires": [
-        "train_gateworm_hit"
+        "infinite_margwa_phase"
       ],
-      "objective": "Shock Canal, Footlight and Waterfront tram boxes within synchronization window"
+      "objective": "While the tram is moving, shock Canal, Footlight and Waterfront station boxes to electrify the rails"
     },
     {
       "id": "keeper_shocks",
