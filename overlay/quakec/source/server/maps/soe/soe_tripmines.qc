@@ -32,6 +32,7 @@ float soe_tripmine_upgraded;
 
 void(entity victim, entity attacker, float damage, float d_style) DamageHandler;
 void(entity who, float value, float impacted_by_2x_points) Player_ChangeScore;
+void() SoE_SpecialVisualExpire;
 
 float(float id) SoE_TripMineCartBit =
 {
@@ -262,9 +263,16 @@ void() SoE_TripMinePlaceInput =
     org_z = self.origin_z - self.view_ofs_z + 3;
     setorigin(mine, org);
 
+    entity old_self = self;
+    self = mine;
+
 #ifdef FTE
     droptofloor();
+#else
+    droptofloor(0, 0);
 #endif
+
+    self = old_self;
 };
 
 void() soe_tripmine_cart =
