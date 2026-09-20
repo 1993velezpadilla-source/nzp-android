@@ -26,7 +26,12 @@ float soe_ritual_jackie;
 float soe_ritual_jessica;
 float soe_ritual_floyd;
 float soe_gateworm_count;
+float soe_gateworm_collected_mask;
+float soe_gateworm_placed_mask;
 float soe_pap_unlocked;
+
+entity soe_active_ritual_controller;
+float soe_ritual_keeper_next_spawn;
 
 float soe_tram_symbol_a;
 float soe_tram_symbol_b;
@@ -78,6 +83,9 @@ float soe_last_margwa_spawn_was_reborn;
 void(entity margwa) SoE_RebornOnMargwaKilled;
 float(entity victim, entity attacker, float damage, float d_style) SoE_HandleShadowmanDamage;
 void(entity margwa) SoE_FinaleOnMargwaKilled;
+void(entity controller) SoE_RitualRuntimeStart;
+void(entity controller) SoE_RitualRuntimeComplete;
+void() SoE_RitualFrame;
 
 float() SoE_IsMap =
 {
@@ -93,7 +101,12 @@ void() SoE_ResetQuestState =
     soe_ritual_jessica = false;
     soe_ritual_floyd = false;
     soe_gateworm_count = 0;
+    soe_gateworm_collected_mask = 0;
+    soe_gateworm_placed_mask = 0;
     soe_pap_unlocked = false;
+
+    soe_active_ritual_controller = world;
+    soe_ritual_keeper_next_spawn = 0;
 
     soe_tram_symbol_a = -1;
     soe_tram_symbol_b = -1;
