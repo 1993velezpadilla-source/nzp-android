@@ -211,6 +211,8 @@ void(entity victim, entity attacker) SoE_DestroyMargwaHead =
 
     soe_margwa_kills = soe_margwa_kills + 1;
 
+    SoE_RebornOnMargwaKilled(victim);
+
     if (!soe_has_margwa_heart)
         SoE_SpawnMargwaHeart(victim);
 
@@ -298,8 +300,19 @@ float(entity victim, entity attacker, float damage, float d_style) SoE_HandleSpe
 float() SoE_SpawnMargwaProxy =
 {
     entity marker = SoE_FindRandomMarker("soe_spawn_margwa");
-    if (marker == world)
+    entity reborn_marker = world;
+
+    // Reborn Sword rituals spawn their Margwa at the active red circle rather
+    // than at the generic boss marker. The regular scheduler still owns the
+    // actual pooled-zombie spawn so round accounting stays consistent.
+    if (soe_reborn_pending_owner != world) {
+        reborn_marker = spawn();
+        reborn_marker.classname = "soe_reborn_temp_margwa_marker";
+        reborn_marker.origin = soe_reborn_pending_origin;
+        marker = reborn_marker;
+    } else if (marker == world) {
         marker = SoE_FindRandomMarker("spawn_zombie");
+    }
 
     if (marker == world)
         return false;
@@ -314,11 +327,24 @@ float() SoE_SpawnMargwaProxy =
 
     spawn_a_zombieB(marker);
 
+    if (reborn_marker != world)
+        remove(reborn_marker);
+
     if (slot.classname != "ai_zombie")
         return false;
 
     slot.soe_special_type = SOE_SPECIAL_MARGWA;
     slot.soe_margwa_heads = 3;
+
+    if (soe_reborn_pending_owner != world) {
+        slot.soe_reborn_owner = soe_reborn_pending_owner;
+        slot.soe_reborn_circle_bit = soe_reborn_pending_circle_bit;
+        soe_reborn_pending_owner = world;
+        soe_reborn_pending_circle_bit = 0;
+    } else {
+        slot.soe_reborn_owner = world;
+        slot.soe_reborn_circle_bit = 0;
+    }
     slot.soe_margwa_purple = soe_finale_active;
 
     slot.soe_margwa_head_health_max = z_health * 0.75;
