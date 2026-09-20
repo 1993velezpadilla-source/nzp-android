@@ -160,6 +160,9 @@ required_runtime_symbols = {
     "soe_cold_cash_stage": "Cold Hard Cash Burlesque stage interaction",
     "soe_arnie_upgrade_prop": "Lil Arnie upgrade prop",
     "soe_arnie_upgrade_stage": "Lil Arnie Burlesque upgrade stage",
+    "soe_round_skip_shadowman": "opening Shadowman round-skip target",
+    "soe_icarus_trigger": "post-PaP Icarus flyover trigger",
+    "soe_richtofen_jumpscare_target": "scoped ship-window jumpscare target",
 }
 for symbol, description in required_runtime_symbols.items():
     if symbol not in qc_text:
@@ -178,6 +181,7 @@ for hook in {
     "SoE_ArnieThrowInput();",
     "SoE_ArnieOverrideZombieAI()",
     "SoE_ResetArnie();",
+    "SoE_ResetMiscSecrets();",
     "Complete the Sacred Place Ritual",
 }:
     if hook not in patcher:
@@ -204,6 +208,15 @@ if "immediate retry" not in data["finale"]["flagDefense"]["failRule"]:
     raise SystemExit("flag failure must preserve the immediate Underground retry behavior")
 if not data["finale"]["flagDefense"].get("shadowmanBehavior"):
     raise SystemExit("flag defense lost Shadowman harassment behavior")
+
+
+round_skip = next((q for q in data["side"]["sideQuests"] if q["id"] == "round_skip"), None)
+if not round_skip or round_skip.get("hitsPerJump") != 5 or round_skip.get("timeoutSeconds") != 5:
+    raise SystemExit("round-skip hit/timeout contract changed")
+for quest_id in ("mob_plane_flyover", "richtofen_jumpscare"):
+    quest = next((q for q in data["side"]["sideQuests"] if q["id"] == quest_id), None)
+    if not quest:
+        raise SystemExit(f"missing side quest metadata: {quest_id}")
 
 # Make sure the project never silently switches to bundling the unfinished binary.
 source = data["manifest"]["sourceGeometry"]
