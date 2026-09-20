@@ -188,6 +188,34 @@ void() soe_beast_grapple =
         setsize(self, '-32 -32 -32', '32 32 32');
 };
 
+.float soe_required_hits;
+.float soe_target_hits;
+
+void() SoE_TargetCounterUse =
+{
+    if (!soe_active || self.soe_target_hits >= self.soe_required_hits)
+        return;
+
+    self.soe_target_hits = self.soe_target_hits + 1;
+
+    if (self.soe_target_hits < self.soe_required_hits)
+        return;
+
+    SoE_FireEntityTargets(self);
+    self.use = SUB_Null;
+};
+
+void() soe_target_counter =
+{
+    if (self.soe_required_hits <= 0)
+        self.soe_required_hits = 2;
+
+    self.soe_target_hits = 0;
+    self.movetype = MOVETYPE_NONE;
+    self.solid = SOLID_NOT;
+    self.use = SoE_TargetCounterUse;
+};
+
 void() SoE_QuestPickupTouch =
 {
     if (!SoE_PlayerCanUseEntity(self))
