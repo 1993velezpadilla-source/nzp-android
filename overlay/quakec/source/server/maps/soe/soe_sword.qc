@@ -301,3 +301,196 @@ void(entity dead_enemy) SoE_SwordOnEnemyDeath =
         player = find(player, classname, "player");
     }
 };
+
+
+/*
+    Reborn Keeper Sword / Arch-Ovum upgrade.
+
+    Mapper contract:
+      soe_reborn_keeper style 1..4 = player slot / character path
+      soe_reborn_circle style 1,2,4,8 = the four red ritual circles
+      target on each circle may drive clean-room FX/arena doors
+
+    The player-slot mapping is intentionally explicit so co-op quest ownership
+    cannot bleed between players. A later Morg City geometry pass can map
+    slots to Nero/Jackie/Jessica/Floyd presentation without changing logic.
+*/
+
+float() SoE_AllActiveSwordOwnersUpgraded =
+{
+    entity player = find(world, classname, "player");
+    float found = false;
+
+    while (player != world) {
+        if (!player.is_spectator && player.soe_has_sword) {
+            found = true;
+            if (!player.soe_sword_upgraded)
+                return false;
+        }
+
+        player = find(player, classname, "player");
+    }
+
+    return found;
+};
+
+void() SoE_RebornKeeperTouch =
+{
+    if (other.classname != "player" || other.downed || other.isBuying)
+        return;
+
+    if (!other.soe_has_sword || other.soe_sword_upgraded)
+        return;
+
+    // style 1..4 binds the Keeper to the corresponding player/character slot.
+    if (self.style >= 1 && self.style <= 4 && other.playernum != self.style)
+        return;
+
+    if (!PlayerIsLooking(other, self))
+        return;
+
+    Player_UseprintWithWait(other, self, self.useprint_index_1, 0);
+
+    if (!Player_UseButtonPressed(other, self) || (other.semi_actions & SEMIACTION_USE))
+        return;
+
+    other.semi_actions |= SEMIACTION_USE;
+
+    // First interaction after obtaining the Sword gives the character Arch-Ovum.
+    if (!other.soe_reborn_has_arch_ovum && other.soe_reborn_ritual_mask == 0) {
+        other.soe_reborn_has_arch_ovum = true;
+        other.soe_reborn_active_circle_bit = 0;
+        other.soe_reborn_last_ritual_round = -1;
+        SoE_FireEntityTargets(self);
+        return;
+    }
+
+    // Return fully charged Arch-Ovum and receive Reborn Sword.
+    if (other.soe_reborn_has_arch_ovum &&
+        other.soe_reborn_ritual_mask == 15 &&
+        other.soe_reborn_active_circle_bit == 0) {
+        other.soe_reborn_has_arch_ovum = false;
+        other.soe_sword_upgraded = true;
+
+        if (SoE_AllActiveSwordOwnersUpgraded())
+            soe_quest_stage = SOE_QUEST_REBORN_SWORDS;
+
+        SoE_FireEntityTargets(self);
+    }
+};
+
+void() soe_reborn_keeper =
+{
+    if (self.useprint_string_1 == "")
+        self.useprint_string_1 = "Hold %b to Commune with Keeper";
+
+    self.useprint_index_1 = Useprint_Register(self.useprint_string_1, self.useprint_color_1);
+    self.movetype = MOVETYPE_NONE;
+    self.solid = SOLID_TRIGGER;
+    self.touch = SoE_RebornKeeperTouch;
+
+    if (self.model != "")
+        setmodel(self, self.model);
+    else {
+        setmodel(self, "models/sprites/sprkle.spr");
+        setsize(self, '-18 -18 -28', '18 18 36');
+        self.effects = EF_FULLBRIGHT;
+    }
+};
+
+void() SoE_RebornCircleTouch =
+{
+    if (other.classname != "player" || other.downed || other.isBuying)
+        return;
+
+    if (!other.soe_has_sword ||
+        !other.soe_reborn_has_arch_ovum ||
+        other.soe_sword_upgraded)
+        return;
+
+    if (other.soe_reborn_active_circle_bit != 0)
+        return;
+
+    // One red-circle ritual per player per round.
+    if (other.soe_reborn_last_ritual_round == rounds)
+        return;
+
+    float circle_bit = self.style;
+    if (circle_bit != 1 && circle_bit != 2 && circle_bit != 4 && circle_bit != 8)
+        return;
+
+    if (other.soe_reborn_ritual_mask & circle_bit)
+        return;
+
+    // Only one quest-owned Margwa may be pending globally at a time. This
+    // prevents a regular pooled spawn from accidentally receiving another
+    // player's ownership tag.
+    if (soe_reborn_pending_owner != world)
+        return;
+
+    if (!PlayerIsLooking(other, self))
+        return;
+
+    Player_UseprintWithWait(other, self, self.useprint_index_1, 0);
+
+    if (!Player_UseButtonPressed(other, self) || (other.semi_actions & SEMIACTION_USE))
+        return;
+
+    other.semi_actions |= SEMIACTION_USE;
+    other.soe_reborn_active_circle_bit = circle_bit;
+    other.soe_reborn_last_ritual_round = rounds;
+
+    soe_reborn_pending_owner = other;
+    soe_reborn_pending_origin = self.origin;
+    soe_reborn_pending_circle_bit = circle_bit;
+    soe_scripted_margwa_pending = soe_scripted_margwa_pending + 1;
+
+    SoE_FireEntityTargets(self);
+};
+
+void() soe_reborn_circle =
+{
+    if (self.useprint_string_1 == "")
+        self.useprint_string_1 = "Hold %b to Begin Arch-Ovum Ritual";
+
+    self.useprint_index_1 = Useprint_Register(self.useprint_string_1, self.useprint_color_1);
+    self.movetype = MOVETYPE_NONE;
+    self.solid = SOLID_TRIGGER;
+    self.touch = SoE_RebornCircleTouch;
+
+    if (self.model != "")
+        setmodel(self, self.model);
+    else {
+        setmodel(self, "models/sprites/sprkle.spr");
+        setsize(self, '-34 -34 -8', '34 34 12');
+        self.effects = EF_FULLBRIGHT;
+    }
+};
+
+void(entity margwa) SoE_RebornOnMargwaKilled =
+{
+    if (!soe_active || margwa == world)
+        return;
+
+    entity owner = margwa.soe_reborn_owner;
+    float circle_bit = margwa.soe_reborn_circle_bit;
+
+    if (owner == world || circle_bit == 0)
+        return;
+
+    // Ownership survives all three Margwa head phases and is consumed only
+    // when the quest Margwa actually dies.
+    if (!owner.soe_reborn_has_arch_ovum ||
+        owner.soe_sword_upgraded ||
+        owner.soe_reborn_active_circle_bit != circle_bit)
+        return;
+
+    owner.soe_reborn_ritual_mask = owner.soe_reborn_ritual_mask | circle_bit;
+    owner.soe_reborn_active_circle_bit = 0;
+
+    margwa.soe_reborn_owner = world;
+    margwa.soe_reborn_circle_bit = 0;
+
+    // FX/arena cleanup is mapper-driven by entities that watch the completed
+    // player's state; gameplay ownership remains per-player.
+};
