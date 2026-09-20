@@ -1,0 +1,84 @@
+{
+  "schemaVersion": 1,
+  "map": "soe",
+  "types": [
+    {
+      "id": "zombie",
+      "role": "standard",
+      "notes": [
+        "round scaling",
+        "store/interior state needed for achievement",
+        "district/window/ground spawns"
+      ]
+    },
+    {
+      "id": "keeper",
+      "role": "ritual enemy",
+      "notes": [
+        "rituals are survival-timer based; kills do not accelerate ritual",
+        "Rift/Sacred Place interactions",
+        "character ghosts/Keepers used in upgraded sword/main quest"
+      ]
+    },
+    {
+      "id": "parasite",
+      "role": "flying special",
+      "notes": [
+        "special-round enemy",
+        "can drop Xenomatter",
+        "achievement tracks five kills while riding tram"
+      ]
+    },
+    {
+      "id": "insanity_elemental",
+      "role": "rolling special",
+      "aliases": [
+        "meatball"
+      ],
+      "notes": [
+        "joins later special-round cycle after parasite rounds",
+        "explodes on contact/death",
+        "spawns infinitely during flag defense",
+        "weak points are glowing lights"
+      ]
+    },
+    {
+      "id": "margwa",
+      "role": "elite/boss",
+      "firstRegularRound": 8,
+      "notes": [
+        "three independently destructible/open-mouth weak points",
+        "losing heads increases threat/movement",
+        "first kill drops Servant heart",
+        "scripted spawns after rituals 2 and 4",
+        "extra spawns during sword upgrades and Shadowman fight",
+        "purple variant replaces normal flow in finale",
+        "can bypass/teleport through Chain Traps"
+      ]
+    },
+    {
+      "id": "shadowman",
+      "role": "quest boss/announcer",
+      "notes": [
+        "visible sightings tracked",
+        "ritual commentary/appearances",
+        "damages flag during flag defenses",
+        "teleporting shielded boss phase",
+        "captured with Summoning Key"
+      ]
+    }
+  ],
+  "specialRounds": [
+    {
+      "id": "parasite_round",
+      "enemy": "parasite",
+      "reward": "Max Ammo after final special enemy"
+    },
+    {
+      "id": "elemental_round",
+      "enemy": "insanity_elemental",
+      "rule": "begins after parasite-round progression",
+      "reward": "Max Ammo after final special enemy"
+    }
+  ]
+}
