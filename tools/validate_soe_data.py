@@ -23,6 +23,7 @@ FILES = {
     "topology": "topology_graph.json",
     "g1": "g1_blockout.json",
     "g2": "g2_canal_blockout.json",
+    "g3": "g3_footlight_blockout.json",
 }
 
 data = {}
@@ -35,7 +36,7 @@ for name, filename in FILES.items():
 if data["manifest"]["id"] != "soe":
     raise SystemExit("manifest id must be soe")
 
-for name in ("quest", "side", "audit", "lore", "achievements", "districts", "enemies", "world", "beast", "buildables", "finale", "geometry", "topology", "g1", "g2"):
+for name in ("quest", "side", "audit", "lore", "achievements", "districts", "enemies", "world", "beast", "buildables", "finale", "geometry", "topology", "g1", "g2", "g3"):
     if data[name].get("map") != "soe":
         raise SystemExit(f"{name} map id mismatch")
 
@@ -179,6 +180,30 @@ random_groups = {r["group"]: len(r["candidates"]) for r in data["g2"].get("rando
 if random_groups != {103: 2, 201: 3, 301: 3}:
     raise SystemExit("Canal randomized spawn groups changed unexpectedly")
 
+# G3 Footlight blockout contract.
+if data["g3"].get("phase") != "G3" or data["g3"].get("district") != "footlight":
+    raise SystemExit("Footlight G3 blockout metadata changed unexpectedly")
+g3_anchors = data["g3"].get("gameplayAnchors", [])
+g3_by_name = {a.get("targetname"): a for a in g3_anchors if a.get("targetname")}
+for required in {
+    "soe_g3_black_lace_grapple", "soe_g3_black_lace_power", "soe_g3_black_lace_ritual",
+    "soe_g3_toupee_grapple", "soe_g3_toupee_smash", "soe_g3_toupee_pickup",
+    "soe_g3_footlight_perk_slot", "soe_g3_footlight_perk_power", "soe_g3_rift_smash"
+}:
+    if required not in g3_by_name:
+        raise SystemExit(f"Footlight G3 anchor missing: {required}")
+if g3_by_name["soe_g3_toupee_pickup"].get("spawnflags") != 1:
+    raise SystemExit("Footlight Toupee must start dormant")
+if g3_by_name["soe_g3_toupee_smash"].get("target") != "soe_g3_toupee_pickup":
+    raise SystemExit("Footlight Toupee smash must enable the dormant pickup")
+if g3_by_name["soe_g3_black_lace_power"].get("target") != "soe_g3_black_lace_access":
+    raise SystemExit("Black Lace Beast shock must open human access")
+g3_random = {r["group"]: len(r["candidates"]) for r in data["g3"].get("randomized", [])}
+if g3_random != {202: 3, 302: 3}:
+    raise SystemExit("Footlight shield/fuse randomized groups changed unexpectedly")
+if data["g3"].get("uncertain", [{}])[0].get("status") != "do_not_invent":
+    raise SystemExit("Footlight Fumigator uncertainty guard was removed")
+
 # Runtime coverage anti-regression: documented critical systems must have
 # mapper-facing/runtime implementations, not just JSON descriptions.
 overlay_dir = ROOT / "overlay" / "quakec" / "source" / "server" / "maps" / "soe"
@@ -252,6 +277,8 @@ if 'mapname == "soe_g1"' not in qc_text:
     raise SystemExit("SoE G1 blockout must activate the Shadows runtime")
 if 'mapname == "soe_g2"' not in qc_text:
     raise SystemExit("SoE G2 blockout must activate the Shadows runtime")
+if 'mapname == "soe_g3"' not in qc_text:
+    raise SystemExit("SoE G3 blockout must activate the Shadows runtime")
 
 patcher = (ROOT / "scripts" / "apply_soe_quakec_overlay.py").read_text(encoding="utf-8")
 for hook in {
