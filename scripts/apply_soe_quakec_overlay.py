@@ -34,6 +34,7 @@ include_lines = [
     "maps/soe/soe_special_movers.qc\n",
     "maps/soe/soe_harvest.qc\n",
     "maps/soe/soe_servant.qc\n",
+    "maps/soe/soe_civil_protector.qc\n",
     "maps/soe/soe_special_rounds.qc\n",
 ]
 if not all(line in text for line in include_lines):
@@ -48,7 +49,7 @@ text = main_qc.read_text(encoding="utf-8")
 
 # Map initialization hook.
 init_anchor = "\tGamemode_Init();\n"
-init_call = "\tSoE_Init();\n\tSoE_ResetTransportState();\n\tSoE_ResetServant();\n\tSoE_ResetSpecialRoundSchedule();\n"
+init_call = "\tSoE_Init();\n\tSoE_ResetTransportState();\n\tSoE_ResetServant();\n\tSoE_ResetCivilProtector();\n\tSoE_ResetSpecialRoundSchedule();\n"
 if init_call not in text:
     if init_anchor not in text:
         raise SystemExit("worldspawn hook anchor changed; inspect pinned upstream")
