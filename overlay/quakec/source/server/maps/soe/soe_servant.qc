@@ -9,7 +9,7 @@
 
 float soe_servant_built;
 float soe_servant_box_unlocked;
-entity soe_servant_build_table;
+entity soe_servant_table_ent;
 
 .float soe_vortex_until;
 .float soe_vortex_next_tick;
@@ -87,7 +87,7 @@ void() SoE_ServantBuildTableTouch =
 
         soe_servant_built = true;
         soe_servant_box_unlocked = true;
-        soe_servant_build_table = self;
+        soe_servant_table_ent = self;
 
         self.state = 1;
         SoE_FireEntityTargets(self);
@@ -289,5 +289,5 @@ void() SoE_ResetServant =
 {
     soe_servant_built = false;
     soe_servant_box_unlocked = false;
-    soe_servant_build_table = world;
+    soe_servant_table_ent = world;
 };
