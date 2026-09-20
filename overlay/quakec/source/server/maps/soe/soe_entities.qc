@@ -62,7 +62,7 @@ void() SoE_BeastPedestalTouch =
 
 void() soe_beast_pedestal =
 {
-    if (!self.useprint_string_1)
+    if (self.useprint_string_1 == "")
         self.useprint_string_1 = "Hold %b to Become the Beast";
 
     self.useprint_index_1 = Useprint_Register(self.useprint_string_1, self.useprint_color_1);
@@ -70,7 +70,7 @@ void() soe_beast_pedestal =
     self.solid = SOLID_TRIGGER;
     self.touch = SoE_BeastPedestalTouch;
 
-    if (self.model)
+    if (self.model != "")
         setmodel(self, self.model);
     else
         setsize(self, '-24 -24 -16', '24 24 48');
@@ -95,7 +95,7 @@ void() SoE_BeastShockTouch =
 
 void() soe_beast_shock =
 {
-    if (!self.useprint_string_1)
+    if (self.useprint_string_1 == "")
         self.useprint_string_1 = "Hold %b to Shock";
 
     self.useprint_index_1 = Useprint_Register(self.useprint_string_1, self.useprint_color_1);
@@ -103,7 +103,7 @@ void() soe_beast_shock =
     self.solid = SOLID_TRIGGER;
     self.touch = SoE_BeastShockTouch;
 
-    if (self.model)
+    if (self.model != "")
         setmodel(self, self.model);
     else
         setsize(self, '-20 -20 -20', '20 20 20');
@@ -126,14 +126,14 @@ void() SoE_BeastSmashTouch =
         SoE_FireEntityTargets(self);
 
         self.solid = SOLID_NOT;
-        if (self.model)
+        if (self.model != "")
             setmodel(self, "");
     }
 };
 
 void() soe_beast_smash =
 {
-    if (!self.useprint_string_1)
+    if (self.useprint_string_1 == "")
         self.useprint_string_1 = "Hold %b to Smash";
 
     self.useprint_index_1 = Useprint_Register(self.useprint_string_1, self.useprint_color_1);
@@ -141,7 +141,7 @@ void() soe_beast_smash =
     self.solid = SOLID_TRIGGER;
     self.touch = SoE_BeastSmashTouch;
 
-    if (self.model)
+    if (self.model != "")
         setmodel(self, self.model);
     else
         setsize(self, '-24 -24 -24', '24 24 24');
@@ -166,7 +166,7 @@ void() SoE_BeastGrappleTouch =
 
 void() soe_beast_grapple =
 {
-    if (!self.useprint_string_1)
+    if (self.useprint_string_1 == "")
         self.useprint_string_1 = "Hold %b to Grapple";
 
     self.useprint_index_1 = Useprint_Register(self.useprint_string_1, self.useprint_color_1);
@@ -174,7 +174,7 @@ void() soe_beast_grapple =
     self.solid = SOLID_TRIGGER;
     self.touch = SoE_BeastGrappleTouch;
 
-    if (self.model)
+    if (self.model != "")
         setmodel(self, self.model);
     else
         setsize(self, '-32 -32 -32', '32 32 32');
@@ -207,13 +207,13 @@ void() SoE_QuestPickupTouch =
     self.solid = SOLID_NOT;
     self.touch = SUB_Null;
 
-    if (self.model)
+    if (self.model != "")
         setmodel(self, "");
 };
 
 void() soe_quest_pickup =
 {
-    if (!self.useprint_string_1)
+    if (self.useprint_string_1 == "")
         self.useprint_string_1 = "Hold %b to Pick Up Quest Item";
 
     self.useprint_index_1 = Useprint_Register(self.useprint_string_1, self.useprint_color_1);
@@ -221,7 +221,7 @@ void() soe_quest_pickup =
     self.solid = SOLID_TRIGGER;
     self.touch = SoE_QuestPickupTouch;
 
-    if (self.model)
+    if (self.model != "")
         setmodel(self, self.model);
     else
         setsize(self, '-16 -16 -16', '16 16 16');
@@ -290,7 +290,7 @@ void() SoE_RitualTouch =
 
 void() soe_ritual_controller =
 {
-    if (!self.useprint_string_1)
+    if (self.useprint_string_1 == "")
         self.useprint_string_1 = "Hold %b to Begin Ritual";
 
     self.useprint_index_1 = Useprint_Register(self.useprint_string_1, self.useprint_color_1);
@@ -299,7 +299,7 @@ void() soe_ritual_controller =
     self.touch = SoE_RitualTouch;
     self.state = 0;
 
-    if (self.model)
+    if (self.model != "")
         setmodel(self, self.model);
     else
         setsize(self, '-48 -48 -24', '48 48 48');
