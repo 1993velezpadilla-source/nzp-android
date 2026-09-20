@@ -34,6 +34,7 @@ float(entity ent) SoE_IsCustomSpecialBody =
         ent.classname == "soe_keeper" ||
         ent.classname == "soe_margwa_mask_heart" ||
         ent.classname == "soe_flag_shadowman" ||
+        ent.classname == "soe_round_skip_shadowman" ||
         ent.classname == "soe_shadowman_boss"
     );
 };
@@ -280,6 +281,9 @@ float(entity victim, entity attacker, float damage, float d_style) SoE_HandleSpe
 
     if (victim.classname == "soe_flag_shadowman")
         return SoE_HandleFlagShadowmanDamage(victim, attacker, damage, d_style);
+
+    if (victim.classname == "soe_round_skip_shadowman")
+        return SoE_HandleRoundSkipDamage(victim, attacker, damage, d_style);
 
     if (victim.soe_special_type == SOE_SPECIAL_NONE)
         return false;
