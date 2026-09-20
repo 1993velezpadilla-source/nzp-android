@@ -128,14 +128,24 @@
       "id": "lil_arnie_upgrade",
       "requirements": [
         "four_rituals_complete",
-        "lil_arnies"
+        "lil_arnies_from_mystery_box"
       ],
       "steps": [
-        "Get 100 Lil' Arnie kills",
-        "Throw Arnies at top hat, cane, bow tie props",
-        "Throw fourth Arnie on Burlesque ritual table"
+        "Obtain Li'l Arnies from the Mystery Box; they use a dedicated tactical slot with 3 charges and do not replace a firearm",
+        "Accumulate 100 Li'l Arnie kills across the shared lobby quest state",
+        "Throw an Arnie near the Top Hat in Nero's Landing",
+        "Throw an Arnie near the Cane in the Ruby Rabbit",
+        "Throw an Arnie near the Bow Tie in the Boxing Gym",
+        "After all three props are consumed, throw an Arnie onto the Black Lace Burlesque ritual stage"
       ],
-      "reward": "upgraded Lil' Arnies and dance event"
+      "reward": "upgrades and refills Li'l Arnies for every active player who owns them",
+      "runtimeEntities": [
+        "soe_arnie_upgrade_prop",
+        "soe_arnie_upgrade_stage"
+      ],
+      "sharedKillRequirement": 100,
+      "baseCharges": 3,
+      "inputImpulse": 35
     },
     {
       "id": "tripmine_upgrade",
