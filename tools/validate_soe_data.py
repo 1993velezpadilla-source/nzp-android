@@ -101,6 +101,76 @@ if data["finale"]["fourPlayerFinale"]["originalRequiresPlayers"] != 4:
 if len(data["side"]["sideQuests"]) < 16:
     raise SystemExit("one or more tracked SoE side quests/events disappeared")
 
+
+# Runtime coverage anti-regression: documented critical systems must have
+# mapper-facing/runtime implementations, not just JSON descriptions.
+overlay_dir = ROOT / "overlay" / "quakec" / "source" / "server" / "maps" / "soe"
+if not overlay_dir.exists():
+    raise SystemExit("SoE QuakeC overlay directory is missing")
+
+qc_files = sorted(overlay_dir.glob("*.qc"))
+qc_text = "\n".join(path.read_text(encoding="utf-8") for path in qc_files)
+
+required_runtime_symbols = {
+    "soe_beast_pedestal": "Beast pedestal",
+    "soe_beast_shock": "Beast shock interaction",
+    "soe_beast_smash": "Beast smash interaction",
+    "soe_beast_grapple": "Beast grapple interaction",
+    "soe_ritual_controller": "district ritual controller",
+    "soe_ritual_keeper_spawn": "ritual Keeper spawns",
+    "soe_gateworm_pedestal": "Sacred Place Gateworm pedestal",
+    "soe_final_ritual_altar": "fifth ritual altar",
+    "soe_tram_button": "tram purchase/control",
+    "soe_rift_portal": "Rift portal",
+    "soe_harvest_pod": "Harvest Pod",
+    "soe_servant_build_table": "Apothicon Servant build table",
+    "soe_civil_fuse": "Civil Protector fuse",
+    "soe_civil_fusebox": "Civil Protector Rift fuse box",
+    "soe_civil_call_panel": "Civil Protector call panel",
+    "soe_shield_part": "Rocket Shield part",
+    "soe_shield_build_table": "Rocket Shield build table",
+    "soe_sword_glyph": "Sword glyph wall",
+    "soe_sword_altar": "Sword/Ovum altar",
+    "soe_sword_statue": "Sword soul statue",
+    "soe_reborn_keeper": "Arch-Ovum Keeper",
+    "soe_reborn_circle": "Arch-Ovum Margwa circle",
+    "soe_mainquest_book": "Nero quest book",
+    "soe_flag_site": "flag defense site",
+    "soe_flag_keeper": "district flag Keeper",
+    "soe_shadowman_keeper": "Shadowman Keeper activation",
+    "soe_shadowman_capture_table": "Shadowman capture table",
+    "soe_finale_beast_torch": "finale Beast torch",
+    "soe_finale_station_box": "finale station shock box",
+    "soe_finale_train_hit": "finale tram/Gateworm event",
+    "soe_finale_keeper": "finale central Keeper",
+}
+for symbol, description in required_runtime_symbols.items():
+    if symbol not in qc_text:
+        raise SystemExit(f"missing runtime coverage: {description} ({symbol})")
+
+patcher = (ROOT / "scripts" / "apply_soe_quakec_overlay.py").read_text(encoding="utf-8")
+for hook in {
+    "SoE_RitualFrame();",
+    "SoE_MainQuestFrame();",
+    "SoE_ShadowmanFrame();",
+    "SoE_FinaleFrame();",
+    "SoE_ProcessSpecialSpawns();",
+    "SoE_RandomSpawnFrame();",
+    "Complete the Sacred Place Ritual",
+}:
+    if hook not in patcher:
+        raise SystemExit(f"missing NZ:P integration hook: {hook}")
+
+if data["quest"]["modes"]["portableSolo"]["finaleSynchronizationWindowSeconds"] != 30:
+    raise SystemExit("portable finale sync window must match 30-second rail runtime")
+
+quest_by_id = {state["id"]: state for state in states}
+if quest_by_id["station_shocks"]["requires"] != ["infinite_margwa_phase"]:
+    raise SystemExit("station shocks must precede the tram Gateworm hit")
+if quest_by_id["train_gateworm_hit"]["requires"] != ["station_shocks"]:
+    raise SystemExit("tram Gateworm hit must require electrified station rails")
+
+
 # Make sure the project never silently switches to bundling the unfinished binary.
 source = data["manifest"]["sourceGeometry"]
 if source.get("redistribution") != "do_not_bundle_without_permission":
