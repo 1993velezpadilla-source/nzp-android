@@ -156,7 +156,11 @@ vector(entity target) SoE_FallbackSpecialSpawn =
     float xoff = (random() * 240) - 120;
     float yoff = (random() * 240) - 120;
 
-    return target.origin + [xoff, yoff, 96];
+    vector result = target.origin;
+    result_x = result_x + xoff;
+    result_y = result_y + yoff;
+    result_z = result_z + 96;
+    return result;
 };
 
 float() SoE_TrySpawnRoundParasite =
