@@ -33,6 +33,7 @@ include_lines = [
     "maps/soe/soe_tram.qc\n",
     "maps/soe/soe_specials.qc\n",
     "maps/soe/soe_misc_secrets.qc\n",
+    "maps/soe/soe_lore.qc\n",
     "maps/soe/soe_arnie.qc\n",
     "maps/soe/soe_sidequests.qc\n",
     "maps/soe/soe_chain_traps.qc\n",
