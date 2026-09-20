@@ -446,7 +446,7 @@ void() SoE_RebornCircleTouch =
         return;
 
     other.semi_actions |= SEMIACTION_USE;
-    other.soe_reborn_global_circle_bit = circle_bit;
+    other.soe_reborn_active_circle_bit = circle_bit;
     other.soe_reborn_last_ritual_round = rounds;
 
     float completed = SoE_RebornCompletedCircleCount(other.soe_reborn_ritual_mask);
@@ -519,7 +519,7 @@ void(entity margwa) SoE_RebornOnMargwaKilled =
         return;
 
     owner.soe_reborn_ritual_mask = owner.soe_reborn_ritual_mask | circle_bit;
-    owner.soe_reborn_global_circle_bit = 0;
+    owner.soe_reborn_active_circle_bit = 0;
 
     soe_reborn_active_owner = world;
     soe_reborn_global_circle_bit = 0;
