@@ -1,0 +1,74 @@
+{
+  "schemaVersion": 1,
+  "map": "soe",
+  "strategy": "clean-room modular reconstruction",
+  "exactTransformsState": "pending measurement/blockout",
+  "sourcePolicy": {
+    "allow": [
+      "public topology diagrams",
+      "public gameplay guides",
+      "legitimately captured screenshots/video",
+      "author-approved fan-map source",
+      "open/CC0 replacement art"
+    ],
+    "doNotBundle": [
+      "BO3 fastfiles",
+      "BO3 xpak content",
+      "leaked official Radiant dumps",
+      "extracted Treyarch models/textures/sounds/scripts without redistribution rights",
+      "Klevi compiled map content without author permission"
+    ]
+  },
+  "phases": [
+    {"id":"G0","name":"topology_lock","dependsOn":[],"deliverables":["area graph","door graph","portal graph","tram graph","one-way drop graph","quest-space graph"]},
+    {"id":"G1","name":"easy_street_junction","dependsOn":["G0"],"priority":"first playable geometry vertical slice"},
+    {"id":"G2","name":"canal_district","dependsOn":["G1"]},
+    {"id":"G3","name":"footlight_district","dependsOn":["G1"]},
+    {"id":"G4","name":"waterfront_district","dependsOn":["G1"]},
+    {"id":"G5","name":"rift_subway","dependsOn":["G2","G3","G4"]},
+    {"id":"G6","name":"sacred_place","dependsOn":["G5"]},
+    {"id":"G7","name":"tram_network","dependsOn":["G2","G3","G4"]}
+  ],
+  "streamCells": [
+    "easy_street","junction","canal_lower","canal_high_ruby","footlight_lower","footlight_high_burlesque",
+    "waterfront_lower_docks","waterfront_high_anvil","canal_station","footlight_station","waterfront_station",
+    "rift","sacred_place","skyline_clusters"
+  ],
+  "topologyReferences": [
+    "https://steamcommunity.com/sharedfiles/filedetails/?id=563005850",
+    "https://codzombie.com/atlas/shadows-of-evil",
+    "https://codzombified.blogspot.com/2015/11/shadows-of-evil-map-layout-call-of-duty.html",
+    "https://www.codzombie.com/maps/shadows-of-evil"
+  ],
+  "historicalFanMapLeads": [
+    {
+      "name":"Klevi Alushi Shadows of Evil (World at War)",
+      "value":"best known compiled fan geometry reference",
+      "sourceStatus":"editable source not located; permission not established"
+    },
+    {
+      "name":"Project Nightmare / Spawn Point",
+      "value":"historical WaW recreation lead; forum progress listed Shadows of Evil section at 100%",
+      "sourceStatus":"treat as reference lead only until release/source and rights are verified"
+    }
+  ],
+  "disqualifiedGeometryLeads": [
+    {
+      "name":"leaked BO3 Radiant zm_zod dumps",
+      "reason":"reported to contain entities/triggers/spawners/models but no brushes; proprietary and unsuitable as redistributable geometry base"
+    }
+  ],
+  "acceptanceTests": [
+    "player traversal",
+    "zombie traversal",
+    "Margwa traversal",
+    "Beast traversal",
+    "touch interaction reach",
+    "door-state nav relink",
+    "ritual combat envelope",
+    "portal destination safety",
+    "tram collision stability",
+    "reload determinism",
+    "mobile performance budget"
+  ]
+}
