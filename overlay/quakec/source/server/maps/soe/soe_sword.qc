@@ -24,6 +24,7 @@ float soe_sword_wall_failed_round;
 .float soe_sword_egg_returned;
 .float soe_has_sword;
 .float soe_sword_upgraded;
+.string soe_sword_hidden_model;
 
 float(float glyph_id) SoE_GlyphBit =
 {
@@ -207,8 +208,13 @@ void() SoE_SwordStatueRevealUse =
     self.state = 1;
     self.solid = SOLID_TRIGGER;
 
-    if (self.model != "")
-        setmodel(self, self.model);
+    if (self.soe_sword_hidden_model != "")
+        setmodel(self, self.soe_sword_hidden_model);
+    else
+        setmodel(self, "models/sprites/sprkle.spr");
+
+    setsize(self, '-22 -22 -20', '22 22 40');
+    self.effects = EF_FULLBRIGHT;
 };
 
 void() SoE_SwordStatueTouch =
@@ -275,20 +281,24 @@ void() soe_sword_statue =
     self.use = SoE_SwordStatueRevealUse;
 
     // spawnflag 1: already exposed for testing/clean-room iteration.
+    // Hidden statues must be visually absent as well as non-solid.
+    if (self.model != "")
+        self.soe_sword_hidden_model = self.model;
+    else
+        self.soe_sword_hidden_model = "models/sprites/sprkle.spr";
+
     if (self.spawnflags & 1) {
         self.state = 1;
         self.solid = SOLID_TRIGGER;
+        setmodel(self, self.soe_sword_hidden_model);
+        setsize(self, '-22 -22 -20', '22 22 40');
+        self.effects = EF_FULLBRIGHT;
     } else {
         self.state = 0;
         self.solid = SOLID_NOT;
-    }
-
-    if (self.model != "")
-        setmodel(self, self.model);
-    else {
-        setmodel(self, "models/sprites/sprkle.spr");
+        setmodel(self, "");
         setsize(self, '-22 -22 -20', '22 22 40');
-        self.effects = EF_FULLBRIGHT;
+        self.effects = 0;
     }
 };
 
