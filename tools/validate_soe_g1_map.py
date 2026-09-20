@@ -34,11 +34,16 @@ required_counts = {
     '"classname" "path_corner"': 4,
     '"classname" "spawn_zone"': 2,
     '"classname" "func_door_nzp"': 4,
-    '"classname" "soe_beast_pedestal"': 1,
+    '"classname" "soe_beast_pedestal"': 2,
     '"classname" "soe_beast_smash"': 1,
-    '"classname" "soe_quest_pickup"': 1,
+    '"classname" "soe_quest_pickup"': 2,
     '"classname" "soe_beast_grapple"': 1,
     '"classname" "soe_beast_shock"': 3,
+    '"classname" "perk_revive"': 1,
+    '"classname" "perk_staminup"': 1,
+    '"classname" "soe_perk_power_panel"': 2,
+    '"classname" "soe_civil_call_panel"': 1,
+    '"classname" "soe_fumigator_pickup"': 7,
 }
 for token, count in required_counts.items():
     actual = text.count(token)
@@ -69,6 +74,31 @@ if '"targetname" "soe_g1_summoning_key"' not in text or '"spawnflags" "1"' not i
 
 if '"target" "soe_g1_summoning_key"' not in text:
     raise SystemExit("Summoning Key crate smash no longer targets the dormant pickup")
+
+
+for target in (
+    "soe_g1_quick_revive",
+    "soe_g1_quick_revive_power",
+    "soe_g1_staminup",
+    "soe_g1_staminup_power",
+    "soe_g1_beast_junction",
+    "soe_g1_civil_panel_junction",
+    "soe_g1_pen_pickup",
+    "soe_g1_rk5_wallbuy_anchor",
+    "soe_g1_sheiva_wallbuy_anchor",
+    "soe_g1_lcar9_wallbuy_anchor",
+    "soe_g1_krm262_wallbuy_anchor",
+):
+    if f'"targetname" "{target}"' not in text:
+        raise SystemExit(f"missing canonical G1 gameplay anchor: {target}")
+
+if text.count('"soe_random_group" "101"') != 3:
+    raise SystemExit("Spawn Fumigator group 101 must retain exactly three candidates")
+if text.count('"soe_random_group" "102"') != 4:
+    raise SystemExit("Junction Fumigator group 102 must retain exactly four candidates")
+
+if '"targetname" "soe_g1_pen_crane_power"\n"target" "soe_g1_pen_pickup"' not in text:
+    raise SystemExit("Junction crane shock must enable the dormant Lawyer's Pen")
 
 plane_re = re.compile(
     r'^\( -?\d+(?:\.\d+)? -?\d+(?:\.\d+)? -?\d+(?:\.\d+)? \) '
