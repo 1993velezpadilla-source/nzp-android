@@ -1,0 +1,25 @@
+{
+  "schemaVersion": 1,
+  "repositories": [
+    {
+      "name": "nzportable",
+      "url": "https://github.com/nzp-team/nzportable.git",
+      "commit": "db9dde64a781f1f6c237a81107caea5ec0f58b21"
+    },
+    {
+      "name": "quakec",
+      "url": "https://github.com/nzp-team/quakec.git",
+      "commit": "04bd544172e16193162277a7c356c827e9653b06"
+    },
+    {
+      "name": "vril-engine",
+      "url": "https://github.com/nzp-team/vril-engine.git",
+      "commit": "fd345000547a1278b45d86c86b2ca130c592a83f"
+    },
+    {
+      "name": "assets",
+      "url": "https://github.com/nzp-team/assets.git",
+      "commit": "c8135a66e00bb64577912fbf792f8fef7f47658e"
+    }
+  ]
+}
