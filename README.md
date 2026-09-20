@@ -18,10 +18,12 @@ The public Klevi Alushi World at War Shadows of Evil release is treated as a **r
 ## Start here
 
 - `docs/shadows-of-evil/MASTER_RESEARCH.md`
+- `docs/shadows-of-evil/GEOMETRY_RECONSTRUCTION.md`
 - `docs/shadows-of-evil/QUAKEC_PORT.md`
 - `content/shadows_of_evil/manifest.json`
 - `content/shadows_of_evil/quest_graph.json`
 - `content/shadows_of_evil/district_fidelity.json`
+- `content/shadows_of_evil/geometry_reconstruction.json`
 - `content/shadows_of_evil/lore_collectibles.json`
 - `content/shadows_of_evil/side_quests.json`
 - `content/shadows_of_evil/enemies.json`
