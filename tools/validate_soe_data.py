@@ -213,6 +213,9 @@ for symbol, description in required_runtime_symbols.items():
     if symbol not in qc_text:
         raise SystemExit(f"missing runtime coverage: {description} ({symbol})")
 
+if 'mapname == "soe_g1"' not in qc_text:
+    raise SystemExit("SoE G1 blockout must activate the Shadows runtime")
+
 patcher = (ROOT / "scripts" / "apply_soe_quakec_overlay.py").read_text(encoding="utf-8")
 for hook in {
     "SoE_RitualFrame();",
