@@ -27,6 +27,9 @@ jobs:
           git clone https://github.com/nzp-team/quakec.git .upstream/quakec
           git -C .upstream/quakec checkout --detach 04bd544172e16193162277a7c356c827e9653b06
 
+      - name: Install QuakeC build dependencies
+        run: python3 -m pip install pandas
+
       - name: Apply SoE overlay
         run: python3 scripts/apply_soe_quakec_overlay.py .upstream/quakec
 
