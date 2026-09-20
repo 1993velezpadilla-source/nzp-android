@@ -1,0 +1,93 @@
+{
+  "schemaVersion": 1,
+  "rules": [
+    "Public download does not equal redistribution permission.",
+    "Do not bundle leaked Treyarch/Activision source, maps, models, textures, voices, music or ripped commercial assets.",
+    "Use commercial/original BO3 only as behavioral/visual reference from legitimately accessible material.",
+    "Prefer author-approved fan source, NZ:P GPL code, CC0 assets, or clean-room replacements.",
+    "Preserve attribution and license notices for any third-party code/assets that permit redistribution."
+  ],
+  "sources": [
+    {
+      "id": "klevi_soe_waw",
+      "type": "fan map binary",
+      "url": "https://callofdutyrepo.com/2019/06/29/shadows-of-evil/",
+      "use": "geometry/gameplay reference; preferred if author supplies editable source + permission",
+      "redistributable": "unknown",
+      "notes": "public build marked unfinished, T4M required, public release reportedly lacks skybox"
+    },
+    {
+      "id": "steam_full_guide",
+      "type": "community guide",
+      "url": "https://steamcommunity.com/sharedfiles/filedetails/?id=550319350",
+      "use": "quest/side-quest verification",
+      "redistributable": "not applicable"
+    },
+    {
+      "id": "margwa_network",
+      "type": "community guide",
+      "url": "https://margwa.net/shadows-of-evil",
+      "use": "main/side quest cross-check",
+      "redistributable": "not applicable"
+    },
+    {
+      "id": "codzombie_atlas",
+      "type": "community route atlas",
+      "url": "https://codzombie.com/atlas/shadows-of-evil",
+      "use": "area graph and feature placements",
+      "redistributable": "not applicable"
+    },
+    {
+      "id": "oob_walkthrough",
+      "type": "video visual reference",
+      "url": "https://www.youtube.com/watch?v=FYF03XFb0YE",
+      "use": "hidden geometry/skyline clean-room measurement reference",
+      "redistributable": "not applicable"
+    },
+    {
+      "id": "nzp_quakec",
+      "type": "open-source code",
+      "url": "https://github.com/nzp-team/quakec",
+      "license": "GPL-2.0",
+      "pin": "04bd544172e16193162277a7c356c827e9653b06",
+      "use": "runtime mechanics and map entity base"
+    },
+    {
+      "id": "nzp_vril",
+      "type": "open-source engine",
+      "url": "https://github.com/nzp-team/vril-engine",
+      "license": "GPL-2.0",
+      "pin": "fd345000547a1278b45d86c86b2ca130c592a83f",
+      "use": "engine target/reference"
+    },
+    {
+      "id": "nzp_assets",
+      "type": "asset repo",
+      "url": "https://github.com/nzp-team/assets",
+      "license": "NOASSERTION / inspect per asset",
+      "pin": "c8135a66e00bb64577912fbf792f8fef7f47658e",
+      "use": "NZ:P assets only after per-asset rights check"
+    },
+    {
+      "id": "quaternius",
+      "type": "CC0 asset source",
+      "url": "https://quaternius.com/",
+      "license": "CC0",
+      "use": "clean replacement characters/props/environment pieces where appropriate"
+    },
+    {
+      "id": "poly_haven",
+      "type": "CC0 asset source",
+      "url": "https://polyhaven.com/license",
+      "license": "CC0",
+      "use": "clean replacement materials/HDRIs/props"
+    }
+  ],
+  "conflicts": [
+    {
+      "field": "Civil Protector summon price",
+      "preferredValue": 2000,
+      "reason": "multiple mainstream guide references and 8000 total for four summons; one community buildables post reports 3000 and is treated as conflicting secondary evidence"
+    }
+  ]
+}
