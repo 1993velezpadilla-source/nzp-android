@@ -1,0 +1,77 @@
+{
+  "schemaVersion": 1,
+  "map": "soe",
+  "core": {
+    "normalDurationSeconds": 25,
+    "meleeTimeDrainPercent": 3,
+    "enemyAggro": "standard enemies ignore Beast outside finale exceptions",
+    "returnBehavior": "timer expiry returns player to the chalice/pedestal used to enter Beast Mode",
+    "abilities": [
+      "super speed",
+      "high jump",
+      "grapple",
+      "power shock",
+      "melee/smash",
+      "zombie melee",
+      "zombie shock",
+      "instant teammate revive"
+    ],
+    "reviveBehavior": "reviving a teammate in Beast Mode immediately ends that Beast transformation"
+  },
+  "chargeRules": {
+    "coOp": "normally one usable charge per round per player/pedestal flow; charges can carry/stack according to game state and source observations",
+    "solo": "up to three Beast uses are available per round in the original solo rules; exact HUD recharge semantics require in-game validation before locking implementation",
+    "policy": "do not hard-code uncertain charge edge cases until verified in original game"
+  },
+  "interactionFamilies": [
+    {
+      "type": "shock",
+      "targets": [
+        "perk fuse boxes",
+        "district staircase fuse boxes",
+        "Junction crane box",
+        "Canal ritual item power box",
+        "train-station finale boxes",
+        "other quest electrical panels"
+      ]
+    },
+    {
+      "type": "melee",
+      "targets": [
+        "Summoning Key truck crate",
+        "ritual-item crates",
+        "Rift doors",
+        "Apothicon statue crates",
+        "Anvil ritual-room door",
+        "other Beast-marked breakables"
+      ]
+    },
+    {
+      "type": "grapple",
+      "targets": [
+        "Nero roof/fire escape",
+        "Ruby Rabbit roof",
+        "Black Lace roof/sign",
+        "Waterfront ritual-item fire escape",
+        "district upper walkways",
+        "other eagle-head grapple anchors"
+      ]
+    },
+    {
+      "type": "revive",
+      "targets": [
+        "downed teammates"
+      ],
+      "notes": [
+        "instant and terminates current Beast state"
+      ]
+    }
+  ],
+  "finaleOverride": {
+    "activeAfter": "Shadowman captured with four-player finale active",
+    "duration": "infinite until meter depleted by damage or finale resolves",
+    "enemyAggro": "purple-mouth Margwas CAN see and attack Beast",
+    "corruption": "failing cleanse while in Beast removes a chunk of Beast meter rather than normal-player down behavior",
+    "railShockSeconds": 30
+  }
+}
