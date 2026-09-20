@@ -55,14 +55,22 @@
     },
     "enemyOverride": "normal zombies stop; purple-mouth Margwas spawn",
     "beastOverride": "infinite time but Margwas attack and damage Beast meter",
-    "giantGateworm": "Junction track intersection; hit with moving tram",
+    "giantGateworm": "Junction track intersection; station boxes electrify rails first, then moving tram removes/crushes Gateworm",
     "stationRailBoxes": {
       "Canals": "above back train door",
       "Waterfront": "above back train door",
       "Footlight": "between both train doors"
     },
     "railElectrifiedSeconds": 30,
-    "keeperAction": "shock all three Junction Keepers while rails are electrified and Gateworm absent; Keepers fire final beam",
-    "bleedOutRule": "rounds stop progressing; bled-out players respawn when train is called"
+    "keeperAction": "Shock all three Junction Keepers while rails are electrified and Gateworm is absent after the tram hit; if timing is missed the Gateworm returns and the rail/tram cycle repeats",
+    "bleedOutRule": "rounds stop progressing; bled-out players respawn when train is called",
+    "sequence": [
+      "kill purple Margwas near curse torches to relight Beast access",
+      "shock all three tram-station electrical boxes while the tram is moving",
+      "electrified rails remain active for the coordination window",
+      "tram passes Junction and removes/crushes giant Gateworm",
+      "shock all three central Keepers before Gateworm returns",
+      "Keeper beams resolve Apocalypse Averted"
+    ]
   }
 }
