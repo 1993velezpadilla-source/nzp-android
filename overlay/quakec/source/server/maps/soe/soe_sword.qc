@@ -124,6 +124,24 @@ void() soe_sword_glyph =
     }
 };
 
+void() SoE_SwordWallGateUse =
+{
+    if (!soe_sword_wall_open || self.activated)
+        return;
+
+    self.activated = true;
+    SoE_FireEntityTargets(self);
+};
+
+void() soe_sword_wall_gate =
+{
+    self.movetype = MOVETYPE_NONE;
+    self.solid = SOLID_NOT;
+    self.use = SoE_SwordWallGateUse;
+    self.activated = false;
+    setsize(self, '0 0 0', '0 0 0');
+};
+
 void() SoE_SwordAltarTouch =
 {
     if (other.classname != "player" || other.downed || other.isBuying)
