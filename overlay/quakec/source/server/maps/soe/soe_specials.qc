@@ -220,6 +220,7 @@ void(entity victim, entity attacker) SoE_DestroyMargwaHead =
     soe_margwa_kills = soe_margwa_kills + 1;
 
     SoE_RebornOnMargwaKilled(victim);
+    SoE_FinaleOnMargwaKilled(victim);
 
     if (!soe_has_margwa_heart)
         SoE_SpawnMargwaHeart(victim);
