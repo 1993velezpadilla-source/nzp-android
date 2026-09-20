@@ -32,6 +32,7 @@ include_lines = [
     "maps/soe/soe_perks.qc\n",
     "maps/soe/soe_tram.qc\n",
     "maps/soe/soe_specials.qc\n",
+    "maps/soe/soe_tripmines.qc\n",
     "maps/soe/soe_misc_secrets.qc\n",
     "maps/soe/soe_lore.qc\n",
     "maps/soe/soe_arnie.qc\n",
@@ -62,7 +63,7 @@ text = main_qc.read_text(encoding="utf-8")
 
 # Map initialization hook.
 init_anchor = "\tGamemode_Init();\n"
-init_call = "\tSoE_Init();\n\tSoE_ResetTransportState();\n\tSoE_ResetSideQuests();\n\tSoE_ResetMiscSecrets();\n\tSoE_ResetArnie();\n\tSoE_ResetServant();\n\tSoE_ResetCivilProtector();\n\tSoE_ResetShield();\n\tSoE_ResetSword();\n\tSoE_ResetSpecialRoundSchedule();\n\tSoE_ResetMainQuest();\n\tSoE_ResetShadowman();\n\tSoE_ResetFinale();\n\tSoE_ResetRandomSpawns();\n"
+init_call = "\tSoE_Init();\n\tSoE_ResetTransportState();\n\tSoE_ResetSideQuests();\n\tSoE_ResetMiscSecrets();\n\tSoE_ResetTripMines();\n\tSoE_ResetArnie();\n\tSoE_ResetServant();\n\tSoE_ResetCivilProtector();\n\tSoE_ResetShield();\n\tSoE_ResetSword();\n\tSoE_ResetSpecialRoundSchedule();\n\tSoE_ResetMainQuest();\n\tSoE_ResetShadowman();\n\tSoE_ResetFinale();\n\tSoE_ResetRandomSpawns();\n"
 if init_call not in text:
     if init_anchor not in text:
         raise SystemExit("worldspawn hook anchor changed; inspect pinned upstream")
@@ -530,7 +531,10 @@ shield_impulse_anchor = '''\t\tcase 33:
 \t\t\tW_PrimeBetty();
 \t\t\tbreak;'''
 shield_impulse_patch = '''\t\tcase 33:
-\t\t\tW_PrimeBetty();
+\t\t\tif (soe_active && self.soe_has_tripmines)
+\t\t\t\tSoE_TripMinePlaceInput();
+\t\t\telse
+\t\t\t\tW_PrimeBetty();
 \t\t\tbreak;
 \t\tcase 34:
 \t\t\tSoE_ShieldBoostInput();
