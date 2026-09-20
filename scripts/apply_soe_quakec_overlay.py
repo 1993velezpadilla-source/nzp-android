@@ -30,6 +30,7 @@ include_lines = [
     "maps/soe/soe_beast.qc\n",
     "maps/soe/soe_entities.qc\n",
     "maps/soe/soe_perks.qc\n",
+    "maps/soe/soe_widows_wine.qc\n",
     "maps/soe/soe_tram.qc\n",
     "maps/soe/soe_specials.qc\n",
     "maps/soe/soe_tripmines.qc\n",
@@ -63,7 +64,7 @@ text = main_qc.read_text(encoding="utf-8")
 
 # Map initialization hook.
 init_anchor = "\tGamemode_Init();\n"
-init_call = "\tSoE_Init();\n\tSoE_ResetTransportState();\n\tSoE_ResetSideQuests();\n\tSoE_ResetMiscSecrets();\n\tSoE_ResetTripMines();\n\tSoE_ResetArnie();\n\tSoE_ResetServant();\n\tSoE_ResetCivilProtector();\n\tSoE_ResetShield();\n\tSoE_ResetSword();\n\tSoE_ResetSpecialRoundSchedule();\n\tSoE_ResetMainQuest();\n\tSoE_ResetShadowman();\n\tSoE_ResetFinale();\n\tSoE_ResetRandomSpawns();\n"
+init_call = "\tSoE_Init();\n\tSoE_ResetTransportState();\n\tSoE_ResetSideQuests();\n\tSoE_ResetMiscSecrets();\n\tSoE_ResetTripMines();\n\tSoE_ResetArnie();\n\tSoE_ResetServant();\n\tSoE_ResetCivilProtector();\n\tSoE_ResetShield();\n\tSoE_ResetSword();\n\tSoE_ResetSpecialRoundSchedule();\n\tSoE_ResetMainQuest();\n\tSoE_ResetShadowman();\n\tSoE_ResetFinale();\n\tSoE_ResetRandomSpawns();\n\tSoE_ResetWidowsWine();\n"
 if init_call not in text:
     if init_anchor not in text:
         raise SystemExit("worldspawn hook anchor changed; inspect pinned upstream")
@@ -152,7 +153,7 @@ if special_ai_call not in text:
 damage_qc = root / "source" / "server" / "damage.qc"
 text = damage_qc.read_text(encoding="utf-8")
 damage_anchor = "void(entity victim, entity attacker, float damage, float d_style) DamageHandler = {\n"
-damage_call = damage_anchor + "\tif (SoE_HandleSpecialDamage(victim, attacker, damage, d_style))\n\t\treturn;\n\n\tif (SoE_ShieldAbsorbDamage(victim, attacker, damage, d_style))\n\t\treturn;\n\n"
+damage_call = damage_anchor + "\tif (SoE_HandleSpecialDamage(victim, attacker, damage, d_style))\n\t\treturn;\n\n\tSoE_WidowsWineHandleHit(victim, attacker, damage, d_style);\n\n\tif (SoE_ShieldAbsorbDamage(victim, attacker, damage, d_style))\n\t\treturn;\n\n"
 if "SoE_HandleSpecialDamage(victim, attacker, damage, d_style)" not in text:
     if damage_anchor not in text:
         raise SystemExit("DamageHandler hook anchor changed; inspect pinned upstream")
@@ -246,7 +247,7 @@ rounds_qc = root / "source" / "server" / "rounds.qc"
 text = rounds_qc.read_text(encoding="utf-8")
 
 increment_anchor = "\trounds = rounds + 1;\n"
-increment_patch = "\trounds = rounds + 1;\n\tSoE_AfterRoundIncrement();\n\tSoE_HarvestPodsOnNewRound();\n\tSoE_MainQuestOnNewRound();\n"
+increment_patch = "\trounds = rounds + 1;\n\tSoE_AfterRoundIncrement();\n\tSoE_HarvestPodsOnNewRound();\n\tSoE_WidowsWineOnNewRound();\n\tSoE_MainQuestOnNewRound();\n"
 if "\tSoE_AfterRoundIncrement();\n" not in text:
     if increment_anchor not in text:
         raise SystemExit("round increment anchor changed; inspect pinned upstream")
