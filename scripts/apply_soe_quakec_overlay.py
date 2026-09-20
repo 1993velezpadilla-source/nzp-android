@@ -32,6 +32,7 @@ include_lines = [
     "maps/soe/soe_tram.qc\n",
     "maps/soe/soe_specials.qc\n",
     "maps/soe/soe_special_movers.qc\n",
+    "maps/soe/soe_special_rounds.qc\n",
 ]
 if not all(line in text for line in include_lines):
     if include_anchor not in text:
@@ -45,7 +46,7 @@ text = main_qc.read_text(encoding="utf-8")
 
 # Map initialization hook.
 init_anchor = "\tGamemode_Init();\n"
-init_call = "\tSoE_Init();\n\tSoE_ResetTransportState();\n"
+init_call = "\tSoE_Init();\n\tSoE_ResetTransportState();\n\tSoE_ResetSpecialRoundSchedule();\n"
 if init_call not in text:
     if init_anchor not in text:
         raise SystemExit("worldspawn hook anchor changed; inspect pinned upstream")
@@ -221,5 +222,55 @@ if "\twhile (ent) {\n\t\thead_hit = 0;\n" not in text:
     text = text.replace(loop_anchor, loop_patch, 1)
 
 weapon_qc.write_text(text, encoding="utf-8")
+
+
+# Convert selected SoE rounds into true Parasite/Elemental special rounds.
+rounds_qc = root / "source" / "server" / "rounds.qc"
+text = rounds_qc.read_text(encoding="utf-8")
+
+increment_anchor = "\trounds = rounds + 1;\n"
+increment_patch = "\trounds = rounds + 1;\n\tSoE_AfterRoundIncrement();\n"
+if "\tSoE_AfterRoundIncrement();\n" not in text:
+    if increment_anchor not in text:
+        raise SystemExit("round increment anchor changed; inspect pinned upstream")
+    text = text.replace(increment_anchor, increment_patch, 1)
+
+spawn_anchor = '''\t// temporarily prevent spawning
+\tif (nuke_powerup_spawndelay > time)
+\t\treturn;
+
+'''
+spawn_patch = '''\t// temporarily prevent spawning
+\tif (nuke_powerup_spawndelay > time)
+\t\treturn;
+
+\t// SoE special rounds own the spawn stream and never fall through to
+\t// normal zombies/hellhounds while active.
+\tif (SoE_SpawnSpecialRoundEnemy())
+\t\treturn;
+
+'''
+if "SoE_SpawnSpecialRoundEnemy()" not in text:
+    if spawn_anchor not in text:
+        raise SystemExit("Spawn_Enemy anchor changed; inspect pinned upstream")
+    text = text.replace(spawn_anchor, spawn_patch, 1)
+
+total_anchor = '''\treturn count;
+}
+
+//
+// Rounds_PlayTransition'''
+total_patch = '''\tcount = SoE_AdjustRoundEnemyTotal(count);
+\treturn count;
+}
+
+//
+// Rounds_PlayTransition'''
+if "SoE_AdjustRoundEnemyTotal(count)" not in text:
+    if total_anchor not in text:
+        raise SystemExit("getZombieTotal return anchor changed; inspect pinned upstream")
+    text = text.replace(total_anchor, total_patch, 1)
+
+rounds_qc.write_text(text, encoding="utf-8")
 
 print("Shadows of Evil QuakeC overlay applied")
