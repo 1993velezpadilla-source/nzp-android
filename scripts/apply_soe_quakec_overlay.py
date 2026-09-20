@@ -35,6 +35,7 @@ include_lines = [
     "maps/soe/soe_harvest.qc\n",
     "maps/soe/soe_servant.qc\n",
     "maps/soe/soe_civil_protector.qc\n",
+    "maps/soe/soe_shield.qc\n",
     "maps/soe/soe_special_rounds.qc\n",
 ]
 if not all(line in text for line in include_lines):
@@ -49,7 +50,7 @@ text = main_qc.read_text(encoding="utf-8")
 
 # Map initialization hook.
 init_anchor = "\tGamemode_Init();\n"
-init_call = "\tSoE_Init();\n\tSoE_ResetTransportState();\n\tSoE_ResetServant();\n\tSoE_ResetCivilProtector();\n\tSoE_ResetSpecialRoundSchedule();\n"
+init_call = "\tSoE_Init();\n\tSoE_ResetTransportState();\n\tSoE_ResetServant();\n\tSoE_ResetCivilProtector();\n\tSoE_ResetShield();\n\tSoE_ResetSpecialRoundSchedule();\n"
 if init_call not in text:
     if init_anchor not in text:
         raise SystemExit("worldspawn hook anchor changed; inspect pinned upstream")
@@ -57,7 +58,7 @@ if init_call not in text:
 
 # Per-frame Beast/grapple/finale runtime hook.
 frame_anchor = "\tframecount = framecount + 1;\n"
-frame_call = "\tSoE_Frame();\n\tSoE_ProcessSpecialSpawns();\n"
+frame_call = "\tSoE_Frame();\n\tSoE_ShieldFrame();\n\tSoE_ProcessSpecialSpawns();\n"
 if frame_call not in text:
     if frame_anchor not in text:
         raise SystemExit("StartFrame hook anchor changed; inspect pinned upstream")
@@ -138,7 +139,7 @@ if special_ai_call not in text:
 damage_qc = root / "source" / "server" / "damage.qc"
 text = damage_qc.read_text(encoding="utf-8")
 damage_anchor = "void(entity victim, entity attacker, float damage, float d_style) DamageHandler = {\n"
-damage_call = damage_anchor + "\tif (SoE_HandleSpecialDamage(victim, attacker, damage, d_style))\n\t\treturn;\n\n"
+damage_call = damage_anchor + "\tif (SoE_HandleSpecialDamage(victim, attacker, damage, d_style))\n\t\treturn;\n\n\tif (SoE_ShieldAbsorbDamage(victim, attacker, damage, d_style))\n\t\treturn;\n\n"
 if "SoE_HandleSpecialDamage(victim, attacker, damage, d_style)" not in text:
     if damage_anchor not in text:
         raise SystemExit("DamageHandler hook anchor changed; inspect pinned upstream")
@@ -462,5 +463,25 @@ mbox_patch = '''float(entity user) MBOX_GetRandomBoxWeapon =
     float weapon_index = rint((random() * (MAX_BOX_WEAPONS - 1)));'''
 text = replace_once_or_die(text, mbox_anchor, mbox_patch, "Servant mystery-box injection")
 mbox_qc.write_text(text, encoding="utf-8")
+
+
+# Rocket Shield boost uses an unused gameplay impulse. Android/mobile HUD can
+# bind its dedicated Shield button to impulse 34 without stealing grenade/melee.
+weapon_core_qc = root / "source" / "server" / "weapons" / "weapon_core.qc"
+text = weapon_core_qc.read_text(encoding="utf-8")
+shield_impulse_anchor = '''\t\tcase 33:
+\t\t\tW_PrimeBetty();
+\t\t\tbreak;'''
+shield_impulse_patch = '''\t\tcase 33:
+\t\t\tW_PrimeBetty();
+\t\t\tbreak;
+\t\tcase 34:
+\t\t\tSoE_ShieldBoostInput();
+\t\t\tbreak;'''
+if "SoE_ShieldBoostInput();" not in text:
+    if shield_impulse_anchor not in text:
+        raise SystemExit("Shield impulse anchor changed; inspect pinned upstream")
+    text = text.replace(shield_impulse_anchor, shield_impulse_patch, 1)
+    weapon_core_qc.write_text(text, encoding="utf-8")
 
 print("Shadows of Evil QuakeC overlay applied")
