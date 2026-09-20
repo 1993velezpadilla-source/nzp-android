@@ -91,6 +91,12 @@ void() soe_spawn_margwa =
 
 entity() SoE_MargwaFindTarget =
 {
+    if (self.soe_reborn_owner != world &&
+        self.soe_reborn_owner.classname == "player" &&
+        !self.soe_reborn_owner.downed &&
+        !self.soe_reborn_owner.is_spectator)
+        return self.soe_reborn_owner;
+
     entity target = find(world, classname, "player");
     entity chosen = world;
     float best_distance = 999999;
@@ -199,7 +205,8 @@ void(entity victim, entity attacker) SoE_DestroyMargwaHead =
     // These head-release Parasites are additive and do not own the round budget.
     SoE_SpawnParasite(victim.origin, false);
 
-    if (attacker.classname == "player")
+    // Arch-Ovum ritual Margwas do not award the normal 500 head points.
+    if (attacker.classname == "player" && victim.soe_reborn_owner == world)
         Player_ChangeScore(attacker, 500, false);
 
     if (victim.soe_margwa_heads > 0) {
@@ -305,7 +312,9 @@ float() SoE_SpawnMargwaProxy =
     // Reborn Sword rituals spawn their Margwa at the active red circle rather
     // than at the generic boss marker. The regular scheduler still owns the
     // actual pooled-zombie spawn so round accounting stays consistent.
-    if (soe_reborn_pending_owner != world) {
+    soe_last_margwa_spawn_was_reborn = false;
+
+    if (soe_reborn_active_owner != world && soe_reborn_spawn_tag_remaining > 0) {
         reborn_marker = spawn();
         reborn_marker.classname = "soe_reborn_temp_margwa_marker";
         reborn_marker.origin = soe_reborn_pending_origin;
@@ -336,11 +345,16 @@ float() SoE_SpawnMargwaProxy =
     slot.soe_special_type = SOE_SPECIAL_MARGWA;
     slot.soe_margwa_heads = 3;
 
-    if (soe_reborn_pending_owner != world) {
-        slot.soe_reborn_owner = soe_reborn_pending_owner;
-        slot.soe_reborn_circle_bit = soe_reborn_pending_circle_bit;
-        soe_reborn_pending_owner = world;
-        soe_reborn_pending_circle_bit = 0;
+    if (soe_reborn_active_owner != world && soe_reborn_spawn_tag_remaining > 0) {
+        slot.soe_reborn_owner = soe_reborn_active_owner;
+        slot.soe_reborn_circle_bit = soe_reborn_active_circle_bit;
+        soe_reborn_spawn_tag_remaining = soe_reborn_spawn_tag_remaining - 1;
+        soe_last_margwa_spawn_was_reborn = true;
+
+        if (soe_reborn_spawn_tag_remaining <= 0) {
+            soe_reborn_pending_owner = world;
+            soe_reborn_pending_circle_bit = 0;
+        }
     } else {
         slot.soe_reborn_owner = world;
         slot.soe_reborn_circle_bit = 0;
@@ -390,7 +404,8 @@ void() SoE_ProcessSpecialSpawns =
 
             // Only a natural scheduled spawn advances the next natural boss
             // round. Ritual/quest spawns leave this calendar untouched.
-            if (soe_next_regular_margwa_round == rounds)
+            if (soe_next_regular_margwa_round == rounds &&
+                !soe_last_margwa_spawn_was_reborn)
                 soe_next_regular_margwa_round = rounds + 5 + floor(random() * 2);
         }
     }
