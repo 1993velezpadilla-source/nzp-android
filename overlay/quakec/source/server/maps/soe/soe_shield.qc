@@ -46,13 +46,13 @@ void(entity player) SoE_ShieldGive =
 {
     player.soe_has_shield = true;
 
-    if (player.soe_shield_goddard_unlocked) {
-        player.soe_shield_max_durability = 24;
+    // Goddard upgrades the rocket count, not the shield's health.
+    player.soe_shield_max_durability = 16;
+
+    if (player.soe_shield_goddard_unlocked)
         player.soe_shield_boost_max = 4;
-    } else {
-        player.soe_shield_max_durability = 16;
+    else
         player.soe_shield_boost_max = 3;
-    }
 
     player.soe_shield_durability = player.soe_shield_max_durability;
     player.soe_shield_boosts = player.soe_shield_boost_max;
@@ -256,8 +256,6 @@ void(entity player) SoE_ShieldFinishBoost =
             player.soe_shield_goddard_unlocked = true;
             player.soe_shield_boost_max = 4;
             player.soe_shield_boosts = 4;
-            player.soe_shield_max_durability = 24;
-            player.soe_shield_durability = 24;
 
             centerprint(player, "Goddard Apparatus Unlocked");
         }
