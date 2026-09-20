@@ -24,6 +24,7 @@ FILES = {
     "g1": "g1_blockout.json",
     "g2": "g2_canal_blockout.json",
     "g3": "g3_footlight_blockout.json",
+    "g4": "g4_waterfront_blockout.json",
 }
 
 data = {}
@@ -36,7 +37,7 @@ for name, filename in FILES.items():
 if data["manifest"]["id"] != "soe":
     raise SystemExit("manifest id must be soe")
 
-for name in ("quest", "side", "audit", "lore", "achievements", "districts", "enemies", "world", "beast", "buildables", "finale", "geometry", "topology", "g1", "g2", "g3"):
+for name in ("quest", "side", "audit", "lore", "achievements", "districts", "enemies", "world", "beast", "buildables", "finale", "geometry", "topology", "g1", "g2", "g3", "g4"):
     if data[name].get("map") != "soe":
         raise SystemExit(f"{name} map id mismatch")
 
@@ -204,6 +205,31 @@ if g3_random != {202: 3, 302: 3}:
 if data["g3"].get("uncertain", [{}])[0].get("status") != "do_not_invent":
     raise SystemExit("Footlight Fumigator uncertainty guard was removed")
 
+# G4 Waterfront blockout contract.
+if data["g4"].get("phase") != "G4" or data["g4"].get("district") != "waterfront":
+    raise SystemExit("Waterfront G4 blockout metadata changed unexpectedly")
+g4_anchors = data["g4"].get("gameplayAnchors", [])
+g4_by_name = {a.get("targetname"): a for a in g4_anchors if a.get("targetname")}
+for required in {
+    "soe_g4_belt_grapple_a", "soe_g4_belt_grapple_b", "soe_g4_belt_smash", "soe_g4_belt_pickup",
+    "soe_g4_anvil_smash", "soe_g4_anvil_ritual", "soe_g4_waterfront_perk_slot",
+    "soe_g4_waterfront_perk_power", "soe_g4_shortcut_power", "soe_g4_ovum_crate_smash", "soe_g4_rift_smash"
+}:
+    if required not in g4_by_name:
+        raise SystemExit(f"Waterfront G4 anchor missing: {required}")
+if g4_by_name["soe_g4_belt_pickup"].get("spawnflags") != 1:
+    raise SystemExit("Waterfront Championship Belt must start dormant")
+if g4_by_name["soe_g4_belt_smash"].get("target") != "soe_g4_belt_pickup":
+    raise SystemExit("Waterfront Belt smash must enable the dormant pickup")
+if g4_by_name["soe_g4_anvil_smash"].get("target") != "soe_g4_anvil_access":
+    raise SystemExit("Anvil Beast smash must open physical gym access")
+doors = {d["id"]: d for d in data["g4"].get("buyableDoors", [])}
+if doors.get("soe_g4_highstreet_side_gate", {}).get("cost") != 1250:
+    raise SystemExit("Waterfront High Street side gate must retain documented 1250 cost")
+g4_random = {r["group"]: len(r["candidates"]) for r in data["g4"].get("randomized", [])}
+if g4_random != {203: 3, 303: 3}:
+    raise SystemExit("Waterfront shield/fuse randomized groups changed unexpectedly")
+
 # Runtime coverage anti-regression: documented critical systems must have
 # mapper-facing/runtime implementations, not just JSON descriptions.
 overlay_dir = ROOT / "overlay" / "quakec" / "source" / "server" / "maps" / "soe"
@@ -279,6 +305,8 @@ if 'mapname == "soe_g2"' not in qc_text:
     raise SystemExit("SoE G2 blockout must activate the Shadows runtime")
 if 'mapname == "soe_g3"' not in qc_text:
     raise SystemExit("SoE G3 blockout must activate the Shadows runtime")
+if 'mapname == "soe_g4"' not in qc_text:
+    raise SystemExit("SoE G4 blockout must activate the Shadows runtime")
 
 patcher = (ROOT / "scripts" / "apply_soe_quakec_overlay.py").read_text(encoding="utf-8")
 for hook in {
