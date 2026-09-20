@@ -36,6 +36,7 @@ float(entity ent) SoE_IsCustomSpecialBody =
 entity() getFreeZombieEnt;
 void(entity where) spawn_a_zombieB;
 entity(entity blarg) find_new_enemy;
+entity(vector org, float counts_round) SoE_SpawnParasite;
 void(entity victim, entity attacker, float damage, float d_style) DamageHandler;
 void(entity who, float value, float impacted_by_2x_points) Player_ChangeScore;
 
@@ -192,7 +193,10 @@ void(entity victim) SoE_SpawnMargwaHeart =
 void(entity victim, entity attacker) SoE_DestroyMargwaHead =
 {
     victim.soe_margwa_heads = victim.soe_margwa_heads - 1;
-    soe_pending_parasites = soe_pending_parasites + 1;
+
+    // Every destroyed Margwa head releases one Parasite at the boss location.
+    // These head-release Parasites are additive and do not own the round budget.
+    SoE_SpawnParasite(victim.origin, false);
 
     if (attacker.classname == "player")
         Player_ChangeScore(attacker, 500, false);
