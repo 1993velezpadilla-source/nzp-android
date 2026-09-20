@@ -1,0 +1,51 @@
+{
+  "schemaVersion": 1,
+  "map": "soe",
+  "challenges": [
+    {
+      "id": "beginning_of_end",
+      "name": "The Beginning of the End",
+      "condition": "complete all four character rituals"
+    },
+    {
+      "id": "from_shadows",
+      "name": "From the Shadows",
+      "condition": "spot the Shadowman five times in one game"
+    },
+    {
+      "id": "gobblegum_pack",
+      "name": "Not out of GobbleGum!",
+      "condition": "purchase/chew each GobbleGum type equipped in the player's pack"
+    },
+    {
+      "id": "sorry_were_dead",
+      "name": "Sorry, we're DEAD",
+      "condition": "kill 10 zombies while they are inside a store in one game"
+    },
+    {
+      "id": "strike",
+      "name": "Strike!",
+      "condition": "kill at least 10 zombies with one Rocket Shield boost"
+    },
+    {
+      "id": "beat_cop",
+      "name": "Beat CoP",
+      "condition": "summon Civil Protector in all four summon regions in one game"
+    },
+    {
+      "id": "spider_fly",
+      "name": "The Spider and the Fly",
+      "condition": "kill 10 zombies ensnared by Widow's Wine grenades"
+    },
+    {
+      "id": "margwa_party",
+      "name": "Margwa Party",
+      "condition": "personally kill two Margwas in one round"
+    },
+    {
+      "id": "parasite_seeing",
+      "name": "Parasite-Seeing",
+      "condition": "kill five Parasites while riding the tram"
+    }
+  ]
+}
