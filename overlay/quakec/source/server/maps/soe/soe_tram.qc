@@ -18,6 +18,16 @@ void() SoE_ResetTransportState =
     soe_tram_destination = 0;
     soe_tram_in_transit = false;
     soe_tram_route_sequence = 0;
+
+    // Three unique glyphs are selected from the nine-symbol pool each match.
+    soe_tram_symbol_a = floor(random() * 9);
+    soe_tram_symbol_b = floor(random() * 9);
+    while (soe_tram_symbol_b == soe_tram_symbol_a)
+        soe_tram_symbol_b = floor(random() * 9);
+
+    soe_tram_symbol_c = floor(random() * 9);
+    while (soe_tram_symbol_c == soe_tram_symbol_a || soe_tram_symbol_c == soe_tram_symbol_b)
+        soe_tram_symbol_c = floor(random() * 9);
 };
 
 void() SoE_TramControllerUse =
