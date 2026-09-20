@@ -205,16 +205,16 @@
       "origin": [
         -80,
         1016,
-        272
+        288
       ],
       "targetname": "soe_g2_ruby_grapple_dest"
     },
     {
       "classname": "soe_beast_shock",
       "origin": [
-        -48,
-        1080,
-        240
+        -112,
+        872,
+        40
       ],
       "targetname": "soe_g2_ruby_power",
       "target": "soe_g2_ruby_access_blocker"
@@ -222,9 +222,9 @@
     {
       "classname": "soe_ritual_controller",
       "origin": [
-        -96,
-        1120,
-        272
+        -112,
+        1104,
+        160
       ],
       "style": 2,
       "wait": 20,
@@ -233,9 +233,9 @@
     {
       "classname": "soe_ritual_keeper_spawn",
       "origin": [
-        -160,
-        1080,
-        272
+        -176,
+        1064,
+        160
       ],
       "style": 2,
       "targetname": "soe_g2_ruby_keeper_a"
@@ -243,9 +243,9 @@
     {
       "classname": "soe_ritual_keeper_spawn",
       "origin": [
-        -32,
-        1080,
-        272
+        -48,
+        1064,
+        160
       ],
       "style": 2,
       "targetname": "soe_g2_ruby_keeper_b"
@@ -253,9 +253,9 @@
     {
       "classname": "soe_ritual_keeper_spawn",
       "origin": [
-        -160,
+        -176,
         1160,
-        272
+        160
       ],
       "style": 2,
       "targetname": "soe_g2_ruby_keeper_c"
@@ -263,9 +263,9 @@
     {
       "classname": "soe_ritual_keeper_spawn",
       "origin": [
-        -32,
+        -48,
         1160,
-        272
+        160
       ],
       "style": 2,
       "targetname": "soe_g2_ruby_keeper_d"
@@ -432,7 +432,7 @@
     "player can travel Junction -> lower canal -> High Street -> station without unintended jumps",
     "Detective Badge pickup remains dormant until both the lower-canal Beast shock and Badge-box Beast smash have fired the 2-hit target counter",
     "Ruby Rabbit grapple lands in open space and its power interaction opens human access",
-    "Ruby Rabbit ritual style 2 has four Keeper spawn markers and produces Gateworm 2 progression",
+    "Ruby Rabbit ritual style 2 sits on the second-floor arena with four Keeper spawn markers and produces Gateworm 2 progression",
     "rotating perk slot uses native perk_random trio and separate Beast power panel",
     "Fumigator group 103 resolves exactly one of two candidates",
     "Canal shield part group 201 resolves exactly one of three style-2 candidates",
@@ -447,5 +447,21 @@
     "https://codzombified.blogspot.com/2015/12/canal-district-high-street-map-layout.html",
     "https://www.codzombiesguides.com/main-quests/black-ops-3/shadows-of-evil/",
     "https://codzombie.com/atlas/shadows-of-evil"
-  ]
+  ],
+  "rubyRabbitFloorContract": {
+    "groundFloor": [
+      "human/front access after Beast shock",
+      "small-radio anchor",
+      "stair start"
+    ],
+    "secondFloor": [
+      "Detective ritual arena",
+      "Keeper spawn envelope"
+    ],
+    "thirdFloor": [
+      "Beast grapple/drop entry",
+      "descent toward power switch"
+    ],
+    "sourceStatus": "public layout diagram + walkthrough; exact dimensions remain provisional"
+  }
 }
