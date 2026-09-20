@@ -1,0 +1,571 @@
+{
+  "schemaVersion": 1,
+  "map": "soe",
+  "phase": "G4",
+  "district": "waterfront",
+  "status": "provisional_blockout_spec",
+  "scalePolicy": "Topology- and traversal-first clean-room blockout. Coordinates remain provisional until timing/sightline calibration.",
+  "attach": {
+    "g1Door": "junction_to_waterfront_stub",
+    "gateCenter": [
+      320,
+      -448,
+      64
+    ],
+    "forwardAxis": "-Y",
+    "localOrigin": [
+      320,
+      -464,
+      0
+    ]
+  },
+  "proposedGlobalBounds": {
+    "mins": [
+      -320,
+      -1760,
+      -128
+    ],
+    "maxs": [
+      896,
+      -384,
+      544
+    ]
+  },
+  "subregions": [
+    {
+      "id": "waterfront_entry",
+      "label": "Waterfront bottleneck / first Beast routes",
+      "mins": [
+        96,
+        -704,
+        0
+      ],
+      "maxs": [
+        672,
+        -448,
+        192
+      ]
+    },
+    {
+      "id": "waterfront_lower",
+      "label": "Lower docks / Anvil approach",
+      "mins": [
+        64,
+        -1216,
+        -64
+      ],
+      "maxs": [
+        704,
+        -704,
+        224
+      ]
+    },
+    {
+      "id": "waterfront_high",
+      "label": "Waterfront High Street / powered shortcut network",
+      "mins": [
+        64,
+        -1280,
+        128
+      ],
+      "maxs": [
+        704,
+        -736,
+        352
+      ]
+    },
+    {
+      "id": "anvil_gym",
+      "label": "The Anvil boxing gym ritual room",
+      "mins": [
+        -224,
+        -1216,
+        0
+      ],
+      "maxs": [
+        64,
+        -832,
+        320
+      ]
+    },
+    {
+      "id": "waterfront_station",
+      "label": "Waterfront Tram Station",
+      "mins": [
+        224,
+        -1600,
+        0
+      ],
+      "maxs": [
+        704,
+        -1216,
+        320
+      ]
+    },
+    {
+      "id": "waterfront_rift",
+      "label": "Waterfront surface Rift pocket",
+      "mins": [
+        64,
+        -944,
+        -64
+      ],
+      "maxs": [
+        224,
+        -768,
+        128
+      ]
+    }
+  ],
+  "routeContracts": [
+    "Junction gate -> narrow Waterfront entry",
+    "entry -> Championship Belt grapple chain / hanging crate",
+    "entry -> Beast-opened Rift pocket",
+    "entry -> lower docks and Anvil approach",
+    "lower docks -> Anvil Beast-smash door -> boxing-ring ritual",
+    "lower docks -> station approach",
+    "station approach -> 1250 side gate -> High Street",
+    "High Street -> random perk / fuse / shield-part / Apothicon statue",
+    "High Street -> powered shortcut back toward Waterfront entrance",
+    "High Street -> two drop-down escape envelopes",
+    "station -> later G7 Tram path/symbol sightline"
+  ],
+  "gameplayAnchors": [
+    {
+      "classname": "soe_civil_call_panel",
+      "origin": [
+        544,
+        -608,
+        48
+      ],
+      "style": 4,
+      "cost": 2000,
+      "targetname": "soe_g4_civil_panel_waterfront"
+    },
+    {
+      "classname": "soe_beast_pedestal",
+      "origin": [
+        224,
+        -608,
+        32
+      ],
+      "targetname": "soe_g4_beast_entry"
+    },
+    {
+      "classname": "soe_beast_pedestal",
+      "origin": [
+        592,
+        -976,
+        32
+      ],
+      "targetname": "soe_g4_beast_lower"
+    },
+    {
+      "classname": "soe_beast_pedestal",
+      "origin": [
+        208,
+        -1136,
+        176
+      ],
+      "targetname": "soe_g4_beast_high"
+    },
+    {
+      "classname": "soe_beast_grapple",
+      "origin": [
+        256,
+        -736,
+        176
+      ],
+      "target": "soe_g4_belt_grapple_dest_a",
+      "targetname": "soe_g4_belt_grapple_a"
+    },
+    {
+      "classname": "info_notnull",
+      "origin": [
+        320,
+        -800,
+        256
+      ],
+      "targetname": "soe_g4_belt_grapple_dest_a"
+    },
+    {
+      "classname": "soe_beast_grapple",
+      "origin": [
+        352,
+        -816,
+        240
+      ],
+      "target": "soe_g4_belt_grapple_dest_b",
+      "targetname": "soe_g4_belt_grapple_b"
+    },
+    {
+      "classname": "info_notnull",
+      "origin": [
+        448,
+        -896,
+        272
+      ],
+      "targetname": "soe_g4_belt_grapple_dest_b"
+    },
+    {
+      "classname": "soe_beast_smash",
+      "origin": [
+        496,
+        -912,
+        240
+      ],
+      "target": "soe_g4_belt_pickup",
+      "targetname": "soe_g4_belt_smash"
+    },
+    {
+      "classname": "soe_quest_pickup",
+      "origin": [
+        496,
+        -928,
+        176
+      ],
+      "style": 5,
+      "spawnflags": 1,
+      "targetname": "soe_g4_belt_pickup",
+      "useprint_string_1": "Hold %b to Pick Up Championship Belt"
+    },
+    {
+      "classname": "soe_beast_smash",
+      "origin": [
+        -64,
+        -1024,
+        48
+      ],
+      "target": "soe_g4_anvil_access",
+      "targetname": "soe_g4_anvil_smash"
+    },
+    {
+      "classname": "soe_ritual_controller",
+      "origin": [
+        -96,
+        -1088,
+        48
+      ],
+      "style": 4,
+      "wait": 20,
+      "targetname": "soe_g4_anvil_ritual"
+    },
+    {
+      "classname": "soe_ritual_keeper_spawn",
+      "origin": [
+        -176,
+        -1152,
+        48
+      ],
+      "style": 4,
+      "targetname": "soe_g4_anvil_keeper_a"
+    },
+    {
+      "classname": "soe_ritual_keeper_spawn",
+      "origin": [
+        -16,
+        -1152,
+        48
+      ],
+      "style": 4,
+      "targetname": "soe_g4_anvil_keeper_b"
+    },
+    {
+      "classname": "soe_ritual_keeper_spawn",
+      "origin": [
+        -176,
+        -992,
+        48
+      ],
+      "style": 4,
+      "targetname": "soe_g4_anvil_keeper_c"
+    },
+    {
+      "classname": "soe_ritual_keeper_spawn",
+      "origin": [
+        -16,
+        -992,
+        48
+      ],
+      "style": 4,
+      "targetname": "soe_g4_anvil_keeper_d"
+    },
+    {
+      "classname": "perk_random",
+      "origin": [
+        384,
+        -1120,
+        176
+      ],
+      "spawnflags": 14,
+      "targetname": "soe_g4_waterfront_perk_slot"
+    },
+    {
+      "classname": "soe_perk_power_panel",
+      "origin": [
+        416,
+        -1120,
+        184
+      ],
+      "target": "soe_g4_waterfront_perk_slot",
+      "targetname": "soe_g4_waterfront_perk_power"
+    },
+    {
+      "classname": "soe_beast_shock",
+      "origin": [
+        560,
+        -1040,
+        184
+      ],
+      "target": "soe_g4_high_shortcut",
+      "targetname": "soe_g4_shortcut_power"
+    },
+    {
+      "classname": "soe_beast_smash",
+      "origin": [
+        160,
+        -1184,
+        176
+      ],
+      "target": "soe_g4_waterfront_ovum_statue",
+      "targetname": "soe_g4_ovum_crate_smash"
+    },
+    {
+      "classname": "soe_sword_statue",
+      "origin": [
+        160,
+        -1184,
+        160
+      ],
+      "style": 8,
+      "targetname": "soe_g4_waterfront_ovum_statue"
+    },
+    {
+      "classname": "soe_beast_smash",
+      "origin": [
+        128,
+        -848,
+        -16
+      ],
+      "target": "soe_g4_rift_door",
+      "targetname": "soe_g4_rift_smash"
+    },
+    {
+      "classname": "info_notnull",
+      "origin": [
+        128,
+        -848,
+        -24
+      ],
+      "targetname": "soe_g4_rift_visual_anchor"
+    },
+    {
+      "classname": "info_notnull",
+      "origin": [
+        448,
+        -1376,
+        48
+      ],
+      "targetname": "soe_g4_station_platform_anchor"
+    },
+    {
+      "classname": "info_notnull",
+      "origin": [
+        520,
+        -1432,
+        96
+      ],
+      "targetname": "soe_g4_symbol_sightline_anchor"
+    },
+    {
+      "classname": "info_notnull",
+      "origin": [
+        48,
+        -1112,
+        48
+      ],
+      "targetname": "soe_g4_build_table_anchor"
+    }
+  ],
+  "poweredGeometry": [
+    {
+      "classname": "soe_powered_door",
+      "targetname": "soe_g4_anvil_access",
+      "mins": [
+        -80,
+        -848,
+        0
+      ],
+      "maxs": [
+        0,
+        -824,
+        112
+      ]
+    },
+    {
+      "classname": "soe_powered_door",
+      "targetname": "soe_g4_high_shortcut",
+      "mins": [
+        624,
+        -1064,
+        112
+      ],
+      "maxs": [
+        648,
+        -984,
+        224
+      ]
+    },
+    {
+      "classname": "soe_powered_door",
+      "targetname": "soe_g4_rift_door",
+      "mins": [
+        112,
+        -784,
+        -64
+      ],
+      "maxs": [
+        176,
+        -760,
+        64
+      ]
+    }
+  ],
+  "buyableDoors": [
+    {
+      "id": "soe_g4_highstreet_side_gate",
+      "cost": 1250,
+      "mins": [
+        544,
+        -1232,
+        0
+      ],
+      "maxs": [
+        624,
+        -1208,
+        128
+      ],
+      "sourceStatus": "documented"
+    }
+  ],
+  "randomized": [
+    {
+      "group": 203,
+      "system": "Rocket Shield Waterfront rockets",
+      "entity": "soe_shield_part",
+      "style": 4,
+      "candidates": [
+        [
+          176,
+          -1040,
+          184
+        ],
+        [
+          352,
+          -1136,
+          184
+        ],
+        [
+          560,
+          -1200,
+          184
+        ]
+      ]
+    },
+    {
+      "group": 303,
+      "system": "Civil Protector Waterfront fuse",
+      "entity": "soe_civil_fuse",
+      "style": 4,
+      "candidates": [
+        [
+          272,
+          -1240,
+          184
+        ],
+        [
+          416,
+          -1296,
+          184
+        ],
+        [
+          560,
+          -1344,
+          184
+        ]
+      ]
+    }
+  ],
+  "detailAnchors": [
+    {
+      "classname": "mystery_box_tp_spot",
+      "origin": [
+        496,
+        -704,
+        32
+      ],
+      "status": "publicly documented Waterfront part-1 box location envelope"
+    },
+    {
+      "classname": "info_notnull",
+      "origin": [
+        560,
+        -640,
+        40
+      ],
+      "targetname": "soe_g4_gobblegum_anchor",
+      "status": "presentation anchor; no native GobbleGum runtime yet"
+    },
+    {
+      "classname": "info_notnull",
+      "origin": [
+        608,
+        -736,
+        40
+      ],
+      "targetname": "soe_g4_kuda_wallbuy_anchor",
+      "status": "weapon-class anchor; exact BO3 weapon mapping deferred"
+    },
+    {
+      "classname": "soe_chain_trap_volume",
+      "origin": [
+        600,
+        -864,
+        48
+      ],
+      "targetname": "soe_g4_chain_volume"
+    },
+    {
+      "classname": "soe_chain_trap_switch",
+      "origin": [
+        560,
+        -864,
+        48
+      ],
+      "target": "soe_g4_chain_volume",
+      "cost": 1000,
+      "wait": 30
+    }
+  ],
+  "acceptance": [
+    "player can travel Junction -> Waterfront lower -> Anvil / station",
+    "Championship Belt remains dormant until the elevated Beast grapple/smash route is completed",
+    "Anvil is physically inaccessible until its Beast smash opens the gym door",
+    "Anvil ritual style 4 has four Keeper spawn markers centered around the ring",
+    "documented High Street side gate costs 1250",
+    "High Street contains randomized perk, fuse, shield part and hidden Ovum statue",
+    "Waterfront shield group 203 resolves one of three style-4 candidates",
+    "Waterfront fuse group 303 resolves one of three style-4 candidates",
+    "powered High Street shortcut returns toward entrance and two drop envelopes remain possible",
+    "surface Rift is present but cannot teleport until G5",
+    "station retains room for G7 moving Tram and symbol visibility",
+    "major lanes preserve Margwa traversal envelope"
+  ],
+  "references": [
+    "https://codzombified.blogspot.com/2015/11/shadows-of-evil-waterfront-area-map.html",
+    "https://codzombified.blogspot.com/2015/11/shadows-of-evil-waterfront-area-map_14.html",
+    "https://codzombified.blogspot.com/2015/11/shadows-of-evil-waterfront-high-street.html",
+    "https://www.codzombie.com/maps/shadows-of-evil",
+    "https://steamcommunity.com/sharedfiles/filedetails/?id=550319350"
+  ]
+}
