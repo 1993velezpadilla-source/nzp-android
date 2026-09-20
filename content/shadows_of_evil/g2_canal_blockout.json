@@ -177,7 +177,7 @@
         -24
       ],
       "targetname": "soe_g2_badge_smash",
-      "target": "soe_g2_badge_pickup"
+      "target": "soe_g2_badge_gate"
     },
     {
       "classname": "soe_quest_pickup",
@@ -325,6 +325,27 @@
         48
       ],
       "targetname": "soe_g2_canal_build_table_anchor"
+    },
+    {
+      "classname": "soe_beast_shock",
+      "origin": [
+        560,
+        1000,
+        -8
+      ],
+      "targetname": "soe_g2_badge_power",
+      "target": "soe_g2_badge_gate"
+    },
+    {
+      "classname": "soe_target_counter",
+      "origin": [
+        352,
+        936,
+        0
+      ],
+      "soe_required_hits": 2,
+      "targetname": "soe_g2_badge_gate",
+      "target": "soe_g2_badge_pickup"
     }
   ],
   "randomized": [
@@ -408,7 +429,7 @@
   "tramPolicy": "G2 builds the Canal station/platform and symbol sightline envelope, but moving Tram runtime is integrated in G7 after all three stations exist.",
   "acceptance": [
     "player can travel Junction -> lower canal -> High Street -> station without unintended jumps",
-    "Badge requires Beast smash before human pickup",
+    "Detective Badge pickup remains dormant until both the lower-canal Beast shock and Badge-box Beast smash have fired the 2-hit target counter",
     "Ruby Rabbit grapple lands in open space and its power interaction opens human access",
     "Ruby Rabbit ritual style 2 has four Keeper spawn markers and produces Gateworm 2 progression",
     "rotating perk slot uses native perk_random trio and separate Beast power panel",
