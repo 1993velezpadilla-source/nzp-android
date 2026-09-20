@@ -562,12 +562,124 @@
 {
 "classname" "soe_beast_shock"
 "targetname" "soe_g1_pen_crane_power"
+"target" "soe_g1_pen_pickup"
 "origin" "160 320 40"
 }
 {
 "classname" "soe_beast_shock"
 "targetname" "soe_g1_rift_access_power"
 "origin" "80 -352 40"
+}
+{
+"classname" "soe_beast_grapple"
+"target" "soe_g1_nero_grapple_dest"
+"origin" "-424 272 160"
+}
+{
+"classname" "perk_revive"
+"angles" "0 90 0"
+"targetname" "soe_g1_quick_revive"
+"origin" "-560 -184 40"
+}
+{
+"classname" "soe_perk_power_panel"
+"target" "soe_g1_quick_revive"
+"targetname" "soe_g1_quick_revive_power"
+"origin" "-528 -184 48"
+}
+{
+"classname" "perk_staminup"
+"angles" "0 180 0"
+"targetname" "soe_g1_staminup"
+"origin" "304 176 40"
+}
+{
+"classname" "soe_perk_power_panel"
+"target" "soe_g1_staminup"
+"targetname" "soe_g1_staminup_power"
+"origin" "336 176 48"
+}
+{
+"classname" "soe_beast_pedestal"
+"targetname" "soe_g1_beast_junction"
+"origin" "208 -160 32"
+}
+{
+"classname" "soe_civil_call_panel"
+"style" "1"
+"cost" "2000"
+"targetname" "soe_g1_civil_panel_junction"
+"origin" "392 -248 40"
+}
+{
+"classname" "soe_quest_pickup"
+"style" "2"
+"spawnflags" "1"
+"targetname" "soe_g1_pen_pickup"
+"useprint_string_1" "Hold %b to Pick Up Lawyer's Pen"
+"origin" "144 304 40"
+}
+{
+"classname" "soe_fumigator_pickup"
+"soe_random_group" "101"
+"targetname" "soe_g1_fum_spawn_a"
+"origin" "-592 -144 32"
+}
+{
+"classname" "soe_fumigator_pickup"
+"soe_random_group" "101"
+"targetname" "soe_g1_fum_spawn_b"
+"origin" "-520 -176 40"
+}
+{
+"classname" "soe_fumigator_pickup"
+"soe_random_group" "101"
+"targetname" "soe_g1_fum_spawn_c"
+"origin" "-360 208 40"
+}
+{
+"classname" "soe_fumigator_pickup"
+"soe_random_group" "102"
+"targetname" "soe_g1_fum_junction_a"
+"origin" "160 352 40"
+}
+{
+"classname" "soe_fumigator_pickup"
+"soe_random_group" "102"
+"targetname" "soe_g1_fum_junction_b"
+"origin" "272 208 40"
+}
+{
+"classname" "soe_fumigator_pickup"
+"soe_random_group" "102"
+"targetname" "soe_g1_fum_junction_c"
+"origin" "160 -80 32"
+}
+{
+"classname" "soe_fumigator_pickup"
+"soe_random_group" "102"
+"targetname" "soe_g1_fum_junction_d"
+"origin" "536 96 40"
+}
+{
+"classname" "info_notnull"
+"targetname" "soe_g1_rk5_wallbuy_anchor"
+"origin" "-304 -208 56"
+}
+{
+"classname" "info_notnull"
+"targetname" "soe_g1_sheiva_wallbuy_anchor"
+"origin" "-704 208 56"
+}
+{
+"classname" "info_notnull"
+"targetname" "soe_g1_lcar9_wallbuy_anchor"
+"origin" "176 -208 56"
+}
+{
+"classname" "info_notnull"
+"targetname" "soe_g1_krm262_wallbuy_anchor"
+"origin" "416 112 56"
 }
 {
 "classname" "light"
