@@ -1,0 +1,85 @@
+{
+  "schemaVersion": 1,
+  "id": "soe",
+  "displayName": "Shadows of Evil",
+  "codename": "zm_zod",
+  "setting": "Morg City, Dimension 63",
+  "mode": "round_based",
+  "target": "NZ:P / Vril mobile overlay",
+  "fidelityGoal": "mechanically complete recreation with mobile-safe geometry and effects",
+  "sourceGeometry": {
+    "preferred": "author-approved editable source from Klevi Alushi's unfinished World at War remake",
+    "publicRelease": "nazi_zombie_soe_t2.exe",
+    "publicReleaseStatus": "unfinished binary installer; no editable Radiant .map source located",
+    "redistribution": "do_not_bundle_without_permission",
+    "fallback": "clean-room geometry recreation from public visual references and measurements"
+  },
+  "upstreamPins": {
+    "nzportable": "db9dde64a781f1f6c237a81107caea5ec0f58b21",
+    "quakec": "04bd544172e16193162277a7c356c827e9653b06",
+    "vrilEngine": "fd345000547a1278b45d86c86b2ca130c592a83f",
+    "assets": "c8135a66e00bb64577912fbf792f8fef7f47658e"
+  },
+  "areas": [
+    "Easy Street",
+    "Junction",
+    "Canal District",
+    "Footlight District",
+    "Waterfront District",
+    "Nero's Landing",
+    "Ruby Rabbit",
+    "Black Lace Burlesque",
+    "Anvil Boxing Gym",
+    "Canal Train Station",
+    "Footlight Train Station",
+    "Waterfront Train Station",
+    "Rift / Subway",
+    "Sacred Place / Pack-a-Punch",
+    "Tram network"
+  ],
+  "systems": [
+    "Beast Mode",
+    "ritual items and four district rituals",
+    "Gateworms and fifth ritual",
+    "Pack-a-Punch portal",
+    "Tram and sword-symbol visibility",
+    "Apothicon Sword and soul egg",
+    "Arch-Ovum sword upgrade",
+    "Shadowman main quest",
+    "flag defense sequences",
+    "final infinite-Margwa / infinite-Beast phase",
+    "Civil Protector",
+    "Rocket Shield / Goddard Apparatus",
+    "Apothicon Servant",
+    "Fumigator and Harvest Pods",
+    "Margwa boss",
+    "Parasites",
+    "Insanity Elementals",
+    "Keepers",
+    "randomized Jugger-Nog / Speed Cola / Double Tap districts",
+    "Mystery Box",
+    "GobbleGum hooks",
+    "side Easter eggs",
+    "telephone / lore interactables"
+  ],
+  "classicRules": {
+    "finalMainQuestPlayersRequired": 4,
+    "finalTrainStationsRequired": 3,
+    "packAPunchCost": 5000,
+    "tramCost": 500,
+    "civilProtectorCost": 2000,
+    "districtDoorCost": 1000,
+    "easyStreetExitCost": 500
+  },
+  "portableOptions": {
+    "classicCoop": "preserve original four-player finale",
+    "soloCompatibleFinale": "optional; emulate three synchronized station shocks with timed sequential objectives while preserving the same train/keeper finale",
+    "graphicsPresets": [
+      "low",
+      "medium",
+      "high",
+      "max"
+    ],
+    "classicEnhancedToggle": true
+  }
+}
