@@ -101,6 +101,12 @@ if data["finale"]["fourPlayerFinale"]["originalRequiresPlayers"] != 4:
 if len(data["side"]["sideQuests"]) < 16:
     raise SystemExit("one or more tracked SoE side quests/events disappeared")
 
+mask_quest = next((q for q in data["side"]["sideQuests"] if q["id"] == "margwa_head"), None)
+if not mask_quest:
+    raise SystemExit("Margwa Mask side quest is missing")
+if mask_quest.get("requiredMargwaKills") != 6 or mask_quest.get("targetCount") != 6 or mask_quest.get("maxTramRides") != 2:
+    raise SystemExit("Margwa Mask canonical 6-kill / 6-target / 2-ride rules changed")
+
 
 # Runtime coverage anti-regression: documented critical systems must have
 # mapper-facing/runtime implementations, not just JSON descriptions.
@@ -143,6 +149,8 @@ required_runtime_symbols = {
     "soe_finale_station_box": "finale station shock box",
     "soe_finale_train_hit": "finale tram/Gateworm event",
     "soe_finale_keeper": "finale central Keeper",
+    "soe_margwa_mask_heart": "Margwa Mask Tram heart target",
+    "soe_margwa_mask_spawn": "Margwa Mask pickup spawn",
 }
 for symbol, description in required_runtime_symbols.items():
     if symbol not in qc_text:
