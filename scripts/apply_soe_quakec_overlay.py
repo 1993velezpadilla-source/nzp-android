@@ -32,6 +32,7 @@ include_lines = [
     "maps/soe/soe_tram.qc\n",
     "maps/soe/soe_specials.qc\n",
     "maps/soe/soe_special_movers.qc\n",
+    "maps/soe/soe_harvest.qc\n",
     "maps/soe/soe_special_rounds.qc\n",
 ]
 if not all(line in text for line in include_lines):
@@ -229,7 +230,7 @@ rounds_qc = root / "source" / "server" / "rounds.qc"
 text = rounds_qc.read_text(encoding="utf-8")
 
 increment_anchor = "\trounds = rounds + 1;\n"
-increment_patch = "\trounds = rounds + 1;\n\tSoE_AfterRoundIncrement();\n"
+increment_patch = "\trounds = rounds + 1;\n\tSoE_AfterRoundIncrement();\n\tSoE_HarvestPodsOnNewRound();\n"
 if "\tSoE_AfterRoundIncrement();\n" not in text:
     if increment_anchor not in text:
         raise SystemExit("round increment anchor changed; inspect pinned upstream")
