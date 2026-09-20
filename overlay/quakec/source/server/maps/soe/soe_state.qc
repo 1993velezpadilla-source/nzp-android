@@ -103,7 +103,7 @@ void() SoE_RitualFrame;
 
 float() SoE_IsMap =
 {
-    return (mapname == "soe" || mapname == "soe_g1" || mapname == "shadows_of_evil" || mapname == "zm_zod");
+    return (mapname == "soe" || mapname == "soe_g1" || mapname == "soe_g2" || mapname == "shadows_of_evil" || mapname == "zm_zod");
 };
 
 void() SoE_ResetQuestState =
