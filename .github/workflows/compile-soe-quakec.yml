@@ -1,0 +1,36 @@
+name: Compile Shadows of Evil QuakeC overlay
+
+on:
+  push:
+    branches:
+      - feature/shadows-of-evil-completion
+    paths:
+      - "overlay/quakec/**"
+      - "scripts/apply_soe_quakec_overlay.py"
+      - "upstreams.lock.json"
+      - ".github/workflows/compile-soe-quakec.yml"
+  pull_request:
+    paths:
+      - "overlay/quakec/**"
+      - "scripts/apply_soe_quakec_overlay.py"
+      - "upstreams.lock.json"
+
+jobs:
+  compile:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout overlay
+        uses: actions/checkout@v4
+
+      - name: Checkout pinned NZP QuakeC
+        run: |
+          git clone https://github.com/nzp-team/quakec.git .upstream/quakec
+          git -C .upstream/quakec checkout --detach 04bd544172e16193162277a7c356c827e9653b06
+
+      - name: Apply SoE overlay
+        run: python3 scripts/apply_soe_quakec_overlay.py .upstream/quakec
+
+      - name: Compile server QuakeC
+        run: |
+          chmod +x .upstream/quakec/tools/qc-compiler-gnu.sh
+          .upstream/quakec/tools/qc-compiler-gnu.sh
