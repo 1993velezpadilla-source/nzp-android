@@ -207,8 +207,10 @@ void() SoE_QuestPickupTouch =
         soe_has_champ_belt = true;
     else if (self.style == SOE_PICKUP_MARGWA_HEART)
         soe_has_margwa_heart = true;
-    else if (self.style == SOE_PICKUP_XENOMATTER)
+    else if (self.style == SOE_PICKUP_XENOMATTER) {
         soe_has_xenomatter = true;
+        soe_xenomatter_drop_active = false;
+    }
     else if (self.style == SOE_PICKUP_MARGWA_TENTACLE)
         soe_has_margwa_tentacle = true;
 
