@@ -52,6 +52,7 @@ float soe_has_toupee;
 float soe_has_champ_belt;
 float soe_has_margwa_heart;
 float soe_has_xenomatter;
+float soe_xenomatter_drop_active;
 float soe_has_margwa_tentacle;
 float soe_ritual_active;
 
@@ -95,6 +96,7 @@ void() SoE_ResetQuestState =
     soe_has_champ_belt = false;
     soe_has_margwa_heart = false;
     soe_has_xenomatter = false;
+    soe_xenomatter_drop_active = false;
     soe_has_margwa_tentacle = false;
     soe_ritual_active = false;
 };
