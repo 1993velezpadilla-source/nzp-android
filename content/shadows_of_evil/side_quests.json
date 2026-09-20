@@ -67,13 +67,21 @@
     {
       "id": "margwa_head",
       "requirements": [
-        "apothicon_sword"
+        "six_margwa_kills"
       ],
       "steps": [
-        "During at most two tram rides shoot six hidden Margwa-heart targets",
-        "Collect hidden sparkling Margwa Head at ritual site"
+        "Kill six Margwas globally; co-op kills count toward the shared unlock",
+        "After the sixth kill, six hidden Margwa-heart targets become active around Tram sightlines",
+        "Shoot every heart while physically riding the moving Tram",
+        "Complete all six within at most two Tram rides; starting a third ride before completion resets all six targets",
+        "Collect the unlocked sparkling/invisible Margwa Mask pickup from its randomized ritual-room spawn",
+        "Each active player may equip the unlocked mask"
       ],
-      "reward": "wearable Margwa damage resistance"
+      "reward": "wearable Margwa Mask that protects against the Margwa slam path",
+      "runtimeEntity": "soe_margwa_mask_heart",
+      "targetCount": 6,
+      "requiredMargwaKills": 6,
+      "maxTramRides": 2
     },
     {
       "id": "snakeskin_boots",
