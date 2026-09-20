@@ -13,6 +13,9 @@
 .float soe_chain_next_cycle;
 .float soe_chain_cooldown_until;
 
+void(entity victim, entity attacker, float damage, float d_style) DamageHandler;
+void(entity who, float value, float impacted_by_2x_points) Player_ChangeScore;
+
 void() SoE_ChainTrapVolumeThink =
 {
     if (!self.soe_chain_active)
