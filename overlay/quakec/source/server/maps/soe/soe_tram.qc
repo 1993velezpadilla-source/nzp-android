@@ -38,6 +38,7 @@ void() SoE_TramControllerUse =
     // following path_corners, while this tracks SoE quest/game state.
     soe_tram_in_transit = true;
     soe_tram_route_sequence = soe_tram_route_sequence + 1;
+    SoE_MargwaMaskOnTramRideStart();
     SoE_FireEntityTargets(self);
 };
 
@@ -89,6 +90,7 @@ void() SoE_TramButtonTouch =
     soe_tram_destination = self.soe_tram_to_station;
     soe_tram_in_transit = true;
     soe_tram_route_sequence = soe_tram_route_sequence + 1;
+    SoE_MargwaMaskOnTramRideStart();
 
     SoE_FireEntityTargets(self);
 };
