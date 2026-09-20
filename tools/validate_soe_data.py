@@ -168,6 +168,8 @@ required_runtime_symbols = {
     "soe_lore_device": "twelve telephone/portal lore devices",
     "soe_shadowman_sighting": "Shadowman sighting challenge",
     "soe_noir_portrait": "shootable Noir portrait toggle",
+    "soe_tripmine_wallbuy": "SoE Trip Mine equipment wallbuy",
+    "soe_tripmine_cart": "pastry-cart Trip Mine upgrade target",
 }
 for symbol, description in required_runtime_symbols.items():
     if symbol not in qc_text:
@@ -222,6 +224,16 @@ for quest_id in ("mob_plane_flyover", "richtofen_jumpscare"):
     quest = next((q for q in data["side"]["sideQuests"] if q["id"] == quest_id), None)
     if not quest:
         raise SystemExit(f"missing side quest metadata: {quest_id}")
+
+
+tripmine = next((q for q in data["side"]["sideQuests"] if q["id"] == "tripmine_upgrade"), None)
+if not tripmine or tripmine.get("baseCharges") != 2 or tripmine.get("inputImpulse") != 33:
+    raise SystemExit("Trip Mine equipment contract changed")
+routes = tripmine.get("routes", {})
+if routes.get("helpHolly", {}).get("requiredCartCount") != 4:
+    raise SystemExit("Holly route must retain four Devil-O-Donuts carts")
+if routes.get("helpDevil", {}).get("requiredCartCount") != 3:
+    raise SystemExit("Devil route must retain three Holly's Cream Cakes carts")
 
 # Make sure the project never silently switches to bundling the unfinished binary.
 source = data["manifest"]["sourceGeometry"]
