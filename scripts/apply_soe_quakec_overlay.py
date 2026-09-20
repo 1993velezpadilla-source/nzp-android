@@ -29,6 +29,7 @@ include_lines = [
     "maps/soe/soe_state.qc\n",
     "maps/soe/soe_beast.qc\n",
     "maps/soe/soe_entities.qc\n",
+    "maps/soe/soe_perks.qc\n",
     "maps/soe/soe_tram.qc\n",
     "maps/soe/soe_specials.qc\n",
     "maps/soe/soe_rituals.qc\n",
@@ -539,5 +540,52 @@ if "Complete the Sacred Place Ritual" not in text:
         raise SystemExit("Pack-a-Punch SoE gate anchor changed; inspect pinned upstream")
     text = text.replace(pap_touch_anchor, pap_touch_patch, 1)
     pap_qc.write_text(text, encoding="utf-8")
+
+
+# Shadows of Evil has no global power switch: every perk machine is powered
+# by its own Beast-shocked panel.
+perk_qc = root / "source" / "server" / "entities" / "perk_a_cola.qc"
+text = perk_qc.read_text(encoding="utf-8")
+
+touch_anchor = '''void() touch_perk =
+{  
+\tif (other.classname != "player" || other.downed || other.isBuying == true || !PlayerIsLooking(other, self))
+\t\treturn;
+'''
+touch_patch = '''void() touch_perk =
+{  
+\tif (other.classname != "player" || other.downed || other.isBuying == true || !PlayerIsLooking(other, self))
+\t\treturn;
+
+\t// Shadows of Evil powers each perk locally in Beast Mode.
+\tif (soe_active && !self.soe_perk_powered) {
+\t\tuseprint(other, self.useprint_index_4, 0);
+\t\treturn;
+\t}
+'''
+if "Shadows of Evil powers each perk locally in Beast Mode." not in text:
+    if touch_anchor not in text:
+        raise SystemExit("SoE perk touch anchor changed; inspect pinned upstream")
+    text = text.replace(touch_anchor, touch_patch, 1)
+
+light_anchor = '''void(entity who) Turn_PerkLight_On =
+{
+\tif (cvar("sv_magic") == 0)
+\t\treturn;
+'''
+light_patch = '''void(entity who) Turn_PerkLight_On =
+{
+\tif (cvar("sv_magic") == 0)
+\t\treturn;
+
+\tif (soe_active && !who.soe_perk_powered)
+\t\treturn;
+'''
+if "if (soe_active && !who.soe_perk_powered)" not in text:
+    if light_anchor not in text:
+        raise SystemExit("SoE perk light anchor changed; inspect pinned upstream")
+    text = text.replace(light_anchor, light_patch, 1)
+
+perk_qc.write_text(text, encoding="utf-8")
 
 print("Shadows of Evil QuakeC overlay applied")
