@@ -11,6 +11,7 @@ float soe_tram_current_station;
 float soe_tram_destination;
 float soe_tram_in_transit;
 float soe_tram_route_sequence;
+.float soe_tram_to_station;
 
 void() SoE_ResetTransportState =
 {
@@ -60,11 +61,11 @@ void() SoE_TramButtonTouch =
         return;
 
     // style = station where this button lives
-    // count = requested destination station
+    // soe_tram_to_station = requested destination station
     if (self.style > 0 && soe_tram_current_station > 0 && self.style != soe_tram_current_station)
         return;
 
-    if (self.count <= 0 || self.count == soe_tram_current_station)
+    if (self.soe_tram_to_station <= 0 || self.soe_tram_to_station == soe_tram_current_station)
         return;
 
     float tram_cost = self.cost;
@@ -85,7 +86,7 @@ void() SoE_TramButtonTouch =
     }
 
     Player_ChangeScore(other, -tram_cost, false);
-    soe_tram_destination = self.count;
+    soe_tram_destination = self.soe_tram_to_station;
     soe_tram_in_transit = true;
     soe_tram_route_sequence = soe_tram_route_sequence + 1;
 
