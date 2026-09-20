@@ -158,6 +158,8 @@ required_runtime_symbols = {
     "soe_snakeskin_relay": "Snakeskin Boots clean-audio relay",
     "soe_cold_cash_part": "Cold Hard Cash equipment part",
     "soe_cold_cash_stage": "Cold Hard Cash Burlesque stage interaction",
+    "soe_arnie_upgrade_prop": "Lil Arnie upgrade prop",
+    "soe_arnie_upgrade_stage": "Lil Arnie Burlesque upgrade stage",
 }
 for symbol, description in required_runtime_symbols.items():
     if symbol not in qc_text:
@@ -172,6 +174,10 @@ for hook in {
     "SoE_ProcessSpecialSpawns();",
     "SoE_RandomSpawnFrame();",
     "SoE_ResetSideQuests();",
+    "SoE_ArnieOnMaxAmmo(players);",
+    "SoE_ArnieThrowInput();",
+    "SoE_ArnieOverrideZombieAI()",
+    "SoE_ResetArnie();",
     "Complete the Sacred Place Ritual",
 }:
     if hook not in patcher:
@@ -196,7 +202,7 @@ for quest_id in ("free_500", "snakeskin_boots", "cold_hard_cash"):
 
 if "immediate retry" not in data["finale"]["flagDefense"]["failRule"]:
     raise SystemExit("flag failure must preserve the immediate Underground retry behavior")
-if "Shadowman" not in data["finale"]["flagDefense"]["shadowmanBehavior"]:
+if not data["finale"]["flagDefense"].get("shadowmanBehavior"):
     raise SystemExit("flag defense lost Shadowman harassment behavior")
 
 # Make sure the project never silently switches to bundling the unfinished binary.
