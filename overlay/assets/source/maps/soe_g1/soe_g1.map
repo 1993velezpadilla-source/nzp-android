@@ -570,11 +570,7 @@
 "targetname" "soe_g1_rift_access_power"
 "origin" "80 -352 40"
 }
-{
-"classname" "soe_beast_grapple"
-"target" "soe_g1_nero_grapple_dest"
-"origin" "-424 272 160"
-}
+
 {
 "classname" "perk_revive"
 "angles" "0 90 0"
