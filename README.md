@@ -32,3 +32,10 @@ The public Klevi Alushi World at War Shadows of Evil release is treated as a **r
 Runtime sources are pinned in `upstreams.lock.json`. Run `scripts/fetch_upstreams.sh` on a development machine to materialize them.
 
 The project deliberately does **not** auto-package third-party/proprietary map assets whose redistribution rights have not been verified.
+
+
+## Android HUD integration note
+
+- **Li'l Arnie must have a dedicated mobile tactical button** mapped to `impulse 35`.
+- It must be separately movable/resizable in Custom HUD, show remaining charges, and stay independent from firearm/grenade slots.
+- Do not ship the Android HUD with Arnie accessible only through a generic Swap or grenade-cycle control.
