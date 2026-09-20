@@ -403,7 +403,10 @@ float() SoE_SpawnMargwaProxy =
 
 void() SoE_ProcessSpecialSpawns =
 {
-    if (!soe_active || !roundinit || z_health <= 0)
+    if (!soe_active)
+        return;
+
+    if (!soe_finale_active && (!roundinit || z_health <= 0))
         return;
 
     if (soe_scripted_margwa_pending > 0) {
