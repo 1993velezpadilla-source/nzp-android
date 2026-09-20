@@ -235,7 +235,7 @@ void(entity victim, entity attacker) SoE_DestroyMargwaHead =
 
 void(entity victim) SoE_TryDropXenomatter =
 {
-    if (rounds < 12 || soe_has_xenomatter || soe_xenomatter_drop_active)
+    if (rounds < 13 || soe_has_xenomatter || soe_xenomatter_drop_active)
         return;
 
     if (victim.soe_special_type != SOE_SPECIAL_PARASITE &&
