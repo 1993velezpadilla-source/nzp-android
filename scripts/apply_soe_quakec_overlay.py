@@ -180,4 +180,45 @@ if "Shadows of Evil Margwas are immune to Nuke" not in text:
     text = text.replace(nuke_anchor, nuke_patch, 1)
     powerups_qc.write_text(text, encoding="utf-8")
 
+
+# NZ:P's hit parser assumes every non-zombie damageable is a zombie limb.
+# Teach it that SoE flying/rolling specials are full body entities.
+weapon_qc = root / "source" / "server" / "weapons" / "weapon_core.qc"
+text = weapon_qc.read_text(encoding="utf-8")
+parse_anchor = '''\t\t\tif (ent.classname != "ai_zombie" && ent.classname != "ai_dog") //limb
+\t\t\t\tbody_ent = ent.owner;
+\t\t\telse
+\t\t\t\tbody_ent = ent;
+'''
+parse_patch = '''\t\t\tif (SoE_IsCustomSpecialBody(ent))
+\t\t\t\tbody_ent = ent;
+\t\t\telse if (ent.classname != "ai_zombie" && ent.classname != "ai_dog") //limb
+\t\t\t\tbody_ent = ent.owner;
+\t\t\telse
+\t\t\t\tbody_ent = ent;
+'''
+if "SoE_IsCustomSpecialBody(ent)" not in text:
+    if parse_anchor not in text:
+        raise SystemExit("Parse_Damage body classification anchor changed; inspect pinned upstream")
+    text = text.replace(parse_anchor, parse_patch, 1)
+
+# Reset the local head-shot accumulator for every damage entity, not only once
+# before the loop. This prevents a previous zombie head hit from leaking into
+# a subsequent custom-special body processed during the same frame.
+loop_anchor = '''\tent = findfloat (world, washit, 1);
+
+\twhile (ent) {
+'''
+loop_patch = '''\tent = findfloat (world, washit, 1);
+
+\twhile (ent) {
+\t\thead_hit = 0;
+'''
+if "\twhile (ent) {\n\t\thead_hit = 0;\n" not in text:
+    if loop_anchor not in text:
+        raise SystemExit("Parse_Damage loop anchor changed; inspect pinned upstream")
+    text = text.replace(loop_anchor, loop_patch, 1)
+
+weapon_qc.write_text(text, encoding="utf-8")
+
 print("Shadows of Evil QuakeC overlay applied")
