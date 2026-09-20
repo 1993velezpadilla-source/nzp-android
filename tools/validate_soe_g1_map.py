@@ -35,7 +35,7 @@ required_counts = {
     '"classname" "spawn_zone"': 2,
     '"classname" "func_door_nzp"': 4,
     '"classname" "soe_beast_pedestal"': 2,
-    '"classname" "soe_beast_smash"': 1,
+    '"classname" "soe_beast_smash"': 2,
     '"classname" "soe_quest_pickup"': 2,
     '"classname" "soe_beast_grapple"': 1,
     '"classname" "soe_beast_shock"': 3,
@@ -44,6 +44,9 @@ required_counts = {
     '"classname" "soe_perk_power_panel"': 2,
     '"classname" "soe_civil_call_panel"': 1,
     '"classname" "soe_fumigator_pickup"': 7,
+    '"classname" "func_door"': 2,
+    '"classname" "soe_ritual_controller"': 1,
+    '"classname" "soe_ritual_keeper_spawn"': 4,
 }
 for token, count in required_counts.items():
     actual = text.count(token)
@@ -99,6 +102,24 @@ if text.count('"soe_random_group" "102"') != 4:
 
 if '"targetname" "soe_g1_pen_crane_power"\n"target" "soe_g1_pen_pickup"' not in text:
     raise SystemExit("Junction crane shock must enable the dormant Lawyer's Pen")
+
+if '"targetname" "soe_g1_nero_power"\n"target" "soe_g1_nero_stair_blocker"' not in text:
+    raise SystemExit("Nero power shock must open the human-access stair blocker")
+
+if '"targetname" "soe_g1_nero_room_smash"\n"target" "soe_g1_nero_room_blocker"' not in text:
+    raise SystemExit("Nero Beast smash must open the ritual-room blocker")
+
+for target in (
+    "soe_g1_nero_stair_blocker",
+    "soe_g1_nero_room_blocker",
+    "soe_g1_nero_ritual",
+    "soe_g1_nero_keeper_a",
+    "soe_g1_nero_keeper_b",
+    "soe_g1_nero_keeper_c",
+    "soe_g1_nero_keeper_d",
+):
+    if f'"targetname" "{target}"' not in text:
+        raise SystemExit(f"missing Nero G1 ritual/access anchor: {target}")
 
 plane_re = re.compile(
     r'^\( -?\d+(?:\.\d+)? -?\d+(?:\.\d+)? -?\d+(?:\.\d+)? \) '
