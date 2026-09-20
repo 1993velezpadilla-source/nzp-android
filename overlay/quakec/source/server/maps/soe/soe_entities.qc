@@ -310,7 +310,7 @@ void() SoE_RitualTouch =
         SoE_RitualRuntimeStart(self);
 
         self.think = SoE_RitualComplete;
-        self.nextthink = time + (self.wait > 0 ? self.wait : 15);
+        self.nextthink = time + (self.wait > 0 ? self.wait : 20);
     }
 };
 
