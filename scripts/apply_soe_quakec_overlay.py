@@ -39,6 +39,7 @@ include_lines = [
     "maps/soe/soe_sword.qc\n",
     "maps/soe/soe_special_rounds.qc\n",
     "maps/soe/soe_mainquest.qc\n",
+    "maps/soe/soe_shadowman.qc\n",
 ]
 if not all(line in text for line in include_lines):
     if include_anchor not in text:
@@ -52,7 +53,7 @@ text = main_qc.read_text(encoding="utf-8")
 
 # Map initialization hook.
 init_anchor = "\tGamemode_Init();\n"
-init_call = "\tSoE_Init();\n\tSoE_ResetTransportState();\n\tSoE_ResetServant();\n\tSoE_ResetCivilProtector();\n\tSoE_ResetShield();\n\tSoE_ResetSword();\n\tSoE_ResetSpecialRoundSchedule();\n\tSoE_ResetMainQuest();\n"
+init_call = "\tSoE_Init();\n\tSoE_ResetTransportState();\n\tSoE_ResetServant();\n\tSoE_ResetCivilProtector();\n\tSoE_ResetShield();\n\tSoE_ResetSword();\n\tSoE_ResetSpecialRoundSchedule();\n\tSoE_ResetMainQuest();\n\tSoE_ResetShadowman();\n"
 if init_call not in text:
     if init_anchor not in text:
         raise SystemExit("worldspawn hook anchor changed; inspect pinned upstream")
@@ -60,7 +61,7 @@ if init_call not in text:
 
 # Per-frame Beast/grapple/finale runtime hook.
 frame_anchor = "\tframecount = framecount + 1;\n"
-frame_call = "\tSoE_Frame();\n\tSoE_ShieldFrame();\n\tSoE_MainQuestFrame();\n\tSoE_ProcessSpecialSpawns();\n"
+frame_call = "\tSoE_Frame();\n\tSoE_ShieldFrame();\n\tSoE_MainQuestFrame();\n\tSoE_ShadowmanFrame();\n\tSoE_ProcessSpecialSpawns();\n"
 if frame_call not in text:
     if frame_anchor not in text:
         raise SystemExit("StartFrame hook anchor changed; inspect pinned upstream")
