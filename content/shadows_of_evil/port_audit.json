@@ -52,6 +52,45 @@
       "type": "CC0 asset sources",
       "status": "clean replacement pool",
       "action": "prefer for mobile-safe props/materials/enemies when exact community asset rights are unclear"
+    },
+    {
+      "candidate": "Project Nightmare / Spawn Point",
+      "type": "historical World at War fan recreation lead",
+      "status": "reference lead only",
+      "known": [
+        "UGX project described a reworked part of each Zombies map",
+        "public progress list marked Shadows of Evil section 100%"
+      ],
+      "missing": [
+        "verified surviving release/source",
+        "editable Radiant .map",
+        "redistribution/license permission"
+      ],
+      "action": "search archives/author trail; use only as visual/topology reference unless source and rights are verified"
+    },
+    {
+      "candidate": "Public Morg City map/atlas set",
+      "type": "topology reference",
+      "status": "approved clean-room reference",
+      "known": [
+        "Steam community overview covers Morg City, Rift and tram/symbol topology",
+        "CODZombie atlas exposes area/route relationships",
+        "Zombified publishes per-area layout diagrams"
+      ],
+      "action": "use to lock topology, doors, district links, portals and tram relationships; do not infer exact world scale from one image"
+    },
+    {
+      "candidate": "Circulated BO3 Radiant zm_zod dump",
+      "type": "proprietary leaked map data",
+      "status": "disqualified",
+      "known": [
+        "public post describes entities, triggers, spawners and models",
+        "public post explicitly says there are no brushes"
+      ],
+      "missing": [
+        "usable brush geometry"
+      ],
+      "action": "do not bundle or use as redistributable source; it does not solve the geometry blocker"
     }
   ],
   "referenceChecklist": [
