@@ -396,10 +396,14 @@ void() SoE_CivilCallPanelTouch =
         return;
     }
 
-    if (self.soe_civil_panel_id >= 1 && self.soe_civil_panel_id <= 4) {
-        float bit = pow(2, self.soe_civil_panel_id - 1);
-        other.soe_civil_call_mask = other.soe_civil_call_mask | bit;
-    }
+    if (self.soe_civil_panel_id == 1)
+        other.soe_civil_call_mask = other.soe_civil_call_mask | 1;
+    else if (self.soe_civil_panel_id == 2)
+        other.soe_civil_call_mask = other.soe_civil_call_mask | 2;
+    else if (self.soe_civil_panel_id == 3)
+        other.soe_civil_call_mask = other.soe_civil_call_mask | 4;
+    else if (self.soe_civil_panel_id == 4)
+        other.soe_civil_call_mask = other.soe_civil_call_mask | 8;
 
     SoE_FireEntityTargets(self);
 };
