@@ -47,6 +47,73 @@ void() soe_powered_door =
         setmodel(self, self.model);
 };
 
+.string soe_reveal_brush_model;
+
+void() SoE_RevealBrushUse =
+{
+    if (self.activated)
+        return;
+
+    self.activated = true;
+    self.solid = SOLID_BSP;
+
+    if (self.soe_reveal_brush_model != "")
+        setmodel(self, self.soe_reveal_brush_model);
+
+    SoE_FireEntityTargets(self);
+};
+
+void() soe_reveal_wall =
+{
+    self.movetype = MOVETYPE_NONE;
+    self.activated = false;
+    self.use = SoE_RevealBrushUse;
+
+    // Brush entities enter QuakeC with their generated *N model string.
+    // Cache it before hiding the geometry so it can be restored by Gateworm
+    // progression without spawning/reallocating geometry at runtime.
+    self.soe_reveal_brush_model = self.model;
+    self.solid = SOLID_NOT;
+    setmodel(self, "");
+};
+
+void() SoE_WallrunTouch =
+{
+    if (other.classname != "player" || other.downed || other.soe_beast_active)
+        return;
+
+    makevectors(self.angles);
+
+    // The player must already be committing to the intended direction.
+    float along = other.velocity * v_forward;
+    if (along < 35)
+        return;
+
+    float run_speed = self.speed;
+    if (run_speed <= 0)
+        run_speed = 420;
+
+    float lift = self.wait;
+    if (lift <= 0)
+        lift = 28;
+
+    other.velocity_x = v_forward_x * run_speed;
+    other.velocity_y = v_forward_y * run_speed;
+
+    if (other.velocity_z < lift)
+        other.velocity_z = lift;
+};
+
+void() soe_wallrun_volume =
+{
+    self.movetype = MOVETYPE_NONE;
+    self.solid = SOLID_TRIGGER;
+    self.touch = SoE_WallrunTouch;
+
+    if (self.model != "")
+        setmodel(self, self.model);
+};
+
 float(entity ent) SoE_PlayerCanUseEntity =
 {
     if (!soe_active || other.classname != "player" || other.downed)
