@@ -1,0 +1,145 @@
+{
+  "schemaVersion": 1,
+  "map": "soe",
+  "fumigator": {
+    "inventoryRule": "one Fumigator per player; retained for rest of match",
+    "spawnRule": "randomized within supported sets; do not assume every listed candidate is simultaneously active",
+    "candidates": {
+      "Easy Street": [
+        "box right of Beast chalice",
+        "tailgate/back of truck in front of Quick Revive",
+        "metal window grate left of stairs to Nero's room"
+      ],
+      "Junction": [
+        "fruit stand left of Canals entrance",
+        "chair in front of zombie spawn left of Stamin-Up",
+        "crate in middle area in front of KRM-262 wallbuy",
+        "box in front of shop left of Footlight door"
+      ],
+      "Canals": [
+        "box beside Beast chalice just right of Canals entrance",
+        "box right of GobbleGum machine on left side from Junction"
+      ],
+      "Waterfront": [
+        "floor rubble almost immediately left after entering from Junction",
+        "box left of GobbleGum machine in district centre",
+        "box at top of powered stairs at front of district"
+      ]
+    },
+    "footlightStatus": "public guides conflict/omit a dedicated Footlight Fumigator set; verify in original build before adding invented positions"
+  },
+  "harvestPods": {
+    "stages": [
+      "green",
+      "red",
+      "purple"
+    ],
+    "lifecycle": "mature over rounds when unopened; after harvesting they regrow from green after a delay",
+    "requires": "Fumigator",
+    "notablePurpleRewards": [
+      "Margwa Tentacle",
+      "high-tier loot",
+      "possible Bootlegger"
+    ],
+    "audit": "exact pod transforms must be captured district-by-district during geometry pass"
+  },
+  "civilProtector": {
+    "fuseSets": {
+      "Footlight": [
+        "corner between crafting table and HVK-30 near Train Station",
+        "pillar on bridge left of crafting table",
+        "cloth-covered barrel up stairs on perk-machine side of bridge"
+      ],
+      "Canals": [
+        "bridge near Train Station across from KN-44",
+        "fruit cart in middle of same bridge",
+        "box on perk-machine-room side of bridge"
+      ],
+      "Waterfront": [
+        "box left of Mystery Box location near Train Station",
+        "railing across from Mystery Box location near Train Station",
+        "barrel near Beast chalice across M8A7 bridge"
+      ]
+    },
+    "fuseInstall": "Rift / Underground fuse box right of Footlight Rift portal",
+    "summonCost": 2000,
+    "summonPanels": [
+      "Junction",
+      "Waterfront",
+      "Footlight",
+      "Canals"
+    ],
+    "behavior": [
+      "allied AI attacks zombies",
+      "can revive players",
+      "temporary lifespan",
+      "post-main-quest cosmetic/weapon upgrade hook"
+    ]
+  },
+  "rocketShield": {
+    "parts": {
+      "Footlight Window": [
+        "bench across perk machine",
+        "against fence left of perk machine",
+        "chair/stairs room right of Mystery Box"
+      ],
+      "Canals Base": [
+        "wall left of pod in Lion Head room",
+        "elevated bridge to perk room",
+        "window in perk room"
+      ],
+      "Waterfront Rockets": [
+        "top of powered stairs",
+        "inside perk room under window across Beast chalice",
+        "room with tall wooden box left of exit"
+      ]
+    },
+    "buildAt": [
+      "Waterfront table",
+      "Canals table",
+      "Footlight table"
+    ],
+    "uses": [
+      "rear protection",
+      "melee",
+      "rocket boost charge"
+    ]
+  },
+  "goddardApparatus": {
+    "perPlayer": true,
+    "requirement": "12 successful shield-boost groups; each qualifying boost kills at least 10 zombies",
+    "failureRule": "a boost below the required kill threshold resets current streak/progress according to original challenge behavior",
+    "reward": [
+      "higher shield durability",
+      "4 rocket charges"
+    ]
+  },
+  "apothiconServant": {
+    "parts": [
+      {
+        "id": "heart",
+        "source": "first Margwa kill; subsequent Margwas can re-drop until collected"
+      },
+      {
+        "id": "xenomatter",
+        "source": "Parasite/Insanity Elemental drop",
+        "canonicalDetail": "guide reports 10% chance beginning round 13; validate game version before hard lock"
+      },
+      {
+        "id": "tentacle",
+        "source": "purple Harvest Pod"
+      }
+    ],
+    "buildAt": [
+      "Waterfront table",
+      "Canals table",
+      "Footlight table"
+    ],
+    "behavior": [
+      "purple vortex",
+      "nearby zombies pulled and killed",
+      "vortex ends in blast"
+    ],
+    "upgradeInSoE": "none in original Shadows of Evil"
+  }
+}
