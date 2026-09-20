@@ -152,11 +152,12 @@ entity(entity protector) SoE_CivilFindEnemy =
 {
     entity best = world;
     float best_distance = 1600;
+    float distance = 0;
 
     entity ent = find(world, classname, "ai_zombie");
     while (ent != world) {
         if (SoE_CivilCanAttack(ent)) {
-            float distance = vlen(ent.origin - protector.origin);
+            distance = vlen(ent.origin - protector.origin);
             if (distance < best_distance) {
                 best_distance = distance;
                 best = ent;
@@ -168,7 +169,7 @@ entity(entity protector) SoE_CivilFindEnemy =
     ent = find(world, classname, "ai_dog");
     while (ent != world) {
         if (SoE_CivilCanAttack(ent)) {
-            float distance = vlen(ent.origin - protector.origin);
+            distance = vlen(ent.origin - protector.origin);
             if (distance < best_distance) {
                 best_distance = distance;
                 best = ent;
@@ -180,7 +181,7 @@ entity(entity protector) SoE_CivilFindEnemy =
     ent = find(world, classname, "soe_parasite");
     while (ent != world) {
         if (SoE_CivilCanAttack(ent)) {
-            float distance = vlen(ent.origin - protector.origin);
+            distance = vlen(ent.origin - protector.origin);
             if (distance < best_distance) {
                 best_distance = distance;
                 best = ent;
@@ -192,7 +193,7 @@ entity(entity protector) SoE_CivilFindEnemy =
     ent = find(world, classname, "soe_elemental");
     while (ent != world) {
         if (SoE_CivilCanAttack(ent)) {
-            float distance = vlen(ent.origin - protector.origin);
+            distance = vlen(ent.origin - protector.origin);
             if (distance < best_distance) {
                 best_distance = distance;
                 best = ent;
