@@ -35,6 +35,10 @@ jobs:
       - name: Apply project asset overlay
         run: python scripts/apply_soe_asset_overlay.py --assets-root upstream-assets
 
+      - name: Compile NZ:P WADs
+        working-directory: upstream-assets
+        run: bash tools/compile-wads.sh
+
       - name: Compile G1 with NZ:P VHLT pipeline
         working-directory: upstream-assets
         run: bash tools/compile-maps.sh -m soe_g1/soe_g1.map
