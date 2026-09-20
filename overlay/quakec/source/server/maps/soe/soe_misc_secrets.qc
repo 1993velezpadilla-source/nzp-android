@@ -38,13 +38,15 @@ void() SoE_ResetMiscSecrets =
 
 void() SoE_RoundSkipRemoveLiveWave =
 {
+    entity next = world;
+    entity old_self = world;
     entity ent = find(world, classname, "ai_zombie");
 
     while (ent != world) {
-        entity next = find(ent, classname, "ai_zombie");
+        next = find(ent, classname, "ai_zombie");
 
         if (ent.aistatus == "1") {
-            entity old_self = self;
+            old_self = self;
             self = ent;
             self.th_die();
             self = old_self;
@@ -55,10 +57,10 @@ void() SoE_RoundSkipRemoveLiveWave =
 
     ent = find(world, classname, "ai_dog");
     while (ent != world) {
-        entity next = find(ent, classname, "ai_dog");
+        next = find(ent, classname, "ai_dog");
 
         if (ent.aistatus == "1") {
-            entity old_self = self;
+            old_self = self;
             self = ent;
             self.th_die();
             self = old_self;
