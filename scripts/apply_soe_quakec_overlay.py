@@ -31,6 +31,7 @@ include_lines = [
     "maps/soe/soe_entities.qc\n",
     "maps/soe/soe_tram.qc\n",
     "maps/soe/soe_specials.qc\n",
+    "maps/soe/soe_rituals.qc\n",
     "maps/soe/soe_special_movers.qc\n",
     "maps/soe/soe_harvest.qc\n",
     "maps/soe/soe_servant.qc\n",
@@ -63,7 +64,7 @@ if init_call not in text:
 
 # Per-frame Beast/grapple/finale runtime hook.
 frame_anchor = "\tframecount = framecount + 1;\n"
-frame_call = "\tSoE_RandomSpawnFrame();\n\tSoE_Frame();\n\tSoE_ShieldFrame();\n\tSoE_MainQuestFrame();\n\tSoE_ShadowmanFrame();\n\tSoE_FinaleFrame();\n\tSoE_ProcessSpecialSpawns();\n"
+frame_call = "\tSoE_RandomSpawnFrame();\n\tSoE_Frame();\n\tSoE_RitualFrame();\n\tSoE_ShieldFrame();\n\tSoE_MainQuestFrame();\n\tSoE_ShadowmanFrame();\n\tSoE_FinaleFrame();\n\tSoE_ProcessSpecialSpawns();\n"
 if frame_call not in text:
     if frame_anchor not in text:
         raise SystemExit("StartFrame hook anchor changed; inspect pinned upstream")
@@ -514,5 +515,29 @@ if "SoE_SwordOnEnemyDeath(ent);" not in text:
         raise SystemExit("Sword soul hook anchor changed; inspect pinned upstream")
     text = text.replace(sword_soul_anchor, sword_soul_patch, 1)
     zombie_qc.write_text(text, encoding="utf-8")
+
+
+# Shadows of Evil exposes Pack-a-Punch only after the fifth ritual.
+pap_qc = root / "source" / "server" / "entities" / "pack_a_punch.qc"
+text = pap_qc.read_text(encoding="utf-8")
+pap_touch_anchor = '''void() PAP_Touch =
+{
+\tif (other.classname != "player" || other.downed || !PlayerIsLooking(other, self) || game_modifier_can_packapunch == false) {
+'''
+pap_touch_patch = '''void() PAP_Touch =
+{
+\tif (soe_active && !soe_pap_unlocked) {
+\t\tif (other.classname == "player" && !other.downed && PlayerIsLooking(other, self))
+\t\t\tcenterprint(other, "Complete the Sacred Place Ritual");
+\t\treturn;
+\t}
+
+\tif (other.classname != "player" || other.downed || !PlayerIsLooking(other, self) || game_modifier_can_packapunch == false) {
+'''
+if "Complete the Sacred Place Ritual" not in text:
+    if pap_touch_anchor not in text:
+        raise SystemExit("Pack-a-Punch SoE gate anchor changed; inspect pinned upstream")
+    text = text.replace(pap_touch_anchor, pap_touch_patch, 1)
+    pap_qc.write_text(text, encoding="utf-8")
 
 print("Shadows of Evil QuakeC overlay applied")
