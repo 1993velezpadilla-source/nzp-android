@@ -20,19 +20,89 @@
     ]
   },
   "phases": [
-    {"id":"G0","name":"topology_lock","dependsOn":[],"deliverables":["area graph","door graph","portal graph","tram graph","one-way drop graph","quest-space graph"]},
-    {"id":"G1","name":"easy_street_junction","dependsOn":["G0"],"priority":"first playable geometry vertical slice"},
-    {"id":"G2","name":"canal_district","dependsOn":["G1"]},
-    {"id":"G3","name":"footlight_district","dependsOn":["G1"]},
-    {"id":"G4","name":"waterfront_district","dependsOn":["G1"]},
-    {"id":"G5","name":"rift_subway","dependsOn":["G2","G3","G4"]},
-    {"id":"G6","name":"sacred_place","dependsOn":["G5"]},
-    {"id":"G7","name":"tram_network","dependsOn":["G2","G3","G4"]}
+    {
+      "id": "G0",
+      "name": "topology_lock",
+      "dependsOn": [],
+      "deliverables": [
+        "area graph",
+        "door graph",
+        "portal graph",
+        "tram graph",
+        "one-way drop graph",
+        "quest-space graph"
+      ]
+    },
+    {
+      "id": "G1",
+      "name": "easy_street_junction",
+      "dependsOn": [
+        "G0"
+      ],
+      "priority": "first playable geometry vertical slice"
+    },
+    {
+      "id": "G2",
+      "name": "canal_district",
+      "dependsOn": [
+        "G1"
+      ]
+    },
+    {
+      "id": "G3",
+      "name": "footlight_district",
+      "dependsOn": [
+        "G1"
+      ]
+    },
+    {
+      "id": "G4",
+      "name": "waterfront_district",
+      "dependsOn": [
+        "G1"
+      ]
+    },
+    {
+      "id": "G5",
+      "name": "rift_subway",
+      "dependsOn": [
+        "G2",
+        "G3",
+        "G4"
+      ]
+    },
+    {
+      "id": "G6",
+      "name": "sacred_place",
+      "dependsOn": [
+        "G5"
+      ]
+    },
+    {
+      "id": "G7",
+      "name": "tram_network",
+      "dependsOn": [
+        "G2",
+        "G3",
+        "G4"
+      ]
+    }
   ],
   "streamCells": [
-    "easy_street","junction","canal_lower","canal_high_ruby","footlight_lower","footlight_high_burlesque",
-    "waterfront_lower_docks","waterfront_high_anvil","canal_station","footlight_station","waterfront_station",
-    "rift","sacred_place","skyline_clusters"
+    "easy_street",
+    "junction",
+    "canal_lower",
+    "canal_high_ruby",
+    "footlight_lower",
+    "footlight_high_burlesque",
+    "waterfront_lower_docks",
+    "waterfront_high_anvil",
+    "canal_station",
+    "footlight_station",
+    "waterfront_station",
+    "rift",
+    "sacred_place",
+    "skyline_clusters"
   ],
   "topologyReferences": [
     "https://steamcommunity.com/sharedfiles/filedetails/?id=563005850",
@@ -42,20 +112,20 @@
   ],
   "historicalFanMapLeads": [
     {
-      "name":"Klevi Alushi Shadows of Evil (World at War)",
-      "value":"best known compiled fan geometry reference",
-      "sourceStatus":"editable source not located; permission not established"
+      "name": "Klevi Alushi Shadows of Evil (World at War)",
+      "value": "best known compiled fan geometry reference",
+      "sourceStatus": "editable source not located; permission not established"
     },
     {
-      "name":"Project Nightmare / Spawn Point",
-      "value":"historical WaW recreation lead; forum progress listed Shadows of Evil section at 100%",
-      "sourceStatus":"treat as reference lead only until release/source and rights are verified"
+      "name": "Project Nightmare / Spawn Point",
+      "value": "historical WaW recreation lead; forum progress listed Shadows of Evil section at 100%",
+      "sourceStatus": "treat as reference lead only until release/source and rights are verified"
     }
   ],
   "disqualifiedGeometryLeads": [
     {
-      "name":"leaked BO3 Radiant zm_zod dumps",
-      "reason":"reported to contain entities/triggers/spawners/models but no brushes; proprietary and unsuitable as redistributable geometry base"
+      "name": "leaked BO3 Radiant zm_zod dumps",
+      "reason": "reported to contain entities/triggers/spawners/models but no brushes; proprietary and unsuitable as redistributable geometry base"
     }
   ],
   "acceptanceTests": [
@@ -70,5 +140,39 @@
     "tram collision stability",
     "reload determinism",
     "mobile performance budget"
-  ]
+  ],
+  "currentPhase": "G2",
+  "phaseStatus": {
+    "G0": "complete-major-topology-locked",
+    "G1": "blockout-compiled-bsp; Easy Street/Junction/Nero early quest vertical slice",
+    "G2": "in-progress-canal-district",
+    "G3": "not-started",
+    "G4": "not-started",
+    "G5": "not-started",
+    "G6": "not-started",
+    "G7": "not-started"
+  },
+  "g1Evidence": {
+    "map": "overlay/assets/source/maps/soe_g1/soe_g1.map",
+    "generator": "scripts/generate_soe_g1_blockout.py",
+    "validator": "tools/validate_soe_g1_map.py",
+    "ci": "Validate Shadows of Evil G1 blockout",
+    "compilePipeline": "NZ:P pinned assets -> WadMaker -> VHLT HLCsg/HlBsp/HlVis/HlRad -> non-empty soe_g1.bsp",
+    "runtimeActivation": "soe_g1 accepted by SoE_IsMap(); QuakeC overlay compile passed",
+    "included": [
+      "4-player spawn",
+      "4 Easy Street barricade/window chains",
+      "500-point Junction exit",
+      "three 1000-point district gate stubs",
+      "Quick Revive + local Beast power panel",
+      "Stamin-Up + local Beast power panel",
+      "random Fumigator groups 101/102",
+      "Summoning Key Beast-smash gating",
+      "Lawyer's Pen crane-shock gating",
+      "Nero grapple landing and gated human stairs",
+      "Nero ritual room + ritual 1 controller + four Keeper spawn markers",
+      "Junction Civil Protector call panel",
+      "provisional tram rail crossing"
+    ]
+  }
 }
