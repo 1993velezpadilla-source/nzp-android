@@ -75,6 +75,7 @@ float soe_last_margwa_spawn_was_reborn;
 .float soe_reborn_last_ritual_round;
 
 void(entity margwa) SoE_RebornOnMargwaKilled;
+float(entity victim, entity attacker, float damage, float d_style) SoE_HandleShadowmanDamage;
 
 float() SoE_IsMap =
 {
