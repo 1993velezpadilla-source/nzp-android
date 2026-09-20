@@ -42,6 +42,13 @@ float soe_keeper_shock_mask;
 
 float soe_scripted_margwa_pending;
 
+float soe_has_summoning_key;
+float soe_has_lawyers_pen;
+float soe_has_detective_badge;
+float soe_has_toupee;
+float soe_has_champ_belt;
+float soe_ritual_active;
+
 float() SoE_IsMap =
 {
     return (mapname == "soe" || mapname == "shadows_of_evil" || mapname == "zm_zod");
@@ -71,6 +78,13 @@ void() SoE_ResetQuestState =
     soe_keeper_shock_mask = 0;
 
     soe_scripted_margwa_pending = 0;
+
+    soe_has_summoning_key = false;
+    soe_has_lawyers_pen = false;
+    soe_has_detective_badge = false;
+    soe_has_toupee = false;
+    soe_has_champ_belt = false;
+    soe_ritual_active = false;
 };
 
 void() SoE_Init =
