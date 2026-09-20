@@ -143,6 +143,7 @@ required_runtime_symbols = {
     "soe_mainquest_book": "Nero quest book",
     "soe_flag_site": "flag defense site",
     "soe_flag_keeper": "district flag Keeper",
+    "soe_flag_shadowman_spawn": "flag-defense Shadowman spawn",
     "soe_shadowman_keeper": "Shadowman Keeper activation",
     "soe_shadowman_capture_table": "Shadowman capture table",
     "soe_finale_beast_torch": "finale Beast torch",
@@ -191,6 +192,12 @@ for quest_id in ("free_500", "snakeskin_boots", "cold_hard_cash"):
     quest = next((q for q in data["side"]["sideQuests"] if q["id"] == quest_id), None)
     if not quest or not quest.get("runtimeEntities"):
         raise SystemExit(f"{quest_id} must retain runtime entity coverage")
+
+
+if "immediate retry" not in data["finale"]["flagDefense"]["failRule"]:
+    raise SystemExit("flag failure must preserve the immediate Underground retry behavior")
+if "Shadowman" not in data["finale"]["flagDefense"]["shadowmanBehavior"]:
+    raise SystemExit("flag defense lost Shadowman harassment behavior")
 
 # Make sure the project never silently switches to bundling the unfinished binary.
 source = data["manifest"]["sourceGeometry"]
