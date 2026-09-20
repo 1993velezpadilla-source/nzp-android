@@ -1,0 +1,407 @@
+{
+  "schemaVersion": 1,
+  "map": "soe",
+  "phase": "G1",
+  "status": "provisional_blockout",
+  "units": "GoldSrc/Valve map units",
+  "scalePolicy": "Gameplay-safe provisional dimensions. Do not treat as canonical until visual/timing measurement pass.",
+  "bounds": {
+    "mins": [
+      -896,
+      -576,
+      -64
+    ],
+    "maxs": [
+      768,
+      576,
+      512
+    ]
+  },
+  "zones": [
+    {
+      "id": "easy_street",
+      "mins": [
+        -832,
+        -320,
+        0
+      ],
+      "maxs": [
+        -96,
+        320,
+        224
+      ],
+      "zoneTarget": "soe_g1_spawn"
+    },
+    {
+      "id": "junction",
+      "mins": [
+        -96,
+        -448,
+        0
+      ],
+      "maxs": [
+        640,
+        448,
+        224
+      ],
+      "zoneTarget": "soe_g1_junction"
+    }
+  ],
+  "doors": [
+    {
+      "id": "easy_to_junction",
+      "cost": 500,
+      "mins": [
+        -112,
+        -104,
+        0
+      ],
+      "maxs": [
+        -80,
+        104,
+        128
+      ],
+      "axis": "x"
+    },
+    {
+      "id": "junction_to_canal_stub",
+      "cost": 1000,
+      "mins": [
+        224,
+        432,
+        0
+      ],
+      "maxs": [
+        416,
+        464,
+        128
+      ],
+      "axis": "y"
+    },
+    {
+      "id": "junction_to_waterfront_stub",
+      "cost": 1000,
+      "mins": [
+        224,
+        -464,
+        0
+      ],
+      "maxs": [
+        416,
+        -432,
+        128
+      ],
+      "axis": "y"
+    },
+    {
+      "id": "junction_to_footlight_stub",
+      "cost": 1000,
+      "mins": [
+        624,
+        -104,
+        0
+      ],
+      "maxs": [
+        656,
+        104,
+        128
+      ],
+      "axis": "x"
+    }
+  ],
+  "playerSpawns": [
+    {
+      "class": "info_player_1_spawn",
+      "origin": [
+        -704,
+        96,
+        40
+      ],
+      "angle": 0
+    },
+    {
+      "class": "info_player_2_spawn",
+      "origin": [
+        -704,
+        32,
+        40
+      ],
+      "angle": 0
+    },
+    {
+      "class": "info_player_3_spawn",
+      "origin": [
+        -704,
+        -32,
+        40
+      ],
+      "angle": 0
+    },
+    {
+      "class": "info_player_4_spawn",
+      "origin": [
+        -704,
+        -96,
+        40
+      ],
+      "angle": 0
+    }
+  ],
+  "windows": [
+    {
+      "id": "easy_window_nw",
+      "origin": [
+        -672,
+        304,
+        72
+      ],
+      "angle": 270,
+      "zombie": [
+        -672,
+        384,
+        48
+      ],
+      "path": [
+        -672,
+        336,
+        56
+      ]
+    },
+    {
+      "id": "easy_window_sw",
+      "origin": [
+        -672,
+        -304,
+        72
+      ],
+      "angle": 90,
+      "zombie": [
+        -672,
+        -384,
+        48
+      ],
+      "path": [
+        -672,
+        -336,
+        56
+      ]
+    },
+    {
+      "id": "easy_window_w",
+      "origin": [
+        -816,
+        0,
+        72
+      ],
+      "angle": 0,
+      "zombie": [
+        -880,
+        0,
+        48
+      ],
+      "path": [
+        -848,
+        0,
+        56
+      ]
+    },
+    {
+      "id": "easy_window_e",
+      "origin": [
+        -240,
+        -304,
+        72
+      ],
+      "angle": 90,
+      "zombie": [
+        -240,
+        -384,
+        48
+      ],
+      "path": [
+        -240,
+        -336,
+        56
+      ]
+    }
+  ],
+  "junctionSpawns": [
+    {
+      "origin": [
+        320,
+        512,
+        40
+      ],
+      "angle": 270
+    },
+    {
+      "origin": [
+        320,
+        -512,
+        40
+      ],
+      "angle": 90
+    },
+    {
+      "origin": [
+        704,
+        192,
+        40
+      ],
+      "angle": 180
+    },
+    {
+      "origin": [
+        704,
+        -192,
+        40
+      ],
+      "angle": 180
+    }
+  ],
+  "anchors": [
+    {
+      "classname": "soe_beast_pedestal",
+      "origin": [
+        -624,
+        -112,
+        32
+      ],
+      "targetname": "soe_g1_beast_spawn"
+    },
+    {
+      "classname": "soe_beast_smash",
+      "origin": [
+        -488,
+        208,
+        48
+      ],
+      "targetname": "soe_g1_summoning_crate",
+      "target": "soe_g1_summoning_key"
+    },
+    {
+      "classname": "soe_quest_pickup",
+      "origin": [
+        -452,
+        208,
+        40
+      ],
+      "targetname": "soe_g1_summoning_key",
+      "style": 1,
+      "spawnflags": 1
+    },
+    {
+      "classname": "soe_beast_grapple",
+      "origin": [
+        -424,
+        272,
+        160
+      ],
+      "target": "soe_g1_nero_grapple_dest"
+    },
+    {
+      "classname": "info_notnull",
+      "origin": [
+        -360,
+        240,
+        192
+      ],
+      "targetname": "soe_g1_nero_grapple_dest"
+    },
+    {
+      "classname": "soe_beast_shock",
+      "origin": [
+        -264,
+        264,
+        176
+      ],
+      "targetname": "soe_g1_nero_power"
+    },
+    {
+      "classname": "soe_beast_shock",
+      "origin": [
+        160,
+        320,
+        40
+      ],
+      "targetname": "soe_g1_pen_crane_power"
+    },
+    {
+      "classname": "soe_beast_shock",
+      "origin": [
+        80,
+        -352,
+        40
+      ],
+      "targetname": "soe_g1_rift_access_power"
+    }
+  ],
+  "junctionAnchors": [
+    {
+      "id": "central_statue",
+      "origin": [
+        288,
+        0,
+        32
+      ]
+    },
+    {
+      "id": "tram_crossing_center",
+      "origin": [
+        224,
+        0,
+        8
+      ]
+    },
+    {
+      "id": "canal_gate_center",
+      "origin": [
+        320,
+        448,
+        64
+      ]
+    },
+    {
+      "id": "waterfront_gate_center",
+      "origin": [
+        320,
+        -448,
+        64
+      ]
+    },
+    {
+      "id": "footlight_gate_center",
+      "origin": [
+        640,
+        0,
+        64
+      ]
+    },
+    {
+      "id": "rift_approach",
+      "origin": [
+        32,
+        -320,
+        0
+      ]
+    },
+    {
+      "id": "pen_crane_sightline",
+      "origin": [
+        160,
+        320,
+        40
+      ]
+    }
+  ],
+  "acceptance": [
+    "4 players spawn without overlap",
+    "4 barricade windows have zombie spawn/path chains",
+    "500-point Easy Street exit separates spawn and Junction zones",
+    "three 1000-point district stubs exist",
+    "Beast pedestal, Summoning Key smash/pickup, Nero grapple destination and two Junction shock anchors exist",
+    "Junction leaves a minimum 160-unit clear lane through its center for Margwa blockout traversal",
+    "tram crossing is represented without obstructing player traversal",
+    "all coordinates remain provisional until measurement pass"
+  ]
+}
