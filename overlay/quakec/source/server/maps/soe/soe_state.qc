@@ -41,12 +41,16 @@ float soe_station_shock_mask;
 float soe_keeper_shock_mask;
 
 float soe_scripted_margwa_pending;
+float soe_next_regular_margwa_round;
+float soe_pending_parasites;
+float soe_margwa_kills;
 
 float soe_has_summoning_key;
 float soe_has_lawyers_pen;
 float soe_has_detective_badge;
 float soe_has_toupee;
 float soe_has_champ_belt;
+float soe_has_margwa_heart;
 float soe_ritual_active;
 
 float() SoE_IsMap =
@@ -78,12 +82,16 @@ void() SoE_ResetQuestState =
     soe_keeper_shock_mask = 0;
 
     soe_scripted_margwa_pending = 0;
+    soe_next_regular_margwa_round = 8;
+    soe_pending_parasites = 0;
+    soe_margwa_kills = 0;
 
     soe_has_summoning_key = false;
     soe_has_lawyers_pen = false;
     soe_has_detective_badge = false;
     soe_has_toupee = false;
     soe_has_champ_belt = false;
+    soe_has_margwa_heart = false;
     soe_ritual_active = false;
 };
 
@@ -108,10 +116,12 @@ void() SoE_OnNewRound =
     if (!soe_active)
         return;
 
-    // Canonical regular Margwa scheduling begins at round 8.
-    // This queue is consumed by the dedicated Margwa spawner once that
-    // module is connected to the AI layer.
-    if (rounds == 8)
+    // NZ:P invokes this hook before its NewRound() body increments rounds.
+    float upcoming_round = rounds + 1;
+
+    // Natural Margwa scheduling begins on round 8. After a natural spawn,
+    // soe_specials.qc chooses the next regular boss gap.
+    if (upcoming_round == soe_next_regular_margwa_round)
         soe_scripted_margwa_pending = soe_scripted_margwa_pending + 1;
 };
 
