@@ -15,7 +15,7 @@ ROOT = Path(__file__).resolve().parents[1]
 SPEC_PATH = ROOT / "content" / "shadows_of_evil" / "g1_blockout.json"
 OUTPUT_PATH = ROOT / "overlay" / "assets" / "source" / "maps" / "soe_g1" / "soe_g1.map"
 
-WORLD_WAD = "../../textures/wad/zhlt.wad;../../textures/wad/Example_02.wad"
+WORLD_WAD = "../../textures/wad/Example_02.wad"
 FLOOR_TEX = "tiles_me"
 WALL_TEX = "facility_wall_l"
 CEILING_TEX = "ceilings_64"
@@ -30,12 +30,12 @@ def fmt(v):
     return f"{v:.3f}".rstrip("0").rstrip(".")
 
 
-def plane(a, b, c, tex):
+def plane(a, b, c, tex, uaxis, vaxis):
     return (
         f"( {fmt(a[0])} {fmt(a[1])} {fmt(a[2])} ) "
         f"( {fmt(b[0])} {fmt(b[1])} {fmt(b[2])} ) "
         f"( {fmt(c[0])} {fmt(c[1])} {fmt(c[2])} ) "
-        f"{tex} [ 1 0 0 0 ] [ 0 -1 0 0 ] 0 1 1"
+        f"{tex} [ {uaxis} ] [ {vaxis} ] 0 1 1"
     )
 
 
@@ -45,12 +45,12 @@ def box_brush(mins, maxs, tex=BLOCK_TEX):
     if not (x1 < x2 and y1 < y2 and z1 < z2):
         raise ValueError(f"invalid box {mins} -> {maxs}")
     p = []
-    p.append(plane((x1,y1,z1), (x1,y1+1,z1), (x1,y1,z1+1), tex))
-    p.append(plane((x1,y1,z1), (x1,y1,z1+1), (x1+1,y1,z1), tex))
-    p.append(plane((x1,y1,z1), (x1+1,y1,z1), (x1,y1+1,z1), tex))
-    p.append(plane((x2,y2,z2), (x2,y2,z2+1), (x2,y2+1,z2), tex))
-    p.append(plane((x2,y2,z2), (x2+1,y2,z2), (x2,y2,z2+1), tex))
-    p.append(plane((x2,y2,z2), (x2,y2+1,z2), (x2+1,y2,z2), tex))
+    p.append(plane((x1,y1,z1), (x1,y1+1,z1), (x1,y1,z1+1), tex, "0 -1 0 0", "0 0 -1 0"))
+    p.append(plane((x1,y1,z1), (x1,y1,z1+1), (x1+1,y1,z1), tex, "1 0 0 0", "0 0 -1 0"))
+    p.append(plane((x1,y1,z1), (x1+1,y1,z1), (x1,y1+1,z1), tex, "1 0 0 0", "0 -1 0 0"))
+    p.append(plane((x2,y2,z2), (x2,y2,z2+1), (x2,y2+1,z2), tex, "0 1 0 0", "0 0 -1 0"))
+    p.append(plane((x2,y2,z2), (x2+1,y2,z2), (x2,y2,z2+1), tex, "-1 0 0 0", "0 0 -1 0"))
+    p.append(plane((x2,y2,z2), (x2,y2+1,z2), (x2+1,y2,z2), tex, "1 0 0 0", "0 -1 0 0"))
     return "{\n" + "\n".join(p) + "\n}"
 
 
