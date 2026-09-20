@@ -11,6 +11,7 @@
 #define SOE_SPECIAL_MARGWA      1
 #define SOE_SPECIAL_PARASITE    2
 #define SOE_SPECIAL_ELEMENTAL   3
+#define SOE_SPECIAL_KEEPER      4
 
 .float soe_special_type;
 .float soe_margwa_heads;
@@ -30,6 +31,7 @@ float(entity ent) SoE_IsCustomSpecialBody =
         ent.classname == "soe_parasite" ||
         ent.classname == "soe_elemental" ||
         ent.classname == "soe_elemental_warning" ||
+        ent.classname == "soe_keeper" ||
         ent.classname == "soe_shadowman_boss"
     );
 };
