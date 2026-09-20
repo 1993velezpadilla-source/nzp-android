@@ -8,10 +8,16 @@
         "easy_street_exit_open"
       ],
       "steps": [
-        "Cook grenade at white laundry ticket",
-        "Collect displaced ticket"
+        "Open the first door from Easy Street into Junction",
+        "Look right through Chang's Laundry at the ticket attached to hanging clothing",
+        "Cook and throw a grenade into the laundry trigger area to dislodge the ticket",
+        "Interact with the ticket on the crate/box outside the shop"
       ],
-      "reward": "500 points"
+      "reward": "500 points",
+      "runtimeEntities": [
+        "soe_sal_laundry_trigger",
+        "soe_sal_ticket_spawn"
+      ]
     },
     {
       "id": "civil_protector",
@@ -86,19 +92,30 @@
     {
       "id": "snakeskin_boots",
       "steps": [
-        "Activate three wooden radios/clocks: Anvil Gym, Footlight station, Ruby Rabbit"
+        "Interact with the wooden clock/speaker in Ruby Rabbit, Canals, on the table immediately left of the entrance",
+        "Interact with the wooden clock/speaker in Footlight Train Station on the bench near the GobbleGum machine/barrier",
+        "Interact with the wooden clock/speaker in the upper Boxing Gym office/desk area at Waterfront",
+        "Optional instrumental-mode hook: interact with one already-activated clock a second time before completing all three"
       ],
-      "reward": "music event hook; copyrighted song not bundled"
+      "reward": "fires a cleared/project-owned music-event hook; original copyrighted song is not bundled",
+      "runtimeEntities": [
+        "soe_snakeskin_clock",
+        "soe_snakeskin_relay"
+      ]
     },
     {
       "id": "cold_hard_cash",
       "steps": [
-        "Collect microphone stand in Nero's room",
-        "Collect cable in Canals",
-        "Collect microphone in Rift tunnel",
-        "Assemble on Black Lace stage"
+        "Collect microphone stand in Nero's Landing between the large saw and knife-throwing/target area",
+        "Collect microphone cable under the Canals stairs near the Beast-visible wall",
+        "Collect microphone in the Underground/Rift area beside the bench near the Waterfront portal",
+        "After all three pieces are collected, interact with the assembled microphone on the Black Lace Burlesque stage"
       ],
-      "reward": "music event hook; copyrighted song not bundled"
+      "reward": "fires a cleared/project-owned stage/music-event hook; original copyrighted song is not bundled",
+      "runtimeEntities": [
+        "soe_cold_cash_part",
+        "soe_cold_cash_stage"
+      ]
     },
     {
       "id": "round_skip",
