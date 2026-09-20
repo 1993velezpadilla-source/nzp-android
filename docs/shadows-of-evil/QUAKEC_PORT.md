@@ -32,3 +32,9 @@ Pinned QuakeC: `04bd544172e16193162277a7c356c827e9653b06`
 - Background skyline non-solid and aggressively culled.
 - LOD props/zombies before reducing collision fidelity.
 - Gameplay collision identical across presets.
+
+
+## Android input bindings carried by the SoE overlay
+- `impulse 34`: Rocket Shield boost. Requires its own shield action/button when the player has a shield.
+- `impulse 35`: Li'l Arnie tactical throw. **Requires a dedicated Li'l Arnie HUD button**, not a weapon slot or generic grenade toggle.
+- Both controls must participate in Custom HUD move/scale/opacity editing and expose current per-player state to the HUD.
