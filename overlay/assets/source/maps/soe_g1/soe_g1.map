@@ -570,7 +570,6 @@
 "targetname" "soe_g1_rift_access_power"
 "origin" "80 -352 40"
 }
-
 {
 "classname" "perk_revive"
 "angles" "0 90 0"
