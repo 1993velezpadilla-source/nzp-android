@@ -1,0 +1,454 @@
+{
+  "schemaVersion": 1,
+  "map": "soe",
+  "phase": "G3",
+  "district": "footlight",
+  "status": "provisional_blockout_spec",
+  "scalePolicy": "Topology- and traversal-first clean-room blockout. Coordinates are provisional until timing/sightline calibration.",
+  "attach": {
+    "g1Door": "junction_to_footlight_stub",
+    "gateCenter": [
+      640,
+      0,
+      64
+    ],
+    "forwardAxis": "+X",
+    "localOrigin": [
+      656,
+      0,
+      0
+    ]
+  },
+  "proposedGlobalBounds": {
+    "mins": [
+      576,
+      -768,
+      -128
+    ],
+    "maxs": [
+      1920,
+      768,
+      544
+    ]
+  },
+  "subregions": [
+    {
+      "id": "footlight_entry",
+      "label": "Footlight entrance / lower street",
+      "mins": [
+        656,
+        -256,
+        0
+      ],
+      "maxs": [
+        896,
+        256,
+        192
+      ]
+    },
+    {
+      "id": "footlight_main",
+      "label": "Traffic-jam main street / Burlesque frontage",
+      "mins": [
+        896,
+        -448,
+        0
+      ],
+      "maxs": [
+        1408,
+        448,
+        224
+      ]
+    },
+    {
+      "id": "footlight_high",
+      "label": "Elevated narrow walkways / shortcut network",
+      "mins": [
+        928,
+        192,
+        128
+      ],
+      "maxs": [
+        1568,
+        640,
+        352
+      ]
+    },
+    {
+      "id": "black_lace",
+      "label": "Black Lace Burlesque ritual building",
+      "mins": [
+        1312,
+        -256,
+        0
+      ],
+      "maxs": [
+        1760,
+        256,
+        416
+      ]
+    },
+    {
+      "id": "footlight_station",
+      "label": "Footlight Tram Station",
+      "mins": [
+        1408,
+        320,
+        0
+      ],
+      "maxs": [
+        1840,
+        720,
+        320
+      ]
+    },
+    {
+      "id": "footlight_rift",
+      "label": "Footlight surface Rift pocket",
+      "mins": [
+        832,
+        -608,
+        -64
+      ],
+      "maxs": [
+        1056,
+        -400,
+        128
+      ]
+    }
+  ],
+  "routeContracts": [
+    "Junction gate -> Footlight lower entry",
+    "entry -> cluttered main street",
+    "main street -> Burlesque frontage and station approach",
+    "main street -> elevated High Street via stairs/powered shortcut",
+    "High Street -> Toupee ledge Beast grapple/smash route",
+    "High Street -> randomized perk room / fuse / shield-part corridor",
+    "High Street -> station",
+    "Burlesque sign grapple -> roof power switch -> human ground-floor access",
+    "Burlesque interior -> ritual stage",
+    "lower street -> Beast-opened surface Rift pocket"
+  ],
+  "gameplayAnchors": [
+    {
+      "classname": "soe_civil_call_panel",
+      "origin": [
+        816,
+        160,
+        48
+      ],
+      "style": 3,
+      "cost": 2000,
+      "targetname": "soe_g3_civil_panel_footlight"
+    },
+    {
+      "classname": "soe_beast_pedestal",
+      "origin": [
+        768,
+        -96,
+        32
+      ],
+      "targetname": "soe_g3_beast_entry"
+    },
+    {
+      "classname": "soe_beast_pedestal",
+      "origin": [
+        1088,
+        320,
+        32
+      ],
+      "targetname": "soe_g3_beast_main"
+    },
+    {
+      "classname": "soe_beast_pedestal",
+      "origin": [
+        1312,
+        496,
+        176
+      ],
+      "targetname": "soe_g3_beast_high"
+    },
+    {
+      "classname": "soe_beast_grapple",
+      "origin": [
+        1264,
+        -96,
+        192
+      ],
+      "target": "soe_g3_black_lace_roof_dest",
+      "targetname": "soe_g3_black_lace_grapple"
+    },
+    {
+      "classname": "info_notnull",
+      "origin": [
+        1512,
+        -96,
+        304
+      ],
+      "targetname": "soe_g3_black_lace_roof_dest"
+    },
+    {
+      "classname": "soe_beast_shock",
+      "origin": [
+        1552,
+        -64,
+        304
+      ],
+      "target": "soe_g3_black_lace_access",
+      "targetname": "soe_g3_black_lace_power"
+    },
+    {
+      "classname": "soe_beast_grapple",
+      "origin": [
+        1184,
+        400,
+        176
+      ],
+      "target": "soe_g3_toupee_grapple_dest",
+      "targetname": "soe_g3_toupee_grapple"
+    },
+    {
+      "classname": "info_notnull",
+      "origin": [
+        1376,
+        528,
+        240
+      ],
+      "targetname": "soe_g3_toupee_grapple_dest"
+    },
+    {
+      "classname": "soe_beast_smash",
+      "origin": [
+        1440,
+        544,
+        224
+      ],
+      "target": "soe_g3_toupee_pickup",
+      "targetname": "soe_g3_toupee_smash"
+    },
+    {
+      "classname": "soe_quest_pickup",
+      "origin": [
+        1440,
+        512,
+        176
+      ],
+      "style": 4,
+      "spawnflags": 1,
+      "targetname": "soe_g3_toupee_pickup",
+      "useprint_string_1": "Hold %b to Pick Up Producer's Toupee"
+    },
+    {
+      "classname": "soe_ritual_controller",
+      "origin": [
+        1544,
+        64,
+        48
+      ],
+      "style": 3,
+      "wait": 20,
+      "targetname": "soe_g3_black_lace_ritual"
+    },
+    {
+      "classname": "soe_ritual_keeper_spawn",
+      "origin": [
+        1456,
+        -32,
+        48
+      ],
+      "style": 3,
+      "targetname": "soe_g3_black_lace_keeper_a"
+    },
+    {
+      "classname": "soe_ritual_keeper_spawn",
+      "origin": [
+        1632,
+        -32,
+        48
+      ],
+      "style": 3,
+      "targetname": "soe_g3_black_lace_keeper_b"
+    },
+    {
+      "classname": "soe_ritual_keeper_spawn",
+      "origin": [
+        1456,
+        144,
+        48
+      ],
+      "style": 3,
+      "targetname": "soe_g3_black_lace_keeper_c"
+    },
+    {
+      "classname": "soe_ritual_keeper_spawn",
+      "origin": [
+        1632,
+        144,
+        48
+      ],
+      "style": 3,
+      "targetname": "soe_g3_black_lace_keeper_d"
+    },
+    {
+      "classname": "perk_random",
+      "origin": [
+        1184,
+        448,
+        176
+      ],
+      "spawnflags": 14,
+      "targetname": "soe_g3_footlight_perk_slot"
+    },
+    {
+      "classname": "soe_perk_power_panel",
+      "origin": [
+        1216,
+        448,
+        184
+      ],
+      "target": "soe_g3_footlight_perk_slot",
+      "targetname": "soe_g3_footlight_perk_power"
+    },
+    {
+      "classname": "info_notnull",
+      "origin": [
+        992,
+        -496,
+        -24
+      ],
+      "targetname": "soe_g3_rift_visual_anchor"
+    },
+    {
+      "classname": "info_notnull",
+      "origin": [
+        1584,
+        464,
+        48
+      ],
+      "targetname": "soe_g3_station_platform_anchor"
+    },
+    {
+      "classname": "info_notnull",
+      "origin": [
+        1648,
+        520,
+        96
+      ],
+      "targetname": "soe_g3_symbol_sightline_anchor"
+    },
+    {
+      "classname": "soe_sword_statue",
+      "origin": [
+        1152,
+        520,
+        160
+      ],
+      "style": 4,
+      "targetname": "soe_g3_footlight_ovum_statue"
+    }
+  ],
+  "poweredGeometry": [
+    {
+      "classname": "soe_powered_door",
+      "targetname": "soe_g3_black_lace_access",
+      "mins": [
+        1312,
+        -72,
+        0
+      ],
+      "maxs": [
+        1336,
+        72,
+        112
+      ]
+    },
+    {
+      "classname": "soe_powered_door",
+      "targetname": "soe_g3_rift_door",
+      "mins": [
+        960,
+        -432,
+        -64
+      ],
+      "maxs": [
+        1024,
+        -408,
+        64
+      ]
+    }
+  ],
+  "randomized": [
+    {
+      "group": 202,
+      "system": "Rocket Shield Footlight visor",
+      "entity": "soe_shield_part",
+      "style": 1,
+      "candidates": [
+        [
+          1088,
+          400,
+          176
+        ],
+        [
+          1248,
+          544,
+          176
+        ],
+        [
+          1488,
+          416,
+          176
+        ]
+      ]
+    },
+    {
+      "group": 302,
+      "system": "Civil Protector Footlight fuse",
+      "entity": "soe_civil_fuse",
+      "style": 2,
+      "candidates": [
+        [
+          1120,
+          592,
+          176
+        ],
+        [
+          1328,
+          432,
+          176
+        ],
+        [
+          1520,
+          592,
+          176
+        ]
+      ]
+    }
+  ],
+  "uncertain": [
+    {
+      "system": "Fumigator",
+      "status": "do_not_invent",
+      "reason": "project research found no reliable dedicated Footlight randomized Fumigator set; preserve uncertainty until original-build capture"
+    }
+  ],
+  "acceptance": [
+    "player can travel Junction -> main street -> High Street -> station",
+    "traffic-jam lower street preserves deliberate obstacle-course feel without creating player softlocks",
+    "Black Lace grapple lands safely and its Beast shock opens human ground-floor access",
+    "Toupee remains dormant until the elevated Beast smash route is completed",
+    "Black Lace ritual style 3 has four Keeper spawn markers",
+    "Footlight shield group 202 resolves one of three style-1 candidates",
+    "Footlight fuse group 302 resolves one of three style-2 candidates",
+    "randomized perk slot has a dedicated Beast power panel",
+    "surface Rift is present but cannot teleport until G5",
+    "High Street remains narrow with escape/drop shortcut envelopes",
+    "station retains room for G7 Tram collision and symbol viewing"
+  ],
+  "references": [
+    "https://codzombified.blogspot.com/2015/12/footlight-district-main-street-map.html",
+    "https://codzombified.blogspot.com/2015/12/footlight-high-street-map-layout-for.html",
+    "https://www.codzombie.com/maps/shadows-of-evil",
+    "https://steamcommunity.com/sharedfiles/filedetails/?id=550319350"
+  ]
+}
