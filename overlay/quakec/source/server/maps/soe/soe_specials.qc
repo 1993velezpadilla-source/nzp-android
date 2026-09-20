@@ -19,6 +19,19 @@
 .float soe_margwa_mouth_open;
 .float soe_margwa_mouth_change;
 .float soe_margwa_purple;
+.float soe_counts_round;
+.float soe_attack_cooldown;
+.float soe_spawn_at;
+.vector soe_spawn_origin;
+
+float(entity ent) SoE_IsCustomSpecialBody =
+{
+    return (
+        ent.classname == "soe_parasite" ||
+        ent.classname == "soe_elemental" ||
+        ent.classname == "soe_elemental_warning"
+    );
+};
 
 entity() getFreeZombieEnt;
 void(entity where) spawn_a_zombieB;
@@ -222,6 +235,29 @@ float(entity victim, entity attacker, float damage, float d_style) SoE_HandleSpe
             SoE_DestroyMargwaHead(victim, attacker);
 
         // Returning true bypasses generic zombie HP and Insta-Kill handling.
+        return true;
+    }
+
+    if (SoE_IsCustomSpecialBody(victim)) {
+        victim.health = victim.health - damage;
+
+        if (attacker.classname == "player" && damage > 0)
+            Player_ChangeScore(attacker, 10, false);
+
+        if (victim.health <= 0 || instakill_finished > time) {
+            if (attacker.classname == "player") {
+                attacker.kills = attacker.kills + 1;
+                Player_ChangeScore(attacker, 50, true);
+            }
+
+            if (victim.soe_counts_round) {
+                Remaining_Zombies = Remaining_Zombies - 1;
+                Current_Zombies = Current_Zombies - 1;
+            }
+
+            remove(victim);
+        }
+
         return true;
     }
 
