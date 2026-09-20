@@ -32,6 +32,8 @@
 #define SOE_POD_REWARD_TENTACLE     6
 
 void(vector where, float type) Spawn_Powerup;
+void(entity who, float value, float impacted_by_2x_points) Player_ChangeScore;
+string(float wep, float gorvmodel) GetWeaponModel;
 entity(vector org, float counts_round) SoE_SpawnParasite;
 void() GrenadeExplode;
 void(float weapon_id, float weapon_mag, float weapon_reserve, float weapon_tier) Weapon_GiveWeapon;
@@ -160,7 +162,9 @@ void(vector org) SoE_SpawnLiveGrenadeReward =
     nade.solid = SOLID_BBOX;
     nade.classname = "projectile_grenade";
     nade.avelocity = '50 -50 50';
-    nade.velocity = [(random() * 120) - 60, (random() * 120) - 60, 160];
+    nade.velocity_x = (random() * 120) - 60;
+    nade.velocity_y = (random() * 120) - 60;
+    nade.velocity_z = 160;
     nade.touch = GrenadeExplode;
     nade.think = GrenadeExplode;
     nade.nextthink = time + 2.5;
