@@ -27,6 +27,19 @@
         "special-round enemy",
         "can drop Xenomatter",
         "achievement tracks five kills while riding tram"
+      ],
+      "combat": {
+        "locomotion": "flying",
+        "role": "ranged harassment / special-round enemy",
+        "questInteractions": [
+          "can drop Xenomatter under Servant-part rules",
+          "Parasite-Seeing challenge tracks five kills from the Tram"
+        ]
+      },
+      "roundRules": [
+        "dedicated Parasite special rounds occur before Insanity Elementals are introduced",
+        "end of dedicated special round awards Max Ammo",
+        "Margwa head destruction spawns additional Parasites"
       ]
     },
     {
@@ -40,6 +53,19 @@
         "explodes on contact/death",
         "spawns infinitely during flag defense",
         "weak points are glowing lights"
+      ],
+      "combat": {
+        "targeting": "each Elemental selects/follows a particular player rather than simply nearest-target behavior",
+        "telegraph": "red mist marks drop location before the Elemental falls into the map",
+        "counterplay": "shooting the red mist can kill the Elemental before it fully spawns",
+        "contact": "explodes on player contact/death-range interaction",
+        "durability": "low relative health; threat comes from speed/numbers"
+      },
+      "roundRules": [
+        "first dedicated Insanity Elemental special round occurs after the second Parasite special round",
+        "after introduction they can occasionally mix into normal zombie rounds",
+        "end of dedicated special round awards Max Ammo",
+        "spawn endlessly during the main-quest flag-defense phase"
       ]
     },
     {
@@ -54,6 +80,37 @@
         "extra spawns during sword upgrades and Shadowman fight",
         "purple variant replaces normal flow in finale",
         "can bypass/teleport through Chain Traps"
+      ],
+      "combat": {
+        "heads": 3,
+        "weakPoint": "open glowing mouth only",
+        "progression": [
+          "destroy first head -> increase movement/aggression and release one Parasite",
+          "destroy second head -> increase movement/aggression again and release one Parasite",
+          "destroy third head -> Margwa dies and releases one Parasite"
+        ],
+        "powerupImmunities": [
+          "Insta-Kill",
+          "Nuke"
+        ],
+        "apothiconServant": "cannot be directly killed by vortex; shielded from its normal effect",
+        "lilArnie": "can destroy deployed Li'l Arnies"
+      },
+      "scoring": {
+        "pointsPerDestroyedHead": 500,
+        "totalHeadPoints": 1500
+      },
+      "scriptedSpawns": [
+        "regular scheduling begins on round 8",
+        "after completing ritual 2",
+        "after completing ritual 4",
+        "during each player's Arch-Ovum sword-upgrade progression",
+        "each time Shadowman re-raises shield during boss step",
+        "indefinite purple-mouth Margwas during original finale"
+      ],
+      "drops": [
+        "first Margwa kill drops Margwa Heart for Apothicon Servant; re-drops on later Margwa if not collected",
+        "each destroyed head releases one Parasite"
       ]
     },
     {
