@@ -33,6 +33,7 @@ include_lines = [
     "maps/soe/soe_specials.qc\n",
     "maps/soe/soe_special_movers.qc\n",
     "maps/soe/soe_harvest.qc\n",
+    "maps/soe/soe_servant.qc\n",
     "maps/soe/soe_special_rounds.qc\n",
 ]
 if not all(line in text for line in include_lines):
@@ -47,7 +48,7 @@ text = main_qc.read_text(encoding="utf-8")
 
 # Map initialization hook.
 init_anchor = "\tGamemode_Init();\n"
-init_call = "\tSoE_Init();\n\tSoE_ResetTransportState();\n\tSoE_ResetSpecialRoundSchedule();\n"
+init_call = "\tSoE_Init();\n\tSoE_ResetTransportState();\n\tSoE_ResetServant();\n\tSoE_ResetSpecialRoundSchedule();\n"
 if init_call not in text:
     if init_anchor not in text:
         raise SystemExit("worldspawn hook anchor changed; inspect pinned upstream")
@@ -273,5 +274,192 @@ if "SoE_AdjustRoundEnemyTotal(count)" not in text:
     text = text.replace(total_anchor, total_patch, 1)
 
 rounds_qc.write_text(text, encoding="utf-8")
+
+
+# Configure W_CUSTOM1 as the SoE Apothicon Servant. We deliberately reuse
+# the Ray Gun presentation assets only as a temporary visual shell; firing is
+# intercepted below and uses dedicated SoE singularity gameplay.
+weapon_stats_qc = root / "source" / "shared" / "weapon_stats.qc"
+text = weapon_stats_qc.read_text(encoding="utf-8")
+
+def replace_once_or_die(source, old, new, label):
+    if new in source:
+        return source
+    if old not in source:
+        raise SystemExit(f"{label} anchor changed; inspect pinned upstream")
+    return source.replace(old, new, 1)
+
+text = replace_once_or_die(
+    text,
+    '''\t\tcase W_RAY:
+\t\t\tweapon_name = "Ray Gun";
+\t\t\tbreak;''',
+    '''\t\tcase W_CUSTOM1:
+\t\t\tweapon_name = "Apothicon Servant";
+\t\t\tbreak;
+\t\tcase W_RAY:
+\t\t\tweapon_name = "Ray Gun";
+\t\t\tbreak;''',
+    "Servant weapon name"
+)
+
+text = replace_once_or_die(
+    text,
+    '''\t\tcase W_RAY:
+\t\tcase W_PORTER:
+\t\t\treturn FIRETYPE_RAYBEAM;''',
+    '''\t\tcase W_CUSTOM1:
+\t\t\treturn FIRETYPE_RAYBEAM;
+\t\tcase W_RAY:
+\t\tcase W_PORTER:
+\t\t\treturn FIRETYPE_RAYBEAM;''',
+    "Servant firetype"
+)
+
+text = replace_once_or_die(
+    text,
+    '''\t\tcase W_RAY:
+\t\t\treturn 20;''',
+    '''\t\tcase W_CUSTOM1:
+\t\t\treturn 1;
+\t\tcase W_RAY:
+\t\t\treturn 20;''',
+    "Servant magazine"
+)
+
+text = replace_once_or_die(
+    text,
+    '''\t\tcase W_RAY:
+\t\t\tweapon_ammo = 160;
+\t\t\tbreak;''',
+    '''\t\tcase W_CUSTOM1:
+\t\t\tweapon_ammo = 10;
+\t\t\tbreak;
+\t\tcase W_RAY:
+\t\t\tweapon_ammo = 160;
+\t\t\tbreak;''',
+    "Servant reserve ammo"
+)
+
+# Use zero generic bullet damage: all damage is owned by the dedicated
+# singularity entity and is intentionally round-independent.
+text = replace_once_or_die(
+    text,
+    '''\t\tcase W_RAY:
+\t\tcase W_PORTER:
+\t\t\tweapon_damage = 1000;
+\t\t\tbreak;''',
+    '''\t\tcase W_CUSTOM1:
+\t\t\tweapon_damage = 0;
+\t\t\tbreak;
+\t\tcase W_RAY:
+\t\tcase W_PORTER:
+\t\t\tweapon_damage = 1000;
+\t\t\tbreak;''',
+    "Servant generic damage"
+)
+
+# Dedicated timing. 1-round magazine; reload is deliberately slower than
+# fire cadence so the weapon cannot be spammed like a ray gun.
+delay_anchor = '''\t\tcase W_RAY:
+\t\tcase W_PORTER:
+\t\t\tif (delaytype == RELOAD)
+\t\t\t\treturn 2.75;'''
+delay_patch = '''\t\tcase W_CUSTOM1:
+\t\t\tif (delaytype == RELOAD)
+\t\t\t\treturn 2.40;
+\t\t\telse if (delaytype == FIRE)
+\t\t\t\treturn 0.60;
+\t\t\telse if (delaytype == PUTOUT)
+\t\t\t\treturn 0.80;
+\t\t\telse if (delaytype == TAKEOUT)
+\t\t\t\treturn 0.40;
+\t\tcase W_RAY:
+\t\tcase W_PORTER:
+\t\t\tif (delaytype == RELOAD)
+\t\t\t\treturn 2.75;'''
+text = replace_once_or_die(text, delay_anchor, delay_patch, "Servant delays")
+
+# Temporary Ray Gun presentation shell.
+model_anchor = '''\t\tcase W_RAY:
+    \tcase W_PORTER:
+\t\t\tif (gorvmodel)
+\t\t\t\treturn ("models/weapons/ray/g_ray.mdl");
+\t\t\telse
+\t\t\t\treturn ("models/weapons/ray/v_ray.mdl");'''
+model_patch = '''\t\tcase W_CUSTOM1:
+\t\t\tif (gorvmodel)
+\t\t\t\treturn ("models/weapons/ray/g_ray.mdl");
+\t\t\telse
+\t\t\t\treturn ("models/weapons/ray/v_ray.mdl");
+\t\tcase W_RAY:
+    \tcase W_PORTER:
+\t\t\tif (gorvmodel)
+\t\t\t\treturn ("models/weapons/ray/g_ray.mdl");
+\t\t\telse
+\t\t\t\treturn ("models/weapons/ray/v_ray.mdl");'''
+text = replace_once_or_die(text, model_anchor, model_patch, "Servant temporary model")
+
+sound_anchor = '''\t\tcase W_RAY:
+    \tcase W_PORTER:
+\t\t\treturn "sounds/weapons/raygun/shoot.wav";'''
+sound_patch = '''\t\tcase W_CUSTOM1:
+\t\t\treturn "sounds/weapons/raygun/shoot.wav";
+\t\tcase W_RAY:
+    \tcase W_PORTER:
+\t\t\treturn "sounds/weapons/raygun/shoot.wav";'''
+text = replace_once_or_die(text, sound_anchor, sound_patch, "Servant temporary sound")
+
+# Reuse Ray Gun animation frame ranges until a cleared Servant model exists.
+frame_anchor = '''    \tcase W_RAY:
+    \tcase W_PORTER:
+\t\t\tswitch (frametype)'''
+frame_patch = '''    \tcase W_CUSTOM1:
+    \tcase W_RAY:
+    \tcase W_PORTER:
+\t\t\tswitch (frametype)'''
+text = replace_once_or_die(text, frame_anchor, frame_patch, "Servant animation frames")
+
+# Reuse the Ray Gun ADS transform for the placeholder model.
+ads_section = text.find("vector GetWeaponADSOfs")
+ads_ray = text.find("\t\tcase W_RAY:", ads_section)
+if ads_section < 0 or ads_ray < 0:
+    raise SystemExit("Servant ADS anchor changed; inspect pinned upstream")
+if "\t\tcase W_CUSTOM1:\n\t\tcase W_RAY:" not in text[ads_section:ads_ray + 80]:
+    text = text[:ads_ray] + "\t\tcase W_CUSTOM1:\n" + text[ads_ray:]
+
+weapon_stats_qc.write_text(text, encoding="utf-8")
+
+# Divert W_CUSTOM1 away from Ray Gun projectile logic.
+weapon_core_qc = root / "source" / "server" / "weapons" / "weapon_core.qc"
+text = weapon_core_qc.read_text(encoding="utf-8")
+fire_anchor = '''\t\tcase FIRETYPE_RAYBEAM:
+\t\t\tW_FireRay();
+\t\t\tbreak;'''
+fire_patch = '''\t\tcase FIRETYPE_RAYBEAM:
+\t\t\tif (self.weapon == W_CUSTOM1)
+\t\t\t\tSoE_FireApothiconServant(side);
+\t\t\telse
+\t\t\t\tW_FireRay();
+\t\t\tbreak;'''
+text = replace_once_or_die(text, fire_anchor, fire_patch, "Servant fire dispatch")
+weapon_core_qc.write_text(text, encoding="utf-8")
+
+# Once built, inject the Servant as an extra Mystery Box candidate. This
+# avoids expanding NZ:P's legacy fixed 28-entry .mbox parser.
+mbox_qc = root / "source" / "server" / "entities" / "mystery_box.qc"
+text = mbox_qc.read_text(encoding="utf-8")
+mbox_anchor = '''float(entity user) MBOX_GetRandomBoxWeapon =
+{
+    float weapon_index = rint((random() * (MAX_BOX_WEAPONS - 1)));'''
+mbox_patch = '''float(entity user) MBOX_GetRandomBoxWeapon =
+{
+    float soe_servant_roll = SoE_MysteryBoxServantOverride(user);
+    if (soe_servant_roll != W_NOWEP)
+        return soe_servant_roll;
+
+    float weapon_index = rint((random() * (MAX_BOX_WEAPONS - 1)));'''
+text = replace_once_or_die(text, mbox_anchor, mbox_patch, "Servant mystery-box injection")
+mbox_qc.write_text(text, encoding="utf-8")
 
 print("Shadows of Evil QuakeC overlay applied")
