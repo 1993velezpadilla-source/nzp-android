@@ -32,6 +32,7 @@ include_lines = [
     "maps/soe/soe_perks.qc\n",
     "maps/soe/soe_tram.qc\n",
     "maps/soe/soe_specials.qc\n",
+    "maps/soe/soe_arnie.qc\n",
     "maps/soe/soe_sidequests.qc\n",
     "maps/soe/soe_chain_traps.qc\n",
     "maps/soe/soe_rituals.qc\n",
@@ -59,7 +60,7 @@ text = main_qc.read_text(encoding="utf-8")
 
 # Map initialization hook.
 init_anchor = "\tGamemode_Init();\n"
-init_call = "\tSoE_Init();\n\tSoE_ResetTransportState();\n\tSoE_ResetSideQuests();\n\tSoE_ResetServant();\n\tSoE_ResetCivilProtector();\n\tSoE_ResetShield();\n\tSoE_ResetSword();\n\tSoE_ResetSpecialRoundSchedule();\n\tSoE_ResetMainQuest();\n\tSoE_ResetShadowman();\n\tSoE_ResetFinale();\n\tSoE_ResetRandomSpawns();\n"
+init_call = "\tSoE_Init();\n\tSoE_ResetTransportState();\n\tSoE_ResetSideQuests();\n\tSoE_ResetArnie();\n\tSoE_ResetServant();\n\tSoE_ResetCivilProtector();\n\tSoE_ResetShield();\n\tSoE_ResetSword();\n\tSoE_ResetSpecialRoundSchedule();\n\tSoE_ResetMainQuest();\n\tSoE_ResetShadowman();\n\tSoE_ResetFinale();\n\tSoE_ResetRandomSpawns();\n"
 if init_call not in text:
     if init_anchor not in text:
         raise SystemExit("worldspawn hook anchor changed; inspect pinned upstream")
@@ -137,7 +138,7 @@ if "Shadows of Evil: Beast Mode instantly revives" not in text:
 ai_qc = root / "source" / "server" / "ai" / "ai_core.qc"
 text = ai_qc.read_text(encoding="utf-8")
 special_ai_anchor = "void() Zombie_AI = {\n"
-special_ai_call = "void() Zombie_AI = {\n\tSoE_UpdateSpecialAI();\n"
+special_ai_call = "void() Zombie_AI = {\n\tSoE_UpdateSpecialAI();\n\tif (SoE_ArnieOverrideZombieAI())\n\t\treturn;\n"
 if special_ai_call not in text:
     if special_ai_anchor not in text:
         raise SystemExit("Zombie_AI hook anchor changed; inspect pinned upstream")
@@ -436,6 +437,33 @@ frame_patch = '''    \tcase W_CUSTOM1:
 \t\t\tswitch (frametype)'''
 text = replace_once_or_die(text, frame_anchor, frame_patch, "Servant animation frames")
 
+# W_CUSTOM2 is a Mystery Box presentation token for Li'l Arnie tactical equipment.
+# It is never assigned as a firearm, so only name/model presentation is required.
+arnie_name_anchor = '''\t\tcase W_CUSTOM1:
+\t\t\tweapon_name = "Apothicon Servant";
+\t\t\tbreak;'''
+arnie_name_patch = '''\t\tcase W_CUSTOM1:
+\t\t\tweapon_name = "Apothicon Servant";
+\t\t\tbreak;
+\t\tcase W_CUSTOM2:
+\t\t\tweapon_name = "Li'l Arnie";
+\t\t\tbreak;'''
+text = replace_once_or_die(text, arnie_name_anchor, arnie_name_patch, "Arnie box name")
+
+arnie_model_anchor = '''\t\tcase W_CUSTOM1:
+\t\t\tif (gorvmodel)
+\t\t\t\treturn ("models/weapons/ray/g_ray.mdl");
+\t\t\telse
+\t\t\t\treturn ("models/weapons/ray/v_ray.mdl");'''
+arnie_model_patch = '''\t\tcase W_CUSTOM1:
+\t\t\tif (gorvmodel)
+\t\t\t\treturn ("models/weapons/ray/g_ray.mdl");
+\t\t\telse
+\t\t\t\treturn ("models/weapons/ray/v_ray.mdl");
+\t\tcase W_CUSTOM2:
+\t\t\treturn ("models/weapons/grenade/g_grenade.mdl");'''
+text = replace_once_or_die(text, arnie_model_anchor, arnie_model_patch, "Arnie box model")
+
 # Reuse the Ray Gun ADS transform for the placeholder model.
 ads_section = text.find("vector GetWeaponADSOfs")
 ads_ray = text.find("\t\tcase W_RAY:", ads_section)
@@ -474,8 +502,21 @@ mbox_patch = '''float(entity user) MBOX_GetRandomBoxWeapon =
     if (soe_servant_roll != W_NOWEP)
         return soe_servant_roll;
 
+    float soe_arnie_roll = SoE_MysteryBoxArnieOverride(user);
+    if (soe_arnie_roll != W_NOWEP)
+        return soe_arnie_roll;
+
     float weapon_index = rint((random() * (MAX_BOX_WEAPONS - 1)));'''
 text = replace_once_or_die(text, mbox_anchor, mbox_patch, "Servant mystery-box injection")
+
+arnie_pickup_anchor = '''\t\t\t\tWeapon_GiveWeapon(tempe.boxweapon.weapon, 0, 0, 0);
+\t\t\t\tself = tempe;'''
+arnie_pickup_patch = '''\t\t\t\tif (tempe.boxweapon.weapon == W_CUSTOM2)
+\t\t\t\t\tSoE_GiveLilArnie(self);
+\t\t\t\telse
+\t\t\t\t\tWeapon_GiveWeapon(tempe.boxweapon.weapon, 0, 0, 0);
+\t\t\t\tself = tempe;'''
+text = replace_once_or_die(text, arnie_pickup_anchor, arnie_pickup_patch, "Arnie Mystery Box pickup conversion")
 mbox_qc.write_text(text, encoding="utf-8")
 
 
@@ -491,12 +532,32 @@ shield_impulse_patch = '''\t\tcase 33:
 \t\t\tbreak;
 \t\tcase 34:
 \t\t\tSoE_ShieldBoostInput();
+\t\t\tbreak;
+\t\tcase 35:
+\t\t\tSoE_ArnieThrowInput();
 \t\t\tbreak;'''
 if "SoE_ShieldBoostInput();" not in text:
     if shield_impulse_anchor not in text:
         raise SystemExit("Shield impulse anchor changed; inspect pinned upstream")
     text = text.replace(shield_impulse_anchor, shield_impulse_patch, 1)
     weapon_core_qc.write_text(text, encoding="utf-8")
+
+
+# Max Ammo refills Li'l Arnie tactical charges for owners.
+powerups_qc = root / "source" / "server" / "entities" / "powerups.qc"
+text = powerups_qc.read_text(encoding="utf-8")
+arnie_maxammo_anchor = '''\t\t\t// Give Grenades
+\t\t\tplayers.primary_grenades = 4;
+\t\t\t// Give Betties'''
+arnie_maxammo_patch = '''\t\t\t// Give Grenades
+\t\t\tplayers.primary_grenades = 4;
+\t\t\tSoE_ArnieOnMaxAmmo(players);
+\t\t\t// Give Betties'''
+if "SoE_ArnieOnMaxAmmo(players);" not in text:
+    if arnie_maxammo_anchor not in text:
+        raise SystemExit("Arnie Max Ammo anchor changed; inspect pinned upstream")
+    text = text.replace(arnie_maxammo_anchor, arnie_maxammo_patch, 1)
+    powerups_qc.write_text(text, encoding="utf-8")
 
 
 # Charge active Ovum statues from normal zombie deaths.
