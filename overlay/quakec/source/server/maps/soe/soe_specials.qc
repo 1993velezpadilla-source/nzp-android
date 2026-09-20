@@ -221,6 +221,32 @@ void(entity victim, entity attacker) SoE_DestroyMargwaHead =
     self = old_self;
 };
 
+
+void(entity victim) SoE_TryDropXenomatter =
+{
+    if (rounds < 12 || soe_has_xenomatter || soe_xenomatter_drop_active)
+        return;
+
+    if (victim.soe_special_type != SOE_SPECIAL_PARASITE &&
+        victim.soe_special_type != SOE_SPECIAL_ELEMENTAL)
+        return;
+
+    if (random() > 0.10)
+        return;
+
+    entity drop = spawn();
+    drop.style = SOE_PICKUP_XENOMATTER;
+    drop.useprint_string_1 = "Hold %b to Pick Up Xenomatter";
+
+    entity old_self = self;
+    self = drop;
+    soe_quest_pickup();
+    self = old_self;
+
+    setorigin(drop, victim.origin + '0 0 16');
+    soe_xenomatter_drop_active = true;
+};
+
 float(entity victim, entity attacker, float damage, float d_style) SoE_HandleSpecialDamage =
 {
     if (!soe_active || victim.soe_special_type == SOE_SPECIAL_NONE)
@@ -250,6 +276,8 @@ float(entity victim, entity attacker, float damage, float d_style) SoE_HandleSpe
             Player_ChangeScore(attacker, 10, false);
 
         if (victim.health <= 0 || instakill_finished > time) {
+            SoE_TryDropXenomatter(victim);
+
             if (attacker.classname == "player") {
                 attacker.kills = attacker.kills + 1;
                 Player_ChangeScore(attacker, 70, true);
