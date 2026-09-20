@@ -1,0 +1,289 @@
+{
+  "schemaVersion": 1,
+  "map": "soe",
+  "globalAudit": {
+    "principle": "No gameplay-significant object may be omitted just because it is decorative in a guide. Track geometry, collision, navigation, lighting, audio, FX, interaction and dressing separately.",
+    "coordinateState": "reference inventory complete; exact transforms require author source or clean-room measurement pass",
+    "requiredLayers": [
+      "world brush/mesh",
+      "player collision",
+      "zombie navigation",
+      "triggers",
+      "interactables",
+      "spawn points",
+      "lighting",
+      "fog/post",
+      "audio emitters/reverb",
+      "FX",
+      "decals/damage",
+      "static props",
+      "animated props",
+      "background skyline"
+    ]
+  },
+  "districts": [
+    {
+      "id": "easy_street",
+      "name": "Easy Street / Spawn",
+      "mustHave": [
+        "4 zombie windows",
+        "Quick Revive",
+        "RK5 wallbuy",
+        "Sheiva wallbuy",
+        "Fumigator randomized spawn group",
+        "Beast pedestal",
+        "Summoning Key truck/crate",
+        "Shadowman starting staircase",
+        "500-point Junction exit",
+        "Nero roof/grapple route",
+        "Nero ritual access powerbox",
+        "Sal DeLuca laundry-window setup nearby"
+      ],
+      "microAudit": [
+        "laundry windows/clothes",
+        "truck geometry and collision",
+        "awning/roof collision",
+        "stairs/railings",
+        "wet street/grime",
+        "neon/signage",
+        "spawn skyline",
+        "crates/papers around Quick Revive"
+      ]
+    },
+    {
+      "id": "junction",
+      "name": "Junction",
+      "mustHave": [
+        "three district gates",
+        "broken perk-bottle indicators",
+        "central Apothicon egg statue box",
+        "Civil Protector call box",
+        "Stamin-Up region",
+        "L-CAR 9 / local wallbuy set",
+        "tram tracks crossing central area",
+        "flag-defense markers",
+        "market edge",
+        "Rift stair/entry path"
+      ],
+      "microAudit": [
+        "Devil-O-Donuts signage",
+        "tram rail crossings",
+        "market crates",
+        "street drains",
+        "traffic clutter",
+        "curb transitions",
+        "upper facade silhouettes",
+        "ritual Pen crane sightline"
+      ]
+    },
+    {
+      "id": "canals",
+      "name": "Canal District",
+      "mustHave": [
+        "Jack Vincent ritual-item route",
+        "Detective Badge Beast interaction",
+        "Ruby Rabbit",
+        "Canal station",
+        "Rift portal",
+        "district perk position/power panel",
+        "shield-part 3-spawn group",
+        "fuse 3-spawn group",
+        "buildable table",
+        "Apothicon statue box",
+        "Civil Protector call box",
+        "Chain Trap",
+        "Harvest Pods",
+        "Mystery Box point",
+        "egg/sword upgrade circle",
+        "two flag sites"
+      ],
+      "microAudit": [
+        "water/canal surface",
+        "bridges",
+        "railings",
+        "fruit/market carts",
+        "stairs",
+        "brick/concrete damage",
+        "Ruby Rabbit neon",
+        "sewer grime",
+        "ticket/rail infrastructure"
+      ]
+    },
+    {
+      "id": "footlight",
+      "name": "Footlight District",
+      "mustHave": [
+        "Jessica ritual-item/Toupee route",
+        "Black Lace Burlesque",
+        "Footlight station",
+        "Rift portal",
+        "district perk position/power panel",
+        "shield-part 3-spawn group",
+        "fuse 3-spawn group",
+        "buildable table",
+        "Apothicon statue box",
+        "Civil Protector call box",
+        "Chain Trap",
+        "Harvest Pods",
+        "Mystery Box point",
+        "egg/sword upgrade circle",
+        "two flag sites",
+        "ticket station scrap-paper location"
+      ],
+      "microAudit": [
+        "theatre marquees",
+        "Black Lace signs",
+        "alley bottlenecks",
+        "coffee sign",
+        "elevated walkways",
+        "stairs and railings",
+        "tram windows/symbol sightline",
+        "stage/interior dressing",
+        "street lamps"
+      ]
+    },
+    {
+      "id": "waterfront",
+      "name": "Waterfront District",
+      "mustHave": [
+        "Floyd ritual-item/Belt route",
+        "Anvil Boxing Gym",
+        "docks",
+        "Waterfront station",
+        "Rift portal",
+        "district perk position/power panel",
+        "shield-part 3-spawn group",
+        "fuse 3-spawn group",
+        "buildable table",
+        "Apothicon statue box",
+        "Civil Protector call box",
+        "Chain Trap",
+        "Harvest Pods",
+        "Mystery Box point",
+        "egg/sword upgrade circle",
+        "two flag sites",
+        "Trip Mine wallbuy",
+        "boxing-gym Noir/cipher pictures"
+      ],
+      "microAudit": [
+        "dock planks/edges",
+        "warehouse facades",
+        "boxing lockers/ring",
+        "windows",
+        "bridges",
+        "stairs",
+        "waterfront skyline",
+        "barrels/crates",
+        "tram-side symbol sightline"
+      ]
+    },
+    {
+      "id": "rift",
+      "name": "Rift / Subway",
+      "mustHave": [
+        "3 district portals",
+        "on-foot entrance",
+        "sword glyph wall",
+        "sword/egg altar",
+        "fourth Apothicon statue",
+        "Civil Protector fuse/master switch",
+        "Rift lore portal",
+        "GobbleGum placement",
+        "subway cars",
+        "Sacred Place access"
+      ],
+      "microAudit": [
+        "subway tracks",
+        "cars and interior collision",
+        "bench props",
+        "wet concrete",
+        "ritual glyph materials",
+        "portal light spill",
+        "tunnel darkness/fog",
+        "wall cracks and cable clutter"
+      ]
+    },
+    {
+      "id": "sacred_place",
+      "name": "Sacred Place / Pack-a-Punch",
+      "mustHave": [
+        "four Gateworm pedestals/walls",
+        "wall-run traversal",
+        "Summoning Key ritual table",
+        "fifth ritual Keeper arena",
+        "Pack-a-Punch portal",
+        "Chain Trap",
+        "Shadowman boss arena",
+        "Keeper positions",
+        "final capture table",
+        "missable scrap placement geometry"
+      ],
+      "microAudit": [
+        "floating/void architecture",
+        "wallrun collision",
+        "stone glyphs",
+        "portal geometry",
+        "ritual lighting transitions",
+        "apocalypse sky linkage",
+        "beam endpoint",
+        "fall volumes"
+      ]
+    },
+    {
+      "id": "tram",
+      "name": "Tram Network",
+      "mustHave": [
+        "Canal station",
+        "Footlight station",
+        "Waterfront station",
+        "500-point controls",
+        "route-direction logic",
+        "moving passenger collision",
+        "Bootlegger wallbuy",
+        "three symbol viewing windows",
+        "station phones",
+        "final giant-Gateworm collision event",
+        "final station shock boxes"
+      ],
+      "microAudit": [
+        "rails/sleepers",
+        "platform gaps",
+        "tram doors",
+        "window glass",
+        "passenger cabin props",
+        "overhead lines",
+        "station gates",
+        "platform railings",
+        "arrival/departure audio zones"
+      ]
+    }
+  ],
+  "repeatedObjectFamilies": [
+    "Beast pedestals",
+    "Beast grapple eagle heads/anchors",
+    "Beast shock boxes",
+    "Beast melee/smash doors and crates",
+    "zombie windows",
+    "zombie spawn volumes",
+    "Margwa-capable spawn nodes",
+    "Parasite/Elemental spawn points",
+    "Harvest Pods",
+    "Mystery Box spawn points",
+    "GobbleGum machines",
+    "wallbuys",
+    "perk machines/power panels",
+    "chain trap switches/chain emitters",
+    "Civil Protector panels",
+    "buildable benches",
+    "fuse positions",
+    "shield part positions",
+    "Fumigator positions",
+    "egg statues",
+    "Arch-Ovum circles",
+    "flag-defense spots",
+    "telephone/radio devices",
+    "cipher/scrap dressing",
+    "music-EE props",
+    "ambient audio/reverb volumes"
+  ]
+}
