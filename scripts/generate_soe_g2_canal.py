@@ -138,9 +138,6 @@ def gen(spec):
                              targetname="soe_g2_ruby_access_blocker"))
     ents.append(brush_entity("soe_powered_door",(136,844,-64),(168,916,16),NULL_TEX,
                              targetname="soe_g2_badge_grate"))
-    ents.append(point_entity("soe_beast_shock",(560,1000,-8),
-                             targetname="soe_g2_badge_power_visual",
-                             target="soe_g2_badge_gate",target2="soe_g2_badge_grate"))
     ents.append(point_entity("soe_beast_smash",(80,848,-16),
                              targetname="soe_g2_rift_smash",target="soe_g2_rift_door"))
     ents.append(brush_entity("soe_powered_door",(208,816,-64),(232,880,64),NULL_TEX,
