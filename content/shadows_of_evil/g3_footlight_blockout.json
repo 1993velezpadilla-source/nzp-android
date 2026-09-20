@@ -345,6 +345,16 @@
       ],
       "style": 4,
       "targetname": "soe_g3_footlight_ovum_statue"
+    },
+    {
+      "classname": "soe_beast_smash",
+      "origin": [
+        992,
+        -448,
+        -16
+      ],
+      "target": "soe_g3_rift_door",
+      "targetname": "soe_g3_rift_smash"
     }
   ],
   "poweredGeometry": [
