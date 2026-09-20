@@ -8,6 +8,8 @@ The strongest fan-map base located so far is **Klevi Alushi's unfinished World a
 
 That means the project must not pretend an editable base exists. Geometry work is gated on either author-approved source or a clean reconstruction. Gameplay systems are not gated and are specified below.
 
+A clean-room reconstruction plan now lives in `docs/shadows-of-evil/GEOMETRY_RECONSTRUCTION.md` with a machine-readable tracker in `content/shadows_of_evil/geometry_reconstruction.json`. The first physical-world target is G0 topology lock followed by G1 Easy Street + Junction blockout.
+
 ## Canonical area graph
 Easy Street -> Junction -> three main districts:
 - Canal District -> Ruby Rabbit -> Canal station -> Rift access
@@ -57,6 +59,12 @@ Audit district by district:
 - bullet materials, decals, blood, destruction, ambience and reverb
 - collision on stairs, railings, roofs, ledges, tram and props
 
+## Additional geometry leads
+
+- **Project Nightmare / Spawn Point**: an old WaW mega-map project publicly listed its Shadows of Evil section at 100%. Treat this as a historical fan-recreation lead only; no verified editable source or redistribution permission has been established.
+- **Public 2D layouts/atlas**: the Steam map overview, CODZombie atlas and Zombified per-area maps are now primary topology references for doors, district links, portals and tram relationships.
+- **Leaked official Radiant dumps**: not a geometry solution. A circulated BO3 dump is publicly described as containing entities/triggers/spawners/models but **no brushes**, and it is proprietary. Do not package it.
+
 ## High-value geometry reference
 The YouTube out-of-bounds walkthrough below explicitly timestamps Easy Street, Junction, Waterfront, Docks, Boxing Gym, Footlight, city streets, Burlesque, Canal, Ruby Rabbit, Metro, PaP and the giant Apothicon. It is useful for otherwise-hidden geometry and skyline reference:
 https://www.youtube.com/watch?v=FYF03XFb0YE
@@ -68,6 +76,8 @@ https://www.youtube.com/watch?v=FYF03XFb0YE
 - Steam map overview: https://steamcommunity.com/sharedfiles/filedetails/?id=563005850
 - CODZombie map: https://codzombie.com/maps/shadows-of-evil
 - CODZombie atlas: https://codzombie.com/atlas/shadows-of-evil
+- Zombified per-area layouts: https://codzombified.blogspot.com/2015/11/shadows-of-evil-map-layout-call-of-duty.html
+- Project Nightmare historical lead: https://www.ugx-mods.com/forum/zombie-maps/5/project-nightmare-a-spawn-point-new-custom-map/9818/
 - MargwaNetwork: https://margwa.net/shadows-of-evil
 - UGX Margwa behavior reference: https://www.ugx-mods.com/forum/models/125/margwa-from-shadows-of-evil/23286/
 
