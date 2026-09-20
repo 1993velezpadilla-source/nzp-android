@@ -43,7 +43,7 @@ void() SoE_ParasiteProjectileTouch =
 
     if (other.classname == "player") {
         if (!other.soe_beast_active)
-            DamageHandler(other, self.owner, 20, DMG_TYPE_ZOMBIESWIPE);
+            DamageHandler(other, self.owner, 30, DMG_TYPE_ZOMBIESWIPE);
     }
 
     remove(self);
@@ -123,6 +123,18 @@ void() SoE_ParasiteThink =
     self.nextthink = time + 0.05;
 };
 
+float() SoE_SpecialEnemyHealth =
+{
+    float special_health = rounds * 50;
+
+    if (special_health > 1600)
+        special_health = 1600;
+    if (special_health < 50)
+        special_health = 50;
+
+    return special_health;
+};
+
 entity(vector org, float counts_round) SoE_SpawnParasite =
 {
     entity parasite = spawn();
@@ -132,7 +144,7 @@ entity(vector org, float counts_round) SoE_SpawnParasite =
     parasite.movetype = MOVETYPE_FLY;
     parasite.solid = SOLID_BBOX;
     parasite.takedamage = DAMAGE_YES;
-    parasite.health = 120 + (rounds * 4);
+    parasite.health = SoE_SpecialEnemyHealth();
     parasite.flags = parasite.flags | FL_MONSTER;
     parasite.effects = EF_FULLBRIGHT;
 
@@ -145,11 +157,8 @@ entity(vector org, float counts_round) SoE_SpawnParasite =
     parasite.nextthink = time + 0.05;
     parasite.soe_attack_cooldown = time + 0.8 + random();
 
-    if (counts_round) {
-        Total_Zombies = Total_Zombies + 1;
+    if (counts_round)
         Current_Zombies = Current_Zombies + 1;
-        Remaining_Zombies = Remaining_Zombies + 1;
-    }
 
     return parasite;
 };
@@ -161,7 +170,7 @@ void() SoE_ElementalExplode =
     while (target != world) {
         if (target.classname == "player" && !target.downed) {
             if (!target.soe_beast_active)
-                DamageHandler(target, self, 100, DMG_TYPE_EXPLOSIVE);
+                DamageHandler(target, self, 50, DMG_TYPE_EXPLOSIVE);
         }
 
         target = target.chain;
@@ -176,10 +185,8 @@ void() SoE_ElementalExplode =
     setmodel(flash, "models/sprites/explosion.spr");
     setorigin(flash, self.origin);
 
-    if (self.soe_counts_round) {
-        Remaining_Zombies = Remaining_Zombies - 1;
-        Current_Zombies = Current_Zombies - 1;
-    }
+    if (self.soe_counts_round)
+        SoE_OnCountedSpecialDeath(self.origin);
 
     remove(self);
 };
@@ -234,7 +241,7 @@ entity(vector org, entity target, float counts_round) SoE_SpawnElemental =
     elemental.movetype = MOVETYPE_STEP;
     elemental.solid = SOLID_SLIDEBOX;
     elemental.takedamage = DAMAGE_YES;
-    elemental.health = 100 + (rounds * 3);
+    elemental.health = SoE_SpecialEnemyHealth();
     elemental.flags = elemental.flags | FL_MONSTER;
     elemental.effects = EF_FULLBRIGHT;
 
@@ -250,11 +257,8 @@ entity(vector org, entity target, float counts_round) SoE_SpawnElemental =
     elemental.think = SoE_ElementalThink;
     elemental.nextthink = time + 0.05;
 
-    if (counts_round) {
-        Total_Zombies = Total_Zombies + 1;
+    if (counts_round)
         Current_Zombies = Current_Zombies + 1;
-        Remaining_Zombies = Remaining_Zombies + 1;
-    }
 
     return elemental;
 };
