@@ -32,6 +32,7 @@ float(entity ent) SoE_IsCustomSpecialBody =
         ent.classname == "soe_elemental" ||
         ent.classname == "soe_elemental_warning" ||
         ent.classname == "soe_keeper" ||
+        ent.classname == "soe_margwa_mask_heart" ||
         ent.classname == "soe_shadowman_boss"
     );
 };
@@ -134,7 +135,11 @@ void() SoE_MargwaMelee =
         return;
     }
 
-    // Canonical Margwa slam is lethal to a non-Jug player from full health.
+    // The Margwa Mask protects against the slam. Until separate swing/slam
+    // animations are available, this Margwa melee callback represents the slam.
+    if (self.enemy.soe_has_margwa_mask)
+        return;
+
     DamageHandler(self.enemy, self, 100, DMG_TYPE_ZOMBIESWIPE);
 };
 
@@ -223,6 +228,7 @@ void(entity victim, entity attacker) SoE_DestroyMargwaHead =
 
     SoE_RebornOnMargwaKilled(victim);
     SoE_FinaleOnMargwaKilled(victim);
+    SoE_MargwaMaskOnMargwaKilled(victim);
 
     if (!soe_has_margwa_heart)
         SoE_SpawnMargwaHeart(victim);
@@ -267,6 +273,9 @@ float(entity victim, entity attacker, float damage, float d_style) SoE_HandleSpe
 
     if (victim.classname == "soe_shadowman_boss")
         return SoE_HandleShadowmanDamage(victim, attacker, damage, d_style);
+
+    if (victim.classname == "soe_margwa_mask_heart")
+        return SoE_HandleMargwaMaskHeartDamage(victim, attacker, damage, d_style);
 
     if (victim.soe_special_type == SOE_SPECIAL_NONE)
         return false;
