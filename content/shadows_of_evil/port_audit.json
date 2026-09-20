@@ -1,0 +1,75 @@
+{
+  "schemaVersion": 1,
+  "map": "soe",
+  "evidence": [
+    {
+      "candidate": "Klevi Alushi Shadows of Evil (CoD WaW)",
+      "type": "playable fan recreation",
+      "status": "best geometry candidate",
+      "known": [
+        "467 MB installer",
+        "requires T4M",
+        "creator labels last public build unfinished",
+        "no skybox",
+        "public download exists"
+      ],
+      "missing": [
+        "editable Radiant .map source not located",
+        "permission for redistribution not established"
+      ],
+      "action": "seek author-approved source; otherwise use as visual/behavioral reference only"
+    },
+    {
+      "candidate": "BO3 original zm_zod",
+      "type": "commercial original",
+      "status": "reference only",
+      "action": "do not bundle extracted proprietary map/assets; use owned-game observation for measurements/behavior"
+    },
+    {
+      "candidate": "nZombies Rezzurrection",
+      "type": "open public code/reference",
+      "status": "systems donor",
+      "known": [
+        "Mystery Box logic",
+        "perk machines",
+        "Pack-a-Punch",
+        "teleporters",
+        "buildables",
+        "Easter Egg framework",
+        "Afterlife hooks",
+        "Brutus/Avogadro patterns"
+      ],
+      "action": "adapt concepts/code only where license allows; replace proprietary models/sounds"
+    },
+    {
+      "candidate": "UGX Margwa release",
+      "type": "community implementation",
+      "status": "behavior reference",
+      "action": "use as reference; verify each asset's rights before inclusion"
+    },
+    {
+      "candidate": "Quaternius / Poly Haven",
+      "type": "CC0 asset sources",
+      "status": "clean replacement pool",
+      "action": "prefer for mobile-safe props/materials/enemies when exact community asset rights are unclear"
+    }
+  ],
+  "referenceChecklist": [
+    "Easy Street geometry and four windows",
+    "Junction three district gates",
+    "all district high streets and rooftop routes",
+    "tram track graph and three stations",
+    "all Beast grapple anchors",
+    "all Beast smashable doors/crates",
+    "all Beast electrical panels",
+    "three Rift portals plus on-foot Rift doorway",
+    "Sacred Place wallrun geometry",
+    "ritual room layouts",
+    "all zombie windows/spawns",
+    "all Margwa spawn-capable nodes",
+    "perk, box, GobbleGum, wallbuy, fuse, shield-part, fumigator and pod spawn sets",
+    "street signs, neon, posters, clutter, cracks, curbs, rails, sewers, lamps and skyline silhouettes",
+    "ambient sound emitters, reverb zones, fog volumes, sky-state transitions",
+    "collision on stairs, railings, rooftops, ledges, tram, props and ritual rooms"
+  ]
+}
