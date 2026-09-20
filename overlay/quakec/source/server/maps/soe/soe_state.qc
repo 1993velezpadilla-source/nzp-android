@@ -56,6 +56,21 @@ float soe_xenomatter_drop_active;
 float soe_has_margwa_tentacle;
 float soe_ritual_active;
 
+// Reborn Sword quest bridge. Declared in the earliest SoE module so the
+// Margwa runtime can tag quest-owned bosses before soe_sword.qc is compiled.
+entity soe_reborn_pending_owner;
+vector soe_reborn_pending_origin;
+float soe_reborn_pending_circle_bit;
+
+.entity soe_reborn_owner;
+.float soe_reborn_circle_bit;
+.float soe_reborn_has_arch_ovum;
+.float soe_reborn_ritual_mask;
+.float soe_reborn_active_circle_bit;
+.float soe_reborn_last_ritual_round;
+
+void(entity margwa) SoE_RebornOnMargwaKilled;
+
 float() SoE_IsMap =
 {
     return (mapname == "soe" || mapname == "shadows_of_evil" || mapname == "zm_zod");
@@ -99,6 +114,10 @@ void() SoE_ResetQuestState =
     soe_xenomatter_drop_active = false;
     soe_has_margwa_tentacle = false;
     soe_ritual_active = false;
+
+    soe_reborn_pending_owner = world;
+    soe_reborn_pending_origin = '0 0 0';
+    soe_reborn_pending_circle_bit = 0;
 };
 
 void() SoE_Init =
