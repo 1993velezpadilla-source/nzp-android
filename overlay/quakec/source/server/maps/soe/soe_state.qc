@@ -79,6 +79,7 @@ float soe_last_margwa_spawn_was_reborn;
 .float soe_reborn_active_circle_bit;
 .float soe_reborn_last_ritual_round;
 .float soe_finale_beast_meter;
+.float soe_perk_powered;
 
 void(entity margwa) SoE_RebornOnMargwaKilled;
 float(entity victim, entity attacker, float damage, float d_style) SoE_HandleShadowmanDamage;
