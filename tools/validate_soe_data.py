@@ -151,6 +151,12 @@ required_runtime_symbols = {
     "soe_finale_keeper": "finale central Keeper",
     "soe_margwa_mask_heart": "Margwa Mask Tram heart target",
     "soe_margwa_mask_spawn": "Margwa Mask pickup spawn",
+    "soe_sal_laundry_trigger": "Sal DeLuca laundry grenade trigger",
+    "soe_sal_ticket_spawn": "Sal DeLuca ticket spawn",
+    "soe_snakeskin_clock": "Snakeskin Boots wooden clock",
+    "soe_snakeskin_relay": "Snakeskin Boots clean-audio relay",
+    "soe_cold_cash_part": "Cold Hard Cash equipment part",
+    "soe_cold_cash_stage": "Cold Hard Cash Burlesque stage interaction",
 }
 for symbol, description in required_runtime_symbols.items():
     if symbol not in qc_text:
@@ -164,6 +170,7 @@ for hook in {
     "SoE_FinaleFrame();",
     "SoE_ProcessSpecialSpawns();",
     "SoE_RandomSpawnFrame();",
+    "SoE_ResetSideQuests();",
     "Complete the Sacred Place Ritual",
 }:
     if hook not in patcher:
@@ -178,6 +185,12 @@ if quest_by_id["station_shocks"]["requires"] != ["infinite_margwa_phase"]:
 if quest_by_id["train_gateworm_hit"]["requires"] != ["station_shocks"]:
     raise SystemExit("tram Gateworm hit must require electrified station rails")
 
+
+
+for quest_id in ("free_500", "snakeskin_boots", "cold_hard_cash"):
+    quest = next((q for q in data["side"]["sideQuests"] if q["id"] == quest_id), None)
+    if not quest or not quest.get("runtimeEntities"):
+        raise SystemExit(f"{quest_id} must retain runtime entity coverage")
 
 # Make sure the project never silently switches to bundling the unfinished binary.
 source = data["manifest"]["sourceGeometry"]
