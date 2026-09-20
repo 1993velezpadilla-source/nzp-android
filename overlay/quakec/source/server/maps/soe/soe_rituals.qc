@@ -16,6 +16,8 @@
 .float soe_ritual_id;
 .float soe_keeper_next_attack;
 
+void() SoE_GatewormPickupTouch;
+
 float(float ritual_id) SoE_RitualBit =
 {
     if (ritual_id == 1) return 1;
