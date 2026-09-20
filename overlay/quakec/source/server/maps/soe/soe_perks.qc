@@ -17,6 +17,9 @@
 .float soe_perk_kind;
 
 void(entity who) Turn_PerkLight_On;
+void(entity e, optional float fullbright) Light_Red;
+void(entity e, optional float fullbright) Light_Green;
+void(entity e, optional float fullbright) Light_Yellow;
 
 entity(entity panel) SoE_FindTargetedPerk =
 {
@@ -29,10 +32,11 @@ entity(entity panel) SoE_FindTargetedPerk =
     // Fallback: nearest supported perk machine to the panel.
     entity best = world;
     float best_distance = 384;
+    float distance = 0;
 
     entity machine = find(world, classname, "perk_juggernog");
     while (machine != world) {
-        float distance = vlen(machine.origin - panel.origin);
+        distance = vlen(machine.origin - panel.origin);
         if (distance < best_distance) {
             best_distance = distance;
             best = machine;
@@ -42,7 +46,7 @@ entity(entity panel) SoE_FindTargetedPerk =
 
     machine = find(world, classname, "perk_speed");
     while (machine != world) {
-        float distance = vlen(machine.origin - panel.origin);
+        distance = vlen(machine.origin - panel.origin);
         if (distance < best_distance) {
             best_distance = distance;
             best = machine;
@@ -52,7 +56,7 @@ entity(entity panel) SoE_FindTargetedPerk =
 
     machine = find(world, classname, "perk_double");
     while (machine != world) {
-        float distance = vlen(machine.origin - panel.origin);
+        distance = vlen(machine.origin - panel.origin);
         if (distance < best_distance) {
             best_distance = distance;
             best = machine;
@@ -62,7 +66,7 @@ entity(entity panel) SoE_FindTargetedPerk =
 
     machine = find(world, classname, "perk_revive");
     while (machine != world) {
-        float distance = vlen(machine.origin - panel.origin);
+        distance = vlen(machine.origin - panel.origin);
         if (distance < best_distance) {
             best_distance = distance;
             best = machine;
@@ -72,7 +76,7 @@ entity(entity panel) SoE_FindTargetedPerk =
 
     machine = find(world, classname, "perk_staminup");
     while (machine != world) {
-        float distance = vlen(machine.origin - panel.origin);
+        distance = vlen(machine.origin - panel.origin);
         if (distance < best_distance) {
             best_distance = distance;
             best = machine;
@@ -82,7 +86,7 @@ entity(entity panel) SoE_FindTargetedPerk =
 
     machine = find(world, classname, "perk_mule");
     while (machine != world) {
-        float distance = vlen(machine.origin - panel.origin);
+        distance = vlen(machine.origin - panel.origin);
         if (distance < best_distance) {
             best_distance = distance;
             best = machine;
@@ -148,10 +152,11 @@ entity(entity indicator) SoE_IndicatorPerk =
 
     entity best = world;
     float best_distance = 999999;
+    float distance = 0;
 
     entity machine = find(world, classname, "perk_juggernog");
     while (machine != world) {
-        float distance = vlen(machine.origin - indicator.oldorigin);
+        distance = vlen(machine.origin - indicator.oldorigin);
         if (distance < best_distance) {
             best_distance = distance;
             best = machine;
@@ -161,7 +166,7 @@ entity(entity indicator) SoE_IndicatorPerk =
 
     machine = find(world, classname, "perk_speed");
     while (machine != world) {
-        float distance = vlen(machine.origin - indicator.oldorigin);
+        distance = vlen(machine.origin - indicator.oldorigin);
         if (distance < best_distance) {
             best_distance = distance;
             best = machine;
@@ -171,7 +176,7 @@ entity(entity indicator) SoE_IndicatorPerk =
 
     machine = find(world, classname, "perk_double");
     while (machine != world) {
-        float distance = vlen(machine.origin - indicator.oldorigin);
+        distance = vlen(machine.origin - indicator.oldorigin);
         if (distance < best_distance) {
             best_distance = distance;
             best = machine;
@@ -202,7 +207,7 @@ void() SoE_PerkIndicatorResolve =
     } else if (machine.classname == "perk_double") {
         self.soe_perk_kind = 3;
         self.skin = 2;
-        Light_Orange(self, true);
+        Light_Yellow(self, true);
     }
 
     self.think = SUB_Null;
