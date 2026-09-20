@@ -36,6 +36,7 @@ include_lines = [
     "maps/soe/soe_servant.qc\n",
     "maps/soe/soe_civil_protector.qc\n",
     "maps/soe/soe_shield.qc\n",
+    "maps/soe/soe_sword.qc\n",
     "maps/soe/soe_special_rounds.qc\n",
 ]
 if not all(line in text for line in include_lines):
@@ -50,7 +51,7 @@ text = main_qc.read_text(encoding="utf-8")
 
 # Map initialization hook.
 init_anchor = "\tGamemode_Init();\n"
-init_call = "\tSoE_Init();\n\tSoE_ResetTransportState();\n\tSoE_ResetServant();\n\tSoE_ResetCivilProtector();\n\tSoE_ResetShield();\n\tSoE_ResetSpecialRoundSchedule();\n"
+init_call = "\tSoE_Init();\n\tSoE_ResetTransportState();\n\tSoE_ResetServant();\n\tSoE_ResetCivilProtector();\n\tSoE_ResetShield();\n\tSoE_ResetSword();\n\tSoE_ResetSpecialRoundSchedule();\n"
 if init_call not in text:
     if init_anchor not in text:
         raise SystemExit("worldspawn hook anchor changed; inspect pinned upstream")
@@ -483,5 +484,26 @@ if "SoE_ShieldBoostInput();" not in text:
         raise SystemExit("Shield impulse anchor changed; inspect pinned upstream")
     text = text.replace(shield_impulse_anchor, shield_impulse_patch, 1)
     weapon_core_qc.write_text(text, encoding="utf-8")
+
+
+# Charge active Ovum statues from normal zombie deaths.
+zombie_qc = root / "source" / "server" / "ai" / "zombie_core.qc"
+text = zombie_qc.read_text(encoding="utf-8")
+sword_soul_anchor = '''\tent.health = 0;
+\tent.respawn_iterator = 0;
+\tent.skin = 0;
+\tRemaining_Zombies = Remaining_Zombies - 1;'''
+sword_soul_patch = '''\tent.health = 0;
+\tent.respawn_iterator = 0;
+\tent.skin = 0;
+
+\tSoE_SwordOnEnemyDeath(ent);
+
+\tRemaining_Zombies = Remaining_Zombies - 1;'''
+if "SoE_SwordOnEnemyDeath(ent);" not in text:
+    if sword_soul_anchor not in text:
+        raise SystemExit("Sword soul hook anchor changed; inspect pinned upstream")
+    text = text.replace(sword_soul_anchor, sword_soul_patch, 1)
+    zombie_qc.write_text(text, encoding="utf-8")
 
 print("Shadows of Evil QuakeC overlay applied")
