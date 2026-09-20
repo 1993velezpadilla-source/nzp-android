@@ -1,0 +1,248 @@
+{
+  "schemaVersion": 1,
+  "map": "soe",
+  "wallWeapons": [
+    {
+      "id": "rk5",
+      "cost": 500,
+      "areas": [
+        "Easy Street"
+      ],
+      "placement": "next to Summoning Key truck/crate"
+    },
+    {
+      "id": "sheiva",
+      "cost": 500,
+      "areas": [
+        "Easy Street"
+      ],
+      "placement": "across from Summoning Key area"
+    },
+    {
+      "id": "lcar9",
+      "cost": 750,
+      "areas": [
+        "Junction"
+      ]
+    },
+    {
+      "id": "krm262",
+      "cost": 750,
+      "areas": [
+        "Nero's Landing / Junction"
+      ]
+    },
+    {
+      "id": "kuda",
+      "cost": 1250,
+      "areas": [
+        "Canal District",
+        "Waterfront District",
+        "Footlight High Street"
+      ]
+    },
+    {
+      "id": "vesper",
+      "cost": 1250,
+      "areas": [
+        "Footlight District",
+        "Under Junction / Rift access"
+      ]
+    },
+    {
+      "id": "vmp",
+      "cost": 1300,
+      "areas": [
+        "Canal High Street staircase"
+      ]
+    },
+    {
+      "id": "m8a7",
+      "cost": 1500,
+      "areas": [
+        "Outside Ruby Rabbit / Canal District",
+        "Waterfront High Street"
+      ]
+    },
+    {
+      "id": "kn44",
+      "cost": 1400,
+      "areas": [
+        "Canal High Street",
+        "Footlight District"
+      ]
+    },
+    {
+      "id": "hvk30",
+      "cost": 1600,
+      "areas": [
+        "Outside Anvil Boxing Gym / Waterfront",
+        "Footlight High Street"
+      ]
+    },
+    {
+      "id": "bootlegger",
+      "cost": 2000,
+      "areas": [
+        "Tram interior"
+      ],
+      "notes": [
+        "also Mystery Box",
+        "can appear from purple Harvest Pod"
+      ]
+    },
+    {
+      "id": "bowie_knife",
+      "cost": 3000,
+      "areas": [
+        "Inside Anvil Boxing Gym / Waterfront"
+      ],
+      "placement": "under/near interior stairs"
+    },
+    {
+      "id": "trip_mine",
+      "cost": 1000,
+      "areas": [
+        "Outside/left side of Anvil Boxing Gym / Waterfront"
+      ]
+    }
+  ],
+  "mysteryBox": {
+    "spinCost": 950,
+    "knownLocations": [
+      "Canal District - one end of the canal",
+      "Canal District - below Ruby Rabbit",
+      "Footlight District - beside rotating perk location",
+      "Footlight District - near train-station stairs",
+      "Waterfront District - below rotating perk location",
+      "additional exact transform audit pending against visual map"
+    ],
+    "specialItems": [
+      "Ray Gun",
+      "Li'l Arnie",
+      "Bootlegger",
+      "Apothicon Servant after build-state rules"
+    ],
+    "migration": "reuse NZ:P .mb2 random-box system; add SoE-compatible spawn metadata"
+  },
+  "perks": {
+    "fixed": [
+      {
+        "id": "quick_revive",
+        "area": "Easy Street"
+      },
+      {
+        "id": "stamin_up",
+        "area": "Junction"
+      },
+      {
+        "id": "widows_wine",
+        "area": "Rift / Underground"
+      },
+      {
+        "id": "mule_kick",
+        "area": "fixed map location; exact transform audit pending"
+      }
+    ],
+    "rotating": [
+      {
+        "id": "juggernog",
+        "cost": 2500
+      },
+      {
+        "id": "speed_cola",
+        "cost": 3000
+      },
+      {
+        "id": "double_tap",
+        "cost": 2000
+      }
+    ],
+    "rotatingAreas": [
+      "Canal District",
+      "Waterfront District",
+      "Footlight District"
+    ],
+    "indicator": "broken bottle at each district entrance in Junction; red=Juggernog, green=Speed Cola, orange=Double Tap",
+    "powerRule": "individual Beast-shocked fuse boxes; there is no classic global power switch"
+  },
+  "gobbleGumMachines": [
+    "Junction - near alley back to Easy Street",
+    "Waterfront - beside Civil Protector switch",
+    "Canals - left side above Mystery Box spawn, across from Harvest Pod",
+    "Footlight - beside retractable staircase",
+    "Rift - opposite/adjacent Civil Protector fuse box",
+    "Canal Train Station",
+    "Waterfront Train Station",
+    "Footlight Train Station"
+  ],
+  "riftPortals": [
+    {
+      "district": "Canals",
+      "surface": "in canal near Mystery Box",
+      "underground": "beside Widow's Wine"
+    },
+    {
+      "district": "Waterfront",
+      "surface": "alley right of central Mystery Box location",
+      "underground": "up stairs from Widow's Wine"
+    },
+    {
+      "district": "Footlight",
+      "surface": "near Toupee drop location",
+      "underground": "opposite side of room from Widow's Wine"
+    }
+  ],
+  "craftingTables": [
+    {
+      "district": "Waterfront",
+      "placement": "behind Anvil Boxing Gym"
+    },
+    {
+      "district": "Canals",
+      "placement": "in front of Ruby Rabbit"
+    },
+    {
+      "district": "Footlight",
+      "placement": "below/near train station"
+    }
+  ],
+  "chainTraps": {
+    "cost": 1000,
+    "placements": [
+      "Canal District",
+      "Waterfront District",
+      "Footlight District",
+      "Sacred Place / Pack-a-Punch"
+    ],
+    "behavior": [
+      "retracting chain kill barrier",
+      "chains retract and refire",
+      "Margwas can bypass/teleport through"
+    ],
+    "migration": "reuse NZ:P trap entity for purchase/cooldown while implementing SoE chain geometry/FX"
+  },
+  "tram": {
+    "cost": 500,
+    "stations": [
+      "Canal",
+      "Waterfront",
+      "Footlight"
+    ],
+    "systems": [
+      "current-station indicators",
+      "route selector",
+      "direction changes while early enough in trip",
+      "moving player collision",
+      "Bootlegger wallbuy",
+      "symbol windows",
+      "finale rail electrification"
+    ],
+    "symbolViewing": {
+      "canals": "left side of train; circular window",
+      "waterfront": "right side; warehouse window",
+      "footlight": "left side; apartment window",
+      "randomizedPoolSize": 9
+    }
+  }
+}
