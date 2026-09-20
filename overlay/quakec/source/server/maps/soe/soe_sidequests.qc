@@ -259,3 +259,359 @@ void() soe_margwa_mask_spawn =
     self.movetype = MOVETYPE_NONE;
     setsize(self, '0 0 0', '0 0 0');
 };
+
+
+/* -------------------------------------------------------------------------
+   Shared sidequest state
+   ------------------------------------------------------------------------- */
+
+float soe_sal_ticket_revealed;
+float soe_sal_ticket_claimed;
+
+float soe_snakeskin_clock_mask;
+float soe_snakeskin_activated;
+float soe_snakeskin_instrumental;
+
+float soe_cold_cash_part_mask;
+float soe_cold_cash_activated;
+
+.float soe_side_interactions;
+
+void(entity who, float value, float impacted_by_2x_points) Player_ChangeScore;
+
+void() SoE_ResetSideQuests =
+{
+    soe_margwa_mask_pickup_ent = world;
+
+    soe_sal_ticket_revealed = false;
+    soe_sal_ticket_claimed = false;
+
+    soe_snakeskin_clock_mask = 0;
+    soe_snakeskin_activated = false;
+    soe_snakeskin_instrumental = false;
+
+    soe_cold_cash_part_mask = 0;
+    soe_cold_cash_activated = false;
+};
+
+/* -------------------------------------------------------------------------
+   Sal DeLuca / Chang's Laundry free 500 points
+   ------------------------------------------------------------------------- */
+
+void() SoE_SalTicketTouch =
+{
+    if (other.classname != "player" ||
+        other.downed ||
+        other.isBuying ||
+        soe_sal_ticket_claimed)
+        return;
+
+    if (!PlayerIsLooking(other, self))
+        return;
+
+    Player_UseprintWithWait(other, self, self.useprint_index_1, 0);
+
+    if (!Player_UseButtonPressed(other, self) ||
+        (other.semi_actions & SEMIACTION_USE))
+        return;
+
+    other.semi_actions |= SEMIACTION_USE;
+    soe_sal_ticket_claimed = true;
+
+    Player_ChangeScore(other, 500, false);
+    SoE_FireEntityTargets(self);
+    remove(self);
+};
+
+entity() SoE_FindSalTicketSpawn =
+{
+    return find(world, classname, "soe_sal_ticket_spawn");
+};
+
+void() SoE_RevealSalTicket =
+{
+    if (soe_sal_ticket_revealed || soe_sal_ticket_claimed)
+        return;
+
+    entity marker = SoE_FindSalTicketSpawn();
+    if (marker == world)
+        return;
+
+    entity ticket = spawn();
+    ticket.classname = "soe_sal_ticket";
+    ticket.movetype = MOVETYPE_NONE;
+    ticket.solid = SOLID_TRIGGER;
+    ticket.touch = SoE_SalTicketTouch;
+    ticket.effects = EF_FULLBRIGHT;
+    ticket.useprint_string_1 = "Hold %b to Collect Laundry Ticket";
+    ticket.useprint_index_1 = Useprint_Register(ticket.useprint_string_1, '1 1 1');
+
+    setmodel(ticket, "models/sprites/sprkle.spr");
+    setsize(ticket, '-8 -8 -4', '8 8 8');
+    setorigin(ticket, marker.origin);
+
+    soe_sal_ticket_revealed = true;
+};
+
+void() SoE_SalLaundryTriggerTouch =
+{
+    if (soe_sal_ticket_revealed || soe_sal_ticket_claimed)
+        return;
+
+    // NZ:P's hand-thrown frag uses projectile_grenade. A future Widow's Wine
+    // grenade can call SoE_RevealSalTicket directly from its detonation hook.
+    if (other.classname == "projectile_grenade")
+        SoE_RevealSalTicket();
+};
+
+void() soe_sal_laundry_trigger =
+{
+    self.movetype = MOVETYPE_NONE;
+    self.solid = SOLID_TRIGGER;
+    self.touch = SoE_SalLaundryTriggerTouch;
+
+    if (self.model != "")
+        setmodel(self, self.model);
+    else
+        setsize(self, '-36 -16 -30', '36 16 30');
+};
+
+void() soe_sal_ticket_spawn =
+{
+    self.solid = SOLID_NOT;
+    self.movetype = MOVETYPE_NONE;
+    setsize(self, '0 0 0', '0 0 0');
+};
+
+/* -------------------------------------------------------------------------
+   Snakeskin Boots - three wooden clock/speaker interactions.
+
+   No copyrighted Treyarch/Jack Wall audio is bundled here. Completing the
+   interaction fires mapper targets for a cleared/project-owned music event.
+   ------------------------------------------------------------------------- */
+
+float(float clock_id) SoE_SnakeskinClockBit =
+{
+    if (clock_id == 1) return 1;
+    if (clock_id == 2) return 2;
+    if (clock_id == 3) return 4;
+    return 0;
+};
+
+void(entity relay, entity player) SoE_SnakeskinFireRelay =
+{
+    if (relay == world)
+        return;
+
+    string saved_target = relay.target;
+
+    if (soe_snakeskin_instrumental && relay.target2 != "")
+        relay.target = relay.target2;
+
+    entity old_self = self;
+    entity old_other = other;
+
+    self = relay;
+    other = player;
+    SoE_FireEntityTargets(relay);
+
+    self = old_self;
+    other = old_other;
+    relay.target = saved_target;
+};
+
+void() SoE_SnakeskinClockTouch =
+{
+    if (soe_snakeskin_activated ||
+        other.classname != "player" ||
+        other.downed ||
+        other.isBuying)
+        return;
+
+    if (!PlayerIsLooking(other, self))
+        return;
+
+    float clock_bit = SoE_SnakeskinClockBit(self.style);
+    if (clock_bit == 0)
+        return;
+
+    Player_UseprintWithWait(other, self, self.useprint_index_1, 0);
+
+    if (!Player_UseButtonPressed(other, self) ||
+        (other.semi_actions & SEMIACTION_USE))
+        return;
+
+    other.semi_actions |= SEMIACTION_USE;
+    self.soe_side_interactions = self.soe_side_interactions + 1;
+
+    // Community documentation describes an instrumental variant when one
+    // clock is interacted with twice before the three-unique-clock completion.
+    if ((soe_snakeskin_clock_mask & clock_bit) &&
+        self.soe_side_interactions >= 2)
+        soe_snakeskin_instrumental = true;
+
+    soe_snakeskin_clock_mask = soe_snakeskin_clock_mask | clock_bit;
+
+    if (soe_snakeskin_clock_mask == 7) {
+        soe_snakeskin_activated = true;
+
+        entity relay = find(world, classname, "soe_snakeskin_relay");
+        SoE_SnakeskinFireRelay(relay, other);
+    }
+};
+
+void() soe_snakeskin_clock =
+{
+    if (self.style < 1 || self.style > 3)
+        objerror("soe_snakeskin_clock requires style 1..3\n");
+
+    if (self.useprint_string_1 == "")
+        self.useprint_string_1 = "Hold %b to Interact";
+
+    self.useprint_index_1 = Useprint_Register(self.useprint_string_1, self.useprint_color_1);
+    self.movetype = MOVETYPE_NONE;
+    self.solid = SOLID_TRIGGER;
+    self.touch = SoE_SnakeskinClockTouch;
+    self.soe_side_interactions = 0;
+
+    if (self.model != "")
+        setmodel(self, self.model);
+    else
+        setsize(self, '-8 -8 -6', '8 8 10');
+};
+
+void() soe_snakeskin_relay =
+{
+    self.solid = SOLID_NOT;
+    self.movetype = MOVETYPE_NONE;
+    setsize(self, '0 0 0', '0 0 0');
+};
+
+/* -------------------------------------------------------------------------
+   Cold Hard Cash - three stage-equipment pickups + Burlesque stage trigger.
+
+   target on soe_cold_cash_stage should point at project-owned/cleared audio
+   or another presentation event.
+   ------------------------------------------------------------------------- */
+
+float(float part_id) SoE_ColdCashPartBit =
+{
+    if (part_id == 1) return 1; // microphone stand / Nero
+    if (part_id == 2) return 2; // cable / Canals
+    if (part_id == 3) return 4; // microphone / Underground
+    return 0;
+};
+
+void() SoE_ColdCashRevealStage =
+{
+    entity stage = find(world, classname, "soe_cold_cash_stage");
+
+    while (stage != world) {
+        stage.solid = SOLID_TRIGGER;
+
+        if (stage.oldmodel != "")
+            setmodel(stage, stage.oldmodel);
+
+        stage = find(stage, classname, "soe_cold_cash_stage");
+    }
+};
+
+void() SoE_ColdCashPartTouch =
+{
+    if (other.classname != "player" ||
+        other.downed ||
+        other.isBuying ||
+        soe_cold_cash_activated)
+        return;
+
+    if (!PlayerIsLooking(other, self))
+        return;
+
+    float part_bit = SoE_ColdCashPartBit(self.style);
+    if (part_bit == 0 || (soe_cold_cash_part_mask & part_bit))
+        return;
+
+    Player_UseprintWithWait(other, self, self.useprint_index_1, 0);
+
+    if (!Player_UseButtonPressed(other, self) ||
+        (other.semi_actions & SEMIACTION_USE))
+        return;
+
+    other.semi_actions |= SEMIACTION_USE;
+    soe_cold_cash_part_mask = soe_cold_cash_part_mask | part_bit;
+
+    self.solid = SOLID_NOT;
+    self.touch = SUB_Null;
+    if (self.model != "")
+        setmodel(self, "");
+
+    SoE_FireEntityTargets(self);
+
+    if (soe_cold_cash_part_mask == 7)
+        SoE_ColdCashRevealStage();
+};
+
+void() soe_cold_cash_part =
+{
+    if (self.style < 1 || self.style > 3)
+        objerror("soe_cold_cash_part requires style 1..3\n");
+
+    if (self.useprint_string_1 == "")
+        self.useprint_string_1 = "Hold %b to Pick Up Stage Equipment";
+
+    self.useprint_index_1 = Useprint_Register(self.useprint_string_1, self.useprint_color_1);
+    self.movetype = MOVETYPE_NONE;
+    self.solid = SOLID_TRIGGER;
+    self.touch = SoE_ColdCashPartTouch;
+
+    if (self.model != "")
+        setmodel(self, self.model);
+    else {
+        setmodel(self, "models/sprites/sprkle.spr");
+        setsize(self, '-8 -8 -8', '8 8 10');
+        self.effects = EF_FULLBRIGHT;
+    }
+};
+
+void() SoE_ColdCashStageTouch =
+{
+    if (soe_cold_cash_activated ||
+        soe_cold_cash_part_mask != 7 ||
+        other.classname != "player" ||
+        other.downed ||
+        other.isBuying)
+        return;
+
+    if (!PlayerIsLooking(other, self))
+        return;
+
+    Player_UseprintWithWait(other, self, self.useprint_index_1, 0);
+
+    if (!Player_UseButtonPressed(other, self) ||
+        (other.semi_actions & SEMIACTION_USE))
+        return;
+
+    other.semi_actions |= SEMIACTION_USE;
+    soe_cold_cash_activated = true;
+    SoE_FireEntityTargets(self);
+};
+
+void() soe_cold_cash_stage =
+{
+    if (self.useprint_string_1 == "")
+        self.useprint_string_1 = "Hold %b to Use Microphone";
+
+    self.useprint_index_1 = Useprint_Register(self.useprint_string_1, self.useprint_color_1);
+    self.movetype = MOVETYPE_NONE;
+    self.touch = SoE_ColdCashStageTouch;
+
+    if (self.model != "") {
+        self.oldmodel = self.model;
+        setmodel(self, "");
+    }
+
+    self.solid = SOLID_NOT;
+
+    if (self.model == "" && self.oldmodel == "")
+        setsize(self, '-16 -16 -18', '16 16 24');
+};
