@@ -17,13 +17,6 @@ void() SUB_UseTargets;
 #define SOE_PICKUP_TOUPEE            4
 #define SOE_PICKUP_CHAMP_BELT        5
 
-float soe_has_summoning_key;
-float soe_has_lawyers_pen;
-float soe_has_detective_badge;
-float soe_has_toupee;
-float soe_has_champ_belt;
-float soe_ritual_active;
-
 float(entity ent) SoE_PlayerCanUseEntity =
 {
     if (!soe_active || other.classname != "player" || other.downed)
