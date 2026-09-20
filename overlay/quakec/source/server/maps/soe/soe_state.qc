@@ -50,6 +50,12 @@ float soe_next_regular_margwa_round;
 float soe_pending_parasites;
 float soe_margwa_kills;
 
+float soe_margwa_mask_targets_enabled;
+float soe_margwa_mask_heart_mask;
+float soe_margwa_mask_first_route;
+float soe_margwa_mask_complete;
+.float soe_has_margwa_mask;
+
 float soe_has_summoning_key;
 float soe_has_lawyers_pen;
 float soe_has_detective_badge;
@@ -84,6 +90,9 @@ float soe_last_margwa_spawn_was_reborn;
 void(entity margwa) SoE_RebornOnMargwaKilled;
 float(entity victim, entity attacker, float damage, float d_style) SoE_HandleShadowmanDamage;
 void(entity margwa) SoE_FinaleOnMargwaKilled;
+void(entity margwa) SoE_MargwaMaskOnMargwaKilled;
+void() SoE_MargwaMaskOnTramRideStart;
+float(entity victim, entity attacker, float damage, float d_style) SoE_HandleMargwaMaskHeartDamage;
 void(entity controller) SoE_RitualRuntimeStart;
 void(entity controller) SoE_RitualRuntimeComplete;
 void() SoE_RitualFrame;
@@ -125,6 +134,11 @@ void() SoE_ResetQuestState =
     soe_next_regular_margwa_round = 8;
     soe_pending_parasites = 0;
     soe_margwa_kills = 0;
+
+    soe_margwa_mask_targets_enabled = false;
+    soe_margwa_mask_heart_mask = 0;
+    soe_margwa_mask_first_route = -1;
+    soe_margwa_mask_complete = false;
 
     soe_has_summoning_key = false;
     soe_has_lawyers_pen = false;
