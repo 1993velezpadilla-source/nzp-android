@@ -293,29 +293,30 @@
     {
       "classname": "soe_beast_grapple",
       "origin": [
-        -424,
-        272,
-        160
+        -400,
+        208,
+        176
       ],
       "target": "soe_g1_nero_grapple_dest"
     },
     {
       "classname": "info_notnull",
       "origin": [
-        -360,
+        -352,
         240,
-        192
+        176
       ],
       "targetname": "soe_g1_nero_grapple_dest"
     },
     {
       "classname": "soe_beast_shock",
       "origin": [
-        -264,
-        264,
+        -272,
+        272,
         176
       ],
-      "targetname": "soe_g1_nero_power"
+      "targetname": "soe_g1_nero_power",
+      "target": "soe_g1_nero_stair_blocker"
     },
     {
       "classname": "soe_beast_shock",
@@ -521,6 +522,67 @@
         56
       ],
       "targetname": "soe_g1_krm262_wallbuy_anchor"
+    },
+    {
+      "classname": "soe_beast_smash",
+      "origin": [
+        -352,
+        328,
+        192
+      ],
+      "targetname": "soe_g1_nero_room_smash",
+      "target": "soe_g1_nero_room_blocker"
+    },
+    {
+      "classname": "soe_ritual_controller",
+      "origin": [
+        -352,
+        416,
+        176
+      ],
+      "style": 1,
+      "wait": 20,
+      "targetname": "soe_g1_nero_ritual"
+    },
+    {
+      "classname": "soe_ritual_keeper_spawn",
+      "origin": [
+        -416,
+        392,
+        176
+      ],
+      "style": 1,
+      "targetname": "soe_g1_nero_keeper_a"
+    },
+    {
+      "classname": "soe_ritual_keeper_spawn",
+      "origin": [
+        -288,
+        392,
+        176
+      ],
+      "style": 1,
+      "targetname": "soe_g1_nero_keeper_b"
+    },
+    {
+      "classname": "soe_ritual_keeper_spawn",
+      "origin": [
+        -416,
+        448,
+        176
+      ],
+      "style": 1,
+      "targetname": "soe_g1_nero_keeper_c"
+    },
+    {
+      "classname": "soe_ritual_keeper_spawn",
+      "origin": [
+        -288,
+        448,
+        176
+      ],
+      "style": 1,
+      "targetname": "soe_g1_nero_keeper_d"
     }
   ],
   "junctionAnchors": [
@@ -593,6 +655,65 @@
     "Quick Revive and Stamin-Up each require their own Beast-powered SoE panel",
     "exactly one Spawn Fumigator candidate survives random group 101 and one Junction candidate survives group 102",
     "Lawyer's Pen remains dormant until the Junction crane shock targets it",
-    "wallbuy anchors exist for RK5, Sheiva, L-CAR 9 and KRM-262 pending BO3 weapon integration"
-  ]
+    "wallbuy anchors exist for RK5, Sheiva, L-CAR 9 and KRM-262 pending BO3 weapon integration",
+    "Nero grapple destination is in open walkable space, never inside a facade brush",
+    "Nero human stairs remain blocked until soe_g1_nero_power targets the stair blocker",
+    "Nero ritual room remains blocked until soe_g1_nero_room_smash opens its blocker",
+    "Nero ritual controller style 1 and four Keeper spawn markers complete the Key + Pen early ritual loop"
+  ],
+  "brushEntities": [
+    {
+      "classname": "func_door",
+      "id": "nero_stair_blocker",
+      "mins": [
+        -416,
+        48,
+        0
+      ],
+      "maxs": [
+        -288,
+        64,
+        112
+      ],
+      "texture": "wall_plainr",
+      "keys": {
+        "targetname": "soe_g1_nero_stair_blocker",
+        "angle": -1,
+        "speed": 140,
+        "wait": -1,
+        "lip": 8,
+        "sounds": 2,
+        "spawnflags": 4
+      }
+    },
+    {
+      "classname": "func_door",
+      "id": "nero_room_blocker",
+      "mins": [
+        -416,
+        336,
+        160
+      ],
+      "maxs": [
+        -288,
+        352,
+        272
+      ],
+      "texture": "wall_plainr",
+      "keys": {
+        "targetname": "soe_g1_nero_room_blocker",
+        "angle": -1,
+        "speed": 140,
+        "wait": -1,
+        "lip": 8,
+        "sounds": 2,
+        "spawnflags": 4
+      }
+    }
+  ],
+  "geometryNotes": {
+    "neroLanding": "north facade is split around Nero; static human stairs are physically present but blocked until the Beast shock moves the stair blocker",
+    "neroRoom": "ritual chamber is behind a second target-only blocker opened by a Beast smash proxy",
+    "fidelity": "blocker motion is a G1 gameplay proxy for the final canonical stair/door animation; topology and gating are the acceptance target"
+  }
 }
