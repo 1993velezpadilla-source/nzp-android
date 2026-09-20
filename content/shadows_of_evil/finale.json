@@ -6,10 +6,10 @@
       "Insanity Elementals",
       "Parasites"
     ],
-    "shadowmanBehavior": "periodically attacks/harasses flag; shooting him forces disappearance; failure can spawn many Parasites",
+    "shadowmanBehavior": "periodically appears around the planted flag; players must shoot him away or he damages/delays the flag and escalates Parasite pressure",
     "holdSeconds": 30,
     "maxAmmoHook": "may appear above flag when a completed defense is picked up",
-    "failRule": "if flag breaks, end round before retry",
+    "failRule": "destroyed flag or downed carrier returns the flag to the Underground for immediate retry; completed site progress in the active district is preserved; only successful district delivery is limited to one per round",
     "sites": {
       "Junction": [
         "in front of Footlight entrance",
@@ -27,7 +27,8 @@
         "district entrance from Junction",
         "across canal from Ruby Rabbit"
       ]
-    }
+    },
+    "delivery": "after two successful sites, deliver the flag to that district Keeper; a Margwa spawns and the next district cannot be completed until a later round"
   },
   "shadowmanBoss": {
     "activation": "all four upgraded swords delivered to four Keepers in Sacred Place",
