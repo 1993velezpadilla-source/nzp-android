@@ -334,7 +334,8 @@
         -8
       ],
       "targetname": "soe_g2_badge_power",
-      "target": "soe_g2_badge_gate"
+      "target": "soe_g2_badge_gate",
+      "target2": "soe_g2_badge_grate"
     },
     {
       "classname": "soe_target_counter",
