@@ -160,6 +160,7 @@ required_runtime_symbols = {
     "soe_beast_shock": "Beast shock interaction",
     "soe_beast_smash": "Beast smash interaction",
     "soe_beast_grapple": "Beast grapple interaction",
+    "soe_target_counter": "multi-action map target counter",
     "soe_ritual_controller": "district ritual controller",
     "soe_ritual_keeper_spawn": "ritual Keeper spawns",
     "soe_gateworm_pedestal": "Sacred Place Gateworm pedestal",
