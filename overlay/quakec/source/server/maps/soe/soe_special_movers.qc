@@ -265,8 +265,10 @@ entity(vector org, entity target, float counts_round) SoE_SpawnElemental =
 
 void() SoE_ElementalWarningFinish =
 {
-    // If the warning survived the telegraph window, drop the Elemental.
-    SoE_SpawnElemental(self.soe_spawn_origin, self.enemy, self.soe_spawn_counts_round);
+    // If the warning survived the telegraph window, transfer the already
+    // counted round slot to the actual Elemental without incrementing Current.
+    entity elemental = SoE_SpawnElemental(self.soe_spawn_origin, self.enemy, false);
+    elemental.soe_counts_round = self.soe_spawn_counts_round;
     remove(self);
 };
 
@@ -275,7 +277,7 @@ entity(vector org, entity target, float counts_round) SoE_SpawnElementalWarning 
     entity warning = spawn();
     warning.classname = "soe_elemental_warning";
     warning.soe_special_type = SOE_SPECIAL_ELEMENTAL;
-    warning.soe_counts_round = false;
+    warning.soe_counts_round = counts_round;
     warning.soe_spawn_counts_round = counts_round;
     warning.movetype = MOVETYPE_NONE;
     warning.solid = SOLID_BBOX;
