@@ -1,0 +1,68 @@
+{
+  "schemaVersion": 1,
+  "map": "soe",
+  "flagDefense": {
+    "enemyOverride": [
+      "Insanity Elementals",
+      "Parasites"
+    ],
+    "shadowmanBehavior": "periodically attacks/harasses flag; shooting him forces disappearance; failure can spawn many Parasites",
+    "holdSeconds": 30,
+    "maxAmmoHook": "may appear above flag when a completed defense is picked up",
+    "failRule": "if flag breaks, end round before retry",
+    "sites": {
+      "Junction": [
+        "in front of Footlight entrance",
+        "in front of GobbleGum machine"
+      ],
+      "Footlight": [
+        "in front of Vesper wallbuy at district front",
+        "in front of KN-44 on street by Black Lace"
+      ],
+      "Waterfront": [
+        "district entrance from Junction",
+        "near bottom of stairs from Train Station"
+      ],
+      "Canals": [
+        "district entrance from Junction",
+        "across canal from Ruby Rabbit"
+      ]
+    }
+  },
+  "shadowmanBoss": {
+    "activation": "all four upgraded swords delivered to four Keepers in Sacred Place",
+    "cycle": [
+      "Keepers beam-break shield",
+      "shoot Shadowman through teleports toward ritual table",
+      "interact at table to trap him in Summoning Key"
+    ],
+    "basePushWindowSeconds": 9,
+    "failure": [
+      "Margwa spawn",
+      "next push window gains 2 seconds"
+    ],
+    "counterAttack": "Shadowman can deactivate active Keepers; cancel by reactivating all four before attack resolves",
+    "ammo": "Max Ammo appears when shield is broken"
+  },
+  "fourPlayerFinale": {
+    "originalRequiresPlayers": 4,
+    "corruption": {
+      "firstCleanseDeadlineSeconds": 15,
+      "repeatIntervalSeconds": "30-45",
+      "whiteMist": "cleanses corruption",
+      "normalFailure": "player down",
+      "beastFailure": "removes Beast meter chunk"
+    },
+    "enemyOverride": "normal zombies stop; purple-mouth Margwas spawn",
+    "beastOverride": "infinite time but Margwas attack and damage Beast meter",
+    "giantGateworm": "Junction track intersection; hit with moving tram",
+    "stationRailBoxes": {
+      "Canals": "above back train door",
+      "Waterfront": "above back train door",
+      "Footlight": "between both train doors"
+    },
+    "railElectrifiedSeconds": 30,
+    "keeperAction": "shock all three Junction Keepers while rails are electrified and Gateworm absent; Keepers fire final beam",
+    "bleedOutRule": "rounds stop progressing; bled-out players respawn when train is called"
+  }
+}
