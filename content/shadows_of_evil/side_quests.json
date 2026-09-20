@@ -120,9 +120,15 @@
     {
       "id": "round_skip",
       "steps": [
-        "At game start shoot Shadowman repeatedly"
+        "On round 1, shoot the Shadowman on the spawn fire escape repeatedly before his five-second inactivity timeout",
+        "Five registered hits jumps to round 5 and grants every active player 1000 points",
+        "Five more registered hits jumps to round 10 and grants 3000 more points",
+        "Five more registered hits jumps to round 15 and grants 7000 more points"
       ],
-      "reward": "conditional jump to round 5/10/15 plus points"
+      "reward": "round 5/10/15 with 1000/4000/11000 total bonus points",
+      "runtimeEntity": "soe_round_skip_shadowman",
+      "hitsPerJump": 5,
+      "timeoutSeconds": 5
     },
     {
       "id": "lil_arnie_upgrade",
@@ -169,10 +175,12 @@
     {
       "id": "noir_filter",
       "steps": [
-        "Open Anvil Boxing Gym in Beast Mode",
-        "Interact with paired boxing-gym photographs while Beast"
+        "Open the Anvil Boxing Gym",
+        "Shoot the picture frame behind the boxing ring to expose/drop it",
+        "Crouch-interact with the exposed portrait to toggle the black-and-white Noir presentation"
       ],
-      "reward": "black-and-white screen filter until restart"
+      "reward": "per-player black-and-white post-process toggle",
+      "note": "Server interaction logic can be mapper-driven; final visual requires Android/FTE client post-process support."
     },
     {
       "id": "telephone_lore",
@@ -188,10 +196,13 @@
         "scoped_sniper"
       ],
       "steps": [
-        "From Waterfront/Boxing Gym harbor sightline, aim a scoped sniper at the glowing window on the large ship"
+        "Unlock Pack-a-Punch",
+        "From the Waterfront/Boxing Gym harbor sightline, aim while scoped at the glowing ship window",
+        "Server fires a one-shot client presentation hook for that player; use only project-owned/cleared visual/audio"
       ],
       "reward": "Zombie Richtofen visual jump-scare event",
-      "copyrightRule": "recreate visual effect with project-owned/cleared art; do not bundle ripped Treyarch imagery/audio"
+      "copyrightRule": "recreate visual effect with project-owned/cleared art; do not bundle ripped Treyarch imagery/audio",
+      "runtimeEntity": "soe_richtofen_jumpscare_target"
     },
     {
       "id": "mob_plane_flyover",
@@ -199,10 +210,16 @@
         "pack_a_punch_unlocked"
       ],
       "steps": [
-        "First player return to Junction after Pack-a-Punch opens"
+        "Unlock Pack-a-Punch",
+        "The first player to re-enter Junction triggers a one-time clean-room Icarus-style flyover",
+        "Fly path runs from Waterfront direction toward Canals; mapper supplies start/end markers and cleared/project-owned plane art"
       ],
       "reward": "Icarus/Mob-of-the-Dead plane fly-over from Waterfront direction toward Canals",
-      "copyrightRule": "use clean/project-owned plane asset"
+      "copyrightRule": "use clean/project-owned plane asset",
+      "runtimeEntities": [
+        "soe_icarus_trigger",
+        "soe_misc_marker"
+      ]
     }
   ],
   "environmentalSystems": [
