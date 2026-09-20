@@ -219,12 +219,6 @@ void() SoE_GatewormPickupTouch =
     remove(self);
 };
 
-void() SoE_RitualRuntimeStart =
-{
-    if (self == world)
-        return;
-};
-
 void(entity controller) SoE_RitualRuntimeStart =
 {
     if (!soe_active || controller == world)
@@ -232,15 +226,6 @@ void(entity controller) SoE_RitualRuntimeStart =
 
     soe_active_ritual_controller = controller;
     soe_ritual_keeper_next_spawn = time + 0.25;
-
-    // Mapper targets may close ritual-room doors / start FX.
-    entity old_self = self;
-    entity old_other = other;
-    self = controller;
-    other = world;
-    SoE_FireEntityTargets(controller);
-    self = old_self;
-    other = old_other;
 };
 
 void(entity controller) SoE_RitualRuntimeComplete =
@@ -318,7 +303,8 @@ void() SoE_GatewormPedestalTouch =
 
     other.semi_actions |= SEMIACTION_USE;
 
-    soe_gateworm_collected_mask = soe_gateworm_collected_mask & ~worm_bit;
+    // This bit is known to be present, so subtraction is a portable clear.
+    soe_gateworm_collected_mask = soe_gateworm_collected_mask - worm_bit;
     soe_gateworm_placed_mask = soe_gateworm_placed_mask | worm_bit;
     self.state = 1;
 
