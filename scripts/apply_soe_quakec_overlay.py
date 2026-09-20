@@ -31,6 +31,7 @@ include_lines = [
     "maps/soe/soe_entities.qc\n",
     "maps/soe/soe_tram.qc\n",
     "maps/soe/soe_specials.qc\n",
+    "maps/soe/soe_special_movers.qc\n",
 ]
 if not all(line in text for line in include_lines):
     if include_anchor not in text:
