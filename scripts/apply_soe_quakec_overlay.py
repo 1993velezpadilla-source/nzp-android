@@ -59,7 +59,7 @@ text = main_qc.read_text(encoding="utf-8")
 
 # Map initialization hook.
 init_anchor = "\tGamemode_Init();\n"
-init_call = "\tSoE_Init();\n\tSoE_ResetTransportState();\n\tSoE_ResetServant();\n\tSoE_ResetCivilProtector();\n\tSoE_ResetShield();\n\tSoE_ResetSword();\n\tSoE_ResetSpecialRoundSchedule();\n\tSoE_ResetMainQuest();\n\tSoE_ResetShadowman();\n\tSoE_ResetFinale();\n\tSoE_ResetRandomSpawns();\n"
+init_call = "\tSoE_Init();\n\tSoE_ResetTransportState();\n\tSoE_ResetSideQuests();\n\tSoE_ResetServant();\n\tSoE_ResetCivilProtector();\n\tSoE_ResetShield();\n\tSoE_ResetSword();\n\tSoE_ResetSpecialRoundSchedule();\n\tSoE_ResetMainQuest();\n\tSoE_ResetShadowman();\n\tSoE_ResetFinale();\n\tSoE_ResetRandomSpawns();\n"
 if init_call not in text:
     if init_anchor not in text:
         raise SystemExit("worldspawn hook anchor changed; inspect pinned upstream")
