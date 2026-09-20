@@ -45,7 +45,8 @@
       "steps": [
         "Score twelve shield-boost attacks killing at least ten zombies each"
       ],
-      "reward": "four-boost upgraded shield"
+      "reward": "Rocket Shield upgrade with four rocket boosts instead of three; shield durability is unchanged",
+      "note": "Detailed community guides consistently report no shield-health increase from Goddard."
     },
     {
       "id": "apothicon_servant",
