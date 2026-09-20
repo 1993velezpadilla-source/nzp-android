@@ -121,13 +121,13 @@ void() SoE_ResetBeastCharges =
     if (!soe_active)
         return;
 
-    float player_count = SoE_PlayerCount();
+    float soe_players = SoE_PlayerCount();
     float charges = 1;
 
     // Original solo allows up to three Beast uses in a round. Keep this
     // isolated here so edge-case recharge behavior can be tuned after
     // capture/validation without touching the entity code.
-    if (player_count <= 1)
+    if (soe_players <= 1)
         charges = 3;
 
     entity player = find(world, classname, "player");
