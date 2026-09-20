@@ -32,7 +32,11 @@ float soe_flag_health;
 float soe_flag_last_completed_round;
 float soe_flag_failed_round;
 float soe_flag_next_enemy_spawn;
+float soe_flag_shadowman_next_at;
 entity soe_flag_current_site;
+entity soe_flag_shadowman_ent;
+
+.float soe_flag_shadowman_expire;
 
 .float soe_flag_district_id;
 .float soe_flag_site_index;
@@ -68,7 +72,9 @@ void() SoE_ResetMainQuest =
     soe_flag_last_completed_round = -1;
     soe_flag_failed_round = -1;
     soe_flag_next_enemy_spawn = 0;
+    soe_flag_shadowman_next_at = 0;
     soe_flag_current_site = world;
+    soe_flag_shadowman_ent = world;
 };
 
 entity() SoE_FindFlagSpawnMarker =
@@ -188,8 +194,7 @@ void() SoE_FlagPickupTouch =
     if (soe_flag_carrier != world || soe_flag_defense_active)
         return;
 
-    if (soe_flag_last_completed_round == rounds ||
-        soe_flag_failed_round == rounds)
+    if (soe_flag_last_completed_round == rounds)
         return;
 
     if (!PlayerIsLooking(other, self))
@@ -258,6 +263,7 @@ void() SoE_FlagSiteTouch =
     soe_flag_defense_until = time + 30;
     soe_flag_health = 100;
     soe_flag_next_enemy_spawn = time + 0.2;
+    soe_flag_shadowman_next_at = time + 4 + (random() * 2);
 
     setorigin(soe_flag_entity, self.origin + '0 0 20');
     SoE_ShowFlag(soe_flag_entity);
@@ -327,6 +333,9 @@ void() SoE_FlagKeeperTouch =
 
     SoE_FireEntityTargets(self);
 
+    // Delivering the charged flag to a district Keeper spawns a Margwa.
+    soe_scripted_margwa_pending = soe_scripted_margwa_pending + 1;
+
     if (soe_flag_completed_district_mask == 15) {
         soe_quest_stage = SOE_QUEST_SHADOWMAN;
     }
@@ -360,23 +369,19 @@ void() soe_flag_keeper =
 void() SoE_FlagDefenseFail =
 {
     soe_flag_defense_active = false;
-    soe_flag_failed_round = rounds;
     soe_flag_carrier = world;
     soe_flag_spawned = false;
-    soe_flag_health = 0;
-
-    if (soe_flag_entity != world) {
-        remove(soe_flag_entity);
-        soe_flag_entity = world;
-    }
-
-    soe_flag_active_district = 0;
-    soe_flag_site_mask = 0;
+    soe_flag_health = 100;
     soe_flag_current_site = world;
 
-    // Failure requires the round to roll before the Rift flag can respawn.
-    Remaining_Zombies = 0;
-    roundtype = 1;
+    if (soe_flag_shadowman_ent != world) {
+        remove(soe_flag_shadowman_ent);
+        soe_flag_shadowman_ent = world;
+    }
+
+    // Canonical retry behavior: a destroyed flag immediately returns to the
+    // Underground. Completed site progress in this district is preserved.
+    SoE_SpawnQuestFlagAtRift();
 };
 
 void() SoE_FlagDefenseComplete =
@@ -392,6 +397,11 @@ void() SoE_FlagDefenseComplete =
     soe_flag_site_mask = soe_flag_site_mask | site_bit;
     soe_flag_defense_active = false;
     soe_flag_health = 100;
+
+    if (soe_flag_shadowman_ent != world) {
+        remove(soe_flag_shadowman_ent);
+        soe_flag_shadowman_ent = world;
+    }
 
     Spawn_Powerup(soe_flag_entity.origin + '0 0 28', PU_MAXAMMO);
 
@@ -420,6 +430,122 @@ void() SoE_FlagSpawnDefenseEnemy =
         SoE_SpawnElementalWarning(org, target, false);
     else
         SoE_SpawnParasite(org, false);
+};
+
+
+void() SoE_FlagShadowmanThink =
+{
+    if (!soe_flag_defense_active ||
+        soe_flag_entity == world ||
+        self != soe_flag_shadowman_ent) {
+        if (self == soe_flag_shadowman_ent)
+            soe_flag_shadowman_ent = world;
+        remove(self);
+        return;
+    }
+
+    if (time < self.soe_flag_shadowman_expire) {
+        self.nextthink = time + 0.05;
+        return;
+    }
+
+    // If players fail to drive him away, he damages/delays the flag and
+    // escalates pressure with an extra Parasite burst.
+    soe_flag_health = soe_flag_health - 35;
+
+    for (float i = 0; i < 3; i++) {
+        vector org = soe_flag_entity.origin;
+        org_x = org_x + ((random() * 240) - 120);
+        org_y = org_y + ((random() * 240) - 120);
+        org_z = org_z + 80;
+        SoE_SpawnParasite(org, false);
+    }
+
+    soe_flag_shadowman_ent = world;
+    soe_flag_shadowman_next_at = time + 4 + (random() * 3);
+    remove(self);
+
+    if (soe_flag_health <= 0)
+        SoE_FlagDefenseFail();
+};
+
+entity(float district_id) SoE_FindFlagShadowmanMarker =
+{
+    entity marker = find(world, classname, "soe_flag_shadowman_spawn");
+    entity chosen = world;
+    float seen = 0;
+
+    while (marker != world) {
+        if (marker.style == 0 || marker.style == district_id) {
+            seen = seen + 1;
+            if (random() < (1 / seen))
+                chosen = marker;
+        }
+
+        marker = find(marker, classname, "soe_flag_shadowman_spawn");
+    }
+
+    return chosen;
+};
+
+void() SoE_SpawnFlagShadowman =
+{
+    if (!soe_flag_defense_active ||
+        soe_flag_entity == world ||
+        soe_flag_shadowman_ent != world)
+        return;
+
+    entity marker = SoE_FindFlagShadowmanMarker(soe_flag_active_district);
+    vector org;
+
+    if (marker != world) {
+        org = marker.origin;
+    } else {
+        org = soe_flag_entity.origin;
+        org_x = org_x + ((random() * 320) - 160);
+        org_y = org_y + ((random() * 320) - 160);
+        org_z = org_z + 120;
+    }
+
+    entity shadow = spawn();
+    shadow.classname = "soe_flag_shadowman";
+    shadow.movetype = MOVETYPE_FLY;
+    shadow.solid = SOLID_BBOX;
+    shadow.takedamage = DAMAGE_YES;
+    shadow.health = 1;
+    shadow.effects = EF_FULLBRIGHT;
+    shadow.soe_flag_shadowman_expire = time + 3.5;
+    shadow.think = SoE_FlagShadowmanThink;
+    shadow.nextthink = time + 0.05;
+
+    setmodel(shadow, "models/sprites/sprkle.spr");
+    setsize(shadow, '-14 -14 -24', '14 14 30');
+    setorigin(shadow, org);
+
+    soe_flag_shadowman_ent = shadow;
+};
+
+float(entity victim, entity attacker, float damage, float d_style) SoE_HandleFlagShadowmanDamage =
+{
+    if (!soe_active || victim.classname != "soe_flag_shadowman")
+        return false;
+
+    if (attacker.classname == "player" && damage > 0) {
+        if (victim == soe_flag_shadowman_ent)
+            soe_flag_shadowman_ent = world;
+
+        soe_flag_shadowman_next_at = time + 4 + (random() * 3);
+        remove(victim);
+    }
+
+    return true;
+};
+
+void() soe_flag_shadowman_spawn =
+{
+    self.movetype = MOVETYPE_NONE;
+    self.solid = SOLID_NOT;
+    setsize(self, '0 0 0', '0 0 0');
 };
 
 void() SoE_FlagDefenseCheckImpacts =
@@ -480,6 +606,11 @@ void() SoE_MainQuestFrame =
         SoE_FlagSpawnDefenseEnemy();
         soe_flag_next_enemy_spawn = time + 0.45;
     }
+
+    if (soe_flag_shadowman_next_at <= time &&
+        soe_flag_shadowman_ent == world) {
+        SoE_SpawnFlagShadowman();
+    }
 };
 
 void() SoE_MainQuestOnNewRound =
@@ -495,7 +626,8 @@ void() SoE_MainQuestOnNewRound =
         soe_flag_defense_active)
         return;
 
-    // A failed or completed district can retry/continue only after round rolls.
+    // Successful district delivery is one-per-round; the next district flag
+    // respawns after the round rolls.
     SoE_SpawnQuestFlagAtRift();
 };
 
