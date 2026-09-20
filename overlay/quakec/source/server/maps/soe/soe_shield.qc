@@ -230,7 +230,7 @@ float(entity ent) SoE_ShieldBoostCanKill =
     if (ent.classname != "ai_zombie")
         return false;
 
-    if (!ent.iszomb)
+    if (!ent.iszomb || ent.aistatus != "1")
         return false;
 
     if (ent.soe_special_type == SOE_SPECIAL_MARGWA)
