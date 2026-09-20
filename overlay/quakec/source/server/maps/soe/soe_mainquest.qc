@@ -41,6 +41,7 @@ void(entity victim, entity attacker, float damage, float d_style) DamageHandler;
 entity(vector org, float counts_round) SoE_SpawnParasite;
 entity(vector org, entity target, float counts_round) SoE_SpawnElementalWarning;
 void(vector where, float type) Spawn_Powerup;
+void() SoE_FlagPickupTouch;
 
 float(float district_id) SoE_FlagDistrictBit =
 {
