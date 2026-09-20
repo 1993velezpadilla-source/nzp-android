@@ -1,0 +1,250 @@
+{
+  "schemaVersion": 1,
+  "map": "soe",
+  "modes": {
+    "classicCoop": {
+      "minPlayersForFinale": 4
+    },
+    "portableSolo": {
+      "minPlayersForFinale": 1,
+      "finaleSynchronizationWindowSeconds": 20
+    }
+  },
+  "states": [
+    {
+      "id": "spawn",
+      "requires": [],
+      "events": [
+        "spawn_shadowman",
+        "enable_beast_pedestal_spawn",
+        "place_fumigators"
+      ]
+    },
+    {
+      "id": "summoning_key",
+      "requires": [
+        "spawn"
+      ],
+      "objective": "Beast-melee truck crate; collect Summoning Key as human"
+    },
+    {
+      "id": "nero_ritual",
+      "requires": [
+        "summoning_key"
+      ],
+      "objective": "Shock Junction crane, collect Lawyer's Pen, power access stairs, survive Nero ritual",
+      "rewards": [
+        "gateworm_nero"
+      ]
+    },
+    {
+      "id": "jackie_ritual",
+      "requires": [
+        "summoning_key"
+      ],
+      "objective": "Open badge grate in Beast Mode, collect Detective's Badge, open Ruby Rabbit, survive ritual",
+      "rewards": [
+        "gateworm_jackie"
+      ]
+    },
+    {
+      "id": "jessica_ritual",
+      "requires": [
+        "summoning_key"
+      ],
+      "objective": "Knock down Producer's Toupee, open Black Lace Burlesque, survive ritual",
+      "rewards": [
+        "gateworm_jessica"
+      ]
+    },
+    {
+      "id": "floyd_ritual",
+      "requires": [
+        "summoning_key"
+      ],
+      "objective": "Knock down Championship Belt, open Anvil Boxing Gym, survive ritual",
+      "rewards": [
+        "gateworm_floyd"
+      ]
+    },
+    {
+      "id": "four_rituals_complete",
+      "requires": [
+        "nero_ritual",
+        "jackie_ritual",
+        "jessica_ritual",
+        "floyd_ritual"
+      ],
+      "events": [
+        "ritual_2_and_4_margwa_spawns",
+        "rift_sacred_wall_unlock"
+      ]
+    },
+    {
+      "id": "fifth_ritual",
+      "requires": [
+        "four_rituals_complete"
+      ],
+      "objective": "Place four Gateworms in Sacred Place and survive fifth ritual",
+      "rewards": [
+        "pack_a_punch_unlocked"
+      ],
+      "events": [
+        "sky_apocalypse_state",
+        "shadowman_reveal"
+      ]
+    },
+    {
+      "id": "sword_symbols",
+      "requires": [
+        "summoning_key"
+      ],
+      "objective": "Observe three randomized glyphs from moving tram"
+    },
+    {
+      "id": "sword_wall",
+      "requires": [
+        "sword_symbols"
+      ],
+      "objective": "In Beast Mode shock the three matching glyphs in Rift"
+    },
+    {
+      "id": "apothicon_egg",
+      "requires": [
+        "sword_wall"
+      ],
+      "objective": "Take egg; expose four Apothicon statues; fill egg with zombie souls at all four statues"
+    },
+    {
+      "id": "apothicon_sword",
+      "requires": [
+        "apothicon_egg"
+      ],
+      "objective": "Return charged egg to sword chamber",
+      "rewards": [
+        "apothicon_sword"
+      ]
+    },
+    {
+      "id": "arch_ovum",
+      "requires": [
+        "apothicon_sword"
+      ],
+      "objective": "Receive character Arch-Ovum from ritual-room Keeper"
+    },
+    {
+      "id": "reborn_sword",
+      "requires": [
+        "arch_ovum"
+      ],
+      "objective": "Complete four Margwa circles, at most one per round per player; return Arch-Ovum",
+      "rewards": [
+        "reborn_keeper_sword"
+      ]
+    },
+    {
+      "id": "book_trigger",
+      "requires": [
+        "reborn_sword",
+        "fifth_ritual"
+      ],
+      "objective": "Interact with floating book in Nero's room",
+      "events": [
+        "spawn_flag_in_rift"
+      ]
+    },
+    {
+      "id": "flag_nero",
+      "requires": [
+        "book_trigger"
+      ],
+      "objective": "Protect flag at two marked sites, return to Nero Keeper"
+    },
+    {
+      "id": "flag_jackie",
+      "requires": [
+        "flag_nero"
+      ],
+      "objective": "Next-round flag defense at two marked sites, return to Jackie Keeper"
+    },
+    {
+      "id": "flag_jessica",
+      "requires": [
+        "flag_jackie"
+      ],
+      "objective": "Next-round flag defense at two marked sites, return to Jessica Keeper"
+    },
+    {
+      "id": "flag_floyd",
+      "requires": [
+        "flag_jessica"
+      ],
+      "objective": "Next-round flag defense at two marked sites, return to Floyd Keeper"
+    },
+    {
+      "id": "keepers_ready",
+      "requires": [
+        "flag_floyd"
+      ],
+      "events": [
+        "four_keepers_move_to_sacred_place"
+      ]
+    },
+    {
+      "id": "shadowman_boss",
+      "requires": [
+        "keepers_ready"
+      ],
+      "objective": "Activate all Keepers in time, break shield, damage teleporting Shadowman, trap him in Summoning Key",
+      "events": [
+        "lock_sacred_place",
+        "spawn_margwas"
+      ]
+    },
+    {
+      "id": "infinite_margwa_phase",
+      "requires": [
+        "shadowman_boss"
+      ],
+      "events": [
+        "replace_zombies_with_purple_margwas",
+        "enable_white_cleanse_mists",
+        "enable_purple_hazard_mists",
+        "enable_extended_beast",
+        "spawn_giant_gateworm_junction"
+      ]
+    },
+    {
+      "id": "train_gateworm_hit",
+      "requires": [
+        "infinite_margwa_phase"
+      ],
+      "objective": "Call tram through Junction to strike giant Gateworm"
+    },
+    {
+      "id": "station_shocks",
+      "requires": [
+        "train_gateworm_hit"
+      ],
+      "objective": "Shock Canal, Footlight and Waterfront tram boxes within synchronization window"
+    },
+    {
+      "id": "keeper_shocks",
+      "requires": [
+        "station_shocks"
+      ],
+      "objective": "Shock Junction Keepers before Gateworm returns"
+    },
+    {
+      "id": "apocalypse_averted",
+      "requires": [
+        "keeper_shocks"
+      ],
+      "events": [
+        "final_beam",
+        "ending_sequence",
+        "gold_civil_protector_cosmetic"
+      ]
+    }
+  ]
+}
