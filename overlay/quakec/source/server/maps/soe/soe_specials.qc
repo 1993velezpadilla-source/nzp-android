@@ -29,7 +29,8 @@ float(entity ent) SoE_IsCustomSpecialBody =
     return (
         ent.classname == "soe_parasite" ||
         ent.classname == "soe_elemental" ||
-        ent.classname == "soe_elemental_warning"
+        ent.classname == "soe_elemental_warning" ||
+        ent.classname == "soe_shadowman_boss"
     );
 };
 
@@ -258,7 +259,13 @@ void(entity victim) SoE_TryDropXenomatter =
 
 float(entity victim, entity attacker, float damage, float d_style) SoE_HandleSpecialDamage =
 {
-    if (!soe_active || victim.soe_special_type == SOE_SPECIAL_NONE)
+    if (!soe_active)
+        return false;
+
+    if (victim.classname == "soe_shadowman_boss")
+        return SoE_HandleShadowmanDamage(victim, attacker, damage, d_style);
+
+    if (victim.soe_special_type == SOE_SPECIAL_NONE)
         return false;
 
     if (victim.soe_special_type == SOE_SPECIAL_MARGWA) {
