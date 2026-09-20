@@ -52,6 +52,11 @@ void() SoE_BeastPedestalTouch =
     if (!SoE_PlayerCanUseEntity(self))
         return;
 
+    // During the finale, Beast Mode is re-enabled only through Margwa-relit
+    // curse torches, not these normal pedestals.
+    if (soe_finale_active)
+        return;
+
     if (other.soe_beast_active || other.soe_beast_charges <= 0)
         return;
 
