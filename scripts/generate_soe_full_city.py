@@ -175,6 +175,11 @@ def set_entity_key(entity: str, key: str, value: str):
     return entity[:line_end + 1] + replacement + "\n" + entity[line_end + 1:]
 
 
+
+def remove_entity_key(entity: str, key: str):
+    pattern = re.compile(rf'^"{re.escape(key)}"\\s+"[^"]*"\\n?', re.MULTILINE)
+    return pattern.sub("", entity, count=1)
+
 def patch_zone_adjacency(entity: str):
     if classname(entity) != "spawn_zone":
         return entity
@@ -230,6 +235,12 @@ def phase_map_parts(phase: str, text: str, cfg):
 
         ent = transform_entity(raw, delta)
         ent = patch_zone_adjacency(ent)
+
+        # Standalone blockouts explicitly use style=0 for ordinary lights.
+        # In a combined map VHLT counts those against MAX_SWITCHED_LIGHTS.
+        if cls == "light":
+            ent = remove_entity_key(ent, "style")
+
         entities.append(ent)
 
     return kept_brushes, entities
