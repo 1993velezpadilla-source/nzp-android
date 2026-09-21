@@ -86,6 +86,7 @@ sword_qc = (QC / "soe_sword.qc").read_text(encoding="utf-8")
 main_qc = (QC / "soe_mainquest.qc").read_text(encoding="utf-8")
 shadow_qc = (QC / "soe_shadowman.qc").read_text(encoding="utf-8")
 finale_qc = (QC / "soe_finale.qc").read_text(encoding="utf-8")
+tram_qc = (QC / "soe_tram.qc").read_text(encoding="utf-8")
 
 runtime_guards = {
     "state initializes rituals": (
@@ -180,6 +181,10 @@ runtime_guards = {
         shadow_qc,
         "SoE_StartFinale();",
     ),
+    "classic finale requires four players unless portable override": (
+        shadow_qc,
+        'SoE_PlayerCount() >= 4 || cvar("soe_solo_finale") != 0',
+    ),
     "finale corruption minimum cadence is 30 seconds": (
         finale_qc,
         "#define SOE_FINALE_CORRUPTION_MIN_SECONDS 30",
@@ -199,6 +204,22 @@ runtime_guards = {
     "station shocks require moving Tram in classic": (
         finale_qc,
         "!soe_tram_in_transit && cvar(\"soe_solo_finale\") == 0",
+    ),
+    "finale Tram respawn is finale-only": (
+        tram_qc,
+        "if (!soe_finale_active)",
+    ),
+    "finale Tram respawns spectator clients": (
+        tram_qc,
+        'find(world, classname, "spectator")',
+    ),
+    "finale Tram uses stock NZP player respawn": (
+        tram_qc,
+        "PlayerSpawn();",
+    ),
+    "finale Tram call invokes spectator respawn": (
+        tram_qc,
+        "SoE_TramRespawnFinaleSpectators();",
     ),
     "train hit requires all station shocks": (
         finale_qc,
@@ -238,7 +259,7 @@ stages = [
     "SOE_QUEST_FINALE",
     "SOE_QUEST_COMPLETE",
 ]
-all_qc = "\n".join([state_qc, ritual_qc, entities_qc, sword_qc, main_qc, shadow_qc, finale_qc])
+all_qc = "\n".join([state_qc, ritual_qc, entities_qc, sword_qc, main_qc, shadow_qc, finale_qc, tram_qc])
 for stage in stages:
     if stage not in state_qc:
         raise SystemExit(f"quest stage definition missing: {stage}")
