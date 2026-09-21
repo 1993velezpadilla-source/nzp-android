@@ -353,6 +353,54 @@ void() soe_finale_keeper =
     }
 };
 
+.string soe_finale_gateworm_model;
+
+void() SoE_FinaleGatewormVisualRefresh =
+{
+    if (!soe_finale_active || !soe_finale_gateworm_present) {
+        if (self.model != "")
+            setmodel(self, "");
+        self.effects = 0;
+        return;
+    }
+
+    if (self.soe_finale_gateworm_model != "")
+        setmodel(self, self.soe_finale_gateworm_model);
+    else
+        setmodel(self, "models/sprites/sprkle.spr");
+
+    self.effects = EF_FULLBRIGHT;
+};
+
+void() SoE_FinaleGatewormVisualUse =
+{
+    SoE_FinaleGatewormVisualRefresh();
+};
+
+void() SoE_FinaleGatewormVisualThink =
+{
+    SoE_FinaleGatewormVisualRefresh();
+    self.nextthink = time + 0.10;
+};
+
+void() soe_finale_gateworm_visual =
+{
+    self.movetype = MOVETYPE_NONE;
+    self.solid = SOLID_NOT;
+    self.use = SoE_FinaleGatewormVisualUse;
+
+    if (self.model != "")
+        self.soe_finale_gateworm_model = self.model;
+    else
+        self.soe_finale_gateworm_model = "models/sprites/sprkle.spr";
+
+    setmodel(self, "");
+    setsize(self, '-64 -64 -32', '64 64 96');
+
+    self.think = SoE_FinaleGatewormVisualThink;
+    self.nextthink = time + 0.10;
+};
+
 void() SoE_FinaleStartCorruption =
 {
     entity player = find(world, classname, "player");
