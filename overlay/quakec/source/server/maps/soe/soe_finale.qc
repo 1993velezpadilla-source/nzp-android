@@ -295,10 +295,14 @@ void() soe_finale_station_box =
 void() SoE_FinaleTrainHitUse =
 {
     if (!soe_finale_active ||
+        !soe_finale_gateworm_present ||
         soe_finale_station_mask != 7 ||
         soe_finale_rail_window_until <= time)
         return;
 
+    // A single Tram pass may touch/fire this target more than once depending
+    // on mover geometry. Only the first valid crossing may knock the Gateworm
+    // away; repeated contacts must not extend the Keeper window.
     soe_finale_gateworm_present = false;
     soe_finale_gateworm_absent_until = time + 20;
     soe_finale_keeper_mask = 0;
