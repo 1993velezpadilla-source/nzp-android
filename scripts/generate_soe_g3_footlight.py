@@ -9,6 +9,8 @@ from generate_soe_g1_blockout import (
     FLOOR_TEX, WALL_TEX, CEILING_TEX, BLOCK_TEX, TRIGGER_TEX, NULL_TEX,
 )
 
+from soe_mainquest_geometry import append_phase_mainquest_entities
+
 ROOT=Path(__file__).resolve().parents[1]
 SPEC_PATH=ROOT/"content"/"shadows_of_evil"/"g3_footlight_blockout.json"
 OUTPUT_PATH=ROOT/"overlay"/"assets"/"source"/"maps"/"soe_g3"/"soe_g3.map"
@@ -152,6 +154,9 @@ def gen(spec):
     # Placeholder anchors for machine/side-detail positions not yet backed by a native GobbleGum runtime.
     ents.append(point_entity("info_notnull",(1040,-240,40),targetname="soe_g3_gobblegum_anchor_a"))
     ents.append(point_entity("info_notnull",(1712,416,40),targetname="soe_g3_gobblegum_anchor_b"))
+
+    # Cross-phase Reborn Sword / Flag quest anchors from the shared source of truth.
+    append_phase_mainquest_entities(ents, "g3", point_entity)
 
     for org,b in [((800,0,176),300),((1120,0,192),260),((1248,384,256),220),
                   ((1544,0,192),300),((1632,520,176),300),((944,-512,64),180)]:
