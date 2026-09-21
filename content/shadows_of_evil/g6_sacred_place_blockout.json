@@ -1,0 +1,486 @@
+{
+  "schemaVersion": 1,
+  "map": "soe",
+  "phase": "G6",
+  "district": "sacred_place",
+  "status": "provisional_blockout_spec",
+  "scalePolicy": "Clean-room traversal-first blockout. Geometry is tuned for NZ:P movement and canonical route order, not claimed BO3 coordinates.",
+  "proposedBounds": {
+    "mins": [
+      -896,
+      -896,
+      -256
+    ],
+    "maxs": [
+      896,
+      896,
+      544
+    ]
+  },
+  "subregions": [
+    {
+      "id": "sacred_entry",
+      "label": "Rift-side entry and fifth-ritual altar",
+      "mins": [
+        -384,
+        -768,
+        -64
+      ],
+      "maxs": [
+        384,
+        -256,
+        224
+      ]
+    },
+    {
+      "id": "sacred_abyss",
+      "label": "wall-run void",
+      "mins": [
+        -512,
+        -256,
+        -192
+      ],
+      "maxs": [
+        512,
+        256,
+        224
+      ]
+    },
+    {
+      "id": "sacred_far",
+      "label": "far Gateworm ledge",
+      "mins": [
+        -448,
+        256,
+        -64
+      ],
+      "maxs": [
+        448,
+        576,
+        224
+      ]
+    },
+    {
+      "id": "sacred_pap",
+      "label": "Pack-a-Punch portal recess",
+      "mins": [
+        -224,
+        512,
+        -64
+      ],
+      "maxs": [
+        224,
+        800,
+        256
+      ]
+    },
+    {
+      "id": "sacred_shadowman",
+      "label": "Shadowman arena envelope",
+      "mins": [
+        -512,
+        -512,
+        -64
+      ],
+      "maxs": [
+        512,
+        640,
+        352
+      ]
+    }
+  ],
+  "routeContracts": [
+    "G5 Sacred gate -> G6 entry ledge",
+    "two entry-side Gateworm pedestals are reachable without wallrun",
+    "placing each entry Gateworm reveals one corresponding wallrun surface",
+    "far Gateworm pedestals require committing to a wallrun across the abyss",
+    "falling into the abyss is lethal/downing; no invisible bridge may bypass wallrun",
+    "all four Gateworms must be placed before the fifth ritual can start",
+    "fifth ritual requires the Summoning Key and survives style-5 Keeper pressure",
+    "fifth ritual completion removes the PaP portal cover and sets soe_pap_unlocked",
+    "Pack-a-Punch costs 5000 and remains logically blocked before ritual completion",
+    "later main-quest Shadowman Keepers and capture table share this arena",
+    "Shadowman nodes move him around the arena and final capture marker returns him over the Summoning Key table"
+  ],
+  "gameplayAnchors": [
+    {
+      "classname": "soe_beast_pedestal",
+      "origin": [
+        0,
+        -640,
+        32
+      ],
+      "targetname": "soe_g6_beast_entry"
+    },
+    {
+      "classname": "soe_gateworm_pedestal",
+      "origin": [
+        -240,
+        -336,
+        24
+      ],
+      "style": 1,
+      "target": "soe_g6_wallrun_left",
+      "targetname": "soe_g6_gateworm_entry_left"
+    },
+    {
+      "classname": "soe_gateworm_pedestal",
+      "origin": [
+        240,
+        -336,
+        24
+      ],
+      "style": 2,
+      "target": "soe_g6_wallrun_right",
+      "targetname": "soe_g6_gateworm_entry_right"
+    },
+    {
+      "classname": "soe_gateworm_pedestal",
+      "origin": [
+        -240,
+        384,
+        24
+      ],
+      "style": 4,
+      "targetname": "soe_g6_gateworm_far_left"
+    },
+    {
+      "classname": "soe_gateworm_pedestal",
+      "origin": [
+        240,
+        384,
+        24
+      ],
+      "style": 8,
+      "targetname": "soe_g6_gateworm_far_right"
+    },
+    {
+      "classname": "soe_final_ritual_altar",
+      "origin": [
+        0,
+        -496,
+        32
+      ],
+      "wait": 20,
+      "target": "soe_g6_pap_cover",
+      "targetname": "soe_g6_final_ritual"
+    },
+    {
+      "classname": "soe_ritual_keeper_spawn",
+      "origin": [
+        -160,
+        -448,
+        40
+      ],
+      "style": 5,
+      "targetname": "soe_g6_final_keeper_a"
+    },
+    {
+      "classname": "soe_ritual_keeper_spawn",
+      "origin": [
+        160,
+        -448,
+        40
+      ],
+      "style": 5,
+      "targetname": "soe_g6_final_keeper_b"
+    },
+    {
+      "classname": "soe_ritual_keeper_spawn",
+      "origin": [
+        -160,
+        -288,
+        40
+      ],
+      "style": 5,
+      "targetname": "soe_g6_final_keeper_c"
+    },
+    {
+      "classname": "soe_ritual_keeper_spawn",
+      "origin": [
+        160,
+        -288,
+        40
+      ],
+      "style": 5,
+      "targetname": "soe_g6_final_keeper_d"
+    },
+    {
+      "classname": "perk_pap",
+      "origin": [
+        0,
+        640,
+        40
+      ],
+      "cost": 5000,
+      "spawnflags": 3,
+      "targetname": "soe_g6_pap"
+    },
+    {
+      "classname": "soe_shadowman_keeper",
+      "origin": [
+        -288,
+        -128,
+        40
+      ],
+      "style": 1,
+      "targetname": "soe_g6_shadow_keeper_1"
+    },
+    {
+      "classname": "soe_shadowman_keeper",
+      "origin": [
+        288,
+        -128,
+        40
+      ],
+      "style": 2,
+      "targetname": "soe_g6_shadow_keeper_2"
+    },
+    {
+      "classname": "soe_shadowman_keeper",
+      "origin": [
+        -288,
+        288,
+        40
+      ],
+      "style": 3,
+      "targetname": "soe_g6_shadow_keeper_3"
+    },
+    {
+      "classname": "soe_shadowman_keeper",
+      "origin": [
+        288,
+        288,
+        40
+      ],
+      "style": 4,
+      "targetname": "soe_g6_shadow_keeper_4"
+    },
+    {
+      "classname": "soe_shadowman_capture_table",
+      "origin": [
+        0,
+        -496,
+        40
+      ],
+      "targetname": "soe_g6_shadow_capture_table"
+    },
+    {
+      "classname": "soe_shadowman_capture_marker",
+      "origin": [
+        0,
+        -432,
+        112
+      ],
+      "targetname": "soe_g6_shadow_capture_marker"
+    },
+    {
+      "classname": "soe_shadowman_node",
+      "origin": [
+        -320,
+        -224,
+        144
+      ],
+      "targetname": "soe_g6_shadow_node_1"
+    },
+    {
+      "classname": "soe_shadowman_node",
+      "origin": [
+        320,
+        -224,
+        144
+      ],
+      "targetname": "soe_g6_shadow_node_2"
+    },
+    {
+      "classname": "soe_shadowman_node",
+      "origin": [
+        -352,
+        96,
+        176
+      ],
+      "targetname": "soe_g6_shadow_node_3"
+    },
+    {
+      "classname": "soe_shadowman_node",
+      "origin": [
+        352,
+        96,
+        176
+      ],
+      "targetname": "soe_g6_shadow_node_4"
+    },
+    {
+      "classname": "soe_shadowman_node",
+      "origin": [
+        -256,
+        432,
+        144
+      ],
+      "targetname": "soe_g6_shadow_node_5"
+    },
+    {
+      "classname": "soe_shadowman_node",
+      "origin": [
+        256,
+        432,
+        144
+      ],
+      "targetname": "soe_g6_shadow_node_6"
+    },
+    {
+      "classname": "mystery_box_tp_spot",
+      "origin": [
+        -400,
+        -592,
+        32
+      ],
+      "targetname": "soe_g6_box_spot",
+      "model": "models/machines/mystery.mdl",
+      "angles": [
+        0,
+        0,
+        0
+      ]
+    },
+    {
+      "classname": "info_notnull",
+      "origin": [
+        0,
+        704,
+        112
+      ],
+      "targetname": "soe_g6_pap_portal_fx_anchor"
+    }
+  ],
+  "gatewormGeometry": [
+    {
+      "classname": "soe_reveal_wall",
+      "targetname": "soe_g6_wallrun_left",
+      "mins": [
+        -480,
+        -224,
+        -64
+      ],
+      "maxs": [
+        -448,
+        256,
+        160
+      ],
+      "wallrunVolume": {
+        "mins": [
+          -448,
+          -224,
+          -48
+        ],
+        "maxs": [
+          -408,
+          256,
+          112
+        ],
+        "angles": [
+          0,
+          90,
+          0
+        ],
+        "speed": 420,
+        "wait": 28
+      }
+    },
+    {
+      "classname": "soe_reveal_wall",
+      "targetname": "soe_g6_wallrun_right",
+      "mins": [
+        448,
+        -224,
+        -64
+      ],
+      "maxs": [
+        480,
+        256,
+        160
+      ],
+      "wallrunVolume": {
+        "mins": [
+          408,
+          -224,
+          -48
+        ],
+        "maxs": [
+          448,
+          256,
+          112
+        ],
+        "angles": [
+          0,
+          90,
+          0
+        ],
+        "speed": 420,
+        "wait": 28
+      }
+    }
+  ],
+  "poweredGeometry": [
+    {
+      "classname": "soe_powered_door",
+      "targetname": "soe_g6_pap_cover",
+      "mins": [
+        -112,
+        544,
+        0
+      ],
+      "maxs": [
+        112,
+        568,
+        160
+      ],
+      "purpose": "blocks/obscures PaP portal until fifth ritual"
+    }
+  ],
+  "hazards": [
+    {
+      "classname": "trigger_hurt",
+      "mins": [
+        -416,
+        -224,
+        -176
+      ],
+      "maxs": [
+        416,
+        256,
+        -80
+      ],
+      "dmg": 9999,
+      "wait": 0.1,
+      "targetname": "soe_g6_abyss_kill"
+    }
+  ],
+  "shadowmanContract": {
+    "keeperWindowSeconds": 10,
+    "vulnerableWindowSeconds": 12,
+    "damagePerPush": 300,
+    "pushesToCapture": 6,
+    "note": "values are enforced by existing soe_shadowman.qc; G6 supplies spatial nodes/keepers/table only"
+  },
+  "acceptance": [
+    "entry-side Gateworm styles are exactly 1 and 2; far-side styles exactly 4 and 8",
+    "entry Gateworm pedestals reveal separate left/right wallrun geometry",
+    "far pair cannot be reached by a permanent floor bridge",
+    "abyss contains an explicit damage volume",
+    "fifth ritual cannot begin until soe_gateworm_placed_mask is 15 and Summoning Key is owned",
+    "PaP portal cover is targeted by fifth ritual completion",
+    "native perk_pap costs 5000 and is hard-locked by soe_pap_unlocked",
+    "four style-5 Keeper spawn markers surround the final ritual",
+    "four Shadowman Keeper styles 1..4 exist",
+    "at least six Shadowman move nodes exist plus one capture marker/table",
+    "arena lanes remain wide enough for Margwa pressure during failed Shadowman cycles",
+    "G6 owns Sacred Place only; Tram/finale rail geometry remains G7"
+  ],
+  "references": [
+    "https://www.codzombie.com/maps/shadows-of-evil",
+    "https://www.codzombiesguides.com/main-quests/black-ops-3/shadows-of-evil/",
+    "https://callofduty.fandom.com/wiki/Pack-a-Punch_Machine/Treyarch",
+    "https://steamcommunity.com/sharedfiles/filedetails/?id=550319350"
+  ]
+}
