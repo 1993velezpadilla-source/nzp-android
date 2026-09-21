@@ -1,0 +1,495 @@
+{
+  "schemaVersion": 1,
+  "map": "soe",
+  "phase": "FULL_A0",
+  "status": "integrated_blockout_compile_target",
+  "policy": "Assemble clean-room phase geometry; strip standalone test hulls/spawns; keep all quest/runtime entities; calibrate transforms before art pass.",
+  "worldBounds": {
+    "mins": [
+      -2048,
+      -2048,
+      -1024
+    ],
+    "maxs": [
+      2304,
+      2048,
+      640
+    ]
+  },
+  "phases": {
+    "g1": {
+      "transform": [
+        0,
+        0,
+        0
+      ],
+      "dropFirstWorldBrushes": 6,
+      "dropWorldBrushIndices": [
+        14,
+        15,
+        16
+      ],
+      "keepPlayerSpawns": true,
+      "notes": "remove standalone shell + three dead-end district stubs"
+    },
+    "g2": {
+      "transform": [
+        0,
+        0,
+        0
+      ],
+      "dropFirstWorldBrushes": 6,
+      "keepPlayerSpawns": false
+    },
+    "g3": {
+      "transform": [
+        0,
+        0,
+        0
+      ],
+      "dropFirstWorldBrushes": 6,
+      "keepPlayerSpawns": false
+    },
+    "g4": {
+      "transform": [
+        0,
+        0,
+        0
+      ],
+      "dropFirstWorldBrushes": 6,
+      "keepPlayerSpawns": false
+    },
+    "g5": {
+      "transform": [
+        224,
+        0,
+        -704
+      ],
+      "dropFirstWorldBrushes": 6,
+      "dropLastWorldBrushes": 6,
+      "keepPlayerSpawns": false,
+      "dropTargetnamePrefixes": [
+        "soe_g5_test_portal_"
+      ],
+      "notes": "remove standalone shell and sealed Sacred Place test corridor"
+    },
+    "g6": {
+      "transform": [
+        224,
+        -320,
+        -704
+      ],
+      "dropFirstWorldBrushes": 6,
+      "keepPlayerSpawns": false
+    }
+  },
+  "surfaceConnections": [
+    {
+      "from": "G1 Junction Canal gate",
+      "to": "G2 Canal entry",
+      "contract": "existing brushes overlap safely through the 1000-point door"
+    },
+    {
+      "from": "G1 Junction Footlight gate",
+      "to": "G3 Footlight entry",
+      "contract": "existing brushes overlap safely through the 1000-point door"
+    },
+    {
+      "from": "G1 Junction Waterfront gate",
+      "to": "G4 Waterfront entry",
+      "contract": "existing brushes overlap safely through the 1000-point door"
+    }
+  ],
+  "undergroundConnector": {
+    "fromLocalPhase": "g5",
+    "toLocalPhase": "g6",
+    "mins": [
+      32,
+      -576,
+      -816
+    ],
+    "maxs": [
+      416,
+      -384,
+      -640
+    ],
+    "stairSurfaces": [
+      {
+        "mins": [
+          32,
+          -432,
+          -816
+        ],
+        "maxs": [
+          416,
+          -384,
+          -800
+        ]
+      },
+      {
+        "mins": [
+          32,
+          -480,
+          -816
+        ],
+        "maxs": [
+          416,
+          -432,
+          -792
+        ]
+      },
+      {
+        "mins": [
+          32,
+          -528,
+          -816
+        ],
+        "maxs": [
+          416,
+          -480,
+          -784
+        ]
+      },
+      {
+        "mins": [
+          32,
+          -576,
+          -816
+        ],
+        "maxs": [
+          416,
+          -528,
+          -776
+        ]
+      }
+    ],
+    "sideWalls": [
+      {
+        "mins": [
+          32,
+          -576,
+          -816
+        ],
+        "maxs": [
+          64,
+          -384,
+          -640
+        ]
+      },
+      {
+        "mins": [
+          384,
+          -576,
+          -816
+        ],
+        "maxs": [
+          416,
+          -384,
+          -640
+        ]
+      }
+    ],
+    "note": "global coordinates after G5/G6 transforms; rises from Rift toward Sacred Place entry"
+  },
+  "rifts": [
+    {
+      "id": "canal",
+      "surfaceOrigin": [
+        128,
+        848,
+        -24
+      ],
+      "surfaceDestination": [
+        128,
+        816,
+        -24
+      ],
+      "undergroundTarget": "soe_g5_arrival_canal",
+      "undergroundPortalLocal": [
+        -520,
+        -112,
+        -16
+      ]
+    },
+    {
+      "id": "footlight",
+      "surfaceOrigin": [
+        944,
+        -512,
+        -24
+      ],
+      "surfaceDestination": [
+        912,
+        -512,
+        -24
+      ],
+      "undergroundTarget": "soe_g5_arrival_footlight",
+      "undergroundPortalLocal": [
+        520,
+        -112,
+        -16
+      ]
+    },
+    {
+      "id": "waterfront",
+      "surfaceOrigin": [
+        128,
+        -848,
+        -24
+      ],
+      "surfaceDestination": [
+        128,
+        -816,
+        -24
+      ],
+      "undergroundTarget": "soe_g5_arrival_waterfront",
+      "undergroundPortalLocal": [
+        -240,
+        304,
+        176
+      ]
+    }
+  ],
+  "tram": {
+    "runtime": "soe_tram_mover",
+    "cost": 500,
+    "speed": 170,
+    "size": [
+      160,
+      96,
+      88
+    ],
+    "initialStation": 1,
+    "stations": [
+      {
+        "id": "canal",
+        "style": 1,
+        "min": [
+          304,
+          1320,
+          0
+        ],
+        "buttons": [
+          [
+            392,
+            1264,
+            40
+          ],
+          [
+            440,
+            1264,
+            40
+          ]
+        ],
+        "destinations": [
+          2,
+          3
+        ]
+      },
+      {
+        "id": "footlight",
+        "style": 2,
+        "min": [
+          1488,
+          432,
+          0
+        ],
+        "buttons": [
+          [
+            1544,
+            384,
+            40
+          ],
+          [
+            1592,
+            384,
+            40
+          ]
+        ],
+        "destinations": [
+          1,
+          3
+        ]
+      },
+      {
+        "id": "waterfront",
+        "style": 3,
+        "min": [
+          304,
+          -1488,
+          0
+        ],
+        "buttons": [
+          [
+            392,
+            -1264,
+            40
+          ],
+          [
+            440,
+            -1264,
+            40
+          ]
+        ],
+        "destinations": [
+          1,
+          2
+        ]
+      }
+    ],
+    "junctionHubMin": [
+      144,
+      -48,
+      0
+    ],
+    "symbolWindows": [
+      {
+        "district": "canal",
+        "style": 1,
+        "origin": [
+          600,
+          1160,
+          112
+        ],
+        "viewSide": "left/circular"
+      },
+      {
+        "district": "footlight",
+        "style": 2,
+        "origin": [
+          1352,
+          304,
+          112
+        ],
+        "viewSide": "left/apartment"
+      },
+      {
+        "district": "waterfront",
+        "style": 3,
+        "origin": [
+          600,
+          -1160,
+          112
+        ],
+        "viewSide": "right/warehouse"
+      }
+    ],
+    "finale": {
+      "stationBoxes": [
+        {
+          "district": "canal",
+          "style": 1,
+          "origin": [
+            392,
+            1512,
+            112
+          ]
+        },
+        {
+          "district": "footlight",
+          "style": 2,
+          "origin": [
+            1768,
+            520,
+            112
+          ]
+        },
+        {
+          "district": "waterfront",
+          "style": 3,
+          "origin": [
+            392,
+            -1512,
+            112
+          ]
+        }
+      ],
+      "trainHitOrigin": [
+        224,
+        0,
+        48
+      ],
+      "gatewormOrigin": [
+        224,
+        0,
+        64
+      ],
+      "keepers": [
+        {
+          "style": 1,
+          "origin": [
+            96,
+            144,
+            40
+          ]
+        },
+        {
+          "style": 2,
+          "origin": [
+            352,
+            144,
+            40
+          ]
+        },
+        {
+          "style": 3,
+          "origin": [
+            224,
+            -176,
+            40
+          ]
+        }
+      ],
+      "torches": [
+        [
+          32,
+          224,
+          32
+        ],
+        [
+          416,
+          224,
+          32
+        ],
+        [
+          224,
+          -320,
+          32
+        ]
+      ],
+      "cleanseWisps": [
+        [
+          64,
+          0,
+          32
+        ],
+        [
+          384,
+          0,
+          32
+        ],
+        [
+          224,
+          224,
+          32
+        ],
+        [
+          224,
+          -240,
+          32
+        ]
+      ]
+    }
+  },
+  "acceptance": [
+    "exactly one worldspawn and four player spawns survive the merge",
+    "G1-G4 surface geometry remains untransformed so district gates retain their established alignment",
+    "G1 dead-end district stubs are removed",
+    "G5/G6 standalone hulls and G5 sealed Sacred corridor are removed",
+    "Rift and Sacred Place are below all surface play space with a physical stair connector",
+    "three two-way Rift portal pairs connect surface districts to the transformed G5 destinations",
+    "all G1-G6 quest entities survive with unique targetnames",
+    "the physical Tram uses actual Canal/Footlight/Waterfront station envelopes and passes Junction",
+    "full integrated map compiles through the pinned NZ:P VHLT pipeline before any art-detail pass"
+  ]
+}
