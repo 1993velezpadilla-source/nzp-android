@@ -236,10 +236,15 @@ def phase_map_parts(phase: str, text: str, cfg):
         ent = transform_entity(raw, delta)
         ent = patch_zone_adjacency(ent)
 
-        # Standalone blockouts explicitly use style=0 for ordinary lights.
-        # In a combined map VHLT counts those against MAX_SWITCHED_LIGHTS.
-        if cls == "light":
+        # Full-city blockout lighting is intentionally static. GoldSrc/VHLT
+        # assigns switched-light styles to any classname beginning with "light"
+        # that carries a targetname; 32 unique targets exhaust
+        # MAX_SWITCHED_LIGHTS. Strip both explicit style and targetname here.
+        # Final art lighting may reintroduce a small, budgeted set of switched
+        # lights deliberately.
+        if cls.startswith("light"):
             ent = remove_entity_key(ent, "style")
+            ent = remove_entity_key(ent, "targetname")
 
         entities.append(ent)
 
