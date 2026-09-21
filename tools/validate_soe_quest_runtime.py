@@ -318,6 +318,14 @@ runtime_guards = {
         finale_qc,
         "if (soe_finale_keeper_mask == 7)",
     ),
+    "finale completion retires rail-cycle state": (
+        finale_qc,
+        "SoE_FinaleResetRailCycle();",
+    ),
+    "finale completion retires Gateworm absence timer": (
+        finale_qc,
+        "soe_finale_gateworm_absent_until = 0;",
+    ),
     "finale calls global completion": (
         finale_qc,
         "SoE_CompleteQuest();",
