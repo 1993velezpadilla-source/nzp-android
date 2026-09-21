@@ -118,8 +118,7 @@ void() SoE_FinaleBegin =
 
     entity player = find(world, classname, "player");
     while (player != world) {
-        player.soe_finale_corrupted = false;
-        player.soe_finale_corrupt_deadline = 0;
+        SoE_FinaleClearPlayerCorruption(player);
         player = find(player, classname, "player");
     }
 };
@@ -217,8 +216,7 @@ void() SoE_FinaleCleanseTouch =
     if (!soe_finale_active || other.classname != "player")
         return;
 
-    other.soe_finale_corrupted = false;
-    other.soe_finale_corrupt_deadline = 0;
+    SoE_FinaleClearPlayerCorruption(other);
 };
 
 void() soe_finale_cleanse_wisp =
@@ -333,8 +331,7 @@ void() SoE_FinaleComplete =
 
     entity player = find(world, classname, "player");
     while (player != world) {
-        player.soe_finale_corrupted = false;
-        player.soe_finale_corrupt_deadline = 0;
+        SoE_FinaleClearPlayerCorruption(player);
 
         if (player.soe_beast_active)
             SoE_EndBeast(player);
@@ -492,12 +489,10 @@ void() SoE_FinaleUpdateCorruption =
             time >= player.soe_finale_corrupt_deadline) {
 
             if (player.soe_beast_active) {
-                player.soe_finale_corrupted = false;
-                player.soe_finale_corrupt_deadline = 0;
+                SoE_FinaleClearPlayerCorruption(player);
                 SoE_BeastDrain(player, SOE_FINALE_BEAST_CORRUPTION_DRAIN);
             } else if (!player.downed) {
-                player.soe_finale_corrupted = false;
-                player.soe_finale_corrupt_deadline = 0;
+                SoE_FinaleClearPlayerCorruption(player);
                 DamageHandler(player, world, 999999, DMG_TYPE_OTHER);
             }
             // If the player is already downed, leave the expired corruption
