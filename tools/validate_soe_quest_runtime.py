@@ -85,7 +85,11 @@ runtime_guards = {
         state_qc,
         "soe_quest_stage = SOE_QUEST_RITUALS;",
     ),
-    "PaP unlock advances stage": (
+    "PaP unlock preserves a more advanced parallel stage": (
+        state_qc,
+        "if (soe_quest_stage < SOE_QUEST_PAP_OPEN)",
+    ),
+    "PaP unlock can advance the ritual-only path": (
         state_qc,
         "soe_quest_stage = SOE_QUEST_PAP_OPEN;",
     ),
