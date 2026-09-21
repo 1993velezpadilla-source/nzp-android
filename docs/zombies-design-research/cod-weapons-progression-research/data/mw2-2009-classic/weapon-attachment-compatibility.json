@@ -1,0 +1,1429 @@
+{
+  "provenance": {
+    "source_repository": "iw4x/iw4x-rawfiles",
+    "source_revision": "edb0ae893dee26780e14c8095ca8ff4b6e7ac367",
+    "source_files": {
+      "statstable": {
+        "path": "iw4x/iw4x_00/mp/statstable.csv",
+        "sha": "cf67dd0b80f383150514676b48153cb06d1fd6fb"
+      },
+      "unlocktable": {
+        "path": "iw4x/iw4x_00/mp/unlocktable.csv",
+        "sha": "ca597bba805f26b3f213ea5fb4548b4c4d25b11c"
+      }
+    },
+    "repository_license": "GPLv3 at repository level; Activision-origin data/assets require separate provenance caution",
+    "transformed_on": "2026-09-21",
+    "notes": [
+      "menu_stat_bars are UI bars, not engine simulation values",
+      "attachment compatibility is derived from statstable attachment tokens",
+      "attachment unlock rows retain raw prerequisite challenge IDs"
+    ]
+  },
+  "count": 60,
+  "weapons": [
+    {
+      "row_id": 0,
+      "stat_id": 3000,
+      "class_id": "weapon_riot",
+      "enum_id": "WEAPON_RIOTSHIELD",
+      "weapon_id": "riotshield",
+      "world_model": "weapon_riotshield",
+      "perk_family": "PERKS_RIOT_SHIELD",
+      "stow_tag": null,
+      "compatible_attachments": [],
+      "menu_stat_bars": {
+        "accuracy": 50,
+        "damage": 40,
+        "range": 50,
+        "fire_rate": 50,
+        "mobility": 50
+      }
+    },
+    {
+      "row_id": 1,
+      "stat_id": 3001,
+      "class_id": "weapon_pistol",
+      "enum_id": "WEAPON_BERETTA",
+      "weapon_id": "beretta",
+      "world_model": "weapon_m9beretta",
+      "perk_family": "PERKS_PISTOL_SEMIAUTO",
+      "stow_tag": "weapon_stow_mid_up",
+      "compatible_attachments": [
+        "fmj",
+        "silencer",
+        "akimbo",
+        "tactical",
+        "xmags"
+      ],
+      "menu_stat_bars": {
+        "accuracy": 70,
+        "damage": 30,
+        "range": 45,
+        "fire_rate": 85,
+        "mobility": 50
+      }
+    },
+    {
+      "row_id": 2,
+      "stat_id": 3002,
+      "class_id": "weapon_pistol",
+      "enum_id": "WEAPON_USP",
+      "weapon_id": "usp",
+      "world_model": "weapon_usp_45",
+      "perk_family": "PERKS_PISTOL_SEMIAUTO",
+      "stow_tag": "weapon_stow_mid_up",
+      "compatible_attachments": [
+        "fmj",
+        "silencer",
+        "akimbo",
+        "tactical",
+        "xmags"
+      ],
+      "menu_stat_bars": {
+        "accuracy": 55,
+        "damage": 30,
+        "range": 60,
+        "fire_rate": 85,
+        "mobility": 50
+      }
+    },
+    {
+      "row_id": 3,
+      "stat_id": 3003,
+      "class_id": "weapon_pistol",
+      "enum_id": "WEAPON_DESERTEAGLE",
+      "weapon_id": "deserteagle",
+      "world_model": "weapon_desert_eagle",
+      "perk_family": "PERKS_PISTOL_SEMIAUTO",
+      "stow_tag": "weapon_stow_mid_up",
+      "compatible_attachments": [
+        "fmj",
+        "akimbo",
+        "tactical"
+      ],
+      "menu_stat_bars": {
+        "accuracy": 30,
+        "damage": 60,
+        "range": 70,
+        "fire_rate": 85,
+        "mobility": 50
+      }
+    },
+    {
+      "row_id": 4,
+      "stat_id": 3004,
+      "class_id": "weapon_pistol",
+      "enum_id": "WEAPON_ANACONDA",
+      "weapon_id": "coltanaconda",
+      "world_model": "weapon_colt_anaconda",
+      "perk_family": "PERKS_PISTOL_REVOLVER",
+      "stow_tag": "weapon_stow_mid_up",
+      "compatible_attachments": [
+        "fmj",
+        "akimbo",
+        "tactical"
+      ],
+      "menu_stat_bars": {
+        "accuracy": 27,
+        "damage": 62,
+        "range": 72,
+        "fire_rate": 85,
+        "mobility": 50
+      }
+    },
+    {
+      "row_id": 5,
+      "stat_id": 3005,
+      "class_id": "weapon_pistol",
+      "enum_id": "WEAPON_DESERTEAGLEGOLD",
+      "weapon_id": "deserteaglegold",
+      "world_model": "weapon_desert_eagle_gold",
+      "perk_family": "PERKS_PISTOL_SEMIAUTO",
+      "stow_tag": "weapon_stow_mid_up",
+      "compatible_attachments": [
+        "fmj",
+        "akimbo",
+        "tactical"
+      ],
+      "menu_stat_bars": {
+        "accuracy": 30,
+        "damage": 60,
+        "range": 70,
+        "fire_rate": 85,
+        "mobility": 50
+      }
+    },
+    {
+      "row_id": 7,
+      "stat_id": 3007,
+      "class_id": "weapon_machine_pistol",
+      "enum_id": "WEAPON_GLOCK",
+      "weapon_id": "glock",
+      "world_model": "weapon_glock",
+      "perk_family": "PERKS_MPISTOL_FULLAUTO",
+      "stow_tag": "weapon_stow_mid_up",
+      "compatible_attachments": [
+        "reflex",
+        "silencer",
+        "fmj",
+        "akimbo",
+        "eotech",
+        "xmags"
+      ],
+      "menu_stat_bars": {
+        "accuracy": 45,
+        "damage": 60,
+        "range": 40,
+        "fire_rate": 90,
+        "mobility": 50
+      }
+    },
+    {
+      "row_id": 8,
+      "stat_id": 3008,
+      "class_id": "weapon_machine_pistol",
+      "enum_id": "WEAPON_BERETTA393",
+      "weapon_id": "beretta393",
+      "world_model": "weapon_beretta393",
+      "perk_family": "PERKS_MPISTOL_BURST",
+      "stow_tag": "weapon_stow_mid_up",
+      "compatible_attachments": [
+        "reflex",
+        "silencer",
+        "fmj",
+        "akimbo",
+        "eotech",
+        "xmags"
+      ],
+      "menu_stat_bars": {
+        "accuracy": 80,
+        "damage": 75,
+        "range": 60,
+        "fire_rate": 70,
+        "mobility": 50
+      }
+    },
+    {
+      "row_id": 9,
+      "stat_id": 3009,
+      "class_id": "weapon_machine_pistol",
+      "enum_id": "WEAPON_PP2000",
+      "weapon_id": "pp2000",
+      "world_model": "weapon_pp2000",
+      "perk_family": "PERKS_MPISTOL_FULLAUTO",
+      "stow_tag": "weapon_stow_mid",
+      "compatible_attachments": [
+        "reflex",
+        "silencer",
+        "fmj",
+        "akimbo",
+        "eotech",
+        "xmags"
+      ],
+      "menu_stat_bars": {
+        "accuracy": 65,
+        "damage": 70,
+        "range": 60,
+        "fire_rate": 73,
+        "mobility": 50
+      }
+    },
+    {
+      "row_id": 10,
+      "stat_id": 3010,
+      "class_id": "weapon_machine_pistol",
+      "enum_id": "WEAPON_TMP",
+      "weapon_id": "tmp",
+      "world_model": "weapon_tmp",
+      "perk_family": "PERKS_MPISTOL_FULLAUTO",
+      "stow_tag": "weapon_stow_mid",
+      "compatible_attachments": [
+        "reflex",
+        "silencer",
+        "fmj",
+        "akimbo",
+        "eotech",
+        "xmags"
+      ],
+      "menu_stat_bars": {
+        "accuracy": 85,
+        "damage": 65,
+        "range": 60,
+        "fire_rate": 60,
+        "mobility": 50
+      }
+    },
+    {
+      "row_id": 12,
+      "stat_id": 3012,
+      "class_id": "weapon_smg",
+      "enum_id": "WEAPON_MP5K",
+      "weapon_id": "mp5k",
+      "world_model": "weapon_mp5k",
+      "perk_family": "PERKS_SMG",
+      "stow_tag": "weapon_stow_mid_up",
+      "compatible_attachments": [
+        "rof",
+        "reflex",
+        "silencer",
+        "acog",
+        "fmj",
+        "akimbo",
+        "eotech",
+        "thermal",
+        "xmags"
+      ],
+      "menu_stat_bars": {
+        "accuracy": 70,
+        "damage": 80,
+        "range": 40,
+        "fire_rate": 77,
+        "mobility": 100
+      }
+    },
+    {
+      "row_id": 13,
+      "stat_id": 3013,
+      "class_id": "weapon_smg",
+      "enum_id": "WEAPON_UZI",
+      "weapon_id": "uzi",
+      "world_model": "weapon_mini_uzi",
+      "perk_family": "PERKS_SMG",
+      "stow_tag": "weapon_stow_mid",
+      "compatible_attachments": [
+        "rof",
+        "reflex",
+        "silencer",
+        "acog",
+        "fmj",
+        "akimbo",
+        "eotech",
+        "thermal",
+        "xmags"
+      ],
+      "menu_stat_bars": {
+        "accuracy": 80,
+        "damage": 75,
+        "range": 40,
+        "fire_rate": 85,
+        "mobility": 100
+      }
+    },
+    {
+      "row_id": 14,
+      "stat_id": 3014,
+      "class_id": "weapon_smg",
+      "enum_id": "WEAPON_P90",
+      "weapon_id": "p90",
+      "world_model": "weapon_p90",
+      "perk_family": "PERKS_SMG_AMMO",
+      "stow_tag": "weapon_stow_mid",
+      "compatible_attachments": [
+        "rof",
+        "reflex",
+        "silencer",
+        "acog",
+        "fmj",
+        "akimbo",
+        "eotech",
+        "thermal",
+        "xmags"
+      ],
+      "menu_stat_bars": {
+        "accuracy": 80,
+        "damage": 75,
+        "range": 40,
+        "fire_rate": 90,
+        "mobility": 100
+      }
+    },
+    {
+      "row_id": 15,
+      "stat_id": 3015,
+      "class_id": "weapon_smg",
+      "enum_id": "WEAPON_KRISS",
+      "weapon_id": "kriss",
+      "world_model": "weapon_kriss",
+      "perk_family": "PERKS_SMG_RAPID",
+      "stow_tag": "weapon_stow_mid_up",
+      "compatible_attachments": [
+        "rof",
+        "reflex",
+        "silencer",
+        "acog",
+        "fmj",
+        "akimbo",
+        "eotech",
+        "thermal",
+        "xmags"
+      ],
+      "menu_stat_bars": {
+        "accuracy": 85,
+        "damage": 50,
+        "range": 40,
+        "fire_rate": 95,
+        "mobility": 100
+      }
+    },
+    {
+      "row_id": 16,
+      "stat_id": 3016,
+      "class_id": "weapon_smg",
+      "enum_id": "WEAPON_UMP45",
+      "weapon_id": "ump45",
+      "world_model": "weapon_ump45",
+      "perk_family": "PERKS_SMG",
+      "stow_tag": "weapon_stow_mid",
+      "compatible_attachments": [
+        "rof",
+        "reflex",
+        "silencer",
+        "acog",
+        "fmj",
+        "akimbo",
+        "eotech",
+        "thermal",
+        "xmags"
+      ],
+      "menu_stat_bars": {
+        "accuracy": 85,
+        "damage": 85,
+        "range": 40,
+        "fire_rate": 70,
+        "mobility": 100
+      }
+    },
+    {
+      "row_id": 18,
+      "stat_id": 3018,
+      "class_id": "weapon_assault",
+      "enum_id": "WEAPON_AK47",
+      "weapon_id": "ak47",
+      "world_model": "weapon_ak47",
+      "perk_family": "PERKS_AR_FULLAUTO",
+      "stow_tag": "weapon_stow_mid_up",
+      "compatible_attachments": [
+        "gl",
+        "reflex",
+        "silencer",
+        "acog",
+        "fmj",
+        "shotgun",
+        "eotech",
+        "heartbeat",
+        "thermal",
+        "xmags"
+      ],
+      "menu_stat_bars": {
+        "accuracy": 50,
+        "damage": 75,
+        "range": 75,
+        "fire_rate": 50,
+        "mobility": 66
+      }
+    },
+    {
+      "row_id": 19,
+      "stat_id": 3019,
+      "class_id": "weapon_assault",
+      "enum_id": "WEAPON_M16",
+      "weapon_id": "m16",
+      "world_model": "weapon_m16a4",
+      "perk_family": "PERKS_AR_THREEROUND",
+      "stow_tag": "weapon_stow_mid_up",
+      "compatible_attachments": [
+        "gl",
+        "reflex",
+        "silencer",
+        "acog",
+        "fmj",
+        "shotgun",
+        "eotech",
+        "heartbeat",
+        "thermal",
+        "xmags"
+      ],
+      "menu_stat_bars": {
+        "accuracy": 85,
+        "damage": 75,
+        "range": 75,
+        "fire_rate": 80,
+        "mobility": 66
+      }
+    },
+    {
+      "row_id": 20,
+      "stat_id": 3020,
+      "class_id": "weapon_assault",
+      "enum_id": "WEAPON_M4",
+      "weapon_id": "m4",
+      "world_model": "weapon_m4_short",
+      "perk_family": "PERKS_AR_FULLAUTO",
+      "stow_tag": "weapon_stow_mid_up",
+      "compatible_attachments": [
+        "gl",
+        "reflex",
+        "silencer",
+        "acog",
+        "fmj",
+        "shotgun",
+        "eotech",
+        "heartbeat",
+        "thermal",
+        "xmags"
+      ],
+      "menu_stat_bars": {
+        "accuracy": 75,
+        "damage": 40,
+        "range": 75,
+        "fire_rate": 75,
+        "mobility": 66
+      }
+    },
+    {
+      "row_id": 21,
+      "stat_id": 3021,
+      "class_id": "weapon_assault",
+      "enum_id": "WEAPON_FN2000",
+      "weapon_id": "fn2000",
+      "world_model": "weapon_fn2000",
+      "perk_family": "PERKS_AR_FULLAUTO",
+      "stow_tag": "weapon_stow_mid",
+      "compatible_attachments": [
+        "gl",
+        "reflex",
+        "silencer",
+        "acog",
+        "fmj",
+        "shotgun",
+        "eotech",
+        "heartbeat",
+        "thermal",
+        "xmags"
+      ],
+      "menu_stat_bars": {
+        "accuracy": 60,
+        "damage": 40,
+        "range": 75,
+        "fire_rate": 82,
+        "mobility": 66
+      }
+    },
+    {
+      "row_id": 22,
+      "stat_id": 3022,
+      "class_id": "weapon_assault",
+      "enum_id": "WEAPON_MASADA",
+      "weapon_id": "masada",
+      "world_model": "weapon_masada",
+      "perk_family": "PERKS_AR_FULLAUTO",
+      "stow_tag": "weapon_stow_mid_up",
+      "compatible_attachments": [
+        "gl",
+        "reflex",
+        "silencer",
+        "acog",
+        "fmj",
+        "shotgun",
+        "eotech",
+        "heartbeat",
+        "thermal",
+        "xmags"
+      ],
+      "menu_stat_bars": {
+        "accuracy": 95,
+        "damage": 40,
+        "range": 75,
+        "fire_rate": 63,
+        "mobility": 66
+      }
+    },
+    {
+      "row_id": 23,
+      "stat_id": 3023,
+      "class_id": "weapon_assault",
+      "enum_id": "WEAPON_FAMAS",
+      "weapon_id": "famas",
+      "world_model": "weapon_famas",
+      "perk_family": "PERKS_AR_THREEROUND",
+      "stow_tag": "weapon_stow_mid_up",
+      "compatible_attachments": [
+        "gl",
+        "reflex",
+        "silencer",
+        "acog",
+        "fmj",
+        "shotgun",
+        "eotech",
+        "heartbeat",
+        "thermal",
+        "xmags"
+      ],
+      "menu_stat_bars": {
+        "accuracy": 95,
+        "damage": 40,
+        "range": 75,
+        "fire_rate": 90,
+        "mobility": 66
+      }
+    },
+    {
+      "row_id": 24,
+      "stat_id": 3024,
+      "class_id": "weapon_assault",
+      "enum_id": "WEAPON_FAL",
+      "weapon_id": "fal",
+      "world_model": "weapon_fnfal",
+      "perk_family": "PERKS_AR_SEMIAUTO",
+      "stow_tag": "weapon_stow_mid_up",
+      "compatible_attachments": [
+        "gl",
+        "reflex",
+        "silencer",
+        "acog",
+        "fmj",
+        "shotgun",
+        "eotech",
+        "heartbeat",
+        "thermal",
+        "xmags"
+      ],
+      "menu_stat_bars": {
+        "accuracy": 90,
+        "damage": 75,
+        "range": 75,
+        "fire_rate": 35,
+        "mobility": 66
+      }
+    },
+    {
+      "row_id": 25,
+      "stat_id": 3025,
+      "class_id": "weapon_assault",
+      "enum_id": "WEAPON_SCAR",
+      "weapon_id": "scar",
+      "world_model": "weapon_scar_h",
+      "perk_family": "PERKS_AR_FULLAUTO",
+      "stow_tag": "weapon_stow_mid_up",
+      "compatible_attachments": [
+        "gl",
+        "reflex",
+        "silencer",
+        "acog",
+        "fmj",
+        "shotgun",
+        "eotech",
+        "heartbeat",
+        "thermal",
+        "xmags"
+      ],
+      "menu_stat_bars": {
+        "accuracy": 90,
+        "damage": 75,
+        "range": 75,
+        "fire_rate": 35,
+        "mobility": 66
+      }
+    },
+    {
+      "row_id": 26,
+      "stat_id": 3026,
+      "class_id": "weapon_assault",
+      "enum_id": "WEAPON_TAVOR",
+      "weapon_id": "tavor",
+      "world_model": "weapon_tavor",
+      "perk_family": "PERKS_AR_FULLAUTO",
+      "stow_tag": "weapon_stow_mid",
+      "compatible_attachments": [
+        "gl",
+        "reflex",
+        "silencer",
+        "acog",
+        "fmj",
+        "shotgun",
+        "eotech",
+        "heartbeat",
+        "thermal",
+        "xmags"
+      ],
+      "menu_stat_bars": {
+        "accuracy": 40,
+        "damage": 75,
+        "range": 75,
+        "fire_rate": 55,
+        "mobility": 66
+      }
+    },
+    {
+      "row_id": 28,
+      "stat_id": 3028,
+      "class_id": "weapon_projectile",
+      "enum_id": "WEAPON_GRENADE_LAUNCHER",
+      "weapon_id": "gl",
+      "world_model": "weapon_gl",
+      "perk_family": "PERKS_GRENADE_LAUNCHER_ATTACHMENT",
+      "stow_tag": null,
+      "compatible_attachments": [],
+      "menu_stat_bars": {
+        "accuracy": null,
+        "damage": null,
+        "range": null,
+        "fire_rate": null,
+        "mobility": null
+      }
+    },
+    {
+      "row_id": 29,
+      "stat_id": 3029,
+      "class_id": "weapon_projectile",
+      "enum_id": "WEAPON_M79_X2",
+      "weapon_id": "m79",
+      "world_model": "weapon_m79",
+      "perk_family": "PERKS_LAUNCHER_GL",
+      "stow_tag": "weapon_stow_mid",
+      "compatible_attachments": [],
+      "menu_stat_bars": {
+        "accuracy": 50,
+        "damage": 50,
+        "range": 50,
+        "fire_rate": 50,
+        "mobility": 50
+      }
+    },
+    {
+      "row_id": 30,
+      "stat_id": 3030,
+      "class_id": "weapon_projectile",
+      "enum_id": "WEAPON_RPG_X2",
+      "weapon_id": "rpg",
+      "world_model": "weapon_rpg7",
+      "perk_family": "PERKS_LAUNCHER_ROCKET",
+      "stow_tag": "weapon_rpg7_stow",
+      "compatible_attachments": [],
+      "menu_stat_bars": {
+        "accuracy": 30,
+        "damage": 70,
+        "range": 40,
+        "fire_rate": 50,
+        "mobility": 50
+      }
+    },
+    {
+      "row_id": 31,
+      "stat_id": 3031,
+      "class_id": "weapon_projectile",
+      "enum_id": "WEAPON_AT4_LOCKAIR",
+      "weapon_id": "at4",
+      "world_model": "weapon_at4",
+      "perk_family": "PERKS_LAUNCHER_AT4",
+      "stow_tag": "weapon_at4_stow",
+      "compatible_attachments": [],
+      "menu_stat_bars": {
+        "accuracy": 50,
+        "damage": 70,
+        "range": 50,
+        "fire_rate": 50,
+        "mobility": 50
+      }
+    },
+    {
+      "row_id": 32,
+      "stat_id": 3032,
+      "class_id": "weapon_projectile",
+      "enum_id": "WEAPON_STINGER",
+      "weapon_id": "stinger",
+      "world_model": "weapon_stinger",
+      "perk_family": "PERKS_LAUNCHER_STINGER",
+      "stow_tag": "weapon_stinger_stow",
+      "compatible_attachments": [],
+      "menu_stat_bars": {
+        "accuracy": 50,
+        "damage": 70,
+        "range": 50,
+        "fire_rate": 50,
+        "mobility": 50
+      }
+    },
+    {
+      "row_id": 33,
+      "stat_id": 3033,
+      "class_id": "weapon_projectile",
+      "enum_id": "WEAPON_JAVELIN",
+      "weapon_id": "javelin",
+      "world_model": "weapon_javelin",
+      "perk_family": "PERKS_LAUNCHER_JAVELIN",
+      "stow_tag": "weapon_javelin_stow",
+      "compatible_attachments": [],
+      "menu_stat_bars": {
+        "accuracy": 50,
+        "damage": 70,
+        "range": 50,
+        "fire_rate": 50,
+        "mobility": 50
+      }
+    },
+    {
+      "row_id": 35,
+      "stat_id": 3035,
+      "class_id": "weapon_sniper",
+      "enum_id": "WEAPON_BARRETT",
+      "weapon_id": "barrett",
+      "world_model": "weapon_barrett50cal",
+      "perk_family": "PERKS_SNIPER_SEMIAUTO",
+      "stow_tag": "weapon_stow_mid_up",
+      "compatible_attachments": [
+        "silencer",
+        "acog",
+        "fmj",
+        "heartbeat",
+        "thermal",
+        "xmags"
+      ],
+      "menu_stat_bars": {
+        "accuracy": 85,
+        "damage": 90,
+        "range": 100,
+        "fire_rate": 70,
+        "mobility": 100
+      }
+    },
+    {
+      "row_id": 36,
+      "stat_id": 3036,
+      "class_id": "weapon_sniper",
+      "enum_id": "WEAPON_WA2000",
+      "weapon_id": "wa2000",
+      "world_model": "weapon_wa2000",
+      "perk_family": "PERKS_SNIPER_SEMIAUTO",
+      "stow_tag": "weapon_stow_mid_up",
+      "compatible_attachments": [
+        "silencer",
+        "acog",
+        "fmj",
+        "heartbeat",
+        "thermal",
+        "xmags"
+      ],
+      "menu_stat_bars": {
+        "accuracy": 87,
+        "damage": 87,
+        "range": 100,
+        "fire_rate": 55,
+        "mobility": 100
+      }
+    },
+    {
+      "row_id": 37,
+      "stat_id": 3037,
+      "class_id": "weapon_sniper",
+      "enum_id": "WEAPON_M21_SOCOM",
+      "weapon_id": "m21",
+      "world_model": "weapon_m14ebr",
+      "perk_family": "PERKS_SNIPER_SEMIAUTO",
+      "stow_tag": null,
+      "compatible_attachments": [
+        "silencer",
+        "acog",
+        "fmj",
+        "heartbeat",
+        "thermal",
+        "xmags"
+      ],
+      "menu_stat_bars": {
+        "accuracy": 80,
+        "damage": 75,
+        "range": 100,
+        "fire_rate": 60,
+        "mobility": 100
+      }
+    },
+    {
+      "row_id": 38,
+      "stat_id": 3038,
+      "class_id": "weapon_sniper",
+      "enum_id": "WEAPON_CHEYTAC",
+      "weapon_id": "cheytac",
+      "world_model": "weapon_cheytac",
+      "perk_family": "PERKS_SNIPER_BOLT",
+      "stow_tag": null,
+      "compatible_attachments": [
+        "silencer",
+        "acog",
+        "fmj",
+        "heartbeat",
+        "thermal",
+        "xmags"
+      ],
+      "menu_stat_bars": {
+        "accuracy": 88,
+        "damage": 90,
+        "range": 100,
+        "fire_rate": 20,
+        "mobility": 100
+      }
+    },
+    {
+      "row_id": 40,
+      "stat_id": 3040,
+      "class_id": "weapon_shotgun",
+      "enum_id": "WEAPON_RANGER",
+      "weapon_id": "ranger",
+      "world_model": "weapon_ranger",
+      "perk_family": "PERKS_SHOTGUN_DOUBLE",
+      "stow_tag": "weapon_stow_mid_up",
+      "compatible_attachments": [
+        "akimbo",
+        "fmj"
+      ],
+      "menu_stat_bars": {
+        "accuracy": 25,
+        "damage": 85,
+        "range": 25,
+        "fire_rate": 25,
+        "mobility": 50
+      }
+    },
+    {
+      "row_id": 41,
+      "stat_id": 3041,
+      "class_id": "weapon_shotgun",
+      "enum_id": "WEAPON_MODEL1887",
+      "weapon_id": "model1887",
+      "world_model": "weapon_model1887",
+      "perk_family": "PERKS_SHOTGUN_LEVER",
+      "stow_tag": null,
+      "compatible_attachments": [
+        "akimbo",
+        "fmj"
+      ],
+      "menu_stat_bars": {
+        "accuracy": 35,
+        "damage": 80,
+        "range": 40,
+        "fire_rate": 5,
+        "mobility": 50
+      }
+    },
+    {
+      "row_id": 42,
+      "stat_id": 3042,
+      "class_id": "weapon_shotgun",
+      "enum_id": "WEAPON_STRIKER",
+      "weapon_id": "striker",
+      "world_model": "weapon_striker",
+      "perk_family": "PERKS_SHOTGUN_SEMIAUTO",
+      "stow_tag": null,
+      "compatible_attachments": [
+        "reflex",
+        "silencer",
+        "grip",
+        "fmj",
+        "eotech",
+        "xmags"
+      ],
+      "menu_stat_bars": {
+        "accuracy": 25,
+        "damage": 70,
+        "range": 35,
+        "fire_rate": 75,
+        "mobility": 50
+      }
+    },
+    {
+      "row_id": 43,
+      "stat_id": 3043,
+      "class_id": "weapon_shotgun",
+      "enum_id": "WEAPON_AA12",
+      "weapon_id": "aa12",
+      "world_model": "weapon_aa12",
+      "perk_family": "PERKS_SHOTGUN_FULLAUTO",
+      "stow_tag": "weapon_stow_mid_up",
+      "compatible_attachments": [
+        "reflex",
+        "silencer",
+        "grip",
+        "fmj",
+        "eotech",
+        "xmags"
+      ],
+      "menu_stat_bars": {
+        "accuracy": 20,
+        "damage": 77,
+        "range": 25,
+        "fire_rate": 90,
+        "mobility": 50
+      }
+    },
+    {
+      "row_id": 44,
+      "stat_id": 3044,
+      "class_id": "weapon_shotgun",
+      "enum_id": "WEAPON_M1014",
+      "weapon_id": "m1014",
+      "world_model": "weapon_m1014",
+      "perk_family": "PERKS_SHOTGUN_SEMIAUTO",
+      "stow_tag": null,
+      "compatible_attachments": [
+        "reflex",
+        "silencer",
+        "grip",
+        "fmj",
+        "eotech",
+        "xmags"
+      ],
+      "menu_stat_bars": {
+        "accuracy": 25,
+        "damage": 90,
+        "range": 33,
+        "fire_rate": 70,
+        "mobility": 50
+      }
+    },
+    {
+      "row_id": 45,
+      "stat_id": 3045,
+      "class_id": "weapon_shotgun",
+      "enum_id": "WEAPON_SPAS12",
+      "weapon_id": "spas12",
+      "world_model": "weapon_spas12",
+      "perk_family": "PERKS_SHOTGUN_PUMP",
+      "stow_tag": "weapon_stow_mid_up",
+      "compatible_attachments": [
+        "reflex",
+        "silencer",
+        "grip",
+        "fmj",
+        "eotech",
+        "xmags"
+      ],
+      "menu_stat_bars": {
+        "accuracy": 30,
+        "damage": 75,
+        "range": 25,
+        "fire_rate": 55,
+        "mobility": 50
+      }
+    },
+    {
+      "row_id": 47,
+      "stat_id": 3047,
+      "class_id": "weapon_lmg",
+      "enum_id": "WEAPON_RPD",
+      "weapon_id": "rpd",
+      "world_model": "weapon_rpd",
+      "perk_family": "PERKS_LMG",
+      "stow_tag": null,
+      "compatible_attachments": [
+        "grip",
+        "reflex",
+        "silencer",
+        "acog",
+        "fmj",
+        "eotech",
+        "heartbeat",
+        "thermal",
+        "xmags"
+      ],
+      "menu_stat_bars": {
+        "accuracy": 60,
+        "damage": 75,
+        "range": 75,
+        "fire_rate": 50,
+        "mobility": 33
+      }
+    },
+    {
+      "row_id": 48,
+      "stat_id": 3048,
+      "class_id": "weapon_lmg",
+      "enum_id": "WEAPON_SA80",
+      "weapon_id": "sa80",
+      "world_model": "weapon_sa80",
+      "perk_family": "PERKS_LMG",
+      "stow_tag": "weapon_stow_mid_up",
+      "compatible_attachments": [
+        "grip",
+        "reflex",
+        "silencer",
+        "acog",
+        "fmj",
+        "eotech",
+        "heartbeat",
+        "thermal",
+        "xmags"
+      ],
+      "menu_stat_bars": {
+        "accuracy": 50,
+        "damage": 75,
+        "range": 75,
+        "fire_rate": 75,
+        "mobility": 33
+      }
+    },
+    {
+      "row_id": 49,
+      "stat_id": 3049,
+      "class_id": "weapon_lmg",
+      "enum_id": "WEAPON_MG4",
+      "weapon_id": "mg4",
+      "world_model": "weapon_mg4",
+      "perk_family": "PERKS_LMG",
+      "stow_tag": "weapon_stow_mid_up",
+      "compatible_attachments": [
+        "grip",
+        "reflex",
+        "silencer",
+        "acog",
+        "fmj",
+        "eotech",
+        "heartbeat",
+        "thermal",
+        "xmags"
+      ],
+      "menu_stat_bars": {
+        "accuracy": 75,
+        "damage": 40,
+        "range": 75,
+        "fire_rate": 78,
+        "mobility": 33
+      }
+    },
+    {
+      "row_id": 50,
+      "stat_id": 3050,
+      "class_id": "weapon_lmg",
+      "enum_id": "WEAPON_M240",
+      "weapon_id": "m240",
+      "world_model": "weapon_m240",
+      "perk_family": "PERKS_LMG",
+      "stow_tag": null,
+      "compatible_attachments": [
+        "grip",
+        "reflex",
+        "silencer",
+        "acog",
+        "fmj",
+        "eotech",
+        "heartbeat",
+        "thermal",
+        "xmags"
+      ],
+      "menu_stat_bars": {
+        "accuracy": 70,
+        "damage": 40,
+        "range": 75,
+        "fire_rate": 80,
+        "mobility": 33
+      }
+    },
+    {
+      "row_id": 51,
+      "stat_id": 3051,
+      "class_id": "weapon_lmg",
+      "enum_id": "WEAPON_AUG",
+      "weapon_id": "aug",
+      "world_model": "weapon_aug",
+      "perk_family": "PERKS_LMG_AUG",
+      "stow_tag": "weapon_stow_mid",
+      "compatible_attachments": [
+        "grip",
+        "reflex",
+        "silencer",
+        "acog",
+        "fmj",
+        "eotech",
+        "heartbeat",
+        "thermal",
+        "xmags"
+      ],
+      "menu_stat_bars": {
+        "accuracy": 73,
+        "damage": 75,
+        "range": 75,
+        "fire_rate": 50,
+        "mobility": 33
+      }
+    },
+    {
+      "row_id": 53,
+      "stat_id": 3053,
+      "class_id": "weapon_explosive",
+      "enum_id": "WEAPON_C4",
+      "weapon_id": "c4",
+      "world_model": "weapon_c4",
+      "perk_family": "PERKS_CHARGE_OF_PLASTIC_EXPLOSIVES",
+      "stow_tag": null,
+      "compatible_attachments": [],
+      "menu_stat_bars": {
+        "accuracy": null,
+        "damage": null,
+        "range": null,
+        "fire_rate": null,
+        "mobility": null
+      }
+    },
+    {
+      "row_id": 54,
+      "stat_id": 3054,
+      "class_id": "weapon_explosive",
+      "enum_id": "WEAPON_CLAYMORE",
+      "weapon_id": "claymore",
+      "world_model": "weapon_claymore",
+      "perk_family": "PERKS_DIRECTIONAL_ANTIPERSONNEL",
+      "stow_tag": null,
+      "compatible_attachments": [],
+      "menu_stat_bars": {
+        "accuracy": null,
+        "damage": null,
+        "range": null,
+        "fire_rate": null,
+        "mobility": null
+      }
+    },
+    {
+      "row_id": 56,
+      "stat_id": 3056,
+      "class_id": "weapon_explosive",
+      "enum_id": "WEAPON_AIRDROP_MARKER",
+      "weapon_id": "airdrop_marker",
+      "world_model": "weapon_airdrop_marker",
+      "perk_family": "PERKS_AIRDROP_MARKER",
+      "stow_tag": null,
+      "compatible_attachments": [],
+      "menu_stat_bars": {
+        "accuracy": null,
+        "damage": null,
+        "range": null,
+        "fire_rate": null,
+        "mobility": null
+      }
+    },
+    {
+      "row_id": 57,
+      "stat_id": 3057,
+      "class_id": "weapon_explosive",
+      "enum_id": "WEAPON_SEMTEX",
+      "weapon_id": "semtex",
+      "world_model": "weapon_semtex",
+      "perk_family": "PERKS_SEMTEX",
+      "stow_tag": null,
+      "compatible_attachments": [],
+      "menu_stat_bars": {
+        "accuracy": null,
+        "damage": null,
+        "range": null,
+        "fire_rate": null,
+        "mobility": null
+      }
+    },
+    {
+      "row_id": 60,
+      "stat_id": 3060,
+      "class_id": "weapon_grenade",
+      "enum_id": "WEAPON_FRAGGRENADE",
+      "weapon_id": "frag_grenade",
+      "world_model": "weapon_fraggrenade",
+      "perk_family": "PERKS_ANTIPERSONNEL_DEVICE",
+      "stow_tag": null,
+      "compatible_attachments": [],
+      "menu_stat_bars": {
+        "accuracy": null,
+        "damage": null,
+        "range": null,
+        "fire_rate": null,
+        "mobility": null
+      }
+    },
+    {
+      "row_id": 61,
+      "stat_id": 3061,
+      "class_id": "weapon_grenade",
+      "enum_id": "WEAPON_FLASH_GRENADE",
+      "weapon_id": "flash_grenade",
+      "world_model": "weapon_flashbang",
+      "perk_family": "PERKS_DEVICE_THAT_BLINDS_AND",
+      "stow_tag": null,
+      "compatible_attachments": [],
+      "menu_stat_bars": {
+        "accuracy": null,
+        "damage": null,
+        "range": null,
+        "fire_rate": null,
+        "mobility": null
+      }
+    },
+    {
+      "row_id": 62,
+      "stat_id": 3062,
+      "class_id": "weapon_grenade",
+      "enum_id": "WEAPON_SMOKE_GRENADE",
+      "weapon_id": "smoke_grenade",
+      "world_model": "weapon_smokegrenade",
+      "perk_family": "PERKS_DEVICE_THAT_CREATES_A",
+      "stow_tag": null,
+      "compatible_attachments": [],
+      "menu_stat_bars": {
+        "accuracy": null,
+        "damage": null,
+        "range": null,
+        "fire_rate": null,
+        "mobility": null
+      }
+    },
+    {
+      "row_id": 63,
+      "stat_id": 3063,
+      "class_id": "weapon_grenade",
+      "enum_id": "WEAPON_STUN_GRENADE",
+      "weapon_id": "concussion_grenade",
+      "world_model": "weapon_concgrenade",
+      "perk_family": "PERKS_DEVICE_THAT_DISORIENTS",
+      "stow_tag": null,
+      "compatible_attachments": [],
+      "menu_stat_bars": {
+        "accuracy": null,
+        "damage": null,
+        "range": null,
+        "fire_rate": null,
+        "mobility": null
+      }
+    },
+    {
+      "row_id": 64,
+      "stat_id": 3064,
+      "class_id": "weapon_grenade",
+      "enum_id": "WEAPON_THROWING_KNIFE",
+      "weapon_id": "throwingknife",
+      "world_model": "killiconmelee",
+      "perk_family": null,
+      "stow_tag": null,
+      "compatible_attachments": [],
+      "menu_stat_bars": {
+        "accuracy": null,
+        "damage": null,
+        "range": null,
+        "fire_rate": null,
+        "mobility": null
+      }
+    },
+    {
+      "row_id": 65,
+      "stat_id": 3065,
+      "class_id": "weapon_other",
+      "enum_id": "WEAPON_ONE_MAN_ARMY",
+      "weapon_id": "onemanarmy",
+      "world_model": "weapon_onemanarmy",
+      "perk_family": "PERKS_ONE_MAN_ARMY",
+      "stow_tag": "weapon_oma_pack",
+      "compatible_attachments": [],
+      "menu_stat_bars": {
+        "accuracy": null,
+        "damage": null,
+        "range": null,
+        "fire_rate": null,
+        "mobility": null
+      }
+    },
+    {
+      "row_id": 95,
+      "stat_id": 3095,
+      "class_id": "weapon_smg",
+      "enum_id": "WEAPON_AK74U",
+      "weapon_id": "ak74u",
+      "world_model": "weapon_aks74u",
+      "perk_family": "PERKS_SMG",
+      "stow_tag": "weapon_stow_mid",
+      "compatible_attachments": [
+        "xmags",
+        "acog"
+      ],
+      "menu_stat_bars": {
+        "accuracy": 85,
+        "damage": 85,
+        "range": 40,
+        "fire_rate": 70,
+        "mobility": 100
+      }
+    },
+    {
+      "row_id": 96,
+      "stat_id": 3096,
+      "class_id": "weapon_smg",
+      "enum_id": "WEAPON_PEACEKEEPER",
+      "weapon_id": "peacekeeper",
+      "world_model": "weapon_peacekeeper",
+      "perk_family": "PERKS_SMG",
+      "stow_tag": "weapon_stow_mid",
+      "compatible_attachments": [],
+      "menu_stat_bars": {
+        "accuracy": 85,
+        "damage": 85,
+        "range": 40,
+        "fire_rate": 70,
+        "mobility": 100
+      }
+    },
+    {
+      "row_id": 97,
+      "stat_id": 3097,
+      "class_id": "weapon_sniper",
+      "enum_id": "WEAPON_M40A3",
+      "weapon_id": "m40a3",
+      "world_model": "weapon_m40a3",
+      "perk_family": "PERKS_SNIPER_BOLT",
+      "stow_tag": null,
+      "compatible_attachments": [],
+      "menu_stat_bars": {
+        "accuracy": 88,
+        "damage": 90,
+        "range": 100,
+        "fire_rate": 20,
+        "mobility": 100
+      }
+    },
+    {
+      "row_id": 98,
+      "stat_id": 3098,
+      "class_id": "weapon_assault",
+      "enum_id": "WEAPON_AK47_CLASSIC",
+      "weapon_id": "ak47classic",
+      "world_model": "weapon_ak47_classic",
+      "perk_family": "PERKS_AR_FULLAUTO",
+      "stow_tag": "weapon_stow_mid_up",
+      "compatible_attachments": [
+        "gl",
+        "reflex",
+        "silencer",
+        "acog",
+        "fmj",
+        "xmags"
+      ],
+      "menu_stat_bars": {
+        "accuracy": 50,
+        "damage": 75,
+        "range": 75,
+        "fire_rate": 50,
+        "mobility": 66
+      }
+    },
+    {
+      "row_id": 99,
+      "stat_id": 3099,
+      "class_id": "weapon_sniper",
+      "enum_id": "WEAPON_DRAGUNOV",
+      "weapon_id": "dragunov",
+      "world_model": "weapon_dragunov",
+      "perk_family": "PERKS_SNIPER_SEMIAUTO",
+      "stow_tag": null,
+      "compatible_attachments": [],
+      "menu_stat_bars": {
+        "accuracy": 88,
+        "damage": 90,
+        "range": 100,
+        "fire_rate": 20,
+        "mobility": 100
+      }
+    }
+  ]
+}
