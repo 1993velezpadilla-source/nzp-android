@@ -218,7 +218,11 @@ void() SoE_UnlockPackAPunch =
         return;
 
     soe_pap_unlocked = true;
-    soe_quest_stage = SOE_QUEST_PAP_OPEN;
+
+    // Sword progression can legitimately happen before the fifth ritual.
+    // Never regress a more advanced parallel quest stage when PaP opens.
+    if (soe_quest_stage < SOE_QUEST_PAP_OPEN)
+        soe_quest_stage = SOE_QUEST_PAP_OPEN;
 };
 
 void() SoE_StartFinale =
