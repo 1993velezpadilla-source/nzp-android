@@ -183,6 +183,24 @@ def remove_entity_key(entity: str, key: str):
     pattern = re.compile(rf'^"{re.escape(key)}"\s+"[^"]*"\n?', re.MULTILINE)
     return pattern.sub("", entity, count=1)
 
+def canonicalize_full_city_entity(entity: str):
+    cls = classname(entity)
+
+    # Full-city blockout lighting is intentionally static. GoldSrc/VHLT
+    # assigns switched-light styles to light entities carrying targetnames.
+    if cls.startswith("light"):
+        entity = remove_entity_key(entity, "style")
+        entity = remove_entity_key(entity, "targetname")
+
+    # VHLT also interprets the generic "style" key on non-light entities as a
+    # texlight/lightstyle hint. SoE deliberately uses style for gameplay IDs.
+    # Keep the gameplay value but opt it out of HLCSG lightstyle allocation.
+    if cls.startswith("soe_") and re.search(r'^"style"\s+"[^"]+"', entity, re.MULTILINE):
+        entity = set_entity_key(entity, "zhlt_usestyle", "null")
+
+    return entity
+
+
 def patch_zone_adjacency(entity: str):
     if classname(entity) != "spawn_zone":
         return entity
@@ -239,26 +257,7 @@ def phase_map_parts(phase: str, text: str, cfg):
         ent = transform_entity(raw, delta)
         ent = patch_zone_adjacency(ent)
 
-        # Full-city blockout lighting is intentionally static. GoldSrc/VHLT
-        # assigns switched-light styles to any classname beginning with "light"
-        # that carries a targetname; 32 unique targets exhaust
-        # MAX_SWITCHED_LIGHTS. Strip both explicit style and targetname here.
-        # Final art lighting may reintroduce a small, budgeted set of switched
-        # lights deliberately.
-        if cls.startswith("light"):
-            ent = remove_entity_key(ent, "style")
-            ent = remove_entity_key(ent, "targetname")
-
-        # VHLT reserves the generic "style" key for lightstyles/texlights, but
-        # SoE mapper entities also use it for ritual IDs, district IDs, symbol
-        # IDs, part bits, etc. In a merged map that otherwise makes dozens of
-        # ordinary gameplay entities consume the 32 switched-light slots.
-        # zhlt_usestyle=null is VHLT's explicit escape hatch: keep the runtime
-        # style value intact while telling HLCSG not to reinterpret targetname
-        # as a switchable-light style.
-        if cls.startswith("soe_") and re.search(r'^"style"\s+"[^"]+"', ent, re.MULTILINE):
-            ent = set_entity_key(ent, "zhlt_usestyle", "null")
-
+        ent = canonicalize_full_city_entity(ent)
         entities.append(ent)
 
     return kept_brushes, entities
@@ -498,6 +497,11 @@ def generate():
     add_underground_connector(brushes, assembly)
     add_rift_pairs(entities, assembly)
     add_full_tram(entities, assembly)
+
+    # Final canonicalization is intentionally applied after every phase and
+    # global-system injector so later additions (Tram/finale/Rifts/etc.) cannot
+    # bypass the VHLT namespace guards.
+    entities = [canonicalize_full_city_entity(ent) for ent in entities]
 
     world = [
         "// Game: Nazi Zombies Portable",
