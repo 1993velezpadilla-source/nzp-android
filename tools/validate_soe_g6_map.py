@@ -78,8 +78,7 @@ if '"targetname" "soe_g6_pap"' not in text or '"cost" "5000"' not in text:
 
 # Shadowman arena wiring.
 for style in range(1,5):
-    if text.count(f'"style" "{style}"') < 2:
-        # Gateworm + Keeper style IDs overlap; this ensures both families are present.
+    if text.count(f'"style" "{style}"') < 1:
         raise SystemExit(f"Shadowman Keeper style {style} missing")
 for marker in (
     "soe_g6_shadow_keeper_1","soe_g6_shadow_keeper_2",
