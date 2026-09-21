@@ -201,6 +201,22 @@ runtime_guards = {
         finale_qc,
         "SoE_FinaleTransitionPopulation();",
     ),
+    "finale corruption can arm while a player is downed": (
+        finale_qc,
+        "!player.is_spectator && !player.soe_finale_corrupted",
+    ),
+    "finale downed corruption remains armed until cleanse or revive": (
+        finale_qc,
+        "} else if (!player.downed) {",
+    ),
+    "finale exposes a corruption reset for full bleed-out respawn": (
+        finale_qc,
+        "SoE_FinaleClearPlayerCorruption",
+    ),
+    "Tram clears stale infection before spectator respawn": (
+        tram_qc,
+        "SoE_FinaleClearPlayerCorruption(who);",
+    ),
     "finale corruption minimum cadence is 30 seconds": (
         finale_qc,
         "#define SOE_FINALE_CORRUPTION_MIN_SECONDS 30",
@@ -267,6 +283,11 @@ transition_call = finale_qc.index("SoE_FinaleTransitionPopulation();")
 combat_freeze = finale_qc.index("Remaining_Zombies = 9999;")
 if transition_call > combat_freeze:
     raise SystemExit("finale population transition must run before the synthetic combat counter is installed")
+
+tram_clear = tram_qc.index("SoE_FinaleClearPlayerCorruption(who);")
+tram_spawn = tram_qc.index("PlayerSpawn();")
+if tram_clear > tram_spawn:
+    raise SystemExit("Tram respawn must clear stale finale corruption before PlayerSpawn")
 
 # Verify every global quest stage is both defined and used by progression code.
 stages = [
