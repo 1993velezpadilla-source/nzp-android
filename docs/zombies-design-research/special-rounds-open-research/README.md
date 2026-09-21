@@ -43,6 +43,7 @@ without changing RoundDirector code.
 - `BOSS_MINIBOSS_ROUNDS.md` — boss scheduling and conflict rules.
 - `FANMADE_SPECIAL_CATALOG.md` — large fan-made registry found in nZombies Rezzurrection.
 - `OFFICIAL_BEHAVIOR_REFERENCE.md` — useful documented patterns from official Zombies games; behavioral reference only.
+- `MODERN_SPECIAL_ROUNDS.md` — BO6/BO7-era mechanics: Vermin, Toxic enemies, Kommando-style robots, Ravagers, Rad-Hounds and modern elite patterns.
 - `IMPLEMENTATION_CHECKLIST.md` — engine gate and tests.
 - `SOURCE_MANIFEST.md` — provenance, source files and licensing cautions.
 
