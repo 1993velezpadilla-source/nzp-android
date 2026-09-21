@@ -228,6 +228,10 @@ for zone, expected_door in {
     "canal_entry": "junction_to_canal_stub",
     "footlight_entry": "junction_to_footlight_stub",
     "waterfront_entry": "junction_to_waterfront_stub",
+    "junction": "soe_full_junction_rift_access",
+    "rift_junction_shortcut": "soe_full_junction_rift_access",
+    "rift_sacred_gate": "soe_full_sacred_access",
+    "sacred_entry": "soe_full_sacred_access",
 }.items():
     doors = {
         x.strip() for x in zone_by_name[zone].get("door_way_targets", "").split(",")
@@ -293,6 +297,13 @@ for required in (
 ):
     if required not in text:
         raise SystemExit(f"cross-phase spawn-zone adjacency missing: {required}")
+
+# The integrated Rift -> Sacred Place route is physically sealed until the
+# four district rituals complete; it is also an NZ:P zoning gate.
+if '"targetname" "soe_full_sacred_access"' not in text:
+    raise SystemExit("full-map Sacred Place ritual access gate missing")
+if '"wayTarget" "soe_full_sacred_access"' not in text:
+    raise SystemExit("Sacred Place access gate is not wired into NZ:P zoning")
 
 # Junction -> Rift must be a real Beast-opened physical stair, not a teleport.
 if '"targetname" "soe_g1_rift_access_power"' not in text:
