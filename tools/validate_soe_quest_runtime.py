@@ -156,6 +156,14 @@ runtime_guards = {
         main_qc,
         "soe_quest_stage = SOE_QUEST_FLAGS;",
     ),
+    "successful flag delivery blocks another district that round": (
+        main_qc,
+        "if (soe_flag_last_completed_round == rounds)",
+    ),
+    "flag failure returns immediately to the Rift": (
+        main_qc,
+        "SoE_SpawnQuestFlagAtRift();",
+    ),
     "all district Flags start Shadowman": (
         main_qc,
         "soe_flag_completed_district_mask == 15",
