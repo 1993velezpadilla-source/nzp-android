@@ -131,8 +131,12 @@ void() SoE_TramMoverInit =
 
 void() soe_tram_mover =
 {
+    // Vril's SV_HullForEntity requires SOLID_BSP entities to have
+    // MOVETYPE_PUSH before any hull query can touch them. Keep the physical
+    // tram non-solid while it is being initialized, then arm BSP collision
+    // only after setmodel/setorigin has completed.
     self.movetype = MOVETYPE_PUSH;
-    self.solid = SOLID_BSP;
+    self.solid = SOLID_NOT;
     self.use = SoE_TramMoverUse;
 
     if (self.speed <= 0)
@@ -143,6 +147,7 @@ void() soe_tram_mover =
 
     self.soe_tram_model_mins = self.mins;
     self.soe_tram_move_destination = 0;
+    self.solid = SOLID_BSP;
 
     self.think = SoE_TramMoverInit;
     self.nextthink = time + 0.25;
