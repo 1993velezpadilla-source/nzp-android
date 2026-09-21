@@ -201,6 +201,10 @@ runtime_guards = {
         finale_qc,
         "SoE_FinaleTransitionPopulation();",
     ),
+    "finale rail timeout recovery uses one reset path": (
+        finale_qc,
+        "SoE_FinaleResetRailCycle();",
+    ),
     "finale Gateworm Tram hit is idempotent": (
         finale_qc,
         "!soe_finale_gateworm_present",
