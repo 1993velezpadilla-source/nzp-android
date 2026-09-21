@@ -177,7 +177,10 @@ def set_entity_key(entity: str, key: str, value: str):
 
 
 def remove_entity_key(entity: str, key: str):
-    pattern = re.compile(rf'^"{re.escape(key)}"\\s+"[^"]*"\\n?', re.MULTILINE)
+    # Match a complete Valve .map key/value line. Keep the escapes single here:
+    # this is a regex raw string, so \\s would match a literal backslash+s and
+    # silently fail to remove the key.
+    pattern = re.compile(rf'^"{re.escape(key)}"\s+"[^"]*"\n?', re.MULTILINE)
     return pattern.sub("", entity, count=1)
 
 def patch_zone_adjacency(entity: str):
