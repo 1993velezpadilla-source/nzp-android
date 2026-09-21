@@ -6,6 +6,7 @@
 */
 
 void(entity who, float value, float impacted_by_2x_points) Player_ChangeScore;
+void() PlayerSpawn;
 
 float soe_tram_current_station;
 float soe_tram_destination;
@@ -31,11 +32,34 @@ void() SoE_ResetTransportState =
         soe_tram_symbol_c = floor(random() * 9);
 };
 
+void() SoE_TramRespawnFinaleSpectators =
+{
+    if (!soe_finale_active)
+        return;
+
+    entity who = find(world, classname, "spectator");
+    entity old_self = self;
+
+    while (who != world) {
+        entity next = find(who, classname, "spectator");
+
+        if (who.is_spectator) {
+            self = who;
+            PlayerSpawn();
+        }
+
+        who = next;
+    }
+
+    self = old_self;
+};
+
 void() SoE_TramControllerUse =
 {
     // A mapper can target this entity from station buttons. It intentionally
     // owns no movement itself: the actual tram brush remains a stock func_train
     // following path_corners, while this tracks SoE quest/game state.
+    SoE_TramRespawnFinaleSpectators();
     soe_tram_in_transit = true;
     soe_tram_route_sequence = soe_tram_route_sequence + 1;
     SoE_MargwaMaskOnTramRideStart();
@@ -87,6 +111,7 @@ void() SoE_TramButtonTouch =
     }
 
     Player_ChangeScore(other, -tram_cost, false);
+    SoE_TramRespawnFinaleSpectators();
     soe_tram_destination = self.soe_tram_to_station;
     soe_tram_in_transit = true;
     soe_tram_route_sequence = soe_tram_route_sequence + 1;
