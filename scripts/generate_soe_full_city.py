@@ -249,6 +249,16 @@ def phase_map_parts(phase: str, text: str, cfg):
             ent = remove_entity_key(ent, "style")
             ent = remove_entity_key(ent, "targetname")
 
+        # VHLT reserves the generic "style" key for lightstyles/texlights, but
+        # SoE mapper entities also use it for ritual IDs, district IDs, symbol
+        # IDs, part bits, etc. In a merged map that otherwise makes dozens of
+        # ordinary gameplay entities consume the 32 switched-light slots.
+        # zhlt_usestyle=null is VHLT's explicit escape hatch: keep the runtime
+        # style value intact while telling HLCSG not to reinterpret targetname
+        # as a switchable-light style.
+        if cls.startswith("soe_") and re.search(r'^"style"\s+"[^"]+"', ent, re.MULTILINE):
+            ent = set_entity_key(ent, "zhlt_usestyle", "null")
+
         entities.append(ent)
 
     return kept_brushes, entities
