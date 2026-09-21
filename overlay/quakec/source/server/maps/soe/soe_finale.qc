@@ -450,7 +450,9 @@ void() SoE_FinaleStartCorruption =
 {
     entity player = find(world, classname, "player");
     while (player != world) {
-        if (!player.is_spectator && !player.downed) {
+        // Infection continues to progress even while a player is downed.
+        // Do not restart an already-active deadline on the next cadence tick.
+        if (!player.is_spectator && !player.soe_finale_corrupted) {
             player.soe_finale_corrupted = true;
             player.soe_finale_corrupt_deadline = time + SOE_FINALE_CLEANSE_DEADLINE_SECONDS;
         }
@@ -472,13 +474,18 @@ void() SoE_FinaleUpdateCorruption =
             player.soe_finale_corrupt_deadline > 0 &&
             time >= player.soe_finale_corrupt_deadline) {
 
-            player.soe_finale_corrupted = false;
-            player.soe_finale_corrupt_deadline = 0;
-
-            if (player.soe_beast_active)
+            if (player.soe_beast_active) {
+                player.soe_finale_corrupted = false;
+                player.soe_finale_corrupt_deadline = 0;
                 SoE_BeastDrain(player, SOE_FINALE_BEAST_CORRUPTION_DRAIN);
-            else
+            } else if (!player.downed) {
+                player.soe_finale_corrupted = false;
+                player.soe_finale_corrupt_deadline = 0;
                 DamageHandler(player, world, 999999, DMG_TYPE_OTHER);
+            }
+            // If the player is already downed, leave the expired corruption
+            // armed. Cleansing can still clear it; otherwise a revive before
+            // full bleed-out is immediately vulnerable to the failed cleanse.
         }
 
         player = find(player, classname, "player");
