@@ -27,11 +27,17 @@ void() SoE_PoweredDoorUse =
         return;
 
     self.activated = true;
+    self.state = STATE_TOP;
     self.solid = SOLID_NOT;
     self.use = SUB_Null;
 
     if (self.model != "")
         setmodel(self, "");
+
+    // Custom SoE blockers may also be used as NZ:P zoning gates. Once the
+    // physical blocker opens, immediately refresh adjacent-zone spawn state.
+    if (self.wayTarget != "")
+        Zoning_UpdateAllZones(true);
 
     SoE_FireEntityTargets(self);
 };
@@ -42,6 +48,7 @@ void() soe_powered_door =
     self.solid = SOLID_BSP;
     self.use = SoE_PoweredDoorUse;
     self.activated = false;
+    self.state = STATE_BOTTOM;
 
     if (self.model != "")
         setmodel(self, self.model);
@@ -423,6 +430,18 @@ void() SoE_RitualComplete =
 
     SoE_RitualRuntimeComplete(self);
     SoE_MarkRitualComplete();
+
+    // The integrated Sacred Place entrance is physically and zonally sealed
+    // until all four district rituals have completed.
+    if (soe_gateworm_count == 4) {
+        entity sacred_gate = find(world, targetname, "soe_full_sacred_access");
+        if (sacred_gate != world && sacred_gate.use) {
+            entity old_self = self;
+            self = sacred_gate;
+            self.use();
+            self = old_self;
+        }
+    }
 
     // Completion targets alter arena doors / sacrifice FX / room state.
     SoE_FireEntityTargets(self);
