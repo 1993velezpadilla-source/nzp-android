@@ -58,7 +58,7 @@ jobs:
 
       - name: Compile integrated runtime map package
         working-directory: upstream-assets
-        run: bash tools/compile-maps.sh -m soe/soe.map --zone-tool-path ../spawn-zone-tool
+        run: bash tools/compile-maps.sh -m soe/soe.map --zone-tool-path "${GITHUB_WORKSPACE}/spawn-zone-tool"
 
       - name: Require integrated BSP and NSZ output
         run: |
