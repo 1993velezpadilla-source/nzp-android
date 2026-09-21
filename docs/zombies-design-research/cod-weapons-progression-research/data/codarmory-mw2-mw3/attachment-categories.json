@@ -1,0 +1,158 @@
+{
+  "provenance": {
+    "source_repository": "tzurbaev/codarmory.com",
+    "source_revision": "04408ef38fb8e64531503e8a1148b6676374e4b8",
+    "source_license": "MIT",
+    "source_license_sha": "7d6c82434ffc93394cb16ef06006933d4d6fbe78",
+    "source_files": {
+      "weapons": {
+        "path": "src/database/weapons.json",
+        "sha": "64172609f446619be9e9f8170e761e39a3b3be69"
+      },
+      "attachments": {
+        "path": "src/database/attachments.json",
+        "sha": "217d2a4b0f6172cf167d50558000f5ab0731acac"
+      },
+      "attachment_stats": {
+        "path": "src/database/attachment-stats.json",
+        "sha": "4bd265b5ce02f260448bd9ef0855d6c63bdb7aa1"
+      },
+      "attachment_categories": {
+        "path": "src/database/attachment-categories.json",
+        "sha": "e0f583bd0284e3b5bd0fdfbff9bd7e4c6fff22b6"
+      },
+      "weapon_categories": {
+        "path": "src/database/categories.json",
+        "sha": "7477d08a0db8a02f9e3f7687e85ba697feaecccd"
+      },
+      "platforms": {
+        "path": "src/database/platforms.json",
+        "sha": "04ec0d5c1ce14b5df3426fd33341e7831a8c75ec"
+      }
+    },
+    "transformed_on": "2026-09-21",
+    "transformation": "Removed descriptions/art paths and retained technical/factual identity, compatibility, pros/cons and unlock relationships."
+  },
+  "categories": [
+    {
+      "id": "muzzles",
+      "name": "Muzzles",
+      "singular_name": "Muzzle",
+      "sorting": 0
+    },
+    {
+      "id": "barrels",
+      "name": "Barrels",
+      "singular_name": "Barrel",
+      "sorting": 1
+    },
+    {
+      "id": "arms",
+      "name": "Arms",
+      "singular_name": "Arm",
+      "sorting": 1
+    },
+    {
+      "id": "lasers",
+      "name": "Lasers",
+      "singular_name": "Laser",
+      "sorting": 2
+    },
+    {
+      "id": "optics",
+      "name": "Optics",
+      "singular_name": "Optic",
+      "sorting": 3
+    },
+    {
+      "id": "stocks",
+      "name": "Stocks",
+      "singular_name": "Stock",
+      "sorting": 4
+    },
+    {
+      "id": "rear-grips",
+      "name": "Rear Grips",
+      "singular_name": "Rear Grip",
+      "sorting": 5
+    },
+    {
+      "id": "rear-grips-combs",
+      "name": "Rear Grips / Combs",
+      "singular_name": "Rear Grip / Comb",
+      "sorting": 6
+    },
+    {
+      "id": "combs",
+      "name": "Combs",
+      "singular_name": "Comb",
+      "sorting": 7
+    },
+    {
+      "id": "guards",
+      "name": "Guards",
+      "singular_name": "Guard",
+      "sorting": 8
+    },
+    {
+      "id": "bolts",
+      "name": "Bolts",
+      "singular_name": "Bolt",
+      "sorting": 9
+    },
+    {
+      "id": "levers",
+      "name": "Levers",
+      "singular_name": "Lever",
+      "sorting": 10
+    },
+    {
+      "id": "loaders",
+      "name": "Loaders",
+      "singular_name": "Loader",
+      "sorting": 11
+    },
+    {
+      "id": "magazines",
+      "name": "Magazines",
+      "singular_name": "Magazine",
+      "sorting": 12
+    },
+    {
+      "id": "wires",
+      "name": "Wires",
+      "singular_name": "Wire",
+      "sorting": 12
+    },
+    {
+      "id": "ammunition",
+      "name": "Ammunition",
+      "singular_name": "Ammunition",
+      "sorting": 13
+    },
+    {
+      "id": "trigger-actions",
+      "name": "Trigger Actions",
+      "singular_name": "Trigger Action",
+      "sorting": 14
+    },
+    {
+      "id": "rails",
+      "name": "Rails",
+      "singular_name": "Rail",
+      "sorting": 15
+    },
+    {
+      "id": "carry-handles",
+      "name": "Carry Handles",
+      "singular_name": "Carry Handle",
+      "sorting": 16
+    },
+    {
+      "id": "underbarrels",
+      "name": "Underbarrels",
+      "singular_name": "Underbarrel",
+      "sorting": 17
+    }
+  ]
+}
