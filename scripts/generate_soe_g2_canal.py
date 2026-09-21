@@ -9,6 +9,8 @@ from generate_soe_g1_blockout import (
     FLOOR_TEX, WALL_TEX, CEILING_TEX, BLOCK_TEX, TRIGGER_TEX, NULL_TEX,
 )
 
+from soe_mainquest_geometry import append_phase_mainquest_entities
+
 ROOT = Path(__file__).resolve().parents[1]
 SPEC_PATH = ROOT / "content" / "shadows_of_evil" / "g2_canal_blockout.json"
 OUTPUT_PATH = ROOT / "overlay" / "assets" / "source" / "maps" / "soe_g2" / "soe_g2.map"
@@ -166,6 +168,9 @@ def gen(spec):
 
     # Rift placeholder only: present for collision/sightline, intentionally inert.
     ents.append(point_entity("info_notnull",(128,848,-24),targetname="soe_g2_rift_visual_anchor"))
+
+    # Cross-phase Reborn Sword / Flag quest anchors from the shared source of truth.
+    append_phase_mainquest_entities(ents, "g2", point_entity)
 
     # Lights.
     for org,b in [((320,608,176),300),((384,920,128),220),((384,1184,256),260),
