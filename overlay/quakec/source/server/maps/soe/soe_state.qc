@@ -97,6 +97,8 @@ float(entity victim, entity attacker, float damage, float d_style) SoE_HandleFla
 float(entity victim, entity attacker, float damage, float d_style) SoE_HandleRoundSkipDamage;
 float(entity victim, entity attacker, float damage, float d_style) SoE_HandleNoirPortraitDamage;
 void() SoE_ResetSideQuests;
+void() SoE_ResetFinale;
+void() SoE_ResetTransportState;
 void(entity controller) SoE_RitualRuntimeStart;
 void(entity controller) SoE_RitualRuntimeComplete;
 void() SoE_RitualFrame;
@@ -163,6 +165,12 @@ void() SoE_ResetQuestState =
     soe_reborn_margwas_alive = 0;
     soe_reborn_spawn_tag_remaining = 0;
     soe_last_margwa_spawn_was_reborn = false;
+
+    // Quest reset is also the authoritative lifecycle boundary for subsystems
+    // that carry their own transient state. Without these calls a restart can
+    // inherit finale timers/corruption or a Tram ride from the previous run.
+    SoE_ResetFinale();
+    SoE_ResetTransportState();
 };
 
 void() SoE_Init =
