@@ -196,6 +196,13 @@ void() SoE_FinaleStationBoxTouch =
         !other.soe_beast_active)
         return;
 
+    // Classic finale requires the three station boxes to be shocked while
+    // the tram is actually moving. The explicit portable solo adaptation
+    // may perform them sequentially because one player cannot occupy three
+    // stations during the same ride.
+    if (!soe_tram_in_transit && cvar("soe_solo_finale") == 0)
+        return;
+
     float station_bit = SoE_FinaleThreeBit(self.style);
     if (station_bit == 0)
         return;
