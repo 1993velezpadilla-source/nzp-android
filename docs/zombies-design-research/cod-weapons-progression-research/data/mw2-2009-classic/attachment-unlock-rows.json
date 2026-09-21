@@ -1,0 +1,1930 @@
+{
+  "provenance": {
+    "source_repository": "iw4x/iw4x-rawfiles",
+    "source_revision": "edb0ae893dee26780e14c8095ca8ff4b6e7ac367",
+    "source_files": {
+      "statstable": {
+        "path": "iw4x/iw4x_00/mp/statstable.csv",
+        "sha": "cf67dd0b80f383150514676b48153cb06d1fd6fb"
+      },
+      "unlocktable": {
+        "path": "iw4x/iw4x_00/mp/unlocktable.csv",
+        "sha": "ca597bba805f26b3f213ea5fb4548b4c4d25b11c"
+      }
+    },
+    "repository_license": "GPLv3 at repository level; Activision-origin data/assets require separate provenance caution",
+    "transformed_on": "2026-09-21",
+    "notes": [
+      "menu_stat_bars are UI bars, not engine simulation values",
+      "attachment compatibility is derived from statstable attachment tokens",
+      "attachment unlock rows retain raw prerequisite challenge IDs"
+    ]
+  },
+  "count": 272,
+  "attachments": [
+    {
+      "item_id": "aug grip",
+      "weapon_id": "aug",
+      "attachment_id": "grip",
+      "player_rank": 31,
+      "prerequisite_challenge": "ch_marksman_aug"
+    },
+    {
+      "item_id": "aug reflex",
+      "weapon_id": "aug",
+      "attachment_id": "reflex",
+      "player_rank": 31,
+      "prerequisite_challenge": "ch_marksman_aug_2"
+    },
+    {
+      "item_id": "aug silencer",
+      "weapon_id": "aug",
+      "attachment_id": "silencer",
+      "player_rank": 31,
+      "prerequisite_challenge": "ch_marksman_aug_3"
+    },
+    {
+      "item_id": "aug acog",
+      "weapon_id": "aug",
+      "attachment_id": "acog",
+      "player_rank": 31,
+      "prerequisite_challenge": "ch_marksman_aug_4"
+    },
+    {
+      "item_id": "aug fmj",
+      "weapon_id": "aug",
+      "attachment_id": "fmj",
+      "player_rank": 31,
+      "prerequisite_challenge": "ch_marksman_aug_5"
+    },
+    {
+      "item_id": "aug eotech",
+      "weapon_id": "aug",
+      "attachment_id": "eotech",
+      "player_rank": 31,
+      "prerequisite_challenge": "ch_aug_reflex"
+    },
+    {
+      "item_id": "aug heartbeat",
+      "weapon_id": "aug",
+      "attachment_id": "heartbeat",
+      "player_rank": 31,
+      "prerequisite_challenge": "ch_aug_silencer"
+    },
+    {
+      "item_id": "aug thermal",
+      "weapon_id": "aug",
+      "attachment_id": "thermal",
+      "player_rank": 31,
+      "prerequisite_challenge": "ch_aug_acog"
+    },
+    {
+      "item_id": "aug xmags",
+      "weapon_id": "aug",
+      "attachment_id": "xmags",
+      "player_rank": 31,
+      "prerequisite_challenge": "ch_aug_fmj"
+    },
+    {
+      "item_id": "m240 grip",
+      "weapon_id": "m240",
+      "attachment_id": "grip",
+      "player_rank": 51,
+      "prerequisite_challenge": "ch_marksman_m240"
+    },
+    {
+      "item_id": "m240 reflex",
+      "weapon_id": "m240",
+      "attachment_id": "reflex",
+      "player_rank": 51,
+      "prerequisite_challenge": "ch_marksman_m240_2"
+    },
+    {
+      "item_id": "m240 silencer",
+      "weapon_id": "m240",
+      "attachment_id": "silencer",
+      "player_rank": 51,
+      "prerequisite_challenge": "ch_marksman_m240_3"
+    },
+    {
+      "item_id": "m240 acog",
+      "weapon_id": "m240",
+      "attachment_id": "acog",
+      "player_rank": 51,
+      "prerequisite_challenge": "ch_marksman_m240_4"
+    },
+    {
+      "item_id": "m240 fmj",
+      "weapon_id": "m240",
+      "attachment_id": "fmj",
+      "player_rank": 51,
+      "prerequisite_challenge": "ch_marksman_m240_5"
+    },
+    {
+      "item_id": "m240 eotech",
+      "weapon_id": "m240",
+      "attachment_id": "eotech",
+      "player_rank": 51,
+      "prerequisite_challenge": "ch_m240_reflex"
+    },
+    {
+      "item_id": "m240 heartbeat",
+      "weapon_id": "m240",
+      "attachment_id": "heartbeat",
+      "player_rank": 51,
+      "prerequisite_challenge": "ch_m240_silencer"
+    },
+    {
+      "item_id": "m240 thermal",
+      "weapon_id": "m240",
+      "attachment_id": "thermal",
+      "player_rank": 51,
+      "prerequisite_challenge": "ch_m240_acog"
+    },
+    {
+      "item_id": "m240 xmags",
+      "weapon_id": "m240",
+      "attachment_id": "xmags",
+      "player_rank": 51,
+      "prerequisite_challenge": "ch_m240_fmj"
+    },
+    {
+      "item_id": "sa80 grip",
+      "weapon_id": "sa80",
+      "attachment_id": "grip",
+      "player_rank": 0,
+      "prerequisite_challenge": "ch_marksman_sa80"
+    },
+    {
+      "item_id": "sa80 reflex",
+      "weapon_id": "sa80",
+      "attachment_id": "reflex",
+      "player_rank": 0,
+      "prerequisite_challenge": "ch_marksman_sa80_2"
+    },
+    {
+      "item_id": "sa80 silencer",
+      "weapon_id": "sa80",
+      "attachment_id": "silencer",
+      "player_rank": 0,
+      "prerequisite_challenge": "ch_marksman_sa80_3"
+    },
+    {
+      "item_id": "sa80 acog",
+      "weapon_id": "sa80",
+      "attachment_id": "acog",
+      "player_rank": 0,
+      "prerequisite_challenge": "ch_marksman_sa80_4"
+    },
+    {
+      "item_id": "sa80 fmj",
+      "weapon_id": "sa80",
+      "attachment_id": "fmj",
+      "player_rank": 0,
+      "prerequisite_challenge": "ch_marksman_sa80_5"
+    },
+    {
+      "item_id": "sa80 eotech",
+      "weapon_id": "sa80",
+      "attachment_id": "eotech",
+      "player_rank": 0,
+      "prerequisite_challenge": "ch_sa80_reflex"
+    },
+    {
+      "item_id": "sa80 heartbeat",
+      "weapon_id": "sa80",
+      "attachment_id": "heartbeat",
+      "player_rank": 0,
+      "prerequisite_challenge": "ch_sa80_silencer"
+    },
+    {
+      "item_id": "sa80 thermal",
+      "weapon_id": "sa80",
+      "attachment_id": "thermal",
+      "player_rank": 0,
+      "prerequisite_challenge": "ch_sa80_acog"
+    },
+    {
+      "item_id": "sa80 xmags",
+      "weapon_id": "sa80",
+      "attachment_id": "xmags",
+      "player_rank": 0,
+      "prerequisite_challenge": "ch_sa80_fmj"
+    },
+    {
+      "item_id": "rpd grip",
+      "weapon_id": "rpd",
+      "attachment_id": "grip",
+      "player_rank": 0,
+      "prerequisite_challenge": "ch_marksman_rpd"
+    },
+    {
+      "item_id": "rpd reflex",
+      "weapon_id": "rpd",
+      "attachment_id": "reflex",
+      "player_rank": 0,
+      "prerequisite_challenge": "ch_marksman_rpd_2"
+    },
+    {
+      "item_id": "rpd silencer",
+      "weapon_id": "rpd",
+      "attachment_id": "silencer",
+      "player_rank": 0,
+      "prerequisite_challenge": "ch_marksman_rpd_3"
+    },
+    {
+      "item_id": "rpd acog",
+      "weapon_id": "rpd",
+      "attachment_id": "acog",
+      "player_rank": 0,
+      "prerequisite_challenge": "ch_marksman_rpd_4"
+    },
+    {
+      "item_id": "rpd fmj",
+      "weapon_id": "rpd",
+      "attachment_id": "fmj",
+      "player_rank": 0,
+      "prerequisite_challenge": "ch_marksman_rpd_5"
+    },
+    {
+      "item_id": "rpd eotech",
+      "weapon_id": "rpd",
+      "attachment_id": "eotech",
+      "player_rank": 0,
+      "prerequisite_challenge": "ch_rpd_reflex"
+    },
+    {
+      "item_id": "rpd heartbeat",
+      "weapon_id": "rpd",
+      "attachment_id": "heartbeat",
+      "player_rank": 0,
+      "prerequisite_challenge": "ch_rpd_silencer"
+    },
+    {
+      "item_id": "rpd thermal",
+      "weapon_id": "rpd",
+      "attachment_id": "thermal",
+      "player_rank": 0,
+      "prerequisite_challenge": "ch_rpd_acog"
+    },
+    {
+      "item_id": "rpd xmags",
+      "weapon_id": "rpd",
+      "attachment_id": "xmags",
+      "player_rank": 0,
+      "prerequisite_challenge": "ch_rpd_fmj"
+    },
+    {
+      "item_id": "mg4 grip",
+      "weapon_id": "mg4",
+      "attachment_id": "grip",
+      "player_rank": 15,
+      "prerequisite_challenge": "ch_marksman_mg4"
+    },
+    {
+      "item_id": "mg4 reflex",
+      "weapon_id": "mg4",
+      "attachment_id": "reflex",
+      "player_rank": 15,
+      "prerequisite_challenge": "ch_marksman_mg4_2"
+    },
+    {
+      "item_id": "mg4 silencer",
+      "weapon_id": "mg4",
+      "attachment_id": "silencer",
+      "player_rank": 15,
+      "prerequisite_challenge": "ch_marksman_mg4_3"
+    },
+    {
+      "item_id": "mg4 acog",
+      "weapon_id": "mg4",
+      "attachment_id": "acog",
+      "player_rank": 15,
+      "prerequisite_challenge": "ch_marksman_mg4_4"
+    },
+    {
+      "item_id": "mg4 fmj",
+      "weapon_id": "mg4",
+      "attachment_id": "fmj",
+      "player_rank": 15,
+      "prerequisite_challenge": "ch_marksman_mg4_5"
+    },
+    {
+      "item_id": "mg4 eotech",
+      "weapon_id": "mg4",
+      "attachment_id": "eotech",
+      "player_rank": 15,
+      "prerequisite_challenge": "ch_mg4_reflex"
+    },
+    {
+      "item_id": "mg4 heartbeat",
+      "weapon_id": "mg4",
+      "attachment_id": "heartbeat",
+      "player_rank": 15,
+      "prerequisite_challenge": "ch_mg4_silencer"
+    },
+    {
+      "item_id": "mg4 thermal",
+      "weapon_id": "mg4",
+      "attachment_id": "thermal",
+      "player_rank": 15,
+      "prerequisite_challenge": "ch_mg4_acog"
+    },
+    {
+      "item_id": "mg4 xmags",
+      "weapon_id": "mg4",
+      "attachment_id": "xmags",
+      "player_rank": 15,
+      "prerequisite_challenge": "ch_mg4_fmj"
+    },
+    {
+      "item_id": "ak47 gl",
+      "weapon_id": "ak47",
+      "attachment_id": "gl",
+      "player_rank": 69,
+      "prerequisite_challenge": "ch_marksman_ak47"
+    },
+    {
+      "item_id": "ak47 reflex",
+      "weapon_id": "ak47",
+      "attachment_id": "reflex",
+      "player_rank": 69,
+      "prerequisite_challenge": "ch_marksman_ak47_2"
+    },
+    {
+      "item_id": "ak47 silencer",
+      "weapon_id": "ak47",
+      "attachment_id": "silencer",
+      "player_rank": 69,
+      "prerequisite_challenge": "ch_marksman_ak47_3"
+    },
+    {
+      "item_id": "ak47 acog",
+      "weapon_id": "ak47",
+      "attachment_id": "acog",
+      "player_rank": 69,
+      "prerequisite_challenge": "ch_marksman_ak47_4"
+    },
+    {
+      "item_id": "ak47 fmj",
+      "weapon_id": "ak47",
+      "attachment_id": "fmj",
+      "player_rank": 69,
+      "prerequisite_challenge": "ch_marksman_ak47_5"
+    },
+    {
+      "item_id": "ak47 eotech",
+      "weapon_id": "ak47",
+      "attachment_id": "eotech",
+      "player_rank": 69,
+      "prerequisite_challenge": "ch_ak47_reflex"
+    },
+    {
+      "item_id": "ak47 heartbeat",
+      "weapon_id": "ak47",
+      "attachment_id": "heartbeat",
+      "player_rank": 69,
+      "prerequisite_challenge": "ch_ak47_silencer"
+    },
+    {
+      "item_id": "ak47 thermal",
+      "weapon_id": "ak47",
+      "attachment_id": "thermal",
+      "player_rank": 69,
+      "prerequisite_challenge": "ch_ak47_acog"
+    },
+    {
+      "item_id": "ak47 xmags",
+      "weapon_id": "ak47",
+      "attachment_id": "xmags",
+      "player_rank": 69,
+      "prerequisite_challenge": "ch_ak47_fmj"
+    },
+    {
+      "item_id": "ak47 shotgun",
+      "weapon_id": "ak47",
+      "attachment_id": "shotgun",
+      "player_rank": 69,
+      "prerequisite_challenge": "ch_ak47_gl"
+    },
+    {
+      "item_id": "masada gl",
+      "weapon_id": "masada",
+      "attachment_id": "gl",
+      "player_rank": 47,
+      "prerequisite_challenge": "ch_marksman_masada"
+    },
+    {
+      "item_id": "masada reflex",
+      "weapon_id": "masada",
+      "attachment_id": "reflex",
+      "player_rank": 47,
+      "prerequisite_challenge": "ch_marksman_masada_2"
+    },
+    {
+      "item_id": "masada silencer",
+      "weapon_id": "masada",
+      "attachment_id": "silencer",
+      "player_rank": 47,
+      "prerequisite_challenge": "ch_marksman_masada_3"
+    },
+    {
+      "item_id": "masada acog",
+      "weapon_id": "masada",
+      "attachment_id": "acog",
+      "player_rank": 47,
+      "prerequisite_challenge": "ch_marksman_masada_4"
+    },
+    {
+      "item_id": "masada fmj",
+      "weapon_id": "masada",
+      "attachment_id": "fmj",
+      "player_rank": 47,
+      "prerequisite_challenge": "ch_marksman_masada_5"
+    },
+    {
+      "item_id": "masada eotech",
+      "weapon_id": "masada",
+      "attachment_id": "eotech",
+      "player_rank": 47,
+      "prerequisite_challenge": "ch_masada_reflex"
+    },
+    {
+      "item_id": "masada heartbeat",
+      "weapon_id": "masada",
+      "attachment_id": "heartbeat",
+      "player_rank": 47,
+      "prerequisite_challenge": "ch_masada_silencer"
+    },
+    {
+      "item_id": "masada thermal",
+      "weapon_id": "masada",
+      "attachment_id": "thermal",
+      "player_rank": 47,
+      "prerequisite_challenge": "ch_masada_acog"
+    },
+    {
+      "item_id": "masada xmags",
+      "weapon_id": "masada",
+      "attachment_id": "xmags",
+      "player_rank": 47,
+      "prerequisite_challenge": "ch_masada_fmj"
+    },
+    {
+      "item_id": "masada shotgun",
+      "weapon_id": "masada",
+      "attachment_id": "shotgun",
+      "player_rank": 47,
+      "prerequisite_challenge": "ch_masada_gl"
+    },
+    {
+      "item_id": "m16 gl",
+      "weapon_id": "m16",
+      "attachment_id": "gl",
+      "player_rank": 39,
+      "prerequisite_challenge": "ch_marksman_m16"
+    },
+    {
+      "item_id": "m16 reflex",
+      "weapon_id": "m16",
+      "attachment_id": "reflex",
+      "player_rank": 39,
+      "prerequisite_challenge": "ch_marksman_m16_2"
+    },
+    {
+      "item_id": "m16 silencer",
+      "weapon_id": "m16",
+      "attachment_id": "silencer",
+      "player_rank": 39,
+      "prerequisite_challenge": "ch_marksman_m16_3"
+    },
+    {
+      "item_id": "m16 acog",
+      "weapon_id": "m16",
+      "attachment_id": "acog",
+      "player_rank": 39,
+      "prerequisite_challenge": "ch_marksman_m16_4"
+    },
+    {
+      "item_id": "m16 fmj",
+      "weapon_id": "m16",
+      "attachment_id": "fmj",
+      "player_rank": 39,
+      "prerequisite_challenge": "ch_marksman_m16_5"
+    },
+    {
+      "item_id": "m16 eotech",
+      "weapon_id": "m16",
+      "attachment_id": "eotech",
+      "player_rank": 39,
+      "prerequisite_challenge": "ch_m16_reflex"
+    },
+    {
+      "item_id": "m16 heartbeat",
+      "weapon_id": "m16",
+      "attachment_id": "heartbeat",
+      "player_rank": 39,
+      "prerequisite_challenge": "ch_m16_silencer"
+    },
+    {
+      "item_id": "m16 thermal",
+      "weapon_id": "m16",
+      "attachment_id": "thermal",
+      "player_rank": 39,
+      "prerequisite_challenge": "ch_m16_acog"
+    },
+    {
+      "item_id": "m16 xmags",
+      "weapon_id": "m16",
+      "attachment_id": "xmags",
+      "player_rank": 39,
+      "prerequisite_challenge": "ch_m16_fmj"
+    },
+    {
+      "item_id": "m16 shotgun",
+      "weapon_id": "m16",
+      "attachment_id": "shotgun",
+      "player_rank": 39,
+      "prerequisite_challenge": "ch_m16_gl"
+    },
+    {
+      "item_id": "tavor gl",
+      "weapon_id": "tavor",
+      "attachment_id": "gl",
+      "player_rank": 19,
+      "prerequisite_challenge": "ch_marksman_tavor"
+    },
+    {
+      "item_id": "tavor reflex",
+      "weapon_id": "tavor",
+      "attachment_id": "reflex",
+      "player_rank": 19,
+      "prerequisite_challenge": "ch_marksman_tavor_2"
+    },
+    {
+      "item_id": "tavor silencer",
+      "weapon_id": "tavor",
+      "attachment_id": "silencer",
+      "player_rank": 19,
+      "prerequisite_challenge": "ch_marksman_tavor_3"
+    },
+    {
+      "item_id": "tavor acog",
+      "weapon_id": "tavor",
+      "attachment_id": "acog",
+      "player_rank": 19,
+      "prerequisite_challenge": "ch_marksman_tavor_4"
+    },
+    {
+      "item_id": "tavor fmj",
+      "weapon_id": "tavor",
+      "attachment_id": "fmj",
+      "player_rank": 19,
+      "prerequisite_challenge": "ch_marksman_tavor_5"
+    },
+    {
+      "item_id": "tavor eotech",
+      "weapon_id": "tavor",
+      "attachment_id": "eotech",
+      "player_rank": 19,
+      "prerequisite_challenge": "ch_tavor_reflex"
+    },
+    {
+      "item_id": "tavor heartbeat",
+      "weapon_id": "tavor",
+      "attachment_id": "heartbeat",
+      "player_rank": 19,
+      "prerequisite_challenge": "ch_tavor_silencer"
+    },
+    {
+      "item_id": "tavor thermal",
+      "weapon_id": "tavor",
+      "attachment_id": "thermal",
+      "player_rank": 19,
+      "prerequisite_challenge": "ch_tavor_acog"
+    },
+    {
+      "item_id": "tavor xmags",
+      "weapon_id": "tavor",
+      "attachment_id": "xmags",
+      "player_rank": 19,
+      "prerequisite_challenge": "ch_tavor_fmj"
+    },
+    {
+      "item_id": "tavor shotgun",
+      "weapon_id": "tavor",
+      "attachment_id": "shotgun",
+      "player_rank": 19,
+      "prerequisite_challenge": "ch_tavor_gl"
+    },
+    {
+      "item_id": "fn2000 gl",
+      "weapon_id": "fn2000",
+      "attachment_id": "gl",
+      "player_rank": 59,
+      "prerequisite_challenge": "ch_marksman_fn2000"
+    },
+    {
+      "item_id": "fn2000 reflex",
+      "weapon_id": "fn2000",
+      "attachment_id": "reflex",
+      "player_rank": 59,
+      "prerequisite_challenge": "ch_marksman_fn2000_2"
+    },
+    {
+      "item_id": "fn2000 silencer",
+      "weapon_id": "fn2000",
+      "attachment_id": "silencer",
+      "player_rank": 59,
+      "prerequisite_challenge": "ch_marksman_fn2000_3"
+    },
+    {
+      "item_id": "fn2000 acog",
+      "weapon_id": "fn2000",
+      "attachment_id": "acog",
+      "player_rank": 59,
+      "prerequisite_challenge": "ch_marksman_fn2000_4"
+    },
+    {
+      "item_id": "fn2000 fmj",
+      "weapon_id": "fn2000",
+      "attachment_id": "fmj",
+      "player_rank": 59,
+      "prerequisite_challenge": "ch_marksman_fn2000_5"
+    },
+    {
+      "item_id": "fn2000 eotech",
+      "weapon_id": "fn2000",
+      "attachment_id": "eotech",
+      "player_rank": 59,
+      "prerequisite_challenge": "ch_fn2000_reflex"
+    },
+    {
+      "item_id": "fn2000 heartbeat",
+      "weapon_id": "fn2000",
+      "attachment_id": "heartbeat",
+      "player_rank": 59,
+      "prerequisite_challenge": "ch_fn2000_silencer"
+    },
+    {
+      "item_id": "fn2000 thermal",
+      "weapon_id": "fn2000",
+      "attachment_id": "thermal",
+      "player_rank": 59,
+      "prerequisite_challenge": "ch_fn2000_acog"
+    },
+    {
+      "item_id": "fn2000 xmags",
+      "weapon_id": "fn2000",
+      "attachment_id": "xmags",
+      "player_rank": 59,
+      "prerequisite_challenge": "ch_fn2000_fmj"
+    },
+    {
+      "item_id": "fn2000 shotgun",
+      "weapon_id": "fn2000",
+      "attachment_id": "shotgun",
+      "player_rank": 59,
+      "prerequisite_challenge": "ch_fn2000_gl"
+    },
+    {
+      "item_id": "m4 gl",
+      "weapon_id": "m4",
+      "attachment_id": "gl",
+      "player_rank": 0,
+      "prerequisite_challenge": "ch_marksman_m4"
+    },
+    {
+      "item_id": "m4 reflex",
+      "weapon_id": "m4",
+      "attachment_id": "reflex",
+      "player_rank": 0,
+      "prerequisite_challenge": "ch_marksman_m4_2"
+    },
+    {
+      "item_id": "m4 silencer",
+      "weapon_id": "m4",
+      "attachment_id": "silencer",
+      "player_rank": 0,
+      "prerequisite_challenge": "ch_marksman_m4_3"
+    },
+    {
+      "item_id": "m4 acog",
+      "weapon_id": "m4",
+      "attachment_id": "acog",
+      "player_rank": 0,
+      "prerequisite_challenge": "ch_marksman_m4_4"
+    },
+    {
+      "item_id": "m4 fmj",
+      "weapon_id": "m4",
+      "attachment_id": "fmj",
+      "player_rank": 0,
+      "prerequisite_challenge": "ch_marksman_m4_5"
+    },
+    {
+      "item_id": "m4 eotech",
+      "weapon_id": "m4",
+      "attachment_id": "eotech",
+      "player_rank": 0,
+      "prerequisite_challenge": "ch_m4_reflex"
+    },
+    {
+      "item_id": "m4 heartbeat",
+      "weapon_id": "m4",
+      "attachment_id": "heartbeat",
+      "player_rank": 0,
+      "prerequisite_challenge": "ch_m4_silencer"
+    },
+    {
+      "item_id": "m4 thermal",
+      "weapon_id": "m4",
+      "attachment_id": "thermal",
+      "player_rank": 0,
+      "prerequisite_challenge": "ch_m4_acog"
+    },
+    {
+      "item_id": "m4 xmags",
+      "weapon_id": "m4",
+      "attachment_id": "xmags",
+      "player_rank": 0,
+      "prerequisite_challenge": "ch_m4_fmj"
+    },
+    {
+      "item_id": "m4 shotgun",
+      "weapon_id": "m4",
+      "attachment_id": "shotgun",
+      "player_rank": 0,
+      "prerequisite_challenge": "ch_m4_gl"
+    },
+    {
+      "item_id": "scar gl",
+      "weapon_id": "scar",
+      "attachment_id": "gl",
+      "player_rank": 7,
+      "prerequisite_challenge": "ch_marksman_scar"
+    },
+    {
+      "item_id": "scar reflex",
+      "weapon_id": "scar",
+      "attachment_id": "reflex",
+      "player_rank": 7,
+      "prerequisite_challenge": "ch_marksman_scar_2"
+    },
+    {
+      "item_id": "scar silencer",
+      "weapon_id": "scar",
+      "attachment_id": "silencer",
+      "player_rank": 7,
+      "prerequisite_challenge": "ch_marksman_scar_3"
+    },
+    {
+      "item_id": "scar acog",
+      "weapon_id": "scar",
+      "attachment_id": "acog",
+      "player_rank": 7,
+      "prerequisite_challenge": "ch_marksman_scar_4"
+    },
+    {
+      "item_id": "scar fmj",
+      "weapon_id": "scar",
+      "attachment_id": "fmj",
+      "player_rank": 7,
+      "prerequisite_challenge": "ch_marksman_scar_5"
+    },
+    {
+      "item_id": "scar eotech",
+      "weapon_id": "scar",
+      "attachment_id": "eotech",
+      "player_rank": 7,
+      "prerequisite_challenge": "ch_scar_reflex"
+    },
+    {
+      "item_id": "scar heartbeat",
+      "weapon_id": "scar",
+      "attachment_id": "heartbeat",
+      "player_rank": 7,
+      "prerequisite_challenge": "ch_scar_silencer"
+    },
+    {
+      "item_id": "scar thermal",
+      "weapon_id": "scar",
+      "attachment_id": "thermal",
+      "player_rank": 7,
+      "prerequisite_challenge": "ch_scar_acog"
+    },
+    {
+      "item_id": "scar xmags",
+      "weapon_id": "scar",
+      "attachment_id": "xmags",
+      "player_rank": 7,
+      "prerequisite_challenge": "ch_scar_fmj"
+    },
+    {
+      "item_id": "scar shotgun",
+      "weapon_id": "scar",
+      "attachment_id": "shotgun",
+      "player_rank": 7,
+      "prerequisite_challenge": "ch_scar_gl"
+    },
+    {
+      "item_id": "fal gl",
+      "weapon_id": "fal",
+      "attachment_id": "gl",
+      "player_rank": 27,
+      "prerequisite_challenge": "ch_marksman_fal"
+    },
+    {
+      "item_id": "fal reflex",
+      "weapon_id": "fal",
+      "attachment_id": "reflex",
+      "player_rank": 27,
+      "prerequisite_challenge": "ch_marksman_fal_2"
+    },
+    {
+      "item_id": "fal silencer",
+      "weapon_id": "fal",
+      "attachment_id": "silencer",
+      "player_rank": 27,
+      "prerequisite_challenge": "ch_marksman_fal_3"
+    },
+    {
+      "item_id": "fal acog",
+      "weapon_id": "fal",
+      "attachment_id": "acog",
+      "player_rank": 27,
+      "prerequisite_challenge": "ch_marksman_fal_4"
+    },
+    {
+      "item_id": "fal fmj",
+      "weapon_id": "fal",
+      "attachment_id": "fmj",
+      "player_rank": 27,
+      "prerequisite_challenge": "ch_marksman_fal_5"
+    },
+    {
+      "item_id": "fal eotech",
+      "weapon_id": "fal",
+      "attachment_id": "eotech",
+      "player_rank": 27,
+      "prerequisite_challenge": "ch_fal_reflex"
+    },
+    {
+      "item_id": "fal heartbeat",
+      "weapon_id": "fal",
+      "attachment_id": "heartbeat",
+      "player_rank": 27,
+      "prerequisite_challenge": "ch_fal_silencer"
+    },
+    {
+      "item_id": "fal thermal",
+      "weapon_id": "fal",
+      "attachment_id": "thermal",
+      "player_rank": 27,
+      "prerequisite_challenge": "ch_fal_acog"
+    },
+    {
+      "item_id": "fal xmags",
+      "weapon_id": "fal",
+      "attachment_id": "xmags",
+      "player_rank": 27,
+      "prerequisite_challenge": "ch_fal_fmj"
+    },
+    {
+      "item_id": "fal shotgun",
+      "weapon_id": "fal",
+      "attachment_id": "shotgun",
+      "player_rank": 27,
+      "prerequisite_challenge": "ch_fal_gl"
+    },
+    {
+      "item_id": "famas gl",
+      "weapon_id": "famas",
+      "attachment_id": "gl",
+      "player_rank": 0,
+      "prerequisite_challenge": "ch_marksman_famas"
+    },
+    {
+      "item_id": "famas reflex",
+      "weapon_id": "famas",
+      "attachment_id": "reflex",
+      "player_rank": 0,
+      "prerequisite_challenge": "ch_marksman_famas_2"
+    },
+    {
+      "item_id": "famas silencer",
+      "weapon_id": "famas",
+      "attachment_id": "silencer",
+      "player_rank": 0,
+      "prerequisite_challenge": "ch_marksman_famas_3"
+    },
+    {
+      "item_id": "famas acog",
+      "weapon_id": "famas",
+      "attachment_id": "acog",
+      "player_rank": 0,
+      "prerequisite_challenge": "ch_marksman_famas_4"
+    },
+    {
+      "item_id": "famas fmj",
+      "weapon_id": "famas",
+      "attachment_id": "fmj",
+      "player_rank": 0,
+      "prerequisite_challenge": "ch_marksman_famas_5"
+    },
+    {
+      "item_id": "famas eotech",
+      "weapon_id": "famas",
+      "attachment_id": "eotech",
+      "player_rank": 0,
+      "prerequisite_challenge": "ch_famas_reflex"
+    },
+    {
+      "item_id": "famas heartbeat",
+      "weapon_id": "famas",
+      "attachment_id": "heartbeat",
+      "player_rank": 0,
+      "prerequisite_challenge": "ch_famas_silencer"
+    },
+    {
+      "item_id": "famas thermal",
+      "weapon_id": "famas",
+      "attachment_id": "thermal",
+      "player_rank": 0,
+      "prerequisite_challenge": "ch_famas_acog"
+    },
+    {
+      "item_id": "famas xmags",
+      "weapon_id": "famas",
+      "attachment_id": "xmags",
+      "player_rank": 0,
+      "prerequisite_challenge": "ch_famas_fmj"
+    },
+    {
+      "item_id": "famas shotgun",
+      "weapon_id": "famas",
+      "attachment_id": "shotgun",
+      "player_rank": 0,
+      "prerequisite_challenge": "ch_famas_gl"
+    },
+    {
+      "item_id": "mp5k rof",
+      "weapon_id": "mp5k",
+      "attachment_id": "rof",
+      "player_rank": 0,
+      "prerequisite_challenge": "ch_marksman_mp5k"
+    },
+    {
+      "item_id": "mp5k reflex",
+      "weapon_id": "mp5k",
+      "attachment_id": "reflex",
+      "player_rank": 0,
+      "prerequisite_challenge": "ch_marksman_mp5k_2"
+    },
+    {
+      "item_id": "mp5k silencer",
+      "weapon_id": "mp5k",
+      "attachment_id": "silencer",
+      "player_rank": 0,
+      "prerequisite_challenge": "ch_marksman_mp5k_3"
+    },
+    {
+      "item_id": "mp5k acog",
+      "weapon_id": "mp5k",
+      "attachment_id": "acog",
+      "player_rank": 0,
+      "prerequisite_challenge": "ch_marksman_mp5k_4"
+    },
+    {
+      "item_id": "mp5k fmj",
+      "weapon_id": "mp5k",
+      "attachment_id": "fmj",
+      "player_rank": 0,
+      "prerequisite_challenge": "ch_marksman_mp5k_5"
+    },
+    {
+      "item_id": "mp5k akimbo",
+      "weapon_id": "mp5k",
+      "attachment_id": "akimbo",
+      "player_rank": 0,
+      "prerequisite_challenge": "ch_mp5k_rof"
+    },
+    {
+      "item_id": "mp5k eotech",
+      "weapon_id": "mp5k",
+      "attachment_id": "eotech",
+      "player_rank": 0,
+      "prerequisite_challenge": "ch_mp5k_reflex"
+    },
+    {
+      "item_id": "mp5k thermal",
+      "weapon_id": "mp5k",
+      "attachment_id": "thermal",
+      "player_rank": 0,
+      "prerequisite_challenge": "ch_mp5k_acog"
+    },
+    {
+      "item_id": "mp5k xmags",
+      "weapon_id": "mp5k",
+      "attachment_id": "xmags",
+      "player_rank": 0,
+      "prerequisite_challenge": "ch_mp5k_fmj"
+    },
+    {
+      "item_id": "uzi rof",
+      "weapon_id": "uzi",
+      "attachment_id": "rof",
+      "player_rank": 43,
+      "prerequisite_challenge": "ch_marksman_uzi"
+    },
+    {
+      "item_id": "uzi reflex",
+      "weapon_id": "uzi",
+      "attachment_id": "reflex",
+      "player_rank": 43,
+      "prerequisite_challenge": "ch_marksman_uzi_2"
+    },
+    {
+      "item_id": "uzi silencer",
+      "weapon_id": "uzi",
+      "attachment_id": "silencer",
+      "player_rank": 43,
+      "prerequisite_challenge": "ch_marksman_uzi_3"
+    },
+    {
+      "item_id": "uzi acog",
+      "weapon_id": "uzi",
+      "attachment_id": "acog",
+      "player_rank": 43,
+      "prerequisite_challenge": "ch_marksman_uzi_4"
+    },
+    {
+      "item_id": "uzi fmj",
+      "weapon_id": "uzi",
+      "attachment_id": "fmj",
+      "player_rank": 43,
+      "prerequisite_challenge": "ch_marksman_uzi_5"
+    },
+    {
+      "item_id": "uzi akimbo",
+      "weapon_id": "uzi",
+      "attachment_id": "akimbo",
+      "player_rank": 43,
+      "prerequisite_challenge": "ch_uzi_rof"
+    },
+    {
+      "item_id": "uzi eotech",
+      "weapon_id": "uzi",
+      "attachment_id": "eotech",
+      "player_rank": 43,
+      "prerequisite_challenge": "ch_uzi_reflex"
+    },
+    {
+      "item_id": "uzi thermal",
+      "weapon_id": "uzi",
+      "attachment_id": "thermal",
+      "player_rank": 43,
+      "prerequisite_challenge": "ch_uzi_acog"
+    },
+    {
+      "item_id": "uzi xmags",
+      "weapon_id": "uzi",
+      "attachment_id": "xmags",
+      "player_rank": 43,
+      "prerequisite_challenge": "ch_uzi_fmj"
+    },
+    {
+      "item_id": "kriss rof",
+      "weapon_id": "kriss",
+      "attachment_id": "rof",
+      "player_rank": 11,
+      "prerequisite_challenge": "ch_marksman_kriss"
+    },
+    {
+      "item_id": "kriss reflex",
+      "weapon_id": "kriss",
+      "attachment_id": "reflex",
+      "player_rank": 11,
+      "prerequisite_challenge": "ch_marksman_kriss_2"
+    },
+    {
+      "item_id": "kriss silencer",
+      "weapon_id": "kriss",
+      "attachment_id": "silencer",
+      "player_rank": 11,
+      "prerequisite_challenge": "ch_marksman_kriss_3"
+    },
+    {
+      "item_id": "kriss acog",
+      "weapon_id": "kriss",
+      "attachment_id": "acog",
+      "player_rank": 11,
+      "prerequisite_challenge": "ch_marksman_kriss_4"
+    },
+    {
+      "item_id": "kriss fmj",
+      "weapon_id": "kriss",
+      "attachment_id": "fmj",
+      "player_rank": 11,
+      "prerequisite_challenge": "ch_marksman_kriss_5"
+    },
+    {
+      "item_id": "kriss akimbo",
+      "weapon_id": "kriss",
+      "attachment_id": "akimbo",
+      "player_rank": 11,
+      "prerequisite_challenge": "ch_kriss_rof"
+    },
+    {
+      "item_id": "kriss eotech",
+      "weapon_id": "kriss",
+      "attachment_id": "eotech",
+      "player_rank": 11,
+      "prerequisite_challenge": "ch_kriss_reflex"
+    },
+    {
+      "item_id": "kriss thermal",
+      "weapon_id": "kriss",
+      "attachment_id": "thermal",
+      "player_rank": 11,
+      "prerequisite_challenge": "ch_kriss_acog"
+    },
+    {
+      "item_id": "kriss xmags",
+      "weapon_id": "kriss",
+      "attachment_id": "xmags",
+      "player_rank": 11,
+      "prerequisite_challenge": "ch_kriss_fmj"
+    },
+    {
+      "item_id": "ump45 rof",
+      "weapon_id": "ump45",
+      "attachment_id": "rof",
+      "player_rank": 0,
+      "prerequisite_challenge": "ch_marksman_ump45"
+    },
+    {
+      "item_id": "ump45 reflex",
+      "weapon_id": "ump45",
+      "attachment_id": "reflex",
+      "player_rank": 0,
+      "prerequisite_challenge": "ch_marksman_ump45_2"
+    },
+    {
+      "item_id": "ump45 silencer",
+      "weapon_id": "ump45",
+      "attachment_id": "silencer",
+      "player_rank": 0,
+      "prerequisite_challenge": "ch_marksman_ump45_3"
+    },
+    {
+      "item_id": "ump45 acog",
+      "weapon_id": "ump45",
+      "attachment_id": "acog",
+      "player_rank": 0,
+      "prerequisite_challenge": "ch_marksman_ump45_4"
+    },
+    {
+      "item_id": "ump45 fmj",
+      "weapon_id": "ump45",
+      "attachment_id": "fmj",
+      "player_rank": 0,
+      "prerequisite_challenge": "ch_marksman_ump45_5"
+    },
+    {
+      "item_id": "ump45 akimbo",
+      "weapon_id": "ump45",
+      "attachment_id": "akimbo",
+      "player_rank": 0,
+      "prerequisite_challenge": "ch_ump45_rof"
+    },
+    {
+      "item_id": "ump45 eotech",
+      "weapon_id": "ump45",
+      "attachment_id": "eotech",
+      "player_rank": 0,
+      "prerequisite_challenge": "ch_ump45_reflex"
+    },
+    {
+      "item_id": "ump45 thermal",
+      "weapon_id": "ump45",
+      "attachment_id": "thermal",
+      "player_rank": 0,
+      "prerequisite_challenge": "ch_ump45_acog"
+    },
+    {
+      "item_id": "ump45 xmags",
+      "weapon_id": "ump45",
+      "attachment_id": "xmags",
+      "player_rank": 0,
+      "prerequisite_challenge": "ch_ump45_fmj"
+    },
+    {
+      "item_id": "p90 rof",
+      "weapon_id": "p90",
+      "attachment_id": "rof",
+      "player_rank": 23,
+      "prerequisite_challenge": "ch_marksman_p90"
+    },
+    {
+      "item_id": "p90 reflex",
+      "weapon_id": "p90",
+      "attachment_id": "reflex",
+      "player_rank": 23,
+      "prerequisite_challenge": "ch_marksman_p90_2"
+    },
+    {
+      "item_id": "p90 silencer",
+      "weapon_id": "p90",
+      "attachment_id": "silencer",
+      "player_rank": 23,
+      "prerequisite_challenge": "ch_marksman_p90_3"
+    },
+    {
+      "item_id": "p90 acog",
+      "weapon_id": "p90",
+      "attachment_id": "acog",
+      "player_rank": 23,
+      "prerequisite_challenge": "ch_marksman_p90_4"
+    },
+    {
+      "item_id": "p90 fmj",
+      "weapon_id": "p90",
+      "attachment_id": "fmj",
+      "player_rank": 23,
+      "prerequisite_challenge": "ch_marksman_p90_5"
+    },
+    {
+      "item_id": "p90 akimbo",
+      "weapon_id": "p90",
+      "attachment_id": "akimbo",
+      "player_rank": 23,
+      "prerequisite_challenge": "ch_p90_rof"
+    },
+    {
+      "item_id": "p90 eotech",
+      "weapon_id": "p90",
+      "attachment_id": "eotech",
+      "player_rank": 23,
+      "prerequisite_challenge": "ch_p90_reflex"
+    },
+    {
+      "item_id": "p90 thermal",
+      "weapon_id": "p90",
+      "attachment_id": "thermal",
+      "player_rank": 23,
+      "prerequisite_challenge": "ch_p90_acog"
+    },
+    {
+      "item_id": "p90 xmags",
+      "weapon_id": "p90",
+      "attachment_id": "xmags",
+      "player_rank": 23,
+      "prerequisite_challenge": "ch_p90_fmj"
+    },
+    {
+      "item_id": "cheytac silencer",
+      "weapon_id": "cheytac",
+      "attachment_id": "silencer",
+      "player_rank": 0,
+      "prerequisite_challenge": "ch_marksman_cheytac"
+    },
+    {
+      "item_id": "cheytac acog",
+      "weapon_id": "cheytac",
+      "attachment_id": "acog",
+      "player_rank": 0,
+      "prerequisite_challenge": "ch_marksman_cheytac_2"
+    },
+    {
+      "item_id": "cheytac fmj",
+      "weapon_id": "cheytac",
+      "attachment_id": "fmj",
+      "player_rank": 0,
+      "prerequisite_challenge": "ch_marksman_cheytac_3"
+    },
+    {
+      "item_id": "cheytac heartbeat",
+      "weapon_id": "cheytac",
+      "attachment_id": "heartbeat",
+      "player_rank": 0,
+      "prerequisite_challenge": "ch_cheytac_silencer"
+    },
+    {
+      "item_id": "cheytac thermal",
+      "weapon_id": "cheytac",
+      "attachment_id": "thermal",
+      "player_rank": 0,
+      "prerequisite_challenge": "ch_cheytac_acog"
+    },
+    {
+      "item_id": "cheytac xmags",
+      "weapon_id": "cheytac",
+      "attachment_id": "xmags",
+      "player_rank": 0,
+      "prerequisite_challenge": "ch_cheytac_fmj"
+    },
+    {
+      "item_id": "m21 silencer",
+      "weapon_id": "m21",
+      "attachment_id": "silencer",
+      "player_rank": 55,
+      "prerequisite_challenge": "ch_marksman_m21"
+    },
+    {
+      "item_id": "m21 acog",
+      "weapon_id": "m21",
+      "attachment_id": "acog",
+      "player_rank": 55,
+      "prerequisite_challenge": "ch_marksman_m21_2"
+    },
+    {
+      "item_id": "m21 fmj",
+      "weapon_id": "m21",
+      "attachment_id": "fmj",
+      "player_rank": 55,
+      "prerequisite_challenge": "ch_marksman_m21_3"
+    },
+    {
+      "item_id": "m21 heartbeat",
+      "weapon_id": "m21",
+      "attachment_id": "heartbeat",
+      "player_rank": 55,
+      "prerequisite_challenge": "ch_m21_silencer"
+    },
+    {
+      "item_id": "m21 thermal",
+      "weapon_id": "m21",
+      "attachment_id": "thermal",
+      "player_rank": 55,
+      "prerequisite_challenge": "ch_m21_acog"
+    },
+    {
+      "item_id": "m21 xmags",
+      "weapon_id": "m21",
+      "attachment_id": "xmags",
+      "player_rank": 55,
+      "prerequisite_challenge": "ch_m21_fmj"
+    },
+    {
+      "item_id": "barrett silencer",
+      "weapon_id": "barrett",
+      "attachment_id": "silencer",
+      "player_rank": 0,
+      "prerequisite_challenge": "ch_marksman_barrett"
+    },
+    {
+      "item_id": "barrett acog",
+      "weapon_id": "barrett",
+      "attachment_id": "acog",
+      "player_rank": 0,
+      "prerequisite_challenge": "ch_marksman_barrett_2"
+    },
+    {
+      "item_id": "barrett fmj",
+      "weapon_id": "barrett",
+      "attachment_id": "fmj",
+      "player_rank": 0,
+      "prerequisite_challenge": "ch_marksman_barrett_3"
+    },
+    {
+      "item_id": "barrett heartbeat",
+      "weapon_id": "barrett",
+      "attachment_id": "heartbeat",
+      "player_rank": 0,
+      "prerequisite_challenge": "ch_barrett_silencer"
+    },
+    {
+      "item_id": "barrett thermal",
+      "weapon_id": "barrett",
+      "attachment_id": "thermal",
+      "player_rank": 0,
+      "prerequisite_challenge": "ch_barrett_acog"
+    },
+    {
+      "item_id": "barrett xmags",
+      "weapon_id": "barrett",
+      "attachment_id": "xmags",
+      "player_rank": 0,
+      "prerequisite_challenge": "ch_barrett_fmj"
+    },
+    {
+      "item_id": "wa2000 silencer",
+      "weapon_id": "wa2000",
+      "attachment_id": "silencer",
+      "player_rank": 35,
+      "prerequisite_challenge": "ch_marksman_wa2000"
+    },
+    {
+      "item_id": "wa2000 acog",
+      "weapon_id": "wa2000",
+      "attachment_id": "acog",
+      "player_rank": 35,
+      "prerequisite_challenge": "ch_marksman_wa2000_2"
+    },
+    {
+      "item_id": "wa2000 fmj",
+      "weapon_id": "wa2000",
+      "attachment_id": "fmj",
+      "player_rank": 35,
+      "prerequisite_challenge": "ch_marksman_wa2000_3"
+    },
+    {
+      "item_id": "wa2000 heartbeat",
+      "weapon_id": "wa2000",
+      "attachment_id": "heartbeat",
+      "player_rank": 35,
+      "prerequisite_challenge": "ch_wa2000_silencer"
+    },
+    {
+      "item_id": "wa2000 thermal",
+      "weapon_id": "wa2000",
+      "attachment_id": "thermal",
+      "player_rank": 35,
+      "prerequisite_challenge": "ch_wa2000_acog"
+    },
+    {
+      "item_id": "wa2000 xmags",
+      "weapon_id": "wa2000",
+      "attachment_id": "xmags",
+      "player_rank": 35,
+      "prerequisite_challenge": "ch_wa2000_fmj"
+    },
+    {
+      "item_id": "glock reflex",
+      "weapon_id": "glock",
+      "attachment_id": "reflex",
+      "player_rank": 21,
+      "prerequisite_challenge": "ch_marksman_glock"
+    },
+    {
+      "item_id": "glock silencer",
+      "weapon_id": "glock",
+      "attachment_id": "silencer",
+      "player_rank": 21,
+      "prerequisite_challenge": "ch_marksman_glock_2"
+    },
+    {
+      "item_id": "glock fmj",
+      "weapon_id": "glock",
+      "attachment_id": "fmj",
+      "player_rank": 21,
+      "prerequisite_challenge": "ch_marksman_glock_3"
+    },
+    {
+      "item_id": "glock akimbo",
+      "weapon_id": "glock",
+      "attachment_id": "akimbo",
+      "player_rank": 21,
+      "prerequisite_challenge": "ch_marksman_glock_4"
+    },
+    {
+      "item_id": "glock eotech",
+      "weapon_id": "glock",
+      "attachment_id": "eotech",
+      "player_rank": 21,
+      "prerequisite_challenge": "ch_marksman_glock_5"
+    },
+    {
+      "item_id": "glock xmags",
+      "weapon_id": "glock",
+      "attachment_id": "xmags",
+      "player_rank": 21,
+      "prerequisite_challenge": "ch_marksman_glock_6"
+    },
+    {
+      "item_id": "tmp reflex",
+      "weapon_id": "tmp",
+      "attachment_id": "reflex",
+      "player_rank": 57,
+      "prerequisite_challenge": "ch_marksman_tmp"
+    },
+    {
+      "item_id": "tmp silencer",
+      "weapon_id": "tmp",
+      "attachment_id": "silencer",
+      "player_rank": 57,
+      "prerequisite_challenge": "ch_marksman_tmp_2"
+    },
+    {
+      "item_id": "tmp fmj",
+      "weapon_id": "tmp",
+      "attachment_id": "fmj",
+      "player_rank": 57,
+      "prerequisite_challenge": "ch_marksman_tmp_3"
+    },
+    {
+      "item_id": "tmp akimbo",
+      "weapon_id": "tmp",
+      "attachment_id": "akimbo",
+      "player_rank": 57,
+      "prerequisite_challenge": "ch_marksman_tmp_4"
+    },
+    {
+      "item_id": "tmp eotech",
+      "weapon_id": "tmp",
+      "attachment_id": "eotech",
+      "player_rank": 57,
+      "prerequisite_challenge": "ch_marksman_tmp_5"
+    },
+    {
+      "item_id": "tmp xmags",
+      "weapon_id": "tmp",
+      "attachment_id": "xmags",
+      "player_rank": 57,
+      "prerequisite_challenge": "ch_marksman_tmp_6"
+    },
+    {
+      "item_id": "beretta393 reflex",
+      "weapon_id": "beretta393",
+      "attachment_id": "reflex",
+      "player_rank": 37,
+      "prerequisite_challenge": "ch_marksman_beretta393"
+    },
+    {
+      "item_id": "beretta393 silencer",
+      "weapon_id": "beretta393",
+      "attachment_id": "silencer",
+      "player_rank": 37,
+      "prerequisite_challenge": "ch_marksman_beretta393_2"
+    },
+    {
+      "item_id": "beretta393 fmj",
+      "weapon_id": "beretta393",
+      "attachment_id": "fmj",
+      "player_rank": 37,
+      "prerequisite_challenge": "ch_marksman_beretta393_3"
+    },
+    {
+      "item_id": "beretta393 akimbo",
+      "weapon_id": "beretta393",
+      "attachment_id": "akimbo",
+      "player_rank": 37,
+      "prerequisite_challenge": "ch_marksman_beretta393_4"
+    },
+    {
+      "item_id": "beretta393 eotech",
+      "weapon_id": "beretta393",
+      "attachment_id": "eotech",
+      "player_rank": 37,
+      "prerequisite_challenge": "ch_marksman_beretta393_5"
+    },
+    {
+      "item_id": "beretta393 xmags",
+      "weapon_id": "beretta393",
+      "attachment_id": "xmags",
+      "player_rank": 37,
+      "prerequisite_challenge": "ch_marksman_beretta393_6"
+    },
+    {
+      "item_id": "pp2000 reflex",
+      "weapon_id": "pp2000",
+      "attachment_id": "reflex",
+      "player_rank": 0,
+      "prerequisite_challenge": "ch_marksman_pp2000"
+    },
+    {
+      "item_id": "pp2000 silencer",
+      "weapon_id": "pp2000",
+      "attachment_id": "silencer",
+      "player_rank": 0,
+      "prerequisite_challenge": "ch_marksman_pp2000_2"
+    },
+    {
+      "item_id": "pp2000 fmj",
+      "weapon_id": "pp2000",
+      "attachment_id": "fmj",
+      "player_rank": 0,
+      "prerequisite_challenge": "ch_marksman_pp2000_3"
+    },
+    {
+      "item_id": "pp2000 akimbo",
+      "weapon_id": "pp2000",
+      "attachment_id": "akimbo",
+      "player_rank": 0,
+      "prerequisite_challenge": "ch_marksman_pp2000_4"
+    },
+    {
+      "item_id": "pp2000 eotech",
+      "weapon_id": "pp2000",
+      "attachment_id": "eotech",
+      "player_rank": 0,
+      "prerequisite_challenge": "ch_marksman_pp2000_5"
+    },
+    {
+      "item_id": "pp2000 xmags",
+      "weapon_id": "pp2000",
+      "attachment_id": "xmags",
+      "player_rank": 0,
+      "prerequisite_challenge": "ch_marksman_pp2000_6"
+    },
+    {
+      "item_id": "striker reflex",
+      "weapon_id": "striker",
+      "attachment_id": "reflex",
+      "player_rank": 33,
+      "prerequisite_challenge": "ch_marksman_striker"
+    },
+    {
+      "item_id": "striker silencer",
+      "weapon_id": "striker",
+      "attachment_id": "silencer",
+      "player_rank": 33,
+      "prerequisite_challenge": "ch_marksman_striker_2"
+    },
+    {
+      "item_id": "striker grip",
+      "weapon_id": "striker",
+      "attachment_id": "grip",
+      "player_rank": 33,
+      "prerequisite_challenge": "ch_marksman_striker_3"
+    },
+    {
+      "item_id": "striker fmj",
+      "weapon_id": "striker",
+      "attachment_id": "fmj",
+      "player_rank": 33,
+      "prerequisite_challenge": "ch_marksman_striker_4"
+    },
+    {
+      "item_id": "striker eotech",
+      "weapon_id": "striker",
+      "attachment_id": "eotech",
+      "player_rank": 33,
+      "prerequisite_challenge": "ch_marksman_striker_5"
+    },
+    {
+      "item_id": "striker xmags",
+      "weapon_id": "striker",
+      "attachment_id": "xmags",
+      "player_rank": 33,
+      "prerequisite_challenge": "ch_marksman_striker_6"
+    },
+    {
+      "item_id": "aa12 reflex",
+      "weapon_id": "aa12",
+      "attachment_id": "reflex",
+      "player_rank": 17,
+      "prerequisite_challenge": "ch_marksman_aa12"
+    },
+    {
+      "item_id": "aa12 silencer",
+      "weapon_id": "aa12",
+      "attachment_id": "silencer",
+      "player_rank": 17,
+      "prerequisite_challenge": "ch_marksman_aa12_2"
+    },
+    {
+      "item_id": "aa12 grip",
+      "weapon_id": "aa12",
+      "attachment_id": "grip",
+      "player_rank": 17,
+      "prerequisite_challenge": "ch_marksman_aa12_3"
+    },
+    {
+      "item_id": "aa12 fmj",
+      "weapon_id": "aa12",
+      "attachment_id": "fmj",
+      "player_rank": 17,
+      "prerequisite_challenge": "ch_marksman_aa12_4"
+    },
+    {
+      "item_id": "aa12 eotech",
+      "weapon_id": "aa12",
+      "attachment_id": "eotech",
+      "player_rank": 17,
+      "prerequisite_challenge": "ch_marksman_aa12_5"
+    },
+    {
+      "item_id": "aa12 xmags",
+      "weapon_id": "aa12",
+      "attachment_id": "xmags",
+      "player_rank": 17,
+      "prerequisite_challenge": "ch_marksman_aa12_6"
+    },
+    {
+      "item_id": "m1014 reflex",
+      "weapon_id": "m1014",
+      "attachment_id": "reflex",
+      "player_rank": 53,
+      "prerequisite_challenge": "ch_marksman_m1014"
+    },
+    {
+      "item_id": "m1014 silencer",
+      "weapon_id": "m1014",
+      "attachment_id": "silencer",
+      "player_rank": 53,
+      "prerequisite_challenge": "ch_marksman_m1014_2"
+    },
+    {
+      "item_id": "m1014 grip",
+      "weapon_id": "m1014",
+      "attachment_id": "grip",
+      "player_rank": 53,
+      "prerequisite_challenge": "ch_marksman_m1014_3"
+    },
+    {
+      "item_id": "m1014 fmj",
+      "weapon_id": "m1014",
+      "attachment_id": "fmj",
+      "player_rank": 53,
+      "prerequisite_challenge": "ch_marksman_m1014_4"
+    },
+    {
+      "item_id": "m1014 eotech",
+      "weapon_id": "m1014",
+      "attachment_id": "eotech",
+      "player_rank": 53,
+      "prerequisite_challenge": "ch_marksman_m1014_5"
+    },
+    {
+      "item_id": "m1014 xmags",
+      "weapon_id": "m1014",
+      "attachment_id": "xmags",
+      "player_rank": 53,
+      "prerequisite_challenge": "ch_marksman_m1014_6"
+    },
+    {
+      "item_id": "spas12 reflex",
+      "weapon_id": "spas12",
+      "attachment_id": "reflex",
+      "player_rank": 0,
+      "prerequisite_challenge": "ch_marksman_spas12"
+    },
+    {
+      "item_id": "spas12 silencer",
+      "weapon_id": "spas12",
+      "attachment_id": "silencer",
+      "player_rank": 0,
+      "prerequisite_challenge": "ch_marksman_spas12_2"
+    },
+    {
+      "item_id": "spas12 grip",
+      "weapon_id": "spas12",
+      "attachment_id": "grip",
+      "player_rank": 0,
+      "prerequisite_challenge": "ch_marksman_spas12_3"
+    },
+    {
+      "item_id": "spas12 fmj",
+      "weapon_id": "spas12",
+      "attachment_id": "fmj",
+      "player_rank": 0,
+      "prerequisite_challenge": "ch_marksman_spas12_4"
+    },
+    {
+      "item_id": "spas12 eotech",
+      "weapon_id": "spas12",
+      "attachment_id": "eotech",
+      "player_rank": 0,
+      "prerequisite_challenge": "ch_marksman_spas12_5"
+    },
+    {
+      "item_id": "spas12 xmags",
+      "weapon_id": "spas12",
+      "attachment_id": "xmags",
+      "player_rank": 0,
+      "prerequisite_challenge": "ch_marksman_spas12_6"
+    },
+    {
+      "item_id": "model1887 akimbo",
+      "weapon_id": "model1887",
+      "attachment_id": "akimbo",
+      "player_rank": 66,
+      "prerequisite_challenge": "ch_marksman_model1887"
+    },
+    {
+      "item_id": "model1887 fmj",
+      "weapon_id": "model1887",
+      "attachment_id": "fmj",
+      "player_rank": 66,
+      "prerequisite_challenge": "ch_marksman_model1887_2"
+    },
+    {
+      "item_id": "ranger akimbo",
+      "weapon_id": "ranger",
+      "attachment_id": "akimbo",
+      "player_rank": 41,
+      "prerequisite_challenge": "ch_marksman_ranger"
+    },
+    {
+      "item_id": "ranger fmj",
+      "weapon_id": "ranger",
+      "attachment_id": "fmj",
+      "player_rank": 41,
+      "prerequisite_challenge": "ch_marksman_ranger_2"
+    },
+    {
+      "item_id": "beretta fmj",
+      "weapon_id": "beretta",
+      "attachment_id": "fmj",
+      "player_rank": 45,
+      "prerequisite_challenge": "ch_marksman_beretta"
+    },
+    {
+      "item_id": "beretta silencer",
+      "weapon_id": "beretta",
+      "attachment_id": "silencer",
+      "player_rank": 45,
+      "prerequisite_challenge": "ch_marksman_beretta_2"
+    },
+    {
+      "item_id": "beretta akimbo",
+      "weapon_id": "beretta",
+      "attachment_id": "akimbo",
+      "player_rank": 45,
+      "prerequisite_challenge": "ch_marksman_beretta_3"
+    },
+    {
+      "item_id": "beretta tactical",
+      "weapon_id": "beretta",
+      "attachment_id": "tactical",
+      "player_rank": 45,
+      "prerequisite_challenge": "ch_marksman_beretta_4"
+    },
+    {
+      "item_id": "beretta xmags",
+      "weapon_id": "beretta",
+      "attachment_id": "xmags",
+      "player_rank": 45,
+      "prerequisite_challenge": "ch_marksman_beretta_5"
+    },
+    {
+      "item_id": "usp fmj",
+      "weapon_id": "usp",
+      "attachment_id": "fmj",
+      "player_rank": 0,
+      "prerequisite_challenge": "ch_marksman_usp"
+    },
+    {
+      "item_id": "usp silencer",
+      "weapon_id": "usp",
+      "attachment_id": "silencer",
+      "player_rank": 0,
+      "prerequisite_challenge": "ch_marksman_usp_2"
+    },
+    {
+      "item_id": "usp akimbo",
+      "weapon_id": "usp",
+      "attachment_id": "akimbo",
+      "player_rank": 0,
+      "prerequisite_challenge": "ch_marksman_usp_3"
+    },
+    {
+      "item_id": "usp tactical",
+      "weapon_id": "usp",
+      "attachment_id": "tactical",
+      "player_rank": 0,
+      "prerequisite_challenge": "ch_marksman_usp_4"
+    },
+    {
+      "item_id": "usp xmags",
+      "weapon_id": "usp",
+      "attachment_id": "xmags",
+      "player_rank": 0,
+      "prerequisite_challenge": "ch_marksman_usp_5"
+    },
+    {
+      "item_id": "deserteagle fmj",
+      "weapon_id": "deserteagle",
+      "attachment_id": "fmj",
+      "player_rank": 61,
+      "prerequisite_challenge": "ch_marksman_deserteagle"
+    },
+    {
+      "item_id": "deserteagle akimbo",
+      "weapon_id": "deserteagle",
+      "attachment_id": "akimbo",
+      "player_rank": 61,
+      "prerequisite_challenge": "ch_marksman_deserteagle_2"
+    },
+    {
+      "item_id": "deserteagle tactical",
+      "weapon_id": "deserteagle",
+      "attachment_id": "tactical",
+      "player_rank": 61,
+      "prerequisite_challenge": "ch_marksman_deserteagle_3"
+    },
+    {
+      "item_id": "coltanaconda fmj",
+      "weapon_id": "coltanaconda",
+      "attachment_id": "fmj",
+      "player_rank": 25,
+      "prerequisite_challenge": "ch_marksman_coltanaconda"
+    },
+    {
+      "item_id": "coltanaconda akimbo",
+      "weapon_id": "coltanaconda",
+      "attachment_id": "akimbo",
+      "player_rank": 25,
+      "prerequisite_challenge": "ch_marksman_coltanaconda_2"
+    },
+    {
+      "item_id": "coltanaconda tactical",
+      "weapon_id": "coltanaconda",
+      "attachment_id": "tactical",
+      "player_rank": 25,
+      "prerequisite_challenge": "ch_marksman_coltanaconda_3"
+    }
+  ]
+}
