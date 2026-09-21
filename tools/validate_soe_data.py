@@ -26,6 +26,7 @@ FILES = {
     "g3": "g3_footlight_blockout.json",
     "g4": "g4_waterfront_blockout.json",
     "g5": "g5_rift_blockout.json",
+    "g6": "g6_sacred_place_blockout.json",
 }
 
 data = {}
@@ -38,7 +39,7 @@ for name, filename in FILES.items():
 if data["manifest"]["id"] != "soe":
     raise SystemExit("manifest id must be soe")
 
-for name in ("quest", "side", "audit", "lore", "achievements", "districts", "enemies", "world", "beast", "buildables", "finale", "geometry", "topology", "g1", "g2", "g3", "g4", "g5"):
+for name in ("quest", "side", "audit", "lore", "achievements", "districts", "enemies", "world", "beast", "buildables", "finale", "geometry", "topology", "g1", "g2", "g3", "g4", "g5", "g6"):
     if data[name].get("map") != "soe":
         raise SystemExit(f"{name} map id mismatch")
 
@@ -262,6 +263,53 @@ if any(g.get("target") != "soe_g5_sword_wall_gate" for g in glyphs):
 if any("Widow's Wine is not treated as a Pack-a-Punch prerequisite" == x for x in data["g5"].get("acceptance", [])) is False:
     raise SystemExit("Rift contract must preserve Widow's Wine as optional for Pack-a-Punch")
 
+# G6 Sacred Place contract.
+if data["g6"].get("phase") != "G6" or data["g6"].get("district") != "sacred_place":
+    raise SystemExit("Sacred Place G6 blockout metadata changed unexpectedly")
+g6_anchors = data["g6"].get("gameplayAnchors", [])
+g6_by_name = {a.get("targetname"): a for a in g6_anchors if a.get("targetname")}
+for required in {
+    "soe_g6_gateworm_entry_left", "soe_g6_gateworm_entry_right",
+    "soe_g6_gateworm_far_left", "soe_g6_gateworm_far_right",
+    "soe_g6_final_ritual", "soe_g6_pap",
+    "soe_g6_shadow_keeper_1", "soe_g6_shadow_keeper_2",
+    "soe_g6_shadow_keeper_3", "soe_g6_shadow_keeper_4",
+    "soe_g6_shadow_capture_table", "soe_g6_shadow_capture_marker"
+}:
+    if required not in g6_by_name:
+        raise SystemExit(f"Sacred Place G6 anchor missing: {required}")
+
+entry_styles = sorted([
+    g6_by_name["soe_g6_gateworm_entry_left"].get("style"),
+    g6_by_name["soe_g6_gateworm_entry_right"].get("style"),
+])
+far_styles = sorted([
+    g6_by_name["soe_g6_gateworm_far_left"].get("style"),
+    g6_by_name["soe_g6_gateworm_far_right"].get("style"),
+])
+if entry_styles != [1, 2] or far_styles != [4, 8]:
+    raise SystemExit("Sacred Place Gateworm style/order contract changed")
+if g6_by_name["soe_g6_gateworm_entry_left"].get("target") != "soe_g6_wallrun_left":
+    raise SystemExit("left entry Gateworm must reveal left wallrun")
+if g6_by_name["soe_g6_gateworm_entry_right"].get("target") != "soe_g6_wallrun_right":
+    raise SystemExit("right entry Gateworm must reveal right wallrun")
+if g6_by_name["soe_g6_final_ritual"].get("target") != "soe_g6_pap_cover":
+    raise SystemExit("fifth ritual must remove the PaP portal cover")
+if g6_by_name["soe_g6_pap"].get("cost") != 5000:
+    raise SystemExit("Sacred Place Pack-a-Punch must cost 5000")
+if len(data["g6"].get("gatewormGeometry", [])) != 2:
+    raise SystemExit("Sacred Place must retain two Gateworm-revealed wallrun surfaces")
+if not data["g6"].get("hazards") or data["g6"]["hazards"][0].get("classname") != "trigger_hurt":
+    raise SystemExit("Sacred Place wallrun abyss must retain explicit hazard coverage")
+keepers = sorted(
+    a.get("style") for a in g6_anchors
+    if a.get("classname") == "soe_shadowman_keeper"
+)
+if keepers != [1, 2, 3, 4]:
+    raise SystemExit("Sacred Place must retain four Shadowman Keeper styles 1..4")
+if sum(1 for a in g6_anchors if a.get("classname") == "soe_shadowman_node") < 6:
+    raise SystemExit("Sacred Place must retain at least six Shadowman movement nodes")
+
 # Runtime coverage anti-regression: documented critical systems must have
 # mapper-facing/runtime implementations, not just JSON descriptions.
 overlay_dir = ROOT / "overlay" / "quakec" / "source" / "server" / "maps" / "soe"
@@ -278,6 +326,8 @@ required_runtime_symbols = {
     "soe_beast_grapple": "Beast grapple interaction",
     "soe_target_counter": "multi-action map target counter",
     "soe_powered_door": "Beast-powered geometry door",
+    "soe_reveal_wall": "Gateworm-revealed wallrun geometry",
+    "soe_wallrun_volume": "Sacred Place wallrun trigger",
     "soe_widows_wine_machine": "Widow Wine machine",
     "soe_rift_first_entry": "Rift first entry trigger",
     "soe_rift_guard_spawn": "Rift Keeper spawn marker",
@@ -345,8 +395,12 @@ if 'mapname == "soe_g4"' not in qc_text:
     raise SystemExit("SoE G4 blockout must activate the Shadows runtime")
 if 'mapname == "soe_g5"' not in qc_text:
     raise SystemExit("SoE G5 blockout must activate the Shadows runtime")
+if 'mapname == "soe_g6"' not in qc_text:
+    raise SystemExit("SoE G6 blockout must activate the Shadows runtime")
 
 patcher = (ROOT / "scripts" / "apply_soe_quakec_overlay.py").read_text(encoding="utf-8")
+if "soe_active && !soe_pap_unlocked" not in patcher:
+    raise SystemExit("SoE Pack-a-Punch hard-lock hook missing")
 for hook in {
     "SoE_RitualFrame();",
     "SoE_MainQuestFrame();",
