@@ -216,9 +216,13 @@ def patch_zone_adjacency(entity: str):
         "sacred_entry": "rift_sacred_gate, sacred_far",
     }
     doorway_overrides = {
+        "junction": "easy_to_junction, junction_to_canal_stub, junction_to_waterfront_stub, junction_to_footlight_stub, soe_full_junction_rift_access",
         "canal_entry": "junction_to_canal_stub",
         "footlight_entry": "junction_to_footlight_stub",
         "waterfront_entry": "junction_to_waterfront_stub",
+        "rift_junction_shortcut": "soe_full_junction_rift_access",
+        "rift_sacred_gate": "soe_full_sacred_access",
+        "sacred_entry": "soe_full_sacred_access",
     }
 
     if zone in adjacency_overrides:
@@ -334,11 +338,12 @@ def add_junction_rift_stairs(world_brushes_out, entities):
             (80,-408,-144),(240,-392,96),
             NULL_TEX,
             targetname="soe_full_junction_rift_access",
+            wayTarget="soe_full_junction_rift_access",
         )
     )
 
 
-def add_underground_connector(world_brushes_out, assembly):
+def add_underground_connector(world_brushes_out, entities, assembly):
     connector = assembly["undergroundConnector"]
     for stair in connector["stairSurfaces"]:
         world_brushes_out.append(
@@ -348,6 +353,19 @@ def add_underground_connector(world_brushes_out, assembly):
         world_brushes_out.append(
             box_brush(tuple(wall["mins"]), tuple(wall["maxs"]), WALL_TEX)
         )
+
+    # The Rift/Sacred boundary is a real quest gate. Ritual #4 opens this
+    # blocker through soe_entities.qc; wayTarget keeps NZ:P adjacent spawns
+    # gated by the same physical state.
+    entities.append(
+        brush_entity(
+            "soe_powered_door",
+            (64,-584,-816),(384,-568,-640),
+            NULL_TEX,
+            targetname="soe_full_sacred_access",
+            wayTarget="soe_full_sacred_access",
+        )
+    )
 
 
 def add_rift_pairs(entities, assembly):
@@ -503,7 +521,7 @@ def generate():
         entities.extend(phase_entities)
 
     add_junction_rift_stairs(brushes, entities)
-    add_underground_connector(brushes, assembly)
+    add_underground_connector(brushes, entities, assembly)
     add_rift_pairs(entities, assembly)
     add_full_tram(entities, assembly)
 
