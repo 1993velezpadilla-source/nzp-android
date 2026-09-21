@@ -6,6 +6,8 @@
     coordinates in QuakeC.
 */
 
+void(float force_update) Zoning_UpdateAllZones;
+
 void(entity who, entity active_ent, float useprint_index, float cost) Player_UseprintWithWait;
 float(entity who, entity active_ent) Player_UseButtonPressed;
 float(entity them, entity me) PlayerIsLooking;
