@@ -399,6 +399,12 @@ void() SoE_FinaleKeeperTouch =
         return;
 
     other.semi_actions |= SEMIACTION_USE;
+
+    // Ignore repeated activation of the same Keeper during one Gateworm
+    // absence window. Only three distinct Keepers may complete the finale.
+    if (soe_finale_keeper_mask & keeper_bit)
+        return;
+
     soe_finale_keeper_mask = soe_finale_keeper_mask | keeper_bit;
 
     if (soe_finale_keeper_mask == 7)
