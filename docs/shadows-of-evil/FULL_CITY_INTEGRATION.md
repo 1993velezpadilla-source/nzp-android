@@ -34,7 +34,10 @@ This keeps the Rift and Sacred Place below all current surface blockout
 geometry while preserving their internal entity/target relationships.
 
 The standalone G5 Sacred Place test seal is removed. A short physical stair
-connector rises from the Rift floor into the G6 entry ledge.
+connector rises from the Rift floor into the G6 entry ledge. The integrated
+connector has its own `soe_full_sacred_access` powered gate; it remains
+physically closed and suppresses adjacent-zone spawning until all four district
+rituals are complete.
 
 ### Junction -> Rift
 
@@ -133,37 +136,46 @@ runs an integration audit, builds NZ:P WADs, compiles with the pinned VHLT
 pipeline, generates NZ:P spawn-zone runtime data with the pinned
 `spawn-zone-tool`, and requires both non-empty `soe.bsp` and `soe.nsz`.
 
-### First integrated runtime package green
+### Current integrated runtime baseline
 
-On 2026-09-21, workflow run `35553033084` completed successfully at commit
-`07c8144ffac41aba68b55f78ae2e7adf94de244f`.
+On 2026-09-21, workflow run `35553755381` completed successfully at commit
+`90b624b324ab9124e7b24b98d7cdd81baca037b8`.
 
-Published artifact: `soe-integrated-runtime` (artifact id `10619545472`,
-506,305 bytes, SHA-256
-`c71c102d691761812c220d7eb72993bd231bdde06e938c0aed1925256a4a001d`).
+Published artifact: `soe-integrated-runtime` (artifact id `10619521890`,
+594,929 bytes, SHA-256
+`e36394215a24065f5612686fca33c666e3cb252bf8a85275d6873ac58a8d64e6`).
 
 The artifact contains:
 
 - `common/maps/soe.bsp`;
 - `common/maps/soe.nsz`;
-- generated `source/maps/soe/soe.map`.
+- generated `source/maps/soe/soe.map`;
+- `soe-vhlt.log` for compile-budget regression analysis.
 
-Smoke-build metrics from the successful run:
+Smoke-build metrics from the successful gated-runtime run:
 
-- 5,358 BSP faces;
-- 3,854 clipnodes after reduction;
-- 957 planes after reduction;
-- 2 light styles;
-- 32 generated NZ:P spawn zones;
+- 5,358 BSP faces against an 8,000 CI budget;
+- 3,874 clipnodes after reduction against a 6,000 budget;
+- 963 planes after reduction against a 1,600 budget;
+- 633 portal leaves against a 1,000 budget;
+- 2 light styles against an 8-style project budget;
+- 32 generated NZ:P spawn zones / 32 zone brushes / 12 way targets;
 - fast VIS / fast zero-bounce RAD for CI blockout validation.
 
+The generated `.nsz` is parsed again after compilation using the same structural
+limits expected by NZ:P: unique contiguous zone IDs, bounded brush/adjacency/
+way-target counts, symmetric adjacency, and full reachability from Easy Street.
+
 The integrated map currently reaches the stock NZ:P `MAX_ZONES=32` ceiling.
-The SoE QuakeC overlay therefore raises `MAX_ZONES` to 64, while the
-full-city validator enforces unique zone names, valid/symmetric adjacency,
-bounded adjacency/way-target counts, non-orphaned zombie spawn targets, and
-real door `wayTarget` resolution. The three district entry zones share their
-1000-point Junction door wayTargets so closed doors suppress adjacent-zone
-spawns correctly.
+The SoE QuakeC overlay therefore raises `MAX_ZONES` to 64. Custom
+`soe_powered_door` blockers expose `STATE_BOTTOM`/`STATE_TOP` to NZ:P
+zoning and force a zone refresh when opened. This lets physical quest gates and
+zombie-spawn eligibility use the same state for the Junction/Rift descent and
+the four-ritual Rift/Sacred Place access.
+
+The three 1,000-point district entries also share their Junction door
+`wayTarget` on both sides, preventing adjacent-district zombie spawns while a
+purchase door is still closed.
 
 CI smoke lighting is intentionally not release lighting. Final visual
 verification must use the release/full VIS and higher-quality RAD profile after
