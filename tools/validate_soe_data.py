@@ -582,6 +582,9 @@ if "immediate retry" not in data["finale"]["flagDefense"]["failRule"]:
 if not data["finale"]["flagDefense"].get("shadowmanBehavior"):
     raise SystemExit("flag defense lost Shadowman harassment behavior")
 
+if "respawn when train is called" not in data["finale"]["fourPlayerFinale"].get("bleedOutRule", ""):
+    raise SystemExit("finale bled-out players must respawn when the Tram is called")
+
 
 round_skip = next((q for q in data["side"]["sideQuests"] if q["id"] == "round_skip"), None)
 if not round_skip or round_skip.get("hitsPerJump") != 5 or round_skip.get("timeoutSeconds") != 5:
