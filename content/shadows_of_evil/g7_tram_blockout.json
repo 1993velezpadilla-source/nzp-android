@@ -28,15 +28,15 @@
       "style": 1,
       "marker": [
         -760,
-        440,
+        -48,
         0
       ],
       "platform": [
-        -864,
-        360,
+        -896,
+        -192,
         -16,
         -448,
-        720,
+        192,
         0
       ]
     },
@@ -44,16 +44,16 @@
       "id": "footlight",
       "style": 2,
       "marker": [
+        -80,
         600,
-        440,
         0
       ],
       "platform": [
+        -288,
         448,
-        360,
         -16,
-        864,
-        720,
+        288,
+        896,
         0
       ]
     },
@@ -61,16 +61,16 @@
       "id": "waterfront",
       "style": 3,
       "marker": [
-        -80,
-        -800,
+        600,
+        -48,
         0
       ],
       "platform": [
-        -288,
-        -896,
+        448,
+        -192,
         -16,
-        288,
-        -512,
+        896,
+        192,
         0
       ]
     }
@@ -91,12 +91,12 @@
     "speed": 170,
     "mins": [
       -760,
-      440,
+      -48,
       0
     ],
     "maxs": [
       -600,
-      536,
+      48,
       88
     ],
     "cost": 500,
@@ -109,7 +109,7 @@
       "destination": 2,
       "origin": [
         -704,
-        384,
+        -112,
         40
       ],
       "cost": 500
@@ -119,7 +119,7 @@
       "destination": 3,
       "origin": [
         -656,
-        384,
+        -112,
         40
       ],
       "cost": 500
@@ -128,8 +128,8 @@
       "station": 2,
       "destination": 1,
       "origin": [
-        656,
-        384,
+        -56,
+        520,
         40
       ],
       "cost": 500
@@ -138,8 +138,8 @@
       "station": 2,
       "destination": 3,
       "origin": [
-        704,
-        384,
+        56,
+        520,
         40
       ],
       "cost": 500
@@ -148,8 +148,8 @@
       "station": 3,
       "destination": 1,
       "origin": [
-        -56,
-        -560,
+        656,
+        -112,
         40
       ],
       "cost": 500
@@ -158,8 +158,8 @@
       "station": 3,
       "destination": 2,
       "origin": [
-        56,
-        -560,
+        704,
+        -112,
         40
       ],
       "cost": 500
@@ -170,8 +170,8 @@
       "district": "canal",
       "style": 1,
       "origin": [
-        -420,
-        248,
+        -360,
+        64,
         112
       ],
       "viewSide": "left / circular-window side"
@@ -180,8 +180,8 @@
       "district": "footlight",
       "style": 2,
       "origin": [
-        420,
-        248,
+        64,
+        320,
         112
       ],
       "viewSide": "left / apartment-window side"
@@ -190,8 +190,8 @@
       "district": "waterfront",
       "style": 3,
       "origin": [
-        0,
-        -344,
+        360,
+        -64,
         112
       ],
       "viewSide": "right / warehouse-window side"
@@ -204,7 +204,7 @@
         "style": 1,
         "origin": [
           -624,
-          604,
+          112,
           112
         ],
         "placement": "above back train door"
@@ -213,8 +213,8 @@
         "district": "footlight",
         "style": 2,
         "origin": [
-          624,
-          604,
+          0,
+          688,
           112
         ],
         "placement": "between station train doors"
@@ -223,8 +223,8 @@
         "district": "waterfront",
         "style": 3,
         "origin": [
-          0,
-          -604,
+          624,
+          112,
           112
         ],
         "placement": "above back train door"
@@ -343,7 +343,7 @@
       "classname": "info_notnull",
       "origin": [
         -640,
-        520,
+        64,
         48
       ],
       "targetname": "soe_g7_canal_phone_anchor"
@@ -351,8 +351,8 @@
     {
       "classname": "info_notnull",
       "origin": [
-        640,
-        520,
+        0,
+        752,
         48
       ],
       "targetname": "soe_g7_footlight_phone_anchor"
@@ -360,8 +360,8 @@
     {
       "classname": "info_notnull",
       "origin": [
-        0,
-        -688,
+        640,
+        64,
         48
       ],
       "targetname": "soe_g7_waterfront_phone_anchor"
@@ -370,7 +370,7 @@
       "classname": "info_notnull",
       "origin": [
         -736,
-        640,
+        144,
         40
       ],
       "targetname": "soe_g7_canal_gobblegum_anchor"
@@ -378,8 +378,8 @@
     {
       "classname": "info_notnull",
       "origin": [
+        160,
         736,
-        640,
         40
       ],
       "targetname": "soe_g7_footlight_gobblegum_anchor"
@@ -387,8 +387,8 @@
     {
       "classname": "info_notnull",
       "origin": [
-        192,
-        -816,
+        736,
+        144,
         40
       ],
       "targetname": "soe_g7_waterfront_gobblegum_anchor"
@@ -397,7 +397,7 @@
       "classname": "info_notnull",
       "origin": [
         -680,
-        472,
+        -16,
         48
       ],
       "targetname": "soe_g7_bootlegger_tram_anchor",
