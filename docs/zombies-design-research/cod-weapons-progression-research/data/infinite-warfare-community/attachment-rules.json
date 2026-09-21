@@ -1,0 +1,147 @@
+{
+  "provenance": {
+    "source": "Infinite Warfare Weapon Stats community spreadsheet",
+    "spreadsheet_url": "https://docs.google.com/spreadsheets/d/1bf65mTvaplhyMv2xPr_56OZ01qI3mfyTU08OTtoRu5U/edit",
+    "spreadsheet_id": "1bf65mTvaplhyMv2xPr_56OZ01qI3mfyTU08OTtoRu5U",
+    "observed_at": "2026-09-21",
+    "source_type": "community technical measurement/reference"
+  },
+  "count": 27,
+  "attachments": [
+    {
+      "name": "Hollow Point",
+      "effect": "Helmet/Head multiplier: 1.35x",
+      "source_row": 2
+    },
+    {
+      "name": "Hollow Point (M1)",
+      "effect": "Helmet/Head multiplier: 1.3x",
+      "source_row": 3
+    },
+    {
+      "name": "VMC",
+      "effect": "ADS time: 260ms",
+      "source_row": 4
+    },
+    {
+      "name": "VMC (Zoomed)",
+      "effect": "Centerspeed: 1.25x, Gunkick: .05x",
+      "source_row": 5
+    },
+    {
+      "name": "Foregrip",
+      "effect": "Viewkick: .93x",
+      "source_row": 6
+    },
+    {
+      "name": "Foregrip (Snipers)",
+      "effect": "Viewkick: .825x",
+      "source_row": 7
+    },
+    {
+      "name": "Foregrip (Shotguns)",
+      "effect": "Increased centerspeed",
+      "source_row": 8
+    },
+    {
+      "name": "Ballistics CPU",
+      "effect": "Idle Sway Amount: x.5",
+      "source_row": 9
+    },
+    {
+      "name": "ELO",
+      "effect": "ADS time: 240ms",
+      "source_row": 10
+    },
+    {
+      "name": "ELO (M1, Widowmaker, EBR-800, KBS-Longbow)",
+      "effect": "Idle Sway Amount: x1.4",
+      "source_row": 11
+    },
+    {
+      "name": "Reflex",
+      "effect": "ADS time: 250ms",
+      "source_row": 12
+    },
+    {
+      "name": "Thermal",
+      "effect": "ADS time: 280ms",
+      "source_row": 13
+    },
+    {
+      "name": "Trojan (LMGs, Volk)",
+      "effect": "ADS time: 310ms",
+      "source_row": 14
+    },
+    {
+      "name": "Trojan (Shotguns)",
+      "effect": "ADS time: 210ms",
+      "source_row": 15
+    },
+    {
+      "name": "Trojan (ARs)",
+      "effect": "ADS time: 260ms",
+      "source_row": 16
+    },
+    {
+      "name": "Trojan (Oni)",
+      "effect": "ADS time: 130ms",
+      "source_row": 17
+    },
+    {
+      "name": "Extended Mags",
+      "effect": "Magazine size: x1.5",
+      "source_row": 18
+    },
+    {
+      "name": "FMJ",
+      "effect": "Damage lost through objects: x.5",
+      "source_row": 19
+    },
+    {
+      "name": "Laser Sight",
+      "effect": "Hipspread: x.65",
+      "source_row": 20
+    },
+    {
+      "name": "Particle Amp",
+      "effect": "Range: x1.2",
+      "source_row": 21
+    },
+    {
+      "name": "Particle Amp (Shotguns)",
+      "effect": "Range: x1.1",
+      "source_row": 22
+    },
+    {
+      "name": "Quickdraw",
+      "effect": "ADS time: x.5",
+      "source_row": 23
+    },
+    {
+      "name": "Rifled Barrel",
+      "effect": "Range: x1.2",
+      "source_row": 24
+    },
+    {
+      "name": "Stock (ARs)",
+      "effect": "ADS movement speed: x1.8",
+      "source_row": 25
+    },
+    {
+      "name": "Stock (LMGs)",
+      "effect": "ADS movement speed: x1.85",
+      "source_row": 26
+    },
+    {
+      "name": "Stock (SMGs, Shotguns)",
+      "effect": "ADS movement speed = movement speed",
+      "source_row": 27
+    },
+    {
+      "name": "Suppressor",
+      "effect": "Range: x.75",
+      "source_row": 28
+    }
+  ]
+}
