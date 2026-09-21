@@ -23,6 +23,11 @@ float soe_finale_gateworm_absent_until;
 float soe_finale_next_margwa_at;
 float soe_finale_next_corruption_at;
 
+#define SOE_FINALE_CORRUPTION_MIN_SECONDS 30
+#define SOE_FINALE_CORRUPTION_MAX_SECONDS 45
+#define SOE_FINALE_CLEANSE_DEADLINE_SECONDS 15
+#define SOE_FINALE_BEAST_CORRUPTION_DRAIN 40
+
 .float soe_finale_torch_active;
 .float soe_finale_corrupted;
 .float soe_finale_corrupt_deadline;
@@ -55,7 +60,7 @@ void() SoE_FinaleBegin =
     soe_finale_gateworm_absent_until = 0;
     soe_finale_rail_window_until = 0;
     soe_finale_next_margwa_at = time + 1;
-    soe_finale_next_corruption_at = time + 60 + (random() * 60);
+    soe_finale_next_corruption_at = time + SOE_FINALE_CORRUPTION_MIN_SECONDS + (random() * (SOE_FINALE_CORRUPTION_MAX_SECONDS - SOE_FINALE_CORRUPTION_MIN_SECONDS));
 
     // Freeze normal round completion; finale enemies are an independent stream.
     Remaining_Zombies = 9999;
@@ -414,13 +419,13 @@ void() SoE_FinaleStartCorruption =
     while (player != world) {
         if (!player.is_spectator && !player.downed) {
             player.soe_finale_corrupted = true;
-            player.soe_finale_corrupt_deadline = time + 12;
+            player.soe_finale_corrupt_deadline = time + SOE_FINALE_CLEANSE_DEADLINE_SECONDS;
         }
 
         player = find(player, classname, "player");
     }
 
-    soe_finale_next_corruption_at = time + 60 + (random() * 60);
+    soe_finale_next_corruption_at = time + SOE_FINALE_CORRUPTION_MIN_SECONDS + (random() * (SOE_FINALE_CORRUPTION_MAX_SECONDS - SOE_FINALE_CORRUPTION_MIN_SECONDS));
 };
 
 void() SoE_FinaleUpdateCorruption =
@@ -438,7 +443,7 @@ void() SoE_FinaleUpdateCorruption =
             player.soe_finale_corrupt_deadline = 0;
 
             if (player.soe_beast_active)
-                SoE_BeastDrain(player, 40);
+                SoE_BeastDrain(player, SOE_FINALE_BEAST_CORRUPTION_DRAIN);
             else
                 DamageHandler(player, world, 999999, DMG_TYPE_OTHER);
         }
