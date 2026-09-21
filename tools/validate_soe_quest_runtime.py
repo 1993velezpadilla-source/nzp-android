@@ -262,6 +262,14 @@ runtime_guards = {
         finale_qc,
         "!soe_tram_in_transit && cvar(\"soe_solo_finale\") == 0",
     ),
+    "Tram arrival ignores stale callbacks": (
+        tram_qc,
+        "if (!soe_tram_in_transit)\n        return;",
+    ),
+    "Tram arrival rejects destination mismatch": (
+        tram_qc,
+        "if (soe_tram_destination > 0 && self.style != soe_tram_destination)",
+    ),
     "Tram controller ignores duplicate ride starts": (
         tram_qc,
         "if (soe_tram_in_transit)\n        return;",
