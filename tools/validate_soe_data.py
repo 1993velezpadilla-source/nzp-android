@@ -585,6 +585,12 @@ if not data["finale"]["flagDefense"].get("shadowmanBehavior"):
 if "respawn when train is called" not in data["finale"]["fourPlayerFinale"].get("bleedOutRule", ""):
     raise SystemExit("finale bled-out players must respawn when the Tram is called")
 
+finale_enemy_override = data["finale"]["fourPlayerFinale"].get("enemyOverride", "")
+if "normal zombies de-spawn" not in finale_enemy_override:
+    raise SystemExit("finale must de-spawn the existing normal zombie population")
+if "surviving Margwas convert" not in finale_enemy_override:
+    raise SystemExit("finale must convert surviving Margwas into the purple variant")
+
 
 round_skip = next((q for q in data["side"]["sideQuests"] if q["id"] == "round_skip"), None)
 if not round_skip or round_skip.get("hitsPerJump") != 5 or round_skip.get("timeoutSeconds") != 5:
