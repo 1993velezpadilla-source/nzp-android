@@ -29,6 +29,7 @@ FILES = {
     "g6": "g6_sacred_place_blockout.json",
     "g7": "g7_tram_blockout.json",
     "mainquest_geometry": "mainquest_geometry.json",
+    "full_city": "full_city_assembly.json",
 }
 
 data = {}
@@ -41,7 +42,7 @@ for name, filename in FILES.items():
 if data["manifest"]["id"] != "soe":
     raise SystemExit("manifest id must be soe")
 
-for name in ("quest", "side", "audit", "lore", "achievements", "districts", "enemies", "world", "beast", "buildables", "finale", "geometry", "topology", "g1", "g2", "g3", "g4", "g5", "g6", "g7", "mainquest_geometry"):
+for name in ("quest", "side", "audit", "lore", "achievements", "districts", "enemies", "world", "beast", "buildables", "finale", "geometry", "topology", "g1", "g2", "g3", "g4", "g5", "g6", "g7", "mainquest_geometry", "full_city"):
     if data[name].get("map") != "soe":
         raise SystemExit(f"{name} map id mismatch")
 
@@ -400,6 +401,29 @@ for phase, generator in {
         raise SystemExit(f"{phase} generator no longer imports shared main-quest geometry")
     if call not in generator_text or phase_token not in generator_text:
         raise SystemExit(f"{phase} generator no longer injects its main-quest entities")
+
+# Full-city assembly contract.
+full = data["full_city"]
+if full.get("phase") != "FULL_A0" or full.get("status") != "integrated_blockout_compile_target":
+    raise SystemExit("full-city assembly phase/status changed unexpectedly")
+phases = full.get("phases", {})
+if set(phases) != {"g1", "g2", "g3", "g4", "g5", "g6"}:
+    raise SystemExit("full-city assembly must consume exactly G1-G6 geometry phases")
+for phase in ("g1", "g2", "g3", "g4"):
+    if phases[phase].get("transform") != [0, 0, 0]:
+        raise SystemExit(f"{phase} surface transform must remain identity")
+if phases["g5"].get("transform") != [224, 0, -704]:
+    raise SystemExit("G5 Rift transform changed unexpectedly")
+if phases["g6"].get("transform") != [224, -320, -704]:
+    raise SystemExit("G6 Sacred Place transform changed unexpectedly")
+if full.get("tram", {}).get("cost") != 500:
+    raise SystemExit("integrated Tram cost must remain 500")
+if len(full.get("rifts", [])) != 3:
+    raise SystemExit("integrated map must retain three paired district Rifts")
+if len(full["tram"].get("stations", [])) != 3:
+    raise SystemExit("integrated Tram must retain three actual district stations")
+if len(full["tram"].get("finale", {}).get("stationBoxes", [])) != 3:
+    raise SystemExit("integrated finale must retain three rail-shock boxes")
 
 # Runtime coverage anti-regression: documented critical systems must have
 # mapper-facing/runtime implementations, not just JSON descriptions.
