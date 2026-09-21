@@ -107,6 +107,27 @@ for name, p in zone_by_name.items():
         if name not in reverse:
             raise SystemExit(f"zone adjacency is not symmetric: {name} -> {other}")
 
+# Every runtime zone must be connected to the playable graph rooted at Easy Street.
+# This catches isolated NSZ islands even when all adjacency names are individually valid.
+reachable = set()
+frontier = ["easy_street"]
+while frontier:
+    current = frontier.pop()
+    if current in reachable:
+        continue
+    reachable.add(current)
+    current_prop = zone_by_name[current]
+    for other in [
+        x.strip() for x in current_prop.get("adjacent_zones", "").split(",")
+        if x.strip()
+    ]:
+        if other not in reachable:
+            frontier.append(other)
+
+unreachable = sorted(set(zone_by_name) - reachable)
+if unreachable:
+    raise SystemExit(f"spawn-zone graph has unreachable island(s): {unreachable}")
+
 zone_targets = {p.get("zone_target", "") for p in zone_props if p.get("zone_target")}
 spawn_targets = {
     p.get("targetname", "") for p in entity_props
