@@ -78,8 +78,16 @@ void() SoE_TramMoverUse =
     entity destination = SoE_FindTramStationMarker(soe_tram_destination);
     entity hub = SoE_FindTramHubMarker();
 
-    if (destination == world || hub == world)
+    if (destination == world || hub == world) {
+        // A malformed/missing path marker must not leave the global Tram
+        // state permanently locked in-transit. Abort this ride cleanly so a
+        // corrected/alternate call can be attempted instead of soft-locking.
+        soe_tram_in_transit = false;
+        soe_tram_destination = 0;
+        self.soe_tram_move_destination = 0;
+        self.velocity = '0 0 0';
         return;
+    }
 
     self.soe_tram_move_destination = soe_tram_destination;
 
