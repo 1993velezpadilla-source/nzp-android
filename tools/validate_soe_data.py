@@ -584,6 +584,11 @@ if not data["finale"]["flagDefense"].get("shadowmanBehavior"):
 
 if "respawn when train is called" not in data["finale"]["fourPlayerFinale"].get("bleedOutRule", ""):
     raise SystemExit("finale bled-out players must respawn when the Tram is called")
+if "full bleed-out clears the old corruption" not in data["finale"]["fourPlayerFinale"].get("bleedOutRule", ""):
+    raise SystemExit("Tram respawn must clear stale finale corruption after full bleed-out")
+downed_behavior = data["finale"]["fourPlayerFinale"].get("corruption", {}).get("downedBehavior", "")
+if "infection continues while downed" not in downed_behavior or "remains armed through a revive" not in downed_behavior:
+    raise SystemExit("finale corruption must preserve the canonical downed/revive behavior")
 
 finale_enemy_override = data["finale"]["fourPlayerFinale"].get("enemyOverride", "")
 if "normal zombies de-spawn" not in finale_enemy_override:
