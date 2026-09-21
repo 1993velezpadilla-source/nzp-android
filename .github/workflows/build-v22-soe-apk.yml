@@ -1,0 +1,66 @@
+name: Build v22 SoE Android test APK
+
+on:
+  push:
+    branches:
+      - build/v22-soe-test
+  workflow_dispatch:
+
+jobs:
+  assemble:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout integration branch
+        uses: actions/checkout@v4
+
+      - name: Checkout pinned NZP QuakeC
+        run: |
+          git clone https://github.com/nzp-team/quakec.git .upstream/quakec
+          git -C .upstream/quakec checkout --detach 04bd544172e16193162277a7c356c827e9653b06
+
+      - name: Install QuakeC dependencies
+        run: python3 -m pip install colorama==0.4.6 fastcrc==0.3.0 pandas==2.1.4
+
+      - name: Apply SoE runtime overlay
+        run: python3 scripts/apply_soe_quakec_overlay.py .upstream/quakec
+
+      - name: Compile SoE server QuakeC
+        run: |
+          chmod +x .upstream/quakec/tools/qc-compiler-gnu.sh
+          .upstream/quakec/tools/qc-compiler-gnu.sh
+
+      - name: Locate v22 Android engine source
+        id: engine
+        shell: bash
+        run: |
+          set -euo pipefail
+          shopt -s globstar nullglob
+          candidates=(android/ gradlew app/ engine/android/ vril-engine/android/)
+          found=0
+          for p in "${candidates[@]}"; do
+            if [ -e "$p" ]; then found=1; break; fi
+          done
+          if [ "$found" -ne 1 ]; then
+            echo "::error::The repository does not contain the v22 Android engine/Gradle project yet. SoE runtime compiled successfully, but a real APK cannot be assembled until that source is imported."
+            exit 2
+          fi
+
+      - name: Assemble debug APK
+        run: |
+          chmod +x ./gradlew
+          ./gradlew assembleDebug
+
+      - name: Verify APK
+        run: |
+          APK="$(find . -type f -name '*.apk' | head -n1)"
+          test -n "$APK"
+          test -s "$APK"
+          echo "APK=$APK"
+          sha256sum "$APK"
+
+      - name: Upload v22 SoE APK
+        uses: actions/upload-artifact@v4
+        with:
+          name: nzp-v22-soe-test-apk
+          path: "**/*.apk"
+          if-no-files-found: error
