@@ -75,6 +75,7 @@ require_dependency("apocalypse_averted", ["keeper_shocks"])
 
 state_qc = (QC / "soe_state.qc").read_text(encoding="utf-8")
 ritual_qc = (QC / "soe_rituals.qc").read_text(encoding="utf-8")
+entities_qc = (QC / "soe_entities.qc").read_text(encoding="utf-8")
 sword_qc = (QC / "soe_sword.qc").read_text(encoding="utf-8")
 main_qc = (QC / "soe_mainquest.qc").read_text(encoding="utf-8")
 shadow_qc = (QC / "soe_shadowman.qc").read_text(encoding="utf-8")
@@ -106,8 +107,20 @@ runtime_guards = {
         "soe_gateworm_placed_mask != 15",
     ),
     "four district rituals open integrated Sacred Place access": (
-        (QC / "soe_entities.qc").read_text(encoding="utf-8"),
+        entities_qc,
         'find(world, targetname, "soe_full_sacred_access")',
+    ),
+    "SoE zoning gate starts closed": (
+        entities_qc,
+        "self.state = STATE_BOTTOM;",
+    ),
+    "SoE zoning gate reports open state": (
+        entities_qc,
+        "self.state = STATE_TOP;",
+    ),
+    "SoE zoning gate refreshes active spawns": (
+        entities_qc,
+        "Zoning_UpdateAllZones(true);",
     ),
     "fifth ritual unlocks Pack-a-Punch": (
         ritual_qc,
@@ -195,7 +208,7 @@ stages = [
     "SOE_QUEST_FINALE",
     "SOE_QUEST_COMPLETE",
 ]
-all_qc = "\n".join([state_qc, ritual_qc, sword_qc, main_qc, shadow_qc, finale_qc])
+all_qc = "\n".join([state_qc, ritual_qc, entities_qc, sword_qc, main_qc, shadow_qc, finale_qc])
 for stage in stages:
     if stage not in state_qc:
         raise SystemExit(f"quest stage definition missing: {stage}")
