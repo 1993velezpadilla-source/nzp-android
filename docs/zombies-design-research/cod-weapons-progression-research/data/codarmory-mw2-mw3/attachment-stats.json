@@ -1,0 +1,578 @@
+{
+  "provenance": {
+    "source_repository": "tzurbaev/codarmory.com",
+    "source_revision": "04408ef38fb8e64531503e8a1148b6676374e4b8",
+    "source_license": "MIT",
+    "source_license_sha": "7d6c82434ffc93394cb16ef06006933d4d6fbe78",
+    "source_files": {
+      "weapons": {
+        "path": "src/database/weapons.json",
+        "sha": "64172609f446619be9e9f8170e761e39a3b3be69"
+      },
+      "attachments": {
+        "path": "src/database/attachments.json",
+        "sha": "217d2a4b0f6172cf167d50558000f5ab0731acac"
+      },
+      "attachment_stats": {
+        "path": "src/database/attachment-stats.json",
+        "sha": "4bd265b5ce02f260448bd9ef0855d6c63bdb7aa1"
+      },
+      "attachment_categories": {
+        "path": "src/database/attachment-categories.json",
+        "sha": "e0f583bd0284e3b5bd0fdfbff9bd7e4c6fff22b6"
+      },
+      "weapon_categories": {
+        "path": "src/database/categories.json",
+        "sha": "7477d08a0db8a02f9e3f7687e85ba697feaecccd"
+      },
+      "platforms": {
+        "path": "src/database/platforms.json",
+        "sha": "04ec0d5c1ce14b5df3426fd33341e7831a8c75ec"
+      }
+    },
+    "transformed_on": "2026-09-21",
+    "transformation": "Removed descriptions/art paths and retained technical/factual identity, compatibility, pros/cons and unlock relationships."
+  },
+  "stats": [
+    {
+      "id": "ads_speed",
+      "name": "Aim Down Sight Speed"
+    },
+    {
+      "id": "bullet_velocity",
+      "name": "Bullet Velocity"
+    },
+    {
+      "id": "bullet_penetration",
+      "name": "Bullet Penetration"
+    },
+    {
+      "id": "recoil_control",
+      "name": "Recoil Control"
+    },
+    {
+      "id": "recoil_smoothness",
+      "name": "Recoil Smoothness"
+    },
+    {
+      "id": "damage_range",
+      "name": "Damage Range"
+    },
+    {
+      "id": "hip_fire_accuracy",
+      "name": "Hip Fire Accuracy"
+    },
+    {
+      "id": "hip_fire_moving_accuracy",
+      "name": "Hip Fire Moving Accuracy"
+    },
+    {
+      "id": "hip_recoil_control",
+      "name": "Hip Recoil Control"
+    },
+    {
+      "id": "hip_walking_speed",
+      "name": "Hip Walking Speed"
+    },
+    {
+      "id": "walking_speed",
+      "name": "Walking Speed"
+    },
+    {
+      "id": "precision_sight_picture",
+      "name": "Precision Sight Picture"
+    },
+    {
+      "id": "sound_suppression",
+      "name": "Sound Suppression"
+    },
+    {
+      "id": "muzzle_flash_concealment",
+      "name": "Muzzle Flash Concealment"
+    },
+    {
+      "id": "melee_damage",
+      "name": "Melee Damage"
+    },
+    {
+      "id": "magazine_ammo_capacity",
+      "name": "Magazine Ammo Capacity"
+    },
+    {
+      "id": "ammo_reserve",
+      "name": "Ammo Reserve"
+    },
+    {
+      "id": "high_grain_ammunition",
+      "name": "High Grain Ammunition"
+    },
+    {
+      "id": "reload_quickness",
+      "name": "Reload Quickness"
+    },
+    {
+      "id": "recoil_steadiness",
+      "name": "Recoil Steadiness"
+    },
+    {
+      "id": "aiming_stability",
+      "name": "Aiming Stability"
+    },
+    {
+      "id": "aiming_idle_stability",
+      "name": "Aiming Idle Stability"
+    },
+    {
+      "id": "aiming_recoil_control",
+      "name": "Aiming Recoil Control"
+    },
+    {
+      "id": "recoil_stabilization",
+      "name": "Recoil Stabilization"
+    },
+    {
+      "id": "aim_walking_speed",
+      "name": "Aim Walking Speed"
+    },
+    {
+      "id": "aim_walking_steadiness",
+      "name": "Aim Walking Steadiness"
+    },
+    {
+      "id": "aim_walking_movement_speed",
+      "name": "Aim Walking Movement Speed"
+    },
+    {
+      "id": "horizontal_recoil_control",
+      "name": "Horizontal Recoil Control"
+    },
+    {
+      "id": "vertical_recoil_control",
+      "name": "Vertical Recoil Control"
+    },
+    {
+      "id": "movement_speed",
+      "name": "Movement Speed"
+    },
+    {
+      "id": "crouch_movement_speed",
+      "name": "Crouch Movement Speed"
+    },
+    {
+      "id": "sprint_speed",
+      "name": "Sprint Speed"
+    },
+    {
+      "id": "sprint_to_fire_speed",
+      "name": "Sprint to Fire Speed"
+    },
+    {
+      "id": "ads_laser_visibility",
+      "name": "Laser Visible in ADS"
+    },
+    {
+      "id": "hip_laser_visibility",
+      "name": "Laser Visible at hip"
+    },
+    {
+      "id": "laser_visibility",
+      "name": "Laser Visible to Enemies"
+    },
+    {
+      "id": "canted_laser_aiming",
+      "name": "Canted Laser Aiming"
+    },
+    {
+      "id": "flashlight",
+      "name": "Flashlight"
+    },
+    {
+      "id": "flashlight_visibility",
+      "name": "Flashlight Visible to Enemies"
+    },
+    {
+      "id": "flashlight_ads_visibility",
+      "name": "Flashlight Visible in ADS"
+    },
+    {
+      "id": "termal_target_identification",
+      "name": "Thermal Target Identification"
+    },
+    {
+      "id": "termal_target_indicator",
+      "name": "Target Range Indicator"
+    },
+    {
+      "id": "infrared_night_vision",
+      "name": "Infrared Night Vision"
+    },
+    {
+      "id": "30x_magnification",
+      "name": "3.0x Magnification"
+    },
+    {
+      "id": "37x_magnification",
+      "name": "3.7x Magnification"
+    },
+    {
+      "id": "40x_magnification",
+      "name": "4.0x Magnification"
+    },
+    {
+      "id": "43x_magnification",
+      "name": "4.3x Magnification"
+    },
+    {
+      "id": "48x_magnification",
+      "name": "4.8x Magnification"
+    },
+    {
+      "id": "34x_magnification",
+      "name": "3.4x Magnification"
+    },
+    {
+      "id": "50x_magnification",
+      "name": "5.0x Magnification"
+    },
+    {
+      "id": "55x_magnification",
+      "name": "5.5x Magnification"
+    },
+    {
+      "id": "60x_magnification",
+      "name": "6.0x Magnification"
+    },
+    {
+      "id": "63x_magnification",
+      "name": "6.3x Magnification"
+    },
+    {
+      "id": "66x_magnification",
+      "name": "6.6x Magnification"
+    },
+    {
+      "id": "70x_magnification",
+      "name": "7.0x Magnification"
+    },
+    {
+      "id": "75x_magnification",
+      "name": "7.5x Magnification"
+    },
+    {
+      "id": "80x_magnification",
+      "name": "8.0x Magnification"
+    },
+    {
+      "id": "87x_magnification",
+      "name": "8.7x Magnification"
+    },
+    {
+      "id": "90x_magnification",
+      "name": "9.0x Magnification"
+    },
+    {
+      "id": "95x_magnification",
+      "name": "9.5x Magnification"
+    },
+    {
+      "id": "110x_magnification",
+      "name": "11.0x Magnification"
+    },
+    {
+      "id": "115x_magnification",
+      "name": "11.5x Magnification"
+    },
+    {
+      "id": "12x_magnification",
+      "name": "12x Magnification"
+    },
+    {
+      "id": "125x_magnification",
+      "name": "12.5x Magnification"
+    },
+    {
+      "id": "125x_magnification_toggle",
+      "name": "12.5x Magnification Toggle"
+    },
+    {
+      "id": "130x_magnification",
+      "name": "13.0x Magnification"
+    },
+    {
+      "id": "140x_magnification",
+      "name": "14.0x Magnification"
+    },
+    {
+      "id": "very_large_sniper_glint",
+      "name": "Very Large Sniper Glint"
+    },
+    {
+      "id": "large_sniper_glint",
+      "name": "Large Sniper Glint"
+    },
+    {
+      "id": "medium_sniper_glint",
+      "name": "Medium Sniper Glint"
+    },
+    {
+      "id": "small_sniper_glint",
+      "name": "Small Sniper Glint"
+    },
+    {
+      "id": "very_small_sniper_glint",
+      "name": "Very Small Sniper Glint"
+    },
+    {
+      "id": "dual_optics_toggle",
+      "name": "Dual Optics Toggle"
+    },
+    {
+      "id": "flinch_resistance",
+      "name": "Flinch Resistance"
+    },
+    {
+      "id": "inflict_wounding_effect",
+      "name": "Inflict Wounding Effect"
+    },
+    {
+      "id": "crippling_power",
+      "name": "Crippling Power"
+    },
+    {
+      "id": "incendiary_damage",
+      "name": "Incendiary Damage"
+    },
+    {
+      "id": "target_flinch",
+      "name": "Target Flinch"
+    },
+    {
+      "id": "bipod_mount",
+      "name": "Bipod Mount"
+    },
+    {
+      "id": "underbarrel_grenade_launcher",
+      "name": "Underbarrel 40mm Grenades"
+    },
+    {
+      "id": "underbarrel_drill_charge",
+      "name": "Underbarrel Drill Charge"
+    },
+    {
+      "id": "underbarrel_shotgun",
+      "name": "Underbarrel Shotgun"
+    },
+    {
+      "id": "vehicle_damage",
+      "name": "Vehicle Damage"
+    },
+    {
+      "id": "semi_auto",
+      "name": "Semi-Auto"
+    },
+    {
+      "id": "burst_fire",
+      "name": "Burst Fire"
+    },
+    {
+      "id": "full_auto",
+      "name": "Full Auto"
+    },
+    {
+      "id": "optic_rail_mount",
+      "name": "Optic Rail Mount"
+    },
+    {
+      "id": "optic_rail_size",
+      "name": "Optic Rail Size"
+    },
+    {
+      "id": "tighter_pellet_spread",
+      "name": "Tighter Pellet Spread"
+    },
+    {
+      "id": "wider_pellet_spread",
+      "name": "Wider Pellet Spread"
+    },
+    {
+      "id": "slug_rounds",
+      "name": "Slug Rounds"
+    },
+    {
+      "id": "explosive_slug_rounds",
+      "name": "Explosive Slug Rounds"
+    },
+    {
+      "id": "explosive_impact",
+      "name": "Explosive Impact"
+    },
+    {
+      "id": "damage_radius",
+      "name": "Damage Radius"
+    },
+    {
+      "id": "tube_ammo_capacity",
+      "name": "Tube Ammo Capacity"
+    },
+    {
+      "id": "fire_rate",
+      "name": "Fire Rate"
+    },
+    {
+      "id": "rechambering_speed",
+      "name": "Rechambering Speed"
+    },
+    {
+      "id": "rechambering_accuracy",
+      "name": "Rechambering Accuracy"
+    },
+    {
+      "id": "bullet_drop_indicator",
+      "name": "Bullet Drop Indicator"
+    },
+    {
+      "id": "pistol_fastdraw",
+      "name": "Pistol Fastdraw"
+    },
+    {
+      "id": "expanded_gunsmithing",
+      "name": "Expanded Gunsmithing"
+    },
+    {
+      "id": "weapon_swap_speed",
+      "name": "Weapon Swap Speed"
+    },
+    {
+      "id": "trigger_response_time",
+      "name": "Trigger Response Time"
+    },
+    {
+      "id": "damage",
+      "name": "Damage"
+    },
+    {
+      "id": "no_enemy_skulls",
+      "name": "No Enemy Skulls"
+    },
+    {
+      "id": "bolt_accuracy",
+      "name": "Bolt Accuracy"
+    },
+    {
+      "id": "bolt_velocity",
+      "name": "Bolt Velocity"
+    },
+    {
+      "id": "thermite_tip",
+      "name": "Thermite Tip"
+    },
+    {
+      "id": "explosive_tip",
+      "name": "Explosive Tip"
+    },
+    {
+      "id": "tear_gas_cartridge",
+      "name": "Tear Gas Cartridge"
+    },
+    {
+      "id": "hipfire_tacstance_spread",
+      "name": "Hipfire and Tac Stance Spread"
+    },
+    {
+      "id": "tacstance_spread",
+      "name": "Tac Stance Spread"
+    },
+    {
+      "id": "hipfire_spread",
+      "name": "Hipfire Spread"
+    },
+    {
+      "id": "aiming_idle_sway",
+      "name": "Aiming Idle Sway"
+    },
+    {
+      "id": "firing_aim_stability",
+      "name": "Firing Aim Stability"
+    },
+    {
+      "id": "gun_kick_control",
+      "name": "Gun Kick Control"
+    },
+    {
+      "id": "bullet_velocity_range",
+      "name": "Bullet Velocity & Range"
+    },
+    {
+      "id": "laser_flashlight_visibility",
+      "name": "Laser & Flashlight Visible to Enemies"
+    },
+    {
+      "id": "vertical_recoil",
+      "name": "Vertical Recoil"
+    },
+    {
+      "id": "horizontal_recoil",
+      "name": "Horizontal Recoil"
+    },
+    {
+      "id": "undetectable_by_radar",
+      "name": "Undetectable by Radar"
+    },
+    {
+      "id": "25x_magnification",
+      "name": "2.5x Magnification"
+    },
+    {
+      "id": "1_25x_magnification",
+      "name": "1.25x Magnification"
+    },
+    {
+      "id": "150x_magnification",
+      "name": "15.0x Magnification"
+    },
+    {
+      "id": "no_tacstance",
+      "name": "No Tactical Stance"
+    },
+    {
+      "id": "ads_speed_while_jumping",
+      "name": "ADS Speed While Jumping"
+    },
+    {
+      "id": "hip_accuracy_while_jumping",
+      "name": "Hip Accuracy While Jumping"
+    },
+    {
+      "id": "hip_accuracy_while_moving",
+      "name": "Hip Accuracy While Moving"
+    },
+    {
+      "id": "fewer_pellets",
+      "name": "Fewer Pellets"
+    },
+    {
+      "id": "bolo_rounds",
+      "name": "Bolo Rounds"
+    },
+    {
+      "id": "limb_damage",
+      "name": "Limb Damage"
+    },
+    {
+      "id": "allows_for_tacstance",
+      "name": "Allows for Tactical Stance"
+    },
+    {
+      "id": "cqc_accuracy_while_sliding",
+      "name": "CQC Accuracy While Sliding"
+    },
+    {
+      "id": "ranged_damage_falloff",
+      "name": "Ranged Damage Falloff"
+    },
+    {
+      "id": "akimbo",
+      "name": "Akimbo"
+    }
+  ]
+}
