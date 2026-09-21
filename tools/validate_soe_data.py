@@ -552,6 +552,8 @@ if quest_by_id["station_shocks"]["requires"] != ["infinite_margwa_phase"]:
     raise SystemExit("station shocks must precede the tram Gateworm hit")
 if quest_by_id["train_gateworm_hit"]["requires"] != ["station_shocks"]:
     raise SystemExit("tram Gateworm hit must require electrified station rails")
+if quest_by_id["keeper_shocks"]["requires"] != ["train_gateworm_hit"]:
+    raise SystemExit("Junction Keeper shocks must require the Tram Gateworm hit")
 
 
 
