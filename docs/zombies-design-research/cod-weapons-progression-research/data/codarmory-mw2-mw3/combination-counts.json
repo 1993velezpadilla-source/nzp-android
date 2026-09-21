@@ -1,0 +1,2992 @@
+{
+  "source_repository": "tzurbaev/codarmory.com",
+  "source_revision": "04408ef38fb8e64531503e8a1148b6676374e4b8",
+  "counting_rule": "At most one attachment from each attachment category; choose 1 through 5 attachments from the compatible attachment IDs listed for each weapon. Source dataset does not encode every in-game mutual exclusion/conversion edge case, so counts are an upper bound where such special restrictions exist.",
+  "weapon_count": 97,
+  "largest_space": [
+    {
+      "weapon_id": "m4",
+      "name": "M4",
+      "game_id": "mw2",
+      "category_id": "assault-rifles",
+      "platform_id": "m4",
+      "compatible_attachment_count": 138,
+      "attachment_category_counts": {
+        "muzzles": 22,
+        "barrels": 7,
+        "lasers": 11,
+        "optics": 45,
+        "stocks": 7,
+        "rear-grips": 5,
+        "magazines": 2,
+        "ammunition": 5,
+        "underbarrels": 34
+      },
+      "combinations_exactly_0_to_5": [
+        1,
+        138,
+        7553,
+        214074,
+        3472287,
+        33744438
+      ],
+      "combinations_1_to_5": 37438490,
+      "combinations_exactly_5": 33744438
+    },
+    {
+      "weapon_id": "tempus-torrent",
+      "name": "Tempus Torrent",
+      "game_id": "mw2",
+      "category_id": "marksman-rifles",
+      "platform_id": "m4",
+      "compatible_attachment_count": 139,
+      "attachment_category_counts": {
+        "muzzles": 18,
+        "barrels": 4,
+        "lasers": 11,
+        "optics": 51,
+        "stocks": 6,
+        "guards": 3,
+        "rear-grips": 5,
+        "magazines": 2,
+        "ammunition": 6,
+        "underbarrels": 33
+      },
+      "combinations_exactly_0_to_5": [
+        1,
+        139,
+        7530,
+        210266,
+        3396977,
+        33696675
+      ],
+      "combinations_1_to_5": 37311587,
+      "combinations_exactly_5": 33696675
+    },
+    {
+      "weapon_id": "iso-hemlock",
+      "name": "ISO Hemlock",
+      "game_id": "mw2",
+      "category_id": "assault-rifles",
+      "platform_id": "iso",
+      "compatible_attachment_count": 138,
+      "attachment_category_counts": {
+        "muzzles": 22,
+        "barrels": 5,
+        "lasers": 11,
+        "optics": 46,
+        "stocks": 5,
+        "rear-grips": 4,
+        "magazines": 2,
+        "ammunition": 10,
+        "underbarrels": 33
+      },
+      "combinations_exactly_0_to_5": [
+        1,
+        138,
+        7532,
+        212250,
+        3404139,
+        32409612
+      ],
+      "combinations_1_to_5": 36033671,
+      "combinations_exactly_5": 32409612
+    },
+    {
+      "weapon_id": "lachmann-762",
+      "name": "Lachmann-762",
+      "game_id": "mw2",
+      "category_id": "battle-rifles",
+      "platform_id": "lachmann",
+      "compatible_attachment_count": 131,
+      "attachment_category_counts": {
+        "muzzles": 18,
+        "barrels": 6,
+        "lasers": 11,
+        "optics": 45,
+        "stocks": 5,
+        "rear-grips": 4,
+        "magazines": 4,
+        "ammunition": 6,
+        "underbarrels": 32
+      },
+      "combinations_exactly_0_to_5": [
+        1,
+        131,
+        6769,
+        181289,
+        2802574,
+        26306444
+      ],
+      "combinations_1_to_5": 29297207,
+      "combinations_exactly_5": 26306444
+    },
+    {
+      "weapon_id": "kastov-545",
+      "name": "Kastov 545",
+      "game_id": "mw2",
+      "category_id": "assault-rifles",
+      "platform_id": "kastovia",
+      "compatible_attachment_count": 134,
+      "attachment_category_counts": {
+        "muzzles": 22,
+        "barrels": 4,
+        "lasers": 11,
+        "optics": 45,
+        "stocks": 8,
+        "rear-grips": 3,
+        "magazines": 3,
+        "ammunition": 5,
+        "underbarrels": 33
+      },
+      "combinations_exactly_0_to_5": [
+        1,
+        134,
+        7057,
+        190202,
+        2891539,
+        25965626
+      ],
+      "combinations_1_to_5": 29054558,
+      "combinations_exactly_5": 25965626
+    },
+    {
+      "weapon_id": "kv-broadside",
+      "name": "KV Broadside",
+      "game_id": "mw2",
+      "category_id": "shotguns",
+      "platform_id": "kastovia",
+      "compatible_attachment_count": 125,
+      "attachment_category_counts": {
+        "muzzles": 17,
+        "barrels": 8,
+        "lasers": 11,
+        "optics": 39,
+        "stocks": 7,
+        "bolts": 2,
+        "rear-grips": 4,
+        "magazines": 2,
+        "ammunition": 3,
+        "underbarrels": 32
+      },
+      "combinations_exactly_0_to_5": [
+        1,
+        125,
+        6262,
+        164806,
+        2531717,
+        23840761
+      ],
+      "combinations_1_to_5": 26543671,
+      "combinations_exactly_5": 23840761
+    },
+    {
+      "weapon_id": "stb-556",
+      "name": "STB-556",
+      "game_id": "mw2",
+      "category_id": "assault-rifles",
+      "platform_id": "bruen-bullpup",
+      "compatible_attachment_count": 133,
+      "attachment_category_counts": {
+        "muzzles": 22,
+        "barrels": 6,
+        "lasers": 11,
+        "optics": 46,
+        "stocks": 2,
+        "combs": 3,
+        "rear-grips": 3,
+        "magazines": 2,
+        "ammunition": 5,
+        "underbarrels": 33
+      },
+      "combinations_exactly_0_to_5": [
+        1,
+        133,
+        6896,
+        181510,
+        2681477,
+        23518957
+      ],
+      "combinations_1_to_5": 26388973,
+      "combinations_exactly_5": 23518957
+    },
+    {
+      "weapon_id": "m16",
+      "name": "M16",
+      "game_id": "mw2",
+      "category_id": "assault-rifles",
+      "platform_id": "m4",
+      "compatible_attachment_count": 133,
+      "attachment_category_counts": {
+        "muzzles": 22,
+        "barrels": 4,
+        "lasers": 11,
+        "optics": 45,
+        "stocks": 5,
+        "rear-grips": 4,
+        "magazines": 3,
+        "ammunition": 5,
+        "underbarrels": 34
+      },
+      "combinations_exactly_0_to_5": [
+        1,
+        133,
+        6906,
+        181890,
+        2680809,
+        23289837
+      ],
+      "combinations_1_to_5": 26159575,
+      "combinations_exactly_5": 23289837
+    },
+    {
+      "weapon_id": "lachmann-556",
+      "name": "Lachmann-556",
+      "game_id": "mw2",
+      "category_id": "assault-rifles",
+      "platform_id": "lachmann",
+      "compatible_attachment_count": 132,
+      "attachment_category_counts": {
+        "muzzles": 22,
+        "barrels": 5,
+        "lasers": 11,
+        "optics": 45,
+        "stocks": 5,
+        "rear-grips": 3,
+        "magazines": 3,
+        "ammunition": 5,
+        "underbarrels": 33
+      },
+      "combinations_exactly_0_to_5": [
+        1,
+        132,
+        6806,
+        178226,
+        2613480,
+        22571074
+      ],
+      "combinations_1_to_5": 25369718,
+      "combinations_exactly_5": 22571074
+    },
+    {
+      "weapon_id": "kastov-762",
+      "name": "Kastov 762",
+      "game_id": "mw2",
+      "category_id": "assault-rifles",
+      "platform_id": "kastovia",
+      "compatible_attachment_count": 130,
+      "attachment_category_counts": {
+        "muzzles": 16,
+        "barrels": 5,
+        "lasers": 11,
+        "optics": 45,
+        "stocks": 8,
+        "rear-grips": 4,
+        "magazines": 2,
+        "ammunition": 5,
+        "underbarrels": 34
+      },
+      "combinations_exactly_0_to_5": [
+        1,
+        130,
+        6604,
+        171750,
+        2548119,
+        22622040
+      ],
+      "combinations_1_to_5": 25348643,
+      "combinations_exactly_5": 22622040
+    }
+  ],
+  "weapons": [
+    {
+      "weapon_id": "m4",
+      "name": "M4",
+      "game_id": "mw2",
+      "category_id": "assault-rifles",
+      "platform_id": "m4",
+      "compatible_attachment_count": 138,
+      "attachment_category_counts": {
+        "muzzles": 22,
+        "barrels": 7,
+        "lasers": 11,
+        "optics": 45,
+        "stocks": 7,
+        "rear-grips": 5,
+        "magazines": 2,
+        "ammunition": 5,
+        "underbarrels": 34
+      },
+      "combinations_exactly_0_to_5": [
+        1,
+        138,
+        7553,
+        214074,
+        3472287,
+        33744438
+      ],
+      "combinations_1_to_5": 37438490,
+      "combinations_exactly_5": 33744438
+    },
+    {
+      "weapon_id": "tempus-torrent",
+      "name": "Tempus Torrent",
+      "game_id": "mw2",
+      "category_id": "marksman-rifles",
+      "platform_id": "m4",
+      "compatible_attachment_count": 139,
+      "attachment_category_counts": {
+        "muzzles": 18,
+        "barrels": 4,
+        "lasers": 11,
+        "optics": 51,
+        "stocks": 6,
+        "guards": 3,
+        "rear-grips": 5,
+        "magazines": 2,
+        "ammunition": 6,
+        "underbarrels": 33
+      },
+      "combinations_exactly_0_to_5": [
+        1,
+        139,
+        7530,
+        210266,
+        3396977,
+        33696675
+      ],
+      "combinations_1_to_5": 37311587,
+      "combinations_exactly_5": 33696675
+    },
+    {
+      "weapon_id": "iso-hemlock",
+      "name": "ISO Hemlock",
+      "game_id": "mw2",
+      "category_id": "assault-rifles",
+      "platform_id": "iso",
+      "compatible_attachment_count": 138,
+      "attachment_category_counts": {
+        "muzzles": 22,
+        "barrels": 5,
+        "lasers": 11,
+        "optics": 46,
+        "stocks": 5,
+        "rear-grips": 4,
+        "magazines": 2,
+        "ammunition": 10,
+        "underbarrels": 33
+      },
+      "combinations_exactly_0_to_5": [
+        1,
+        138,
+        7532,
+        212250,
+        3404139,
+        32409612
+      ],
+      "combinations_1_to_5": 36033671,
+      "combinations_exactly_5": 32409612
+    },
+    {
+      "weapon_id": "lachmann-762",
+      "name": "Lachmann-762",
+      "game_id": "mw2",
+      "category_id": "battle-rifles",
+      "platform_id": "lachmann",
+      "compatible_attachment_count": 131,
+      "attachment_category_counts": {
+        "muzzles": 18,
+        "barrels": 6,
+        "lasers": 11,
+        "optics": 45,
+        "stocks": 5,
+        "rear-grips": 4,
+        "magazines": 4,
+        "ammunition": 6,
+        "underbarrels": 32
+      },
+      "combinations_exactly_0_to_5": [
+        1,
+        131,
+        6769,
+        181289,
+        2802574,
+        26306444
+      ],
+      "combinations_1_to_5": 29297207,
+      "combinations_exactly_5": 26306444
+    },
+    {
+      "weapon_id": "kastov-545",
+      "name": "Kastov 545",
+      "game_id": "mw2",
+      "category_id": "assault-rifles",
+      "platform_id": "kastovia",
+      "compatible_attachment_count": 134,
+      "attachment_category_counts": {
+        "muzzles": 22,
+        "barrels": 4,
+        "lasers": 11,
+        "optics": 45,
+        "stocks": 8,
+        "rear-grips": 3,
+        "magazines": 3,
+        "ammunition": 5,
+        "underbarrels": 33
+      },
+      "combinations_exactly_0_to_5": [
+        1,
+        134,
+        7057,
+        190202,
+        2891539,
+        25965626
+      ],
+      "combinations_1_to_5": 29054558,
+      "combinations_exactly_5": 25965626
+    },
+    {
+      "weapon_id": "kv-broadside",
+      "name": "KV Broadside",
+      "game_id": "mw2",
+      "category_id": "shotguns",
+      "platform_id": "kastovia",
+      "compatible_attachment_count": 125,
+      "attachment_category_counts": {
+        "muzzles": 17,
+        "barrels": 8,
+        "lasers": 11,
+        "optics": 39,
+        "stocks": 7,
+        "bolts": 2,
+        "rear-grips": 4,
+        "magazines": 2,
+        "ammunition": 3,
+        "underbarrels": 32
+      },
+      "combinations_exactly_0_to_5": [
+        1,
+        125,
+        6262,
+        164806,
+        2531717,
+        23840761
+      ],
+      "combinations_1_to_5": 26543671,
+      "combinations_exactly_5": 23840761
+    },
+    {
+      "weapon_id": "stb-556",
+      "name": "STB-556",
+      "game_id": "mw2",
+      "category_id": "assault-rifles",
+      "platform_id": "bruen-bullpup",
+      "compatible_attachment_count": 133,
+      "attachment_category_counts": {
+        "muzzles": 22,
+        "barrels": 6,
+        "lasers": 11,
+        "optics": 46,
+        "stocks": 2,
+        "combs": 3,
+        "rear-grips": 3,
+        "magazines": 2,
+        "ammunition": 5,
+        "underbarrels": 33
+      },
+      "combinations_exactly_0_to_5": [
+        1,
+        133,
+        6896,
+        181510,
+        2681477,
+        23518957
+      ],
+      "combinations_1_to_5": 26388973,
+      "combinations_exactly_5": 23518957
+    },
+    {
+      "weapon_id": "m16",
+      "name": "M16",
+      "game_id": "mw2",
+      "category_id": "assault-rifles",
+      "platform_id": "m4",
+      "compatible_attachment_count": 133,
+      "attachment_category_counts": {
+        "muzzles": 22,
+        "barrels": 4,
+        "lasers": 11,
+        "optics": 45,
+        "stocks": 5,
+        "rear-grips": 4,
+        "magazines": 3,
+        "ammunition": 5,
+        "underbarrels": 34
+      },
+      "combinations_exactly_0_to_5": [
+        1,
+        133,
+        6906,
+        181890,
+        2680809,
+        23289837
+      ],
+      "combinations_1_to_5": 26159575,
+      "combinations_exactly_5": 23289837
+    },
+    {
+      "weapon_id": "lachmann-556",
+      "name": "Lachmann-556",
+      "game_id": "mw2",
+      "category_id": "assault-rifles",
+      "platform_id": "lachmann",
+      "compatible_attachment_count": 132,
+      "attachment_category_counts": {
+        "muzzles": 22,
+        "barrels": 5,
+        "lasers": 11,
+        "optics": 45,
+        "stocks": 5,
+        "rear-grips": 3,
+        "magazines": 3,
+        "ammunition": 5,
+        "underbarrels": 33
+      },
+      "combinations_exactly_0_to_5": [
+        1,
+        132,
+        6806,
+        178226,
+        2613480,
+        22571074
+      ],
+      "combinations_1_to_5": 25369718,
+      "combinations_exactly_5": 22571074
+    },
+    {
+      "weapon_id": "kastov-762",
+      "name": "Kastov 762",
+      "game_id": "mw2",
+      "category_id": "assault-rifles",
+      "platform_id": "kastovia",
+      "compatible_attachment_count": 130,
+      "attachment_category_counts": {
+        "muzzles": 16,
+        "barrels": 5,
+        "lasers": 11,
+        "optics": 45,
+        "stocks": 8,
+        "rear-grips": 4,
+        "magazines": 2,
+        "ammunition": 5,
+        "underbarrels": 34
+      },
+      "combinations_exactly_0_to_5": [
+        1,
+        130,
+        6604,
+        171750,
+        2548119,
+        22622040
+      ],
+      "combinations_1_to_5": 25348643,
+      "combinations_exactly_5": 22622040
+    },
+    {
+      "weapon_id": "tempus-razorback",
+      "name": "Tempus Razorback",
+      "game_id": "mw2",
+      "category_id": "assault-rifles",
+      "platform_id": "tidal-recon",
+      "compatible_attachment_count": 132,
+      "attachment_category_counts": {
+        "muzzles": 22,
+        "barrels": 4,
+        "lasers": 11,
+        "optics": 45,
+        "stocks": 3,
+        "combs": 3,
+        "rear-grips": 3,
+        "magazines": 2,
+        "ammunition": 5,
+        "underbarrels": 34
+      },
+      "combinations_exactly_0_to_5": [
+        1,
+        132,
+        6783,
+        176262,
+        2561331,
+        22103088
+      ],
+      "combinations_1_to_5": 24847596,
+      "combinations_exactly_5": 22103088
+    },
+    {
+      "weapon_id": "hcr-56",
+      "name": "HCR 56",
+      "game_id": "mw2",
+      "category_id": "lmgs",
+      "platform_id": "bruen-bullpup",
+      "compatible_attachment_count": 126,
+      "attachment_category_counts": {
+        "muzzles": 22,
+        "barrels": 4,
+        "lasers": 11,
+        "optics": 44,
+        "stocks": 2,
+        "combs": 3,
+        "rear-grips": 3,
+        "magazines": 3,
+        "ammunition": 6,
+        "underbarrels": 28
+      },
+      "combinations_exactly_0_to_5": [
+        1,
+        126,
+        6234,
+        158520,
+        2292393,
+        19924698
+      ],
+      "combinations_1_to_5": 22381971,
+      "combinations_exactly_5": 19924698
+    },
+    {
+      "weapon_id": "cronen-squall",
+      "name": "Cronen Squall",
+      "game_id": "mw2",
+      "category_id": "battle-rifles",
+      "platform_id": "hailfire",
+      "compatible_attachment_count": 130,
+      "attachment_category_counts": {
+        "muzzles": 19,
+        "barrels": 3,
+        "lasers": 11,
+        "optics": 46,
+        "stocks": 3,
+        "combs": 2,
+        "rear-grips": 4,
+        "magazines": 2,
+        "ammunition": 6,
+        "underbarrels": 34
+      },
+      "combinations_exactly_0_to_5": [
+        1,
+        130,
+        6534,
+        165480,
+        2346753,
+        19748910
+      ],
+      "combinations_1_to_5": 22267807,
+      "combinations_exactly_5": 19748910
+    },
+    {
+      "weapon_id": "ebr-14",
+      "name": "EBR-14",
+      "game_id": "mw2",
+      "category_id": "marksman-rifles",
+      "platform_id": "ordnance",
+      "compatible_attachment_count": 129,
+      "attachment_category_counts": {
+        "muzzles": 17,
+        "barrels": 4,
+        "lasers": 11,
+        "optics": 50,
+        "stocks": 3,
+        "combs": 3,
+        "rear-grips": 3,
+        "magazines": 2,
+        "ammunition": 6,
+        "underbarrels": 30
+      },
+      "combinations_exactly_0_to_5": [
+        1,
+        129,
+        6374,
+        159554,
+        2267397,
+        19420741
+      ],
+      "combinations_1_to_5": 21854195,
+      "combinations_exactly_5": 19420741
+    },
+    {
+      "weapon_id": "tr-76-geist",
+      "name": "TR-76 Geist",
+      "game_id": "mw2",
+      "category_id": "assault-rifles",
+      "platform_id": "geist",
+      "compatible_attachment_count": 126,
+      "attachment_category_counts": {
+        "muzzles": 18,
+        "barrels": 5,
+        "lasers": 11,
+        "optics": 45,
+        "stocks": 3,
+        "combs": 3,
+        "rear-grips": 3,
+        "magazines": 2,
+        "ammunition": 5,
+        "underbarrels": 31
+      },
+      "combinations_exactly_0_to_5": [
+        1,
+        126,
+        6182,
+        154946,
+        2211852,
+        19062742
+      ],
+      "combinations_1_to_5": 21435848,
+      "combinations_exactly_5": 19062742
+    },
+    {
+      "weapon_id": "so-14",
+      "name": "SO-14",
+      "game_id": "mw2",
+      "category_id": "battle-rifles",
+      "platform_id": "ordnance",
+      "compatible_attachment_count": 126,
+      "attachment_category_counts": {
+        "muzzles": 18,
+        "barrels": 4,
+        "lasers": 11,
+        "optics": 45,
+        "stocks": 3,
+        "combs": 3,
+        "rear-grips": 3,
+        "magazines": 2,
+        "ammunition": 6,
+        "underbarrels": 31
+      },
+      "combinations_exactly_0_to_5": [
+        1,
+        126,
+        6181,
+        154830,
+        2206855,
+        18960666
+      ],
+      "combinations_1_to_5": 21328658,
+      "combinations_exactly_5": 18960666
+    },
+    {
+      "weapon_id": "lockwood-mk2",
+      "name": "Lockwood MK2",
+      "game_id": "mw2",
+      "category_id": "marksman-rifles",
+      "platform_id": "mark-2",
+      "compatible_attachment_count": 127,
+      "attachment_category_counts": {
+        "muzzles": 15,
+        "barrels": 5,
+        "lasers": 11,
+        "optics": 49,
+        "stocks": 3,
+        "combs": 3,
+        "levers": 2,
+        "guards": 3,
+        "ammunition": 6,
+        "underbarrels": 30
+      },
+      "combinations_exactly_0_to_5": [
+        1,
+        127,
+        6195,
+        153899,
+        2190629,
+        18968313
+      ],
+      "combinations_1_to_5": 21319163,
+      "combinations_exactly_5": 18968313
+    },
+    {
+      "weapon_id": "ftac-recon",
+      "name": "FTAC Recon",
+      "game_id": "mw2",
+      "category_id": "battle-rifles",
+      "platform_id": "m4",
+      "compatible_attachment_count": 128,
+      "attachment_category_counts": {
+        "muzzles": 18,
+        "barrels": 4,
+        "lasers": 11,
+        "optics": 45,
+        "stocks": 5,
+        "rear-grips": 4,
+        "magazines": 2,
+        "ammunition": 5,
+        "underbarrels": 34
+      },
+      "combinations_exactly_0_to_5": [
+        1,
+        128,
+        6336,
+        157950,
+        2200299,
+        18021882
+      ],
+      "combinations_1_to_5": 20386595,
+      "combinations_exactly_5": 18021882
+    },
+    {
+      "weapon_id": "fr-avancer",
+      "name": "FR Avancer",
+      "game_id": "mw2",
+      "category_id": "assault-rifles",
+      "platform_id": "feret",
+      "compatible_attachment_count": 126,
+      "attachment_category_counts": {
+        "muzzles": 22,
+        "barrels": 3,
+        "lasers": 11,
+        "optics": 45,
+        "stocks": 2,
+        "combs": 3,
+        "rear-grips": 3,
+        "magazines": 2,
+        "ammunition": 6,
+        "underbarrels": 29
+      },
+      "combinations_exactly_0_to_5": [
+        1,
+        126,
+        6167,
+        152852,
+        2115255,
+        17261470
+      ],
+      "combinations_1_to_5": 19535870,
+      "combinations_exactly_5": 17261470
+    },
+    {
+      "weapon_id": "rpk",
+      "name": "RPK",
+      "game_id": "mw2",
+      "category_id": "lmgs",
+      "platform_id": "kastovia",
+      "compatible_attachment_count": 119,
+      "attachment_category_counts": {
+        "muzzles": 18,
+        "barrels": 3,
+        "lasers": 11,
+        "optics": 39,
+        "stocks": 7,
+        "rear-grips": 4,
+        "magazines": 3,
+        "ammunition": 6,
+        "underbarrels": 28
+      },
+      "combinations_exactly_0_to_5": [
+        1,
+        119,
+        5646,
+        139858,
+        1999277,
+        17225139
+      ],
+      "combinations_1_to_5": 19370039,
+      "combinations_exactly_5": 17225139
+    },
+    {
+      "weapon_id": "m13c",
+      "name": "M13C",
+      "game_id": "mw2",
+      "category_id": "assault-rifles",
+      "platform_id": "bruen-ops",
+      "compatible_attachment_count": 131,
+      "attachment_category_counts": {
+        "muzzles": 22,
+        "barrels": 3,
+        "lasers": 11,
+        "optics": 46,
+        "stocks": 5,
+        "rear-grips": 3,
+        "magazines": 2,
+        "ammunition": 4,
+        "underbarrels": 35
+      },
+      "combinations_exactly_0_to_5": [
+        1,
+        131,
+        6576,
+        162906,
+        2179809,
+        16569639
+      ],
+      "combinations_1_to_5": 18919061,
+      "combinations_exactly_5": 16569639
+    },
+    {
+      "weapon_id": "pdsw-528",
+      "name": "PDSW 528",
+      "game_id": "mw2",
+      "category_id": "smgs",
+      "platform_id": "taq-defense",
+      "compatible_attachment_count": 115,
+      "attachment_category_counts": {
+        "muzzles": 19,
+        "barrels": 6,
+        "lasers": 11,
+        "optics": 37,
+        "stocks": 4,
+        "combs": 3,
+        "rear-grips": 3,
+        "rails": 2,
+        "ammunition": 4,
+        "underbarrels": 26
+      },
+      "combinations_exactly_0_to_5": [
+        1,
+        115,
+        5304,
+        128610,
+        1816593,
+        15741735
+      ],
+      "combinations_1_to_5": 17692357,
+      "combinations_exactly_5": 15741735
+    },
+    {
+      "weapon_id": "m13b",
+      "name": "M13B",
+      "game_id": "mw2",
+      "category_id": "assault-rifles",
+      "platform_id": "bruen-ops",
+      "compatible_attachment_count": 129,
+      "attachment_category_counts": {
+        "muzzles": 22,
+        "barrels": 3,
+        "lasers": 11,
+        "optics": 46,
+        "stocks": 3,
+        "rear-grips": 3,
+        "magazines": 2,
+        "ammunition": 5,
+        "underbarrels": 34
+      },
+      "combinations_exactly_0_to_5": [
+        1,
+        129,
+        6354,
+        153714,
+        1993677,
+        14565621
+      ],
+      "combinations_1_to_5": 16719495,
+      "combinations_exactly_5": 14565621
+    },
+    {
+      "weapon_id": "taq-56",
+      "name": "TAQ-56",
+      "game_id": "mw2",
+      "category_id": "assault-rifles",
+      "platform_id": "taq",
+      "compatible_attachment_count": 129,
+      "attachment_category_counts": {
+        "muzzles": 22,
+        "barrels": 2,
+        "lasers": 11,
+        "optics": 46,
+        "stocks": 4,
+        "rear-grips": 3,
+        "magazines": 2,
+        "ammunition": 5,
+        "underbarrels": 34
+      },
+      "combinations_exactly_0_to_5": [
+        1,
+        129,
+        6353,
+        153591,
+        1988070,
+        14446656
+      ],
+      "combinations_1_to_5": 16594799,
+      "combinations_exactly_5": 14446656
+    },
+    {
+      "weapon_id": "taq-m",
+      "name": "TAQ-M",
+      "game_id": "mw2",
+      "category_id": "marksman-rifles",
+      "platform_id": "taq",
+      "compatible_attachment_count": 127,
+      "attachment_category_counts": {
+        "muzzles": 18,
+        "barrels": 2,
+        "lasers": 11,
+        "optics": 50,
+        "stocks": 4,
+        "rear-grips": 4,
+        "magazines": 2,
+        "ammunition": 6,
+        "underbarrels": 30
+      },
+      "combinations_exactly_0_to_5": [
+        1,
+        127,
+        6104,
+        145588,
+        1908464,
+        14413648
+      ],
+      "combinations_1_to_5": 16473931,
+      "combinations_exactly_5": 14413648
+    },
+    {
+      "weapon_id": "kastov-74u",
+      "name": "Kastov 74u",
+      "game_id": "mw2",
+      "category_id": "assault-rifles",
+      "platform_id": "kastovia",
+      "compatible_attachment_count": 116,
+      "attachment_category_counts": {
+        "muzzles": 22,
+        "barrels": 3,
+        "lasers": 11,
+        "optics": 38,
+        "stocks": 8,
+        "rear-grips": 3,
+        "magazines": 2,
+        "ammunition": 5,
+        "underbarrels": 24
+      },
+      "combinations_exactly_0_to_5": [
+        1,
+        116,
+        5360,
+        128586,
+        1754923,
+        14134234
+      ],
+      "combinations_1_to_5": 16023219,
+      "combinations_exactly_5": 14134234
+    },
+    {
+      "weapon_id": "vel-46",
+      "name": "VEL 46",
+      "game_id": "mw2",
+      "category_id": "smgs",
+      "platform_id": "lmp",
+      "compatible_attachment_count": 114,
+      "attachment_category_counts": {
+        "muzzles": 19,
+        "barrels": 7,
+        "lasers": 11,
+        "optics": 37,
+        "stocks": 4,
+        "rear-grips": 3,
+        "magazines": 3,
+        "ammunition": 4,
+        "underbarrels": 26
+      },
+      "combinations_exactly_0_to_5": [
+        1,
+        114,
+        5185,
+        122890,
+        1671523,
+        13611022
+      ],
+      "combinations_1_to_5": 15410734,
+      "combinations_exactly_5": 13611022
+    },
+    {
+      "weapon_id": "taq-v",
+      "name": "TAQ-V",
+      "game_id": "mw2",
+      "category_id": "battle-rifles",
+      "platform_id": "taq",
+      "compatible_attachment_count": 125,
+      "attachment_category_counts": {
+        "muzzles": 18,
+        "barrels": 2,
+        "lasers": 11,
+        "optics": 46,
+        "stocks": 4,
+        "rear-grips": 3,
+        "magazines": 2,
+        "ammunition": 6,
+        "underbarrels": 33
+      },
+      "combinations_exactly_0_to_5": [
+        1,
+        125,
+        5953,
+        140003,
+        1792846,
+        13089728
+      ],
+      "combinations_1_to_5": 15028655,
+      "combinations_exactly_5": 13089728
+    },
+    {
+      "weapon_id": "lm-s",
+      "name": "LM-S",
+      "game_id": "mw2",
+      "category_id": "marksman-rifles",
+      "platform_id": "lachmann",
+      "compatible_attachment_count": 125,
+      "attachment_category_counts": {
+        "muzzles": 18,
+        "barrels": 2,
+        "lasers": 11,
+        "optics": 49,
+        "stocks": 4,
+        "rear-grips": 3,
+        "magazines": 2,
+        "ammunition": 6,
+        "underbarrels": 30
+      },
+      "combinations_exactly_0_to_5": [
+        1,
+        125,
+        5905,
+        137795,
+        1754398,
+        12758720
+      ],
+      "combinations_1_to_5": 14656943,
+      "combinations_exactly_5": 12758720
+    },
+    {
+      "weapon_id": "iso-9mm",
+      "name": "ISO 9mm",
+      "game_id": "mw2",
+      "category_id": "smgs",
+      "platform_id": "iso",
+      "compatible_attachment_count": 113,
+      "attachment_category_counts": {
+        "muzzles": 19,
+        "barrels": 5,
+        "lasers": 11,
+        "optics": 37,
+        "stocks": 5,
+        "rear-grips": 3,
+        "magazines": 2,
+        "ammunition": 5,
+        "underbarrels": 26
+      },
+      "combinations_exactly_0_to_5": [
+        1,
+        113,
+        5077,
+        118345,
+        1575059,
+        12484087
+      ],
+      "combinations_1_to_5": 14182681,
+      "combinations_exactly_5": 12484087
+    },
+    {
+      "weapon_id": "sa-b-50",
+      "name": "SA-B 50",
+      "game_id": "mw2",
+      "category_id": "marksman-rifles",
+      "platform_id": "bryson-long",
+      "compatible_attachment_count": 116,
+      "attachment_category_counts": {
+        "muzzles": 18,
+        "barrels": 4,
+        "lasers": 11,
+        "optics": 50,
+        "stocks": 3,
+        "rear-grips": 3,
+        "bolts": 2,
+        "magazines": 2,
+        "ammunition": 6,
+        "underbarrels": 17
+      },
+      "combinations_exactly_0_to_5": [
+        1,
+        116,
+        5072,
+        113862,
+        1474015,
+        11622550
+      ],
+      "combinations_1_to_5": 13215615,
+      "combinations_exactly_5": 11622550
+    },
+    {
+      "weapon_id": "bryson-890",
+      "name": "Bryson 890",
+      "game_id": "mw2",
+      "category_id": "shotguns",
+      "platform_id": "bryson-800",
+      "compatible_attachment_count": 112,
+      "attachment_category_counts": {
+        "muzzles": 17,
+        "barrels": 5,
+        "lasers": 11,
+        "optics": 39,
+        "stocks": 6,
+        "guards": 3,
+        "magazines": 2,
+        "ammunition": 3,
+        "underbarrels": 26
+      },
+      "combinations_exactly_0_to_5": [
+        1,
+        112,
+        4927,
+        111362,
+        1426235,
+        10793588
+      ],
+      "combinations_1_to_5": 12336224,
+      "combinations_exactly_5": 10793588
+    },
+    {
+      "weapon_id": "rapp-h",
+      "name": "Rapp H",
+      "game_id": "mw2",
+      "category_id": "lmgs",
+      "platform_id": "lachmann",
+      "compatible_attachment_count": 120,
+      "attachment_category_counts": {
+        "muzzles": 18,
+        "barrels": 4,
+        "lasers": 11,
+        "optics": 42,
+        "stocks": 3,
+        "rear-grips": 2,
+        "magazines": 1,
+        "ammunition": 6,
+        "underbarrels": 33
+      },
+      "combinations_exactly_0_to_5": [
+        1,
+        120,
+        5518,
+        125328,
+        1539601,
+        10631208
+      ],
+      "combinations_1_to_5": 12301775,
+      "combinations_exactly_5": 10631208
+    },
+    {
+      "weapon_id": "expedite-12",
+      "name": "Expedite 12",
+      "game_id": "mw2",
+      "category_id": "shotguns",
+      "platform_id": "expedite",
+      "compatible_attachment_count": 111,
+      "attachment_category_counts": {
+        "muzzles": 17,
+        "barrels": 5,
+        "lasers": 11,
+        "optics": 38,
+        "stocks": 4,
+        "bolts": 2,
+        "rear-grips-combs": 5,
+        "ammunition": 3,
+        "underbarrels": 26
+      },
+      "combinations_exactly_0_to_5": [
+        1,
+        111,
+        4856,
+        109486,
+        1403829,
+        10691159
+      ],
+      "combinations_1_to_5": 12209441,
+      "combinations_exactly_5": 10691159
+    },
+    {
+      "weapon_id": "bryson-800",
+      "name": "Bryson 800",
+      "game_id": "mw2",
+      "category_id": "shotguns",
+      "platform_id": "bryson-800",
+      "compatible_attachment_count": 112,
+      "attachment_category_counts": {
+        "muzzles": 17,
+        "barrels": 7,
+        "lasers": 11,
+        "optics": 39,
+        "stocks": 6,
+        "guards": 3,
+        "ammunition": 3,
+        "underbarrels": 26
+      },
+      "combinations_exactly_0_to_5": [
+        1,
+        112,
+        4917,
+        110312,
+        1384415,
+        9983208
+      ],
+      "combinations_1_to_5": 11482964,
+      "combinations_exactly_5": 9983208
+    },
+    {
+      "weapon_id": "556-icarus",
+      "name": "556 Icarus",
+      "game_id": "mw2",
+      "category_id": "lmgs",
+      "platform_id": "m4",
+      "compatible_attachment_count": 111,
+      "attachment_category_counts": {
+        "muzzles": 22,
+        "barrels": 2,
+        "lasers": 11,
+        "optics": 32,
+        "stocks": 5,
+        "rear-grips": 3,
+        "magazines": 1,
+        "ammunition": 6,
+        "underbarrels": 29
+      },
+      "combinations_exactly_0_to_5": [
+        1,
+        111,
+        4888,
+        109862,
+        1365973,
+        9688679
+      ],
+      "combinations_1_to_5": 11169513,
+      "combinations_exactly_5": 9688679
+    },
+    {
+      "weapon_id": "sakin-mg38",
+      "name": "Sakin MG38",
+      "game_id": "mw2",
+      "category_id": "lmgs",
+      "platform_id": "sakin",
+      "compatible_attachment_count": 111,
+      "attachment_category_counts": {
+        "muzzles": 18,
+        "barrels": 3,
+        "lasers": 11,
+        "optics": 35,
+        "stocks": 3,
+        "rear-grips": 3,
+        "magazines": 2,
+        "ammunition": 6,
+        "underbarrels": 30
+      },
+      "combinations_exactly_0_to_5": [
+        1,
+        111,
+        4842,
+        107366,
+        1325637,
+        9493587
+      ],
+      "combinations_1_to_5": 10931543,
+      "combinations_exactly_5": 9493587
+    },
+    {
+      "weapon_id": "iso-45",
+      "name": "ISO 45",
+      "game_id": "mw2",
+      "category_id": "smgs",
+      "platform_id": "iso",
+      "compatible_attachment_count": 110,
+      "attachment_category_counts": {
+        "muzzles": 19,
+        "barrels": 4,
+        "lasers": 11,
+        "optics": 37,
+        "stocks": 4,
+        "rear-grips": 3,
+        "magazines": 2,
+        "ammunition": 4,
+        "underbarrels": 26
+      },
+      "combinations_exactly_0_to_5": [
+        1,
+        110,
+        4756,
+        105042,
+        1300047,
+        9416928
+      ],
+      "combinations_1_to_5": 10826883,
+      "combinations_exactly_5": 9416928
+    },
+    {
+      "weapon_id": "fennec-45",
+      "name": "Fennec 45",
+      "game_id": "mw2",
+      "category_id": "smgs",
+      "platform_id": "fennec",
+      "compatible_attachment_count": 106,
+      "attachment_category_counts": {
+        "muzzles": 20,
+        "barrels": 5,
+        "lasers": 11,
+        "optics": 37,
+        "stocks": 5,
+        "rear-grips": 3,
+        "underbarrels": 19,
+        "magazines": 2,
+        "ammunition": 4
+      },
+      "combinations_exactly_0_to_5": [
+        1,
+        106,
+        4453,
+        97410,
+        1222899,
+        9179934
+      ],
+      "combinations_1_to_5": 10504802,
+      "combinations_exactly_5": 9179934
+    },
+    {
+      "weapon_id": "chimera",
+      "name": "Chimera",
+      "game_id": "mw2",
+      "category_id": "assault-rifles",
+      "platform_id": "bruen-ops",
+      "compatible_attachment_count": 117,
+      "attachment_category_counts": {
+        "muzzles": 18,
+        "barrels": 3,
+        "lasers": 11,
+        "optics": 46,
+        "stocks": 2,
+        "rear-grips": 3,
+        "magazines": 2,
+        "ammunition": 4,
+        "underbarrels": 28
+      },
+      "combinations_exactly_0_to_5": [
+        1,
+        117,
+        5151,
+        110991,
+        1284444,
+        8358672
+      ],
+      "combinations_1_to_5": 9759375,
+      "combinations_exactly_5": 8358672
+    },
+    {
+      "weapon_id": "vaznev-9k",
+      "name": "Vaznev-9K",
+      "game_id": "mw2",
+      "category_id": "smgs",
+      "platform_id": "kastovia",
+      "compatible_attachment_count": 109,
+      "attachment_category_counts": {
+        "muzzles": 19,
+        "barrels": 2,
+        "lasers": 11,
+        "optics": 37,
+        "stocks": 6,
+        "rear-grips": 3,
+        "magazines": 1,
+        "ammunition": 4,
+        "underbarrels": 26
+      },
+      "combinations_exactly_0_to_5": [
+        1,
+        109,
+        4644,
+        100098,
+        1188789,
+        8035629
+      ],
+      "combinations_1_to_5": 9329269,
+      "combinations_exactly_5": 8035629
+    },
+    {
+      "weapon_id": "signal-50",
+      "name": "Signal 50",
+      "game_id": "mw2",
+      "category_id": "sniper-rifles",
+      "platform_id": "signal",
+      "compatible_attachment_count": 117,
+      "attachment_category_counts": {
+        "muzzles": 10,
+        "barrels": 4,
+        "lasers": 10,
+        "optics": 54,
+        "stocks": 3,
+        "rear-grips": 3,
+        "magazines": 1,
+        "ammunition": 5,
+        "underbarrels": 27
+      },
+      "combinations_exactly_0_to_5": [
+        1,
+        117,
+        4892,
+        98290,
+        1082469,
+        6925493
+      ],
+      "combinations_1_to_5": 8111261,
+      "combinations_exactly_5": 6925493
+    },
+    {
+      "weapon_id": "bas-p",
+      "name": "BAS-P",
+      "game_id": "mw2",
+      "category_id": "smgs",
+      "platform_id": "bruen-ops",
+      "compatible_attachment_count": 103,
+      "attachment_category_counts": {
+        "muzzles": 19,
+        "barrels": 4,
+        "lasers": 11,
+        "optics": 37,
+        "stocks": 3,
+        "rear-grips": 3,
+        "magazines": 2,
+        "ammunition": 4,
+        "underbarrels": 20
+      },
+      "combinations_exactly_0_to_5": [
+        1,
+        103,
+        4152,
+        85758,
+        996825,
+        6796947
+      ],
+      "combinations_1_to_5": 7883785,
+      "combinations_exactly_5": 6796947
+    },
+    {
+      "weapon_id": "lachmann-sub",
+      "name": "Lachmann Sub",
+      "game_id": "mw2",
+      "category_id": "smgs",
+      "platform_id": "lachmann",
+      "compatible_attachment_count": 100,
+      "attachment_category_counts": {
+        "muzzles": 19,
+        "barrels": 3,
+        "lasers": 11,
+        "optics": 35,
+        "stocks": 4,
+        "rear-grips": 2,
+        "magazines": 3,
+        "ammunition": 4,
+        "underbarrels": 19
+      },
+      "combinations_exactly_0_to_5": [
+        1,
+        100,
+        3939,
+        79938,
+        917511,
+        6202320
+      ],
+      "combinations_1_to_5": 7203808,
+      "combinations_exactly_5": 6202320
+    },
+    {
+      "weapon_id": "mx-guardian",
+      "name": "MX Guardian",
+      "game_id": "mw2",
+      "category_id": "shotguns",
+      "platform_id": "mx-guardian",
+      "compatible_attachment_count": 95,
+      "attachment_category_counts": {
+        "muzzles": 17,
+        "barrels": 3,
+        "lasers": 11,
+        "optics": 39,
+        "stocks": 3,
+        "rear-grips": 4,
+        "trigger-actions": 2,
+        "magazines": 1,
+        "ammunition": 3,
+        "underbarrels": 12
+      },
+      "combinations_exactly_0_to_5": [
+        1,
+        95,
+        3451,
+        64535,
+        694693,
+        4535045
+      ],
+      "combinations_1_to_5": 5297819,
+      "combinations_exactly_5": 4535045
+    },
+    {
+      "weapon_id": "lockwood-300",
+      "name": "Lockwood 300",
+      "game_id": "mw2",
+      "category_id": "shotguns",
+      "platform_id": "lockwood",
+      "compatible_attachment_count": 101,
+      "attachment_category_counts": {
+        "muzzles": 11,
+        "barrels": 4,
+        "lasers": 11,
+        "optics": 39,
+        "stocks": 4,
+        "guards": 3,
+        "ammunition": 3,
+        "underbarrels": 26
+      },
+      "combinations_exactly_0_to_5": [
+        1,
+        101,
+        3856,
+        72602,
+        747121,
+        4363793
+      ],
+      "combinations_1_to_5": 5187473,
+      "combinations_exactly_5": 4363793
+    },
+    {
+      "weapon_id": "sp-r-208",
+      "name": "SP-R 208",
+      "game_id": "mw2",
+      "category_id": "marksman-rifles",
+      "platform_id": "bryson-long",
+      "compatible_attachment_count": 102,
+      "attachment_category_counts": {
+        "muzzles": 18,
+        "barrels": 5,
+        "lasers": 11,
+        "optics": 50,
+        "stocks": 2,
+        "combs": 3,
+        "bolts": 2,
+        "magazines": 2,
+        "ammunition": 6,
+        "underbarrels": 3
+      },
+      "combinations_exactly_0_to_5": [
+        1,
+        102,
+        3684,
+        66226,
+        680511,
+        4285176
+      ],
+      "combinations_1_to_5": 5035699,
+      "combinations_exactly_5": 4285176
+    },
+    {
+      "weapon_id": "mcpr-300",
+      "name": "MCPR-300",
+      "game_id": "mw2",
+      "category_id": "sniper-rifles",
+      "platform_id": "mrba",
+      "compatible_attachment_count": 87,
+      "attachment_category_counts": {
+        "muzzles": 15,
+        "barrels": 3,
+        "lasers": 10,
+        "optics": 39,
+        "stocks": 3,
+        "rear-grips": 3,
+        "bolts": 2,
+        "magazines": 2,
+        "ammunition": 7,
+        "underbarrels": 3
+      },
+      "combinations_exactly_0_to_5": [
+        1,
+        87,
+        2815,
+        46791,
+        454429,
+        2747721
+      ],
+      "combinations_1_to_5": 3251843,
+      "combinations_exactly_5": 2747721
+    },
+    {
+      "weapon_id": "fss-hurricane",
+      "name": "FSS Hurricane",
+      "game_id": "mw2",
+      "category_id": "smgs",
+      "platform_id": "m4",
+      "compatible_attachment_count": 83,
+      "attachment_category_counts": {
+        "muzzles": 19,
+        "barrels": 2,
+        "lasers": 11,
+        "optics": 12,
+        "stocks": 5,
+        "rear-grips": 4,
+        "ammunition": 4,
+        "underbarrels": 26
+      },
+      "combinations_exactly_0_to_5": [
+        1,
+        83,
+        2763,
+        47985,
+        474156,
+        2726676
+      ],
+      "combinations_1_to_5": 3251663,
+      "combinations_exactly_5": 2726676
+    },
+    {
+      "weapon_id": "raal-mg",
+      "name": "Raal MG",
+      "game_id": "mw2",
+      "category_id": "lmgs",
+      "platform_id": "raal",
+      "compatible_attachment_count": 84,
+      "attachment_category_counts": {
+        "muzzles": 15,
+        "barrels": 3,
+        "lasers": 11,
+        "optics": 36,
+        "stocks": 4,
+        "rear-grips": 3,
+        "magazines": 2,
+        "ammunition": 6,
+        "underbarrels": 4
+      },
+      "combinations_exactly_0_to_5": [
+        1,
+        84,
+        2662,
+        43296,
+        406981,
+        2332836
+      ],
+      "combinations_1_to_5": 2785859,
+      "combinations_exactly_5": 2332836
+    },
+    {
+      "weapon_id": "fjx-imperium",
+      "name": "FJX Imperium",
+      "game_id": "mw2",
+      "category_id": "sniper-rifles",
+      "platform_id": "fjx-imperium",
+      "compatible_attachment_count": 86,
+      "attachment_category_counts": {
+        "muzzles": 15,
+        "barrels": 5,
+        "lasers": 10,
+        "optics": 39,
+        "stocks": 3,
+        "bolts": 2,
+        "rear-grips": 2,
+        "magazines": 1,
+        "ammunition": 7,
+        "carry-handles": 2
+      },
+      "combinations_exactly_0_to_5": [
+        1,
+        86,
+        2727,
+        43908,
+        406359,
+        2290374
+      ],
+      "combinations_1_to_5": 2743454,
+      "combinations_exactly_5": 2290374
+    },
+    {
+      "weapon_id": "x13-auto",
+      "name": "X13 Auto",
+      "game_id": "mw2",
+      "category_id": "handguns",
+      "platform_id": "xrk",
+      "compatible_attachment_count": 76,
+      "attachment_category_counts": {
+        "muzzles": 13,
+        "barrels": 3,
+        "lasers": 6,
+        "optics": 21,
+        "rear-grips": 4,
+        "magazines": 3,
+        "stocks": 3,
+        "underbarrels": 19,
+        "ammunition": 4
+      },
+      "combinations_exactly_0_to_5": [
+        1,
+        76,
+        2355,
+        38902,
+        378775,
+        2277072
+      ],
+      "combinations_1_to_5": 2697180,
+      "combinations_exactly_5": 2277072
+    },
+    {
+      "weapon_id": "la-b-330",
+      "name": "LA-B 330",
+      "game_id": "mw2",
+      "category_id": "sniper-rifles",
+      "platform_id": "bryson-long",
+      "compatible_attachment_count": 85,
+      "attachment_category_counts": {
+        "muzzles": 15,
+        "barrels": 4,
+        "lasers": 10,
+        "optics": 39,
+        "stocks": 2,
+        "combs": 3,
+        "bolts": 2,
+        "magazines": 1,
+        "ammunition": 6,
+        "underbarrels": 3
+      },
+      "combinations_exactly_0_to_5": [
+        1,
+        85,
+        2650,
+        41890,
+        381853,
+        2137465
+      ],
+      "combinations_1_to_5": 2563943,
+      "combinations_exactly_5": 2137465
+    },
+    {
+      "weapon_id": "sp-x-80",
+      "name": "SP-X 80",
+      "game_id": "mw2",
+      "category_id": "sniper-rifles",
+      "platform_id": "bryson-long",
+      "compatible_attachment_count": 85,
+      "attachment_category_counts": {
+        "muzzles": 15,
+        "barrels": 4,
+        "lasers": 10,
+        "optics": 39,
+        "stocks": 2,
+        "rear-grips": 3,
+        "bolts": 2,
+        "magazines": 1,
+        "ammunition": 6,
+        "underbarrels": 3
+      },
+      "combinations_exactly_0_to_5": [
+        1,
+        85,
+        2650,
+        41890,
+        381853,
+        2137465
+      ],
+      "combinations_1_to_5": 2563943,
+      "combinations_exactly_5": 2137465
+    },
+    {
+      "weapon_id": "victus-xmr",
+      "name": "Victus XMR",
+      "game_id": "mw2",
+      "category_id": "sniper-rifles",
+      "platform_id": "imperatorium",
+      "compatible_attachment_count": 88,
+      "attachment_category_counts": {
+        "muzzles": 10,
+        "barrels": 4,
+        "lasers": 10,
+        "optics": 46,
+        "stocks": 4,
+        "guards": 1,
+        "rear-grips": 3,
+        "magazines": 2,
+        "ammunition": 5,
+        "underbarrels": 3
+      },
+      "combinations_exactly_0_to_5": [
+        1,
+        88,
+        2674,
+        41372,
+        376109,
+        2143292
+      ],
+      "combinations_1_to_5": 2563535,
+      "combinations_exactly_5": 2143292
+    },
+    {
+      "weapon_id": "carrack-300",
+      "name": "Carrack .300",
+      "game_id": "mw2",
+      "category_id": "sniper-rifles",
+      "platform_id": "carrack",
+      "compatible_attachment_count": 84,
+      "attachment_category_counts": {
+        "muzzles": 15,
+        "barrels": 6,
+        "lasers": 10,
+        "optics": 40,
+        "stocks": 2,
+        "rear-grips": 3,
+        "magazines": 2,
+        "ammunition": 6
+      },
+      "combinations_exactly_0_to_5": [
+        1,
+        84,
+        2521,
+        37146,
+        300760,
+        1387632
+      ],
+      "combinations_1_to_5": 1728143,
+      "combinations_exactly_5": 1387632
+    },
+    {
+      "weapon_id": "mx9",
+      "name": "MX9",
+      "game_id": "mw2",
+      "category_id": "smgs",
+      "platform_id": "bruen-bullpup",
+      "compatible_attachment_count": 84,
+      "attachment_category_counts": {
+        "muzzles": 19,
+        "barrels": 3,
+        "lasers": 11,
+        "optics": 38,
+        "stocks": 2,
+        "combs": 3,
+        "magazines": 1,
+        "ammunition": 4,
+        "rear-grips": 3
+      },
+      "combinations_exactly_0_to_5": [
+        1,
+        84,
+        2541,
+        36948,
+        291807,
+        1342164
+      ],
+      "combinations_1_to_5": 1673544,
+      "combinations_exactly_5": 1342164
+    },
+    {
+      "weapon_id": "crossbow",
+      "name": "Crossbow",
+      "game_id": "mw2",
+      "category_id": "marksman-rifles",
+      "platform_id": null,
+      "compatible_attachment_count": 100,
+      "attachment_category_counts": {
+        "arms": 4,
+        "lasers": 11,
+        "optics": 49,
+        "stocks": 4,
+        "wires": 2,
+        "bolts": 3,
+        "underbarrels": 27
+      },
+      "combinations_exactly_0_to_5": [
+        1,
+        100,
+        3352,
+        48142,
+        334279,
+        1186990
+      ],
+      "combinations_1_to_5": 1572863,
+      "combinations_exactly_5": 1186990
+    },
+    {
+      "weapon_id": "bas-b",
+      "name": "BAS-B",
+      "game_id": "mw3",
+      "category_id": "battle-rifles",
+      "platform_id": null,
+      "compatible_attachment_count": 61,
+      "attachment_category_counts": {
+        "barrels": 5,
+        "stocks": 6,
+        "magazines": 2,
+        "optics": 14,
+        "rear-grips": 3,
+        "muzzles": 8,
+        "ammunition": 10,
+        "lasers": 2,
+        "underbarrels": 11
+      },
+      "combinations_exactly_0_to_5": [
+        1,
+        61,
+        1581,
+        22771,
+        200074,
+        1107624
+      ],
+      "combinations_1_to_5": 1332111,
+      "combinations_exactly_5": 1107624
+    },
+    {
+      "weapon_id": "lachmann-shroud",
+      "name": "Lachmann Shroud",
+      "game_id": "mw2",
+      "category_id": "smgs",
+      "platform_id": "lachmann",
+      "compatible_attachment_count": 80,
+      "attachment_category_counts": {
+        "barrels": 2,
+        "lasers": 11,
+        "optics": 35,
+        "stocks": 4,
+        "rear-grips": 2,
+        "magazines": 3,
+        "ammunition": 4,
+        "underbarrels": 19
+      },
+      "combinations_exactly_0_to_5": [
+        1,
+        80,
+        2322,
+        32172,
+        237249,
+        984060
+      ],
+      "combinations_1_to_5": 1255883,
+      "combinations_exactly_5": 984060
+    },
+    {
+      "weapon_id": "minibak",
+      "name": "Minibak",
+      "game_id": "mw2",
+      "category_id": "smgs",
+      "platform_id": "kastovia",
+      "compatible_attachment_count": 82,
+      "attachment_category_counts": {
+        "muzzles": 19,
+        "barrels": 1,
+        "lasers": 11,
+        "optics": 37,
+        "stocks": 6,
+        "rear-grips": 3,
+        "magazines": 1,
+        "ammunition": 4
+      },
+      "combinations_exactly_0_to_5": [
+        1,
+        82,
+        2405,
+        33138,
+        235963,
+        894278
+      ],
+      "combinations_1_to_5": 1165866,
+      "combinations_exactly_5": 894278
+    },
+    {
+      "weapon_id": "sva-545",
+      "name": "SVA 545",
+      "game_id": "mw3",
+      "category_id": "assault-rifles",
+      "platform_id": null,
+      "compatible_attachment_count": 60,
+      "attachment_category_counts": {
+        "optics": 14,
+        "stocks": 8,
+        "barrels": 5,
+        "rear-grips": 4,
+        "ammunition": 2,
+        "magazines": 3,
+        "lasers": 2,
+        "underbarrels": 12,
+        "muzzles": 10
+      },
+      "combinations_exactly_0_to_5": [
+        1,
+        60,
+        1519,
+        21212,
+        179440,
+        951344
+      ],
+      "combinations_1_to_5": 1153575,
+      "combinations_exactly_5": 951344
+    },
+    {
+      "weapon_id": "mcw",
+      "name": "MCW",
+      "game_id": "mw3",
+      "category_id": "assault-rifles",
+      "platform_id": null,
+      "compatible_attachment_count": 59,
+      "attachment_category_counts": {
+        "barrels": 7,
+        "rear-grips": 3,
+        "stocks": 6,
+        "magazines": 3,
+        "muzzles": 10,
+        "underbarrels": 11,
+        "optics": 14,
+        "ammunition": 3,
+        "lasers": 2
+      },
+      "combinations_exactly_0_to_5": [
+        1,
+        59,
+        1474,
+        20414,
+        172357,
+        918911
+      ],
+      "combinations_1_to_5": 1113215,
+      "combinations_exactly_5": 918911
+    },
+    {
+      "weapon_id": "mtz-556",
+      "name": "MTZ-556",
+      "game_id": "mw3",
+      "category_id": "assault-rifles",
+      "platform_id": null,
+      "compatible_attachment_count": 59,
+      "attachment_category_counts": {
+        "optics": 14,
+        "stocks": 7,
+        "barrels": 6,
+        "rear-grips": 4,
+        "underbarrels": 11,
+        "magazines": 2,
+        "muzzles": 10,
+        "ammunition": 3,
+        "lasers": 2
+      },
+      "combinations_exactly_0_to_5": [
+        1,
+        59,
+        1473,
+        20361,
+        171210,
+        905856
+      ],
+      "combinations_1_to_5": 1098959,
+      "combinations_exactly_5": 905856
+    },
+    {
+      "weapon_id": "ftac-siege",
+      "name": "FTAC Siege",
+      "game_id": "mw2",
+      "category_id": "handguns",
+      "platform_id": "ftag-siege",
+      "compatible_attachment_count": 57,
+      "attachment_category_counts": {
+        "muzzles": 17,
+        "barrels": 7,
+        "lasers": 6,
+        "optics": 10,
+        "stocks": 4,
+        "rear-grips": 3,
+        "magazines": 3,
+        "ammunition": 4,
+        "underbarrels": 3
+      },
+      "combinations_exactly_0_to_5": [
+        1,
+        57,
+        1358,
+        17902,
+        144861,
+        750173
+      ],
+      "combinations_1_to_5": 914351,
+      "combinations_exactly_5": 750173
+    },
+    {
+      "weapon_id": "striker",
+      "name": "Striker",
+      "game_id": "mw3",
+      "category_id": "smgs",
+      "platform_id": null,
+      "compatible_attachment_count": 50,
+      "attachment_category_counts": {
+        "barrels": 3,
+        "rear-grips": 3,
+        "stocks": 6,
+        "magazines": 3,
+        "ammunition": 3,
+        "underbarrels": 11,
+        "muzzles": 6,
+        "optics": 14,
+        "lasers": 1
+      },
+      "combinations_exactly_0_to_5": [
+        1,
+        50,
+        1037,
+        11722,
+        79791,
+        339894
+      ],
+      "combinations_1_to_5": 432494,
+      "combinations_exactly_5": 339894
+    },
+    {
+      "weapon_id": "mtz-762",
+      "name": "MTZ-762",
+      "game_id": "mw3",
+      "category_id": "battle-rifles",
+      "platform_id": null,
+      "compatible_attachment_count": 50,
+      "attachment_category_counts": {
+        "stocks": 6,
+        "barrels": 3,
+        "magazines": 2,
+        "rear-grips": 3,
+        "muzzles": 8,
+        "ammunition": 1,
+        "optics": 14,
+        "lasers": 2,
+        "underbarrels": 11
+      },
+      "combinations_exactly_0_to_5": [
+        1,
+        50,
+        1028,
+        11358,
+        74131,
+        296368
+      ],
+      "combinations_1_to_5": 382935,
+      "combinations_exactly_5": 296368
+    },
+    {
+      "weapon_id": "rival-9",
+      "name": "Rival-9",
+      "game_id": "mw3",
+      "category_id": "smgs",
+      "platform_id": null,
+      "compatible_attachment_count": 48,
+      "attachment_category_counts": {
+        "optics": 14,
+        "stocks": 5,
+        "barrels": 3,
+        "magazines": 2,
+        "muzzles": 6,
+        "lasers": 1,
+        "underbarrels": 11,
+        "rear-grips": 3,
+        "ammunition": 3
+      },
+      "combinations_exactly_0_to_5": [
+        1,
+        48,
+        947,
+        10094,
+        64323,
+        255052
+      ],
+      "combinations_1_to_5": 330464,
+      "combinations_exactly_5": 255052
+    },
+    {
+      "weapon_id": "50-gs",
+      "name": ".50 GS",
+      "game_id": "mw2",
+      "category_id": "handguns",
+      "platform_id": "sakin-g",
+      "compatible_attachment_count": 50,
+      "attachment_category_counts": {
+        "muzzles": 6,
+        "barrels": 4,
+        "lasers": 6,
+        "optics": 21,
+        "rear-grips": 4,
+        "magazines": 2,
+        "ammunition": 4,
+        "trigger-actions": 3
+      },
+      "combinations_exactly_0_to_5": [
+        1,
+        50,
+        963,
+        9790,
+        58700,
+        214920
+      ],
+      "combinations_1_to_5": 284423,
+      "combinations_exactly_5": 214920
+    },
+    {
+      "weapon_id": "9mm-daemon",
+      "name": "9mm Daemon",
+      "game_id": "mw2",
+      "category_id": "handguns",
+      "platform_id": "daemon",
+      "compatible_attachment_count": 45,
+      "attachment_category_counts": {
+        "muzzles": 13,
+        "barrels": 5,
+        "lasers": 6,
+        "optics": 6,
+        "rear-grips": 5,
+        "magazines": 2,
+        "ammunition": 5,
+        "trigger-actions": 3
+      },
+      "combinations_exactly_0_to_5": [
+        1,
+        45,
+        848,
+        8798,
+        55137,
+        213913
+      ],
+      "combinations_1_to_5": 278741,
+      "combinations_exactly_5": 213913
+    },
+    {
+      "weapon_id": "p890",
+      "name": "P890",
+      "game_id": "mw2",
+      "category_id": "handguns",
+      "platform_id": "bruen-890",
+      "compatible_attachment_count": 44,
+      "attachment_category_counts": {
+        "muzzles": 13,
+        "barrels": 4,
+        "lasers": 6,
+        "optics": 6,
+        "rear-grips": 5,
+        "magazines": 2,
+        "ammunition": 4,
+        "trigger-actions": 4
+      },
+      "combinations_exactly_0_to_5": [
+        1,
+        44,
+        809,
+        8186,
+        50084,
+        190136
+      ],
+      "combinations_1_to_5": 249259,
+      "combinations_exactly_5": 190136
+    },
+    {
+      "weapon_id": "x12",
+      "name": "X12",
+      "game_id": "mw2",
+      "category_id": "handguns",
+      "platform_id": "xrk",
+      "compatible_attachment_count": 42,
+      "attachment_category_counts": {
+        "muzzles": 13,
+        "barrels": 2,
+        "lasers": 6,
+        "optics": 6,
+        "stocks": 1,
+        "rear-grips": 4,
+        "magazines": 3,
+        "ammunition": 4,
+        "trigger-actions": 3
+      },
+      "combinations_exactly_0_to_5": [
+        1,
+        42,
+        734,
+        7072,
+        41589,
+        155054
+      ],
+      "combinations_1_to_5": 204491,
+      "combinations_exactly_5": 155054
+    },
+    {
+      "weapon_id": "basilisk",
+      "name": "Basilisk",
+      "game_id": "mw2",
+      "category_id": "handguns",
+      "platform_id": "basilisk-500",
+      "compatible_attachment_count": 47,
+      "attachment_category_counts": {
+        "muzzles": 4,
+        "barrels": 5,
+        "lasers": 3,
+        "optics": 22,
+        "rear-grips": 4,
+        "loaders": 2,
+        "ammunition": 4,
+        "trigger-actions": 3
+      },
+      "combinations_exactly_0_to_5": [
+        1,
+        47,
+        815,
+        7373,
+        39272,
+        128060
+      ],
+      "combinations_1_to_5": 175567,
+      "combinations_exactly_5": 128060
+    },
+    {
+      "weapon_id": "gs-magna",
+      "name": "GS Magna",
+      "game_id": "mw2",
+      "category_id": "handguns",
+      "platform_id": "sakin-g",
+      "compatible_attachment_count": 48,
+      "attachment_category_counts": {
+        "muzzles": 6,
+        "barrels": 4,
+        "optics": 21,
+        "rear-grips": 4,
+        "magazines": 2,
+        "ammunition": 4,
+        "underbarrels": 7
+      },
+      "combinations_exactly_0_to_5": [
+        1,
+        48,
+        863,
+        7900,
+        40596,
+        118256
+      ],
+      "combinations_1_to_5": 167663,
+      "combinations_exactly_5": 118256
+    },
+    {
+      "weapon_id": "longbow",
+      "name": "Longbow",
+      "game_id": "mw3",
+      "category_id": "sniper-rifles",
+      "platform_id": null,
+      "compatible_attachment_count": 28,
+      "attachment_category_counts": {
+        "ammunition": 4,
+        "muzzles": 2,
+        "barrels": 3,
+        "stocks": 8,
+        "optics": 2,
+        "underbarrels": 1,
+        "rear-grips": 4,
+        "magazines": 2,
+        "bolts": 2
+      },
+      "combinations_exactly_0_to_5": [
+        1,
+        28,
+        331,
+        2184,
+        8904,
+        23328
+      ],
+      "combinations_1_to_5": 34775,
+      "combinations_exactly_5": 23328
+    },
+    {
+      "weapon_id": "amr9",
+      "name": "AMR9",
+      "game_id": "mw3",
+      "category_id": "smgs",
+      "platform_id": null,
+      "compatible_attachment_count": 27,
+      "attachment_category_counts": {
+        "rear-grips": 4,
+        "muzzles": 2,
+        "stocks": 7,
+        "barrels": 6,
+        "optics": 2,
+        "ammunition": 2,
+        "magazines": 3,
+        "underbarrels": 1
+      },
+      "combinations_exactly_0_to_5": [
+        1,
+        27,
+        303,
+        1845,
+        6672,
+        14688
+      ],
+      "combinations_1_to_5": 23535,
+      "combinations_exactly_5": 14688
+    },
+    {
+      "weapon_id": "kv-inhibitor",
+      "name": "KV Inhibitor",
+      "game_id": "mw3",
+      "category_id": "sniper-rifles",
+      "platform_id": null,
+      "compatible_attachment_count": 27,
+      "attachment_category_counts": {
+        "barrels": 5,
+        "muzzles": 3,
+        "stocks": 7,
+        "ammunition": 4,
+        "rear-grips": 6,
+        "underbarrels": 1,
+        "magazines": 1
+      },
+      "combinations_exactly_0_to_5": [
+        1,
+        27,
+        296,
+        1690,
+        5349,
+        9203
+      ],
+      "combinations_1_to_5": 16565,
+      "combinations_exactly_5": 9203
+    },
+    {
+      "weapon_id": "mcw-68",
+      "name": "MCW 6.8",
+      "game_id": "mw3",
+      "category_id": "marksman-rifles",
+      "platform_id": null,
+      "compatible_attachment_count": 22,
+      "attachment_category_counts": {
+        "stocks": 3,
+        "rear-grips": 3,
+        "barrels": 6,
+        "muzzles": 3,
+        "underbarrels": 1,
+        "optics": 1,
+        "magazines": 2,
+        "ammunition": 3
+      },
+      "combinations_exactly_0_to_5": [
+        1,
+        22,
+        203,
+        1028,
+        3123,
+        5814
+      ],
+      "combinations_1_to_5": 10190,
+      "combinations_exactly_5": 5814
+    },
+    {
+      "weapon_id": "riveter",
+      "name": "Riveter",
+      "game_id": "mw3",
+      "category_id": "shotguns",
+      "platform_id": null,
+      "compatible_attachment_count": 22,
+      "attachment_category_counts": {
+        "barrels": 4,
+        "rear-grips": 4,
+        "stocks": 6,
+        "muzzles": 1,
+        "magazines": 2,
+        "ammunition": 3,
+        "underbarrels": 1,
+        "optics": 1
+      },
+      "combinations_exactly_0_to_5": [
+        1,
+        22,
+        200,
+        978,
+        2803,
+        4808
+      ],
+      "combinations_1_to_5": 8811,
+      "combinations_exactly_5": 4808
+    },
+    {
+      "weapon_id": "lockwood-680",
+      "name": "Lockwood 680",
+      "game_id": "mw3",
+      "category_id": "shotguns",
+      "platform_id": null,
+      "compatible_attachment_count": 22,
+      "attachment_category_counts": {
+        "guards": 4,
+        "muzzles": 2,
+        "barrels": 4,
+        "stocks": 6,
+        "bolts": 2,
+        "ammunition": 1,
+        "rear-grips": 3
+      },
+      "combinations_exactly_0_to_5": [
+        1,
+        22,
+        199,
+        958,
+        2644,
+        4168
+      ],
+      "combinations_1_to_5": 7991,
+      "combinations_exactly_5": 4168
+    },
+    {
+      "weapon_id": "pulemyot-762",
+      "name": "Pulemyot 762",
+      "game_id": "mw3",
+      "category_id": "lmgs",
+      "platform_id": null,
+      "compatible_attachment_count": 22,
+      "attachment_category_counts": {
+        "barrels": 4,
+        "underbarrels": 3,
+        "stocks": 5,
+        "rear-grips": 5,
+        "magazines": 3,
+        "muzzles": 2
+      },
+      "combinations_exactly_0_to_5": [
+        1,
+        22,
+        198,
+        932,
+        2417,
+        3270
+      ],
+      "combinations_1_to_5": 6839,
+      "combinations_exactly_5": 3270
+    },
+    {
+      "weapon_id": "renetti",
+      "name": "Renetti",
+      "game_id": "mw3",
+      "category_id": "handguns",
+      "platform_id": null,
+      "compatible_attachment_count": 18,
+      "attachment_category_counts": {
+        "rear-grips": 4,
+        "muzzles": 2,
+        "barrels": 3,
+        "stocks": 1,
+        "trigger-actions": 3,
+        "lasers": 1,
+        "magazines": 3,
+        "combs": 1
+      },
+      "combinations_exactly_0_to_5": [
+        1,
+        18,
+        137,
+        574,
+        1443,
+        2222
+      ],
+      "combinations_1_to_5": 4394,
+      "combinations_exactly_5": 2222
+    },
+    {
+      "weapon_id": "holger-26",
+      "name": "Holger 26",
+      "game_id": "mw3",
+      "category_id": "lmgs",
+      "platform_id": null,
+      "compatible_attachment_count": 17,
+      "attachment_category_counts": {
+        "barrels": 5,
+        "stocks": 3,
+        "ammunition": 1,
+        "rear-grips": 4,
+        "magazines": 2,
+        "muzzles": 1,
+        "optics": 1
+      },
+      "combinations_exactly_0_to_5": [
+        1,
+        17,
+        116,
+        410,
+        809,
+        893
+      ],
+      "combinations_1_to_5": 2245,
+      "combinations_exactly_5": 893
+    },
+    {
+      "weapon_id": "mtz-interceptor",
+      "name": "MTZ Interceptor",
+      "game_id": "mw3",
+      "category_id": "marksman-rifles",
+      "platform_id": null,
+      "compatible_attachment_count": 15,
+      "attachment_category_counts": {
+        "rear-grips": 3,
+        "stocks": 2,
+        "barrels": 3,
+        "muzzles": 4,
+        "optics": 1,
+        "magazines": 1,
+        "ammunition": 1
+      },
+      "combinations_exactly_0_to_5": [
+        1,
+        15,
+        92,
+        298,
+        549,
+        575
+      ],
+      "combinations_1_to_5": 1529,
+      "combinations_exactly_5": 575
+    },
+    {
+      "weapon_id": "cor-45",
+      "name": "COR-45",
+      "game_id": "mw3",
+      "category_id": "handguns",
+      "platform_id": null,
+      "compatible_attachment_count": 14,
+      "attachment_category_counts": {
+        "muzzles": 3,
+        "trigger-actions": 3,
+        "rear-grips": 3,
+        "barrels": 1,
+        "stocks": 1,
+        "lasers": 1,
+        "magazines": 2
+      },
+      "combinations_exactly_0_to_5": [
+        1,
+        14,
+        81,
+        250,
+        443,
+        450
+      ],
+      "combinations_1_to_5": 1238,
+      "combinations_exactly_5": 450
+    },
+    {
+      "weapon_id": "wsp-stinger",
+      "name": "WSP Stinger",
+      "game_id": "mw3",
+      "category_id": "handguns",
+      "platform_id": null,
+      "compatible_attachment_count": 12,
+      "attachment_category_counts": {
+        "stocks": 2,
+        "ammunition": 1,
+        "rear-grips": 4,
+        "barrels": 2,
+        "magazines": 2,
+        "muzzles": 1
+      },
+      "combinations_exactly_0_to_5": [
+        1,
+        12,
+        57,
+        138,
+        180,
+        120
+      ],
+      "combinations_1_to_5": 507,
+      "combinations_exactly_5": 120
+    },
+    {
+      "weapon_id": "riot-shield",
+      "name": "Riot Shield",
+      "game_id": "mw2",
+      "category_id": "melee",
+      "platform_id": null,
+      "compatible_attachment_count": 0,
+      "attachment_category_counts": {},
+      "combinations_exactly_0_to_5": [
+        1,
+        0,
+        0,
+        0,
+        0,
+        0
+      ],
+      "combinations_1_to_5": 0,
+      "combinations_exactly_5": 0
+    },
+    {
+      "weapon_id": "pila",
+      "name": "PILA",
+      "game_id": "mw2",
+      "category_id": "launchers",
+      "platform_id": null,
+      "compatible_attachment_count": 0,
+      "attachment_category_counts": {},
+      "combinations_exactly_0_to_5": [
+        1,
+        0,
+        0,
+        0,
+        0,
+        0
+      ],
+      "combinations_1_to_5": 0,
+      "combinations_exactly_5": 0
+    },
+    {
+      "weapon_id": "strela-p",
+      "name": "STRELA-P",
+      "game_id": "mw2",
+      "category_id": "launchers",
+      "platform_id": null,
+      "compatible_attachment_count": 0,
+      "attachment_category_counts": {},
+      "combinations_exactly_0_to_5": [
+        1,
+        0,
+        0,
+        0,
+        0,
+        0
+      ],
+      "combinations_1_to_5": 0,
+      "combinations_exactly_5": 0
+    },
+    {
+      "weapon_id": "jokr",
+      "name": "JOKR",
+      "game_id": "mw2",
+      "category_id": "launchers",
+      "platform_id": null,
+      "compatible_attachment_count": 0,
+      "attachment_category_counts": {},
+      "combinations_exactly_0_to_5": [
+        1,
+        0,
+        0,
+        0,
+        0,
+        0
+      ],
+      "combinations_1_to_5": 0,
+      "combinations_exactly_5": 0
+    },
+    {
+      "weapon_id": "rpg-7",
+      "name": "RPG-7",
+      "game_id": "mw2",
+      "category_id": "launchers",
+      "platform_id": null,
+      "compatible_attachment_count": 0,
+      "attachment_category_counts": {},
+      "combinations_exactly_0_to_5": [
+        1,
+        0,
+        0,
+        0,
+        0,
+        0
+      ],
+      "combinations_1_to_5": 0,
+      "combinations_exactly_5": 0
+    },
+    {
+      "weapon_id": "combat-knife",
+      "name": "Combat Knife",
+      "game_id": "mw2",
+      "category_id": "melee",
+      "platform_id": null,
+      "compatible_attachment_count": 0,
+      "attachment_category_counts": {},
+      "combinations_exactly_0_to_5": [
+        1,
+        0,
+        0,
+        0,
+        0,
+        0
+      ],
+      "combinations_1_to_5": 0,
+      "combinations_exactly_5": 0
+    },
+    {
+      "weapon_id": "dual-kodachis",
+      "name": "Dual Kodachis",
+      "game_id": "mw2",
+      "category_id": "melee",
+      "platform_id": null,
+      "compatible_attachment_count": 0,
+      "attachment_category_counts": {},
+      "combinations_exactly_0_to_5": [
+        1,
+        0,
+        0,
+        0,
+        0,
+        0
+      ],
+      "combinations_1_to_5": 0,
+      "combinations_exactly_5": 0
+    },
+    {
+      "weapon_id": "tonfa",
+      "name": "Tonfa",
+      "game_id": "mw2",
+      "category_id": "melee",
+      "platform_id": null,
+      "compatible_attachment_count": 0,
+      "attachment_category_counts": {},
+      "combinations_exactly_0_to_5": [
+        1,
+        0,
+        0,
+        0,
+        0,
+        0
+      ],
+      "combinations_1_to_5": 0,
+      "combinations_exactly_5": 0
+    },
+    {
+      "weapon_id": "pickaxe",
+      "name": "Pickaxe",
+      "game_id": "mw2",
+      "category_id": "melee",
+      "platform_id": null,
+      "compatible_attachment_count": 0,
+      "attachment_category_counts": {},
+      "combinations_exactly_0_to_5": [
+        1,
+        0,
+        0,
+        0,
+        0,
+        0
+      ],
+      "combinations_1_to_5": 0,
+      "combinations_exactly_5": 0
+    },
+    {
+      "weapon_id": "dual-kamas",
+      "name": "Dual Kamas",
+      "game_id": "mw2",
+      "category_id": "melee",
+      "platform_id": null,
+      "compatible_attachment_count": 0,
+      "attachment_category_counts": {},
+      "combinations_exactly_0_to_5": [
+        1,
+        0,
+        0,
+        0,
+        0,
+        0
+      ],
+      "combinations_1_to_5": 0,
+      "combinations_exactly_5": 0
+    },
+    {
+      "weapon_id": "pila-mw3",
+      "name": "PILA",
+      "game_id": "mw3",
+      "category_id": "launchers",
+      "platform_id": null,
+      "compatible_attachment_count": 0,
+      "attachment_category_counts": {},
+      "combinations_exactly_0_to_5": [
+        1,
+        0,
+        0,
+        0,
+        0,
+        0
+      ],
+      "combinations_1_to_5": 0,
+      "combinations_exactly_5": 0
+    }
+  ]
+}
