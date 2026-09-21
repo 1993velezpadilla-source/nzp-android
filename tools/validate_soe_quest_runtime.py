@@ -201,6 +201,10 @@ runtime_guards = {
         finale_qc,
         "SoE_FinaleTransitionPopulation();",
     ),
+    "finale Gateworm Tram hit is idempotent": (
+        finale_qc,
+        "!soe_finale_gateworm_present",
+    ),
     "finale corruption can arm while a player is downed": (
         finale_qc,
         "!player.is_spectator && !player.soe_finale_corrupted",
