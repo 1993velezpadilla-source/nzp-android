@@ -56,6 +56,14 @@ void() SoE_ResetFinale =
     soe_finale_gateworm_absent_until = 0;
     soe_finale_next_margwa_at = 0;
     soe_finale_next_corruption_at = 0;
+
+    // Reset can run after a failed/restarted quest. Never let per-player
+    // corruption state leak into the next attempt.
+    entity player = find(world, classname, "player");
+    while (player != world) {
+        SoE_FinaleClearPlayerCorruption(player);
+        player = find(player, classname, "player");
+    }
 };
 
 void() SoE_FinaleTransitionPopulation =
