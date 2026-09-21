@@ -36,6 +36,15 @@ void(entity victim, entity attacker, float damage, float d_style) DamageHandler;
 void(entity ent) Zombie_Death_Cleanup;
 void() removeZombie;
 
+void(entity player) SoE_FinaleClearPlayerCorruption =
+{
+    if (player == world)
+        return;
+
+    player.soe_finale_corrupted = false;
+    player.soe_finale_corrupt_deadline = 0;
+};
+
 void() SoE_ResetFinale =
 {
     soe_finale_started = false;
