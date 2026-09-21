@@ -11,6 +11,8 @@ import argparse
 import json
 from pathlib import Path
 
+from soe_mainquest_geometry import append_phase_mainquest_entities
+
 ROOT = Path(__file__).resolve().parents[1]
 SPEC_PATH = ROOT / "content" / "shadows_of_evil" / "g1_blockout.json"
 OUTPUT_PATH = ROOT / "overlay" / "assets" / "source" / "maps" / "soe_g1" / "soe_g1.map"
@@ -251,6 +253,9 @@ def generate(spec):
     for a in spec["anchors"]:
         keys = {k:v for k,v in a.items() if k not in {"classname","origin"}}
         entities.append(point_entity(a["classname"], a["origin"], **keys))
+
+    # Cross-phase Reborn Sword / Flag quest anchors from the shared source of truth.
+    append_phase_mainquest_entities(entities, "g1", point_entity)
 
     # Basic lighting to make blockout readable.
     for org, brightness in [
