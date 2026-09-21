@@ -45,6 +45,7 @@ jobs:
           repository: nzp-team/spawn-zone-tool
           ref: 3c6f9b87208026d7d639565deed64e541ffb18bf
           path: spawn-zone-tool
+          submodules: recursive
 
       - name: Install spawn-zone tool requirements
         run: python -m pip install -r spawn-zone-tool/requirements.txt
