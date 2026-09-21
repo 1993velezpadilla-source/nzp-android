@@ -1,0 +1,266 @@
+{
+  "provenance": {
+    "source_repository": "iw4x/iw4x-rawfiles",
+    "source_revision": "edb0ae893dee26780e14c8095ca8ff4b6e7ac367",
+    "source_files": {
+      "statstable": {
+        "path": "iw4x/iw4x_00/mp/statstable.csv",
+        "sha": "cf67dd0b80f383150514676b48153cb06d1fd6fb"
+      },
+      "unlocktable": {
+        "path": "iw4x/iw4x_00/mp/unlocktable.csv",
+        "sha": "ca597bba805f26b3f213ea5fb4548b4c4d25b11c"
+      }
+    },
+    "repository_license": "GPLv3 at repository level; Activision-origin data/assets require separate provenance caution",
+    "transformed_on": "2026-09-21",
+    "notes": [
+      "menu_stat_bars are UI bars, not engine simulation values",
+      "attachment compatibility is derived from statstable attachment tokens",
+      "attachment unlock rows retain raw prerequisite challenge IDs"
+    ]
+  },
+  "count": 48,
+  "weapons": [
+    {
+      "weapon_id": "at4",
+      "player_rank": 0,
+      "prerequisite": null
+    },
+    {
+      "weapon_id": "javelin",
+      "player_rank": 49,
+      "prerequisite": null
+    },
+    {
+      "weapon_id": "m79",
+      "player_rank": 13,
+      "prerequisite": null
+    },
+    {
+      "weapon_id": "stinger",
+      "player_rank": 29,
+      "prerequisite": null
+    },
+    {
+      "weapon_id": "rpg",
+      "player_rank": 64,
+      "prerequisite": null
+    },
+    {
+      "weapon_id": "aug",
+      "player_rank": 31,
+      "prerequisite": null
+    },
+    {
+      "weapon_id": "m240",
+      "player_rank": 51,
+      "prerequisite": null
+    },
+    {
+      "weapon_id": "sa80",
+      "player_rank": 0,
+      "prerequisite": null
+    },
+    {
+      "weapon_id": "rpd",
+      "player_rank": 0,
+      "prerequisite": null
+    },
+    {
+      "weapon_id": "mg4",
+      "player_rank": 15,
+      "prerequisite": null
+    },
+    {
+      "weapon_id": "ak47",
+      "player_rank": 69,
+      "prerequisite": null
+    },
+    {
+      "weapon_id": "ak47classic",
+      "player_rank": 69,
+      "prerequisite": null
+    },
+    {
+      "weapon_id": "masada",
+      "player_rank": 47,
+      "prerequisite": null
+    },
+    {
+      "weapon_id": "m16",
+      "player_rank": 39,
+      "prerequisite": null
+    },
+    {
+      "weapon_id": "tavor",
+      "player_rank": 19,
+      "prerequisite": null
+    },
+    {
+      "weapon_id": "fn2000",
+      "player_rank": 59,
+      "prerequisite": null
+    },
+    {
+      "weapon_id": "m4",
+      "player_rank": 0,
+      "prerequisite": null
+    },
+    {
+      "weapon_id": "scar",
+      "player_rank": 7,
+      "prerequisite": null
+    },
+    {
+      "weapon_id": "fal",
+      "player_rank": 27,
+      "prerequisite": null
+    },
+    {
+      "weapon_id": "famas",
+      "player_rank": 0,
+      "prerequisite": null
+    },
+    {
+      "weapon_id": "mp5k",
+      "player_rank": 0,
+      "prerequisite": null
+    },
+    {
+      "weapon_id": "uzi",
+      "player_rank": 43,
+      "prerequisite": null
+    },
+    {
+      "weapon_id": "ak74u",
+      "player_rank": 48,
+      "prerequisite": null
+    },
+    {
+      "weapon_id": "peacekeeper",
+      "player_rank": 54,
+      "prerequisite": null
+    },
+    {
+      "weapon_id": "kriss",
+      "player_rank": 11,
+      "prerequisite": null
+    },
+    {
+      "weapon_id": "ump45",
+      "player_rank": 0,
+      "prerequisite": null
+    },
+    {
+      "weapon_id": "p90",
+      "player_rank": 23,
+      "prerequisite": null
+    },
+    {
+      "weapon_id": "cheytac",
+      "player_rank": 0,
+      "prerequisite": null
+    },
+    {
+      "weapon_id": "m40a3",
+      "player_rank": 60,
+      "prerequisite": null
+    },
+    {
+      "weapon_id": "dragunov",
+      "player_rank": 62,
+      "prerequisite": null
+    },
+    {
+      "weapon_id": "m21",
+      "player_rank": 55,
+      "prerequisite": null
+    },
+    {
+      "weapon_id": "barrett",
+      "player_rank": 0,
+      "prerequisite": null
+    },
+    {
+      "weapon_id": "wa2000",
+      "player_rank": 35,
+      "prerequisite": null
+    },
+    {
+      "weapon_id": "glock",
+      "player_rank": 21,
+      "prerequisite": null
+    },
+    {
+      "weapon_id": "tmp",
+      "player_rank": 57,
+      "prerequisite": null
+    },
+    {
+      "weapon_id": "beretta393",
+      "player_rank": 37,
+      "prerequisite": null
+    },
+    {
+      "weapon_id": "pp2000",
+      "player_rank": 0,
+      "prerequisite": null
+    },
+    {
+      "weapon_id": "striker",
+      "player_rank": 33,
+      "prerequisite": null
+    },
+    {
+      "weapon_id": "aa12",
+      "player_rank": 17,
+      "prerequisite": null
+    },
+    {
+      "weapon_id": "m1014",
+      "player_rank": 53,
+      "prerequisite": null
+    },
+    {
+      "weapon_id": "spas12",
+      "player_rank": 0,
+      "prerequisite": null
+    },
+    {
+      "weapon_id": "model1887",
+      "player_rank": 66,
+      "prerequisite": null
+    },
+    {
+      "weapon_id": "ranger",
+      "player_rank": 41,
+      "prerequisite": null
+    },
+    {
+      "weapon_id": "beretta",
+      "player_rank": 45,
+      "prerequisite": null
+    },
+    {
+      "weapon_id": "usp",
+      "player_rank": 0,
+      "prerequisite": null
+    },
+    {
+      "weapon_id": "deserteaglegold",
+      "player_rank": 69,
+      "prerequisite": null
+    },
+    {
+      "weapon_id": "deserteagle",
+      "player_rank": 61,
+      "prerequisite": null
+    },
+    {
+      "weapon_id": "coltanaconda",
+      "player_rank": 25,
+      "prerequisite": null
+    }
+  ]
+}
