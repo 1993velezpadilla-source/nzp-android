@@ -7,6 +7,7 @@
 
 void(entity who, float value, float impacted_by_2x_points) Player_ChangeScore;
 void() PlayerSpawn;
+void(entity player) SoE_FinaleClearPlayerCorruption;
 
 float soe_tram_current_station;
 float soe_tram_destination;
@@ -44,6 +45,9 @@ void() SoE_TramRespawnFinaleSpectators =
         entity next = find(who, classname, "spectator");
 
         if (who.is_spectator) {
+            // A full bleed-out ends the old infection. Do not let an expired
+            // spectator deadline instantly down the player after Tram respawn.
+            SoE_FinaleClearPlayerCorruption(who);
             self = who;
             PlayerSpawn();
         }
