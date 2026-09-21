@@ -1,0 +1,3146 @@
+{
+  "provenance": {
+    "source_repository": "iw4x/iw4x-rawfiles",
+    "source_revision": "edb0ae893dee26780e14c8095ca8ff4b6e7ac367",
+    "source_files": {
+      "statstable": {
+        "path": "iw4x/iw4x_00/mp/statstable.csv",
+        "sha": "cf67dd0b80f383150514676b48153cb06d1fd6fb"
+      },
+      "unlocktable": {
+        "path": "iw4x/iw4x_00/mp/unlocktable.csv",
+        "sha": "ca597bba805f26b3f213ea5fb4548b4c4d25b11c"
+      }
+    },
+    "repository_license": "GPLv3 at repository level; Activision-origin data/assets require separate provenance caution",
+    "transformed_on": "2026-09-21",
+    "notes": [
+      "menu_stat_bars are UI bars, not engine simulation values",
+      "attachment compatibility is derived from statstable attachment tokens",
+      "attachment unlock rows retain raw prerequisite challenge IDs"
+    ]
+  },
+  "count": 368,
+  "challenges": [
+    {
+      "challenge_id": "ch_prestige",
+      "player_rank": 0,
+      "prerequisite": null,
+      "rewards": []
+    },
+    {
+      "challenge_id": "pr_marksman_ak47",
+      "player_rank": 0,
+      "prerequisite": null,
+      "rewards": [
+        "title",
+        "icon",
+        "title"
+      ]
+    },
+    {
+      "challenge_id": "pr_expert_ak47",
+      "player_rank": 0,
+      "prerequisite": null,
+      "rewards": [
+        "title",
+        "icon",
+        "title"
+      ]
+    },
+    {
+      "challenge_id": "pr_marksman_fal",
+      "player_rank": 0,
+      "prerequisite": null,
+      "rewards": [
+        "title",
+        "icon",
+        "title"
+      ]
+    },
+    {
+      "challenge_id": "pr_expert_fal",
+      "player_rank": 0,
+      "prerequisite": null,
+      "rewards": [
+        "title",
+        "icon",
+        "title"
+      ]
+    },
+    {
+      "challenge_id": "pr_marksman_famas",
+      "player_rank": 0,
+      "prerequisite": null,
+      "rewards": [
+        "title",
+        "icon",
+        "title"
+      ]
+    },
+    {
+      "challenge_id": "pr_expert_famas",
+      "player_rank": 0,
+      "prerequisite": null,
+      "rewards": [
+        "title",
+        "icon",
+        "title"
+      ]
+    },
+    {
+      "challenge_id": "pr_marksman_fn2000",
+      "player_rank": 0,
+      "prerequisite": null,
+      "rewards": [
+        "title",
+        "icon",
+        "title"
+      ]
+    },
+    {
+      "challenge_id": "pr_expert_fn2000",
+      "player_rank": 0,
+      "prerequisite": null,
+      "rewards": [
+        "title",
+        "icon",
+        "title"
+      ]
+    },
+    {
+      "challenge_id": "pr_marksman_m4",
+      "player_rank": 0,
+      "prerequisite": null,
+      "rewards": [
+        "title",
+        "icon",
+        "title"
+      ]
+    },
+    {
+      "challenge_id": "pr_expert_m4",
+      "player_rank": 0,
+      "prerequisite": null,
+      "rewards": [
+        "title",
+        "icon",
+        "title"
+      ]
+    },
+    {
+      "challenge_id": "pr_marksman_m16",
+      "player_rank": 0,
+      "prerequisite": null,
+      "rewards": [
+        "title",
+        "icon",
+        "title"
+      ]
+    },
+    {
+      "challenge_id": "pr_expert_m16",
+      "player_rank": 0,
+      "prerequisite": null,
+      "rewards": [
+        "title",
+        "icon",
+        "title"
+      ]
+    },
+    {
+      "challenge_id": "pr_marksman_masada",
+      "player_rank": 0,
+      "prerequisite": null,
+      "rewards": [
+        "title",
+        "icon",
+        "title"
+      ]
+    },
+    {
+      "challenge_id": "pr_expert_masada",
+      "player_rank": 0,
+      "prerequisite": null,
+      "rewards": [
+        "title",
+        "icon",
+        "title"
+      ]
+    },
+    {
+      "challenge_id": "pr_marksman_scar",
+      "player_rank": 0,
+      "prerequisite": null,
+      "rewards": [
+        "title",
+        "icon",
+        "title"
+      ]
+    },
+    {
+      "challenge_id": "pr_expert_scar",
+      "player_rank": 0,
+      "prerequisite": null,
+      "rewards": [
+        "title",
+        "icon",
+        "title"
+      ]
+    },
+    {
+      "challenge_id": "pr_marksman_tavor",
+      "player_rank": 0,
+      "prerequisite": null,
+      "rewards": [
+        "title",
+        "icon",
+        "title"
+      ]
+    },
+    {
+      "challenge_id": "pr_expert_tavor",
+      "player_rank": 0,
+      "prerequisite": null,
+      "rewards": [
+        "title",
+        "icon",
+        "title"
+      ]
+    },
+    {
+      "challenge_id": "pr_marksman_mp5k",
+      "player_rank": 0,
+      "prerequisite": null,
+      "rewards": [
+        "title",
+        "icon",
+        "title"
+      ]
+    },
+    {
+      "challenge_id": "pr_expert_mp5k",
+      "player_rank": 0,
+      "prerequisite": null,
+      "rewards": [
+        "title",
+        "icon",
+        "title"
+      ]
+    },
+    {
+      "challenge_id": "pr_marksman_uzi",
+      "player_rank": 0,
+      "prerequisite": null,
+      "rewards": [
+        "title",
+        "icon",
+        "title"
+      ]
+    },
+    {
+      "challenge_id": "pr_expert_uzi",
+      "player_rank": 0,
+      "prerequisite": null,
+      "rewards": [
+        "title",
+        "icon",
+        "title"
+      ]
+    },
+    {
+      "challenge_id": "pr_marksman_kriss",
+      "player_rank": 0,
+      "prerequisite": null,
+      "rewards": [
+        "title",
+        "icon",
+        "title"
+      ]
+    },
+    {
+      "challenge_id": "pr_expert_kriss",
+      "player_rank": 0,
+      "prerequisite": null,
+      "rewards": [
+        "title",
+        "icon",
+        "title"
+      ]
+    },
+    {
+      "challenge_id": "pr_marksman_ump45",
+      "player_rank": 0,
+      "prerequisite": null,
+      "rewards": [
+        "title",
+        "icon",
+        "title"
+      ]
+    },
+    {
+      "challenge_id": "pr_expert_ump45",
+      "player_rank": 0,
+      "prerequisite": null,
+      "rewards": [
+        "title",
+        "icon",
+        "title"
+      ]
+    },
+    {
+      "challenge_id": "pr_marksman_p90",
+      "player_rank": 0,
+      "prerequisite": null,
+      "rewards": [
+        "title",
+        "icon",
+        "title"
+      ]
+    },
+    {
+      "challenge_id": "pr_expert_p90",
+      "player_rank": 0,
+      "prerequisite": null,
+      "rewards": [
+        "title",
+        "icon",
+        "title"
+      ]
+    },
+    {
+      "challenge_id": "pr_marksman_m240",
+      "player_rank": 0,
+      "prerequisite": null,
+      "rewards": [
+        "title",
+        "icon",
+        "title"
+      ]
+    },
+    {
+      "challenge_id": "pr_expert_m240",
+      "player_rank": 0,
+      "prerequisite": null,
+      "rewards": [
+        "title",
+        "icon",
+        "title"
+      ]
+    },
+    {
+      "challenge_id": "pr_marksman_aug",
+      "player_rank": 0,
+      "prerequisite": null,
+      "rewards": [
+        "title",
+        "icon",
+        "title"
+      ]
+    },
+    {
+      "challenge_id": "pr_expert_aug",
+      "player_rank": 0,
+      "prerequisite": null,
+      "rewards": [
+        "title",
+        "icon",
+        "title"
+      ]
+    },
+    {
+      "challenge_id": "pr_marksman_sa80",
+      "player_rank": 0,
+      "prerequisite": null,
+      "rewards": [
+        "title",
+        "icon",
+        "title"
+      ]
+    },
+    {
+      "challenge_id": "pr_expert_sa80",
+      "player_rank": 0,
+      "prerequisite": null,
+      "rewards": [
+        "title",
+        "icon",
+        "title"
+      ]
+    },
+    {
+      "challenge_id": "pr_marksman_rpd",
+      "player_rank": 0,
+      "prerequisite": null,
+      "rewards": [
+        "title",
+        "icon",
+        "title"
+      ]
+    },
+    {
+      "challenge_id": "pr_expert_rpd",
+      "player_rank": 0,
+      "prerequisite": null,
+      "rewards": [
+        "title",
+        "icon",
+        "title"
+      ]
+    },
+    {
+      "challenge_id": "pr_marksman_mg4",
+      "player_rank": 0,
+      "prerequisite": null,
+      "rewards": [
+        "title",
+        "icon",
+        "title"
+      ]
+    },
+    {
+      "challenge_id": "pr_expert_mg4",
+      "player_rank": 0,
+      "prerequisite": null,
+      "rewards": [
+        "title",
+        "icon",
+        "title"
+      ]
+    },
+    {
+      "challenge_id": "pr_marksman_cheytac",
+      "player_rank": 0,
+      "prerequisite": null,
+      "rewards": [
+        "title",
+        "icon",
+        "title"
+      ]
+    },
+    {
+      "challenge_id": "pr_expert_cheytac",
+      "player_rank": 0,
+      "prerequisite": null,
+      "rewards": [
+        "title",
+        "icon",
+        "title"
+      ]
+    },
+    {
+      "challenge_id": "pr_marksman_barrett",
+      "player_rank": 0,
+      "prerequisite": null,
+      "rewards": [
+        "title",
+        "icon",
+        "title"
+      ]
+    },
+    {
+      "challenge_id": "pr_expert_barrett",
+      "player_rank": 0,
+      "prerequisite": null,
+      "rewards": [
+        "title",
+        "icon",
+        "title"
+      ]
+    },
+    {
+      "challenge_id": "pr_marksman_m21",
+      "player_rank": 0,
+      "prerequisite": null,
+      "rewards": [
+        "title",
+        "icon",
+        "title"
+      ]
+    },
+    {
+      "challenge_id": "pr_expert_m21",
+      "player_rank": 0,
+      "prerequisite": null,
+      "rewards": [
+        "title",
+        "icon",
+        "title"
+      ]
+    },
+    {
+      "challenge_id": "pr_marksman_wa2000",
+      "player_rank": 0,
+      "prerequisite": null,
+      "rewards": [
+        "title",
+        "icon",
+        "title"
+      ]
+    },
+    {
+      "challenge_id": "pr_expert_wa2000",
+      "player_rank": 0,
+      "prerequisite": null,
+      "rewards": [
+        "title",
+        "icon",
+        "title"
+      ]
+    },
+    {
+      "challenge_id": "pr_marksman_glock",
+      "player_rank": 0,
+      "prerequisite": null,
+      "rewards": [
+        "title",
+        "icon",
+        "title"
+      ]
+    },
+    {
+      "challenge_id": "pr_expert_glock",
+      "player_rank": 0,
+      "prerequisite": null,
+      "rewards": [
+        "title",
+        "icon",
+        "title"
+      ]
+    },
+    {
+      "challenge_id": "pr_marksman_tmp",
+      "player_rank": 0,
+      "prerequisite": null,
+      "rewards": [
+        "title",
+        "icon",
+        "title"
+      ]
+    },
+    {
+      "challenge_id": "pr_expert_tmp",
+      "player_rank": 0,
+      "prerequisite": null,
+      "rewards": [
+        "title",
+        "icon",
+        "title"
+      ]
+    },
+    {
+      "challenge_id": "pr_marksman_beretta393",
+      "player_rank": 0,
+      "prerequisite": null,
+      "rewards": [
+        "title",
+        "icon",
+        "title"
+      ]
+    },
+    {
+      "challenge_id": "pr_expert_beretta393",
+      "player_rank": 0,
+      "prerequisite": null,
+      "rewards": [
+        "title",
+        "icon",
+        "title"
+      ]
+    },
+    {
+      "challenge_id": "pr_marksman_pp2000",
+      "player_rank": 0,
+      "prerequisite": null,
+      "rewards": [
+        "title",
+        "icon",
+        "title"
+      ]
+    },
+    {
+      "challenge_id": "pr_expert_pp2000",
+      "player_rank": 0,
+      "prerequisite": null,
+      "rewards": [
+        "title",
+        "icon",
+        "title"
+      ]
+    },
+    {
+      "challenge_id": "pr_marksman_striker",
+      "player_rank": 0,
+      "prerequisite": null,
+      "rewards": [
+        "title",
+        "icon",
+        "title"
+      ]
+    },
+    {
+      "challenge_id": "pr_expert_striker",
+      "player_rank": 0,
+      "prerequisite": null,
+      "rewards": [
+        "title",
+        "icon",
+        "title"
+      ]
+    },
+    {
+      "challenge_id": "pr_marksman_aa12",
+      "player_rank": 0,
+      "prerequisite": null,
+      "rewards": [
+        "title",
+        "icon",
+        "title"
+      ]
+    },
+    {
+      "challenge_id": "pr_expert_aa12",
+      "player_rank": 0,
+      "prerequisite": null,
+      "rewards": [
+        "title",
+        "icon",
+        "title"
+      ]
+    },
+    {
+      "challenge_id": "pr_marksman_m1014",
+      "player_rank": 0,
+      "prerequisite": null,
+      "rewards": [
+        "title",
+        "icon",
+        "title"
+      ]
+    },
+    {
+      "challenge_id": "pr_expert_m1014",
+      "player_rank": 0,
+      "prerequisite": null,
+      "rewards": [
+        "title",
+        "icon",
+        "title"
+      ]
+    },
+    {
+      "challenge_id": "pr_marksman_spas12",
+      "player_rank": 0,
+      "prerequisite": null,
+      "rewards": [
+        "title",
+        "icon",
+        "title"
+      ]
+    },
+    {
+      "challenge_id": "pr_expert_spas12",
+      "player_rank": 0,
+      "prerequisite": null,
+      "rewards": [
+        "title",
+        "icon",
+        "title"
+      ]
+    },
+    {
+      "challenge_id": "pr_marksman_ranger",
+      "player_rank": 0,
+      "prerequisite": null,
+      "rewards": [
+        "title",
+        "icon",
+        "title"
+      ]
+    },
+    {
+      "challenge_id": "pr_expert_ranger",
+      "player_rank": 0,
+      "prerequisite": null,
+      "rewards": [
+        "title",
+        "icon",
+        "title"
+      ]
+    },
+    {
+      "challenge_id": "pr_marksman_model1887",
+      "player_rank": 0,
+      "prerequisite": null,
+      "rewards": [
+        "title",
+        "icon",
+        "title"
+      ]
+    },
+    {
+      "challenge_id": "pr_expert_model1887",
+      "player_rank": 0,
+      "prerequisite": null,
+      "rewards": [
+        "title",
+        "icon",
+        "title"
+      ]
+    },
+    {
+      "challenge_id": "pr_marksman_usp",
+      "player_rank": 0,
+      "prerequisite": null,
+      "rewards": [
+        "title",
+        "icon",
+        "title"
+      ]
+    },
+    {
+      "challenge_id": "pr_expert_usp",
+      "player_rank": 0,
+      "prerequisite": null,
+      "rewards": [
+        "title",
+        "icon",
+        "title"
+      ]
+    },
+    {
+      "challenge_id": "pr_marksman_beretta",
+      "player_rank": 0,
+      "prerequisite": null,
+      "rewards": [
+        "title",
+        "icon",
+        "title"
+      ]
+    },
+    {
+      "challenge_id": "pr_expert_beretta",
+      "player_rank": 0,
+      "prerequisite": null,
+      "rewards": [
+        "title",
+        "icon",
+        "title"
+      ]
+    },
+    {
+      "challenge_id": "pr_marksman_coltanaconda",
+      "player_rank": 0,
+      "prerequisite": null,
+      "rewards": [
+        "title",
+        "icon",
+        "title"
+      ]
+    },
+    {
+      "challenge_id": "pr_expert_coltanaconda",
+      "player_rank": 0,
+      "prerequisite": null,
+      "rewards": [
+        "title",
+        "icon",
+        "title"
+      ]
+    },
+    {
+      "challenge_id": "pr_marksman_deserteagle",
+      "player_rank": 0,
+      "prerequisite": null,
+      "rewards": [
+        "title",
+        "icon",
+        "title"
+      ]
+    },
+    {
+      "challenge_id": "pr_expert_deserteagle",
+      "player_rank": 0,
+      "prerequisite": null,
+      "rewards": [
+        "title",
+        "icon",
+        "title"
+      ]
+    },
+    {
+      "challenge_id": "pr_marksman_at4",
+      "player_rank": 0,
+      "prerequisite": null,
+      "rewards": [
+        "title",
+        "icon",
+        "title"
+      ]
+    },
+    {
+      "challenge_id": "pr_expert_at4",
+      "player_rank": 0,
+      "prerequisite": null,
+      "rewards": [
+        "title",
+        "icon",
+        "title"
+      ]
+    },
+    {
+      "challenge_id": "pr_marksman_rpg",
+      "player_rank": 0,
+      "prerequisite": null,
+      "rewards": [
+        "title",
+        "icon",
+        "title"
+      ]
+    },
+    {
+      "challenge_id": "pr_expert_rpg",
+      "player_rank": 0,
+      "prerequisite": null,
+      "rewards": [
+        "title",
+        "icon",
+        "title"
+      ]
+    },
+    {
+      "challenge_id": "pr_marksman_javelin",
+      "player_rank": 0,
+      "prerequisite": null,
+      "rewards": [
+        "title",
+        "icon",
+        "title"
+      ]
+    },
+    {
+      "challenge_id": "pr_expert_javelin",
+      "player_rank": 0,
+      "prerequisite": null,
+      "rewards": [
+        "title",
+        "icon",
+        "title"
+      ]
+    },
+    {
+      "challenge_id": "pr_marksman_m79",
+      "player_rank": 0,
+      "prerequisite": null,
+      "rewards": [
+        "title",
+        "icon",
+        "title"
+      ]
+    },
+    {
+      "challenge_id": "pr_expert_m79",
+      "player_rank": 0,
+      "prerequisite": null,
+      "rewards": [
+        "title",
+        "icon",
+        "title"
+      ]
+    },
+    {
+      "challenge_id": "pr_marksman_stinger",
+      "player_rank": 0,
+      "prerequisite": null,
+      "rewards": [
+        "title",
+        "title",
+        "title",
+        "title"
+      ]
+    },
+    {
+      "challenge_id": "tier_1",
+      "player_rank": 4,
+      "prerequisite": null,
+      "rewards": []
+    },
+    {
+      "challenge_id": "tier_2",
+      "player_rank": 4,
+      "prerequisite": null,
+      "rewards": []
+    },
+    {
+      "challenge_id": "tier_3",
+      "player_rank": 5,
+      "prerequisite": null,
+      "rewards": []
+    },
+    {
+      "challenge_id": "tier_3_a",
+      "player_rank": 5,
+      "prerequisite": null,
+      "rewards": []
+    },
+    {
+      "challenge_id": "tier_3_b",
+      "player_rank": 6,
+      "prerequisite": null,
+      "rewards": []
+    },
+    {
+      "challenge_id": "tier_3_c",
+      "player_rank": 6,
+      "prerequisite": null,
+      "rewards": []
+    },
+    {
+      "challenge_id": "tier_4",
+      "player_rank": 9,
+      "prerequisite": null,
+      "rewards": []
+    },
+    {
+      "challenge_id": "tier_4_a",
+      "player_rank": 9,
+      "prerequisite": null,
+      "rewards": []
+    },
+    {
+      "challenge_id": "tier_4_b",
+      "player_rank": 9,
+      "prerequisite": null,
+      "rewards": []
+    },
+    {
+      "challenge_id": "tier_4_c",
+      "player_rank": 10,
+      "prerequisite": null,
+      "rewards": []
+    },
+    {
+      "challenge_id": "tier_4_d",
+      "player_rank": 10,
+      "prerequisite": null,
+      "rewards": []
+    },
+    {
+      "challenge_id": "tier_5",
+      "player_rank": 15,
+      "prerequisite": null,
+      "rewards": []
+    },
+    {
+      "challenge_id": "tier_5_a",
+      "player_rank": 15,
+      "prerequisite": null,
+      "rewards": []
+    },
+    {
+      "challenge_id": "tier_5_b",
+      "player_rank": 15,
+      "prerequisite": null,
+      "rewards": []
+    },
+    {
+      "challenge_id": "tier_5_c",
+      "player_rank": 20,
+      "prerequisite": null,
+      "rewards": []
+    },
+    {
+      "challenge_id": "tier_5_d",
+      "player_rank": 20,
+      "prerequisite": null,
+      "rewards": []
+    },
+    {
+      "challenge_id": "tier_6",
+      "player_rank": 25,
+      "prerequisite": null,
+      "rewards": []
+    },
+    {
+      "challenge_id": "tier_6_a",
+      "player_rank": 25,
+      "prerequisite": null,
+      "rewards": []
+    },
+    {
+      "challenge_id": "tier_6_b",
+      "player_rank": 25,
+      "prerequisite": null,
+      "rewards": []
+    },
+    {
+      "challenge_id": "tier_6_c",
+      "player_rank": 30,
+      "prerequisite": null,
+      "rewards": []
+    },
+    {
+      "challenge_id": "tier_6_d",
+      "player_rank": 30,
+      "prerequisite": null,
+      "rewards": []
+    },
+    {
+      "challenge_id": "tier_7",
+      "player_rank": 34,
+      "prerequisite": null,
+      "rewards": []
+    },
+    {
+      "challenge_id": "tier_7_a",
+      "player_rank": 34,
+      "prerequisite": null,
+      "rewards": []
+    },
+    {
+      "challenge_id": "tier_7_b",
+      "player_rank": 34,
+      "prerequisite": null,
+      "rewards": []
+    },
+    {
+      "challenge_id": "tier_7_c",
+      "player_rank": 36,
+      "prerequisite": null,
+      "rewards": []
+    },
+    {
+      "challenge_id": "tier_7_d",
+      "player_rank": 36,
+      "prerequisite": null,
+      "rewards": []
+    },
+    {
+      "challenge_id": "tier_8",
+      "player_rank": 40,
+      "prerequisite": null,
+      "rewards": []
+    },
+    {
+      "challenge_id": "tier_8_a",
+      "player_rank": 40,
+      "prerequisite": null,
+      "rewards": []
+    },
+    {
+      "challenge_id": "tier_8_b",
+      "player_rank": 40,
+      "prerequisite": null,
+      "rewards": []
+    },
+    {
+      "challenge_id": "tier_8_c",
+      "player_rank": 42,
+      "prerequisite": null,
+      "rewards": []
+    },
+    {
+      "challenge_id": "tier_8_d",
+      "player_rank": 42,
+      "prerequisite": null,
+      "rewards": []
+    },
+    {
+      "challenge_id": "tier_9",
+      "player_rank": 46,
+      "prerequisite": null,
+      "rewards": []
+    },
+    {
+      "challenge_id": "tier_9_a",
+      "player_rank": 46,
+      "prerequisite": null,
+      "rewards": []
+    },
+    {
+      "challenge_id": "tier_9_b",
+      "player_rank": 46,
+      "prerequisite": null,
+      "rewards": []
+    },
+    {
+      "challenge_id": "tier_9_c",
+      "player_rank": 48,
+      "prerequisite": null,
+      "rewards": []
+    },
+    {
+      "challenge_id": "tier_9_d",
+      "player_rank": 48,
+      "prerequisite": null,
+      "rewards": []
+    },
+    {
+      "challenge_id": "tier_10",
+      "player_rank": 52,
+      "prerequisite": null,
+      "rewards": []
+    },
+    {
+      "challenge_id": "tier_10_a",
+      "player_rank": 52,
+      "prerequisite": null,
+      "rewards": []
+    },
+    {
+      "challenge_id": "tier_10_b",
+      "player_rank": 52,
+      "prerequisite": null,
+      "rewards": []
+    },
+    {
+      "challenge_id": "tier_10_c",
+      "player_rank": 56,
+      "prerequisite": null,
+      "rewards": []
+    },
+    {
+      "challenge_id": "tier_10_d",
+      "player_rank": 56,
+      "prerequisite": null,
+      "rewards": []
+    },
+    {
+      "challenge_id": "tier_11",
+      "player_rank": 60,
+      "prerequisite": null,
+      "rewards": []
+    },
+    {
+      "challenge_id": "tier_11_a",
+      "player_rank": 60,
+      "prerequisite": null,
+      "rewards": []
+    },
+    {
+      "challenge_id": "tier_11_b",
+      "player_rank": 60,
+      "prerequisite": null,
+      "rewards": []
+    },
+    {
+      "challenge_id": "tier_11_c",
+      "player_rank": 63,
+      "prerequisite": null,
+      "rewards": []
+    },
+    {
+      "challenge_id": "tier_11_d",
+      "player_rank": 63,
+      "prerequisite": null,
+      "rewards": []
+    },
+    {
+      "challenge_id": "tier_12",
+      "player_rank": 4,
+      "prerequisite": "ch_prestige",
+      "rewards": []
+    },
+    {
+      "challenge_id": "ch_marksman_at4",
+      "player_rank": 0,
+      "prerequisite": null,
+      "rewards": []
+    },
+    {
+      "challenge_id": "ch_marksman_javelin",
+      "player_rank": 49,
+      "prerequisite": null,
+      "rewards": []
+    },
+    {
+      "challenge_id": "ch_marksman_m79",
+      "player_rank": 13,
+      "prerequisite": null,
+      "rewards": []
+    },
+    {
+      "challenge_id": "ch_marksman_stinger",
+      "player_rank": 29,
+      "prerequisite": null,
+      "rewards": []
+    },
+    {
+      "challenge_id": "ch_marksman_rpg",
+      "player_rank": 64,
+      "prerequisite": null,
+      "rewards": []
+    },
+    {
+      "challenge_id": "tier_23_aug",
+      "player_rank": 31,
+      "prerequisite": null,
+      "rewards": []
+    },
+    {
+      "challenge_id": "ch_marksman_aug",
+      "player_rank": 31,
+      "prerequisite": null,
+      "rewards": [
+        "grip",
+        "reflex",
+        "silencer",
+        "acog",
+        "fmj"
+      ]
+    },
+    {
+      "challenge_id": "ch_expert_aug",
+      "player_rank": 31,
+      "prerequisite": null,
+      "rewards": [
+        "woodland",
+        "digital",
+        "red_urban",
+        "blue_tiger",
+        "red_tiger",
+        "orange_fall"
+      ]
+    },
+    {
+      "challenge_id": "ch_aug_reflex",
+      "player_rank": 31,
+      "prerequisite": "ch_marksman_aug_2",
+      "rewards": [
+        "eotech"
+      ]
+    },
+    {
+      "challenge_id": "ch_aug_silencer",
+      "player_rank": 31,
+      "prerequisite": "ch_marksman_aug_3",
+      "rewards": [
+        "heartbeat"
+      ]
+    },
+    {
+      "challenge_id": "ch_aug_acog",
+      "player_rank": 31,
+      "prerequisite": "ch_marksman_aug_4",
+      "rewards": [
+        "thermal"
+      ]
+    },
+    {
+      "challenge_id": "ch_aug_fmj",
+      "player_rank": 31,
+      "prerequisite": "ch_marksman_aug_5",
+      "rewards": [
+        "xmags"
+      ]
+    },
+    {
+      "challenge_id": "ch_aug_mastery",
+      "player_rank": 31,
+      "prerequisite": null,
+      "rewards": []
+    },
+    {
+      "challenge_id": "tier_38_m240",
+      "player_rank": 51,
+      "prerequisite": null,
+      "rewards": []
+    },
+    {
+      "challenge_id": "ch_marksman_m240",
+      "player_rank": 51,
+      "prerequisite": null,
+      "rewards": [
+        "grip",
+        "reflex",
+        "silencer",
+        "acog",
+        "fmj"
+      ]
+    },
+    {
+      "challenge_id": "ch_expert_m240",
+      "player_rank": 51,
+      "prerequisite": null,
+      "rewards": [
+        "woodland",
+        "digital",
+        "red_urban",
+        "blue_tiger",
+        "red_tiger",
+        "orange_fall"
+      ]
+    },
+    {
+      "challenge_id": "ch_m240_reflex",
+      "player_rank": 51,
+      "prerequisite": "ch_marksman_m240_2",
+      "rewards": [
+        "eotech"
+      ]
+    },
+    {
+      "challenge_id": "ch_m240_silencer",
+      "player_rank": 51,
+      "prerequisite": "ch_marksman_m240_3",
+      "rewards": [
+        "heartbeat"
+      ]
+    },
+    {
+      "challenge_id": "ch_m240_acog",
+      "player_rank": 51,
+      "prerequisite": "ch_marksman_m240_4",
+      "rewards": [
+        "thermal"
+      ]
+    },
+    {
+      "challenge_id": "ch_m240_fmj",
+      "player_rank": 51,
+      "prerequisite": "ch_marksman_m240_5",
+      "rewards": [
+        "xmags"
+      ]
+    },
+    {
+      "challenge_id": "ch_m240_mastery",
+      "player_rank": 51,
+      "prerequisite": null,
+      "rewards": []
+    },
+    {
+      "challenge_id": "tier_48_sa80",
+      "player_rank": 4,
+      "prerequisite": null,
+      "rewards": []
+    },
+    {
+      "challenge_id": "ch_marksman_sa80",
+      "player_rank": 4,
+      "prerequisite": null,
+      "rewards": [
+        "grip",
+        "reflex",
+        "silencer",
+        "acog",
+        "fmj"
+      ]
+    },
+    {
+      "challenge_id": "ch_expert_sa80",
+      "player_rank": 4,
+      "prerequisite": null,
+      "rewards": [
+        "woodland",
+        "digital",
+        "red_urban",
+        "blue_tiger",
+        "red_tiger",
+        "orange_fall"
+      ]
+    },
+    {
+      "challenge_id": "ch_sa80_reflex",
+      "player_rank": 4,
+      "prerequisite": "ch_marksman_sa80_2",
+      "rewards": [
+        "eotech"
+      ]
+    },
+    {
+      "challenge_id": "ch_sa80_silencer",
+      "player_rank": 4,
+      "prerequisite": "ch_marksman_sa80_3",
+      "rewards": [
+        "heartbeat"
+      ]
+    },
+    {
+      "challenge_id": "ch_sa80_acog",
+      "player_rank": 4,
+      "prerequisite": "ch_marksman_sa80_4",
+      "rewards": [
+        "thermal"
+      ]
+    },
+    {
+      "challenge_id": "ch_sa80_fmj",
+      "player_rank": 4,
+      "prerequisite": "ch_marksman_sa80_5",
+      "rewards": [
+        "xmags"
+      ]
+    },
+    {
+      "challenge_id": "ch_sa80_mastery",
+      "player_rank": 4,
+      "prerequisite": null,
+      "rewards": []
+    },
+    {
+      "challenge_id": "tier_47_rpd",
+      "player_rank": 4,
+      "prerequisite": null,
+      "rewards": []
+    },
+    {
+      "challenge_id": "ch_marksman_rpd",
+      "player_rank": 4,
+      "prerequisite": null,
+      "rewards": [
+        "grip",
+        "reflex",
+        "silencer",
+        "acog",
+        "fmj"
+      ]
+    },
+    {
+      "challenge_id": "ch_expert_rpd",
+      "player_rank": 4,
+      "prerequisite": null,
+      "rewards": [
+        "woodland",
+        "digital",
+        "red_urban",
+        "blue_tiger",
+        "red_tiger",
+        "orange_fall"
+      ]
+    },
+    {
+      "challenge_id": "ch_rpd_reflex",
+      "player_rank": 4,
+      "prerequisite": "ch_marksman_rpd_2",
+      "rewards": [
+        "eotech"
+      ]
+    },
+    {
+      "challenge_id": "ch_rpd_silencer",
+      "player_rank": 4,
+      "prerequisite": "ch_marksman_rpd_3",
+      "rewards": [
+        "heartbeat"
+      ]
+    },
+    {
+      "challenge_id": "ch_rpd_acog",
+      "player_rank": 4,
+      "prerequisite": "ch_marksman_rpd_4",
+      "rewards": [
+        "thermal"
+      ]
+    },
+    {
+      "challenge_id": "ch_rpd_fmj",
+      "player_rank": 4,
+      "prerequisite": "ch_marksman_rpd_5",
+      "rewards": [
+        "xmags"
+      ]
+    },
+    {
+      "challenge_id": "ch_rpd_mastery",
+      "player_rank": 4,
+      "prerequisite": null,
+      "rewards": []
+    },
+    {
+      "challenge_id": "tier_41_mg4",
+      "player_rank": 15,
+      "prerequisite": null,
+      "rewards": []
+    },
+    {
+      "challenge_id": "ch_marksman_mg4",
+      "player_rank": 15,
+      "prerequisite": null,
+      "rewards": [
+        "grip",
+        "reflex",
+        "silencer",
+        "acog",
+        "fmj"
+      ]
+    },
+    {
+      "challenge_id": "ch_expert_mg4",
+      "player_rank": 15,
+      "prerequisite": null,
+      "rewards": [
+        "woodland",
+        "digital",
+        "red_urban",
+        "blue_tiger",
+        "red_tiger",
+        "orange_fall"
+      ]
+    },
+    {
+      "challenge_id": "ch_mg4_reflex",
+      "player_rank": 15,
+      "prerequisite": "ch_marksman_mg4_2",
+      "rewards": [
+        "eotech"
+      ]
+    },
+    {
+      "challenge_id": "ch_mg4_silencer",
+      "player_rank": 15,
+      "prerequisite": "ch_marksman_mg4_3",
+      "rewards": [
+        "heartbeat"
+      ]
+    },
+    {
+      "challenge_id": "ch_mg4_acog",
+      "player_rank": 15,
+      "prerequisite": "ch_marksman_mg4_4",
+      "rewards": [
+        "thermal"
+      ]
+    },
+    {
+      "challenge_id": "ch_mg4_fmj",
+      "player_rank": 15,
+      "prerequisite": "ch_marksman_mg4_5",
+      "rewards": [
+        "xmags"
+      ]
+    },
+    {
+      "challenge_id": "ch_mg4_mastery",
+      "player_rank": 15,
+      "prerequisite": null,
+      "rewards": []
+    },
+    {
+      "challenge_id": "tier_22_ak47",
+      "player_rank": 69,
+      "prerequisite": null,
+      "rewards": []
+    },
+    {
+      "challenge_id": "ch_marksman_ak47",
+      "player_rank": 69,
+      "prerequisite": null,
+      "rewards": [
+        "gl",
+        "reflex",
+        "silencer",
+        "acog",
+        "fmj"
+      ]
+    },
+    {
+      "challenge_id": "ch_expert_ak47",
+      "player_rank": 69,
+      "prerequisite": null,
+      "rewards": [
+        "woodland",
+        "digital",
+        "red_urban",
+        "blue_tiger",
+        "red_tiger",
+        "orange_fall"
+      ]
+    },
+    {
+      "challenge_id": "ch_ak47_gl",
+      "player_rank": 69,
+      "prerequisite": "ch_marksman_ak47",
+      "rewards": [
+        "shotgun"
+      ]
+    },
+    {
+      "challenge_id": "ch_ak47_reflex",
+      "player_rank": 69,
+      "prerequisite": "ch_marksman_ak47_2",
+      "rewards": [
+        "eotech"
+      ]
+    },
+    {
+      "challenge_id": "ch_ak47_silencer",
+      "player_rank": 69,
+      "prerequisite": "ch_marksman_ak47_3",
+      "rewards": [
+        "heartbeat"
+      ]
+    },
+    {
+      "challenge_id": "ch_ak47_acog",
+      "player_rank": 69,
+      "prerequisite": "ch_marksman_ak47_4",
+      "rewards": [
+        "thermal"
+      ]
+    },
+    {
+      "challenge_id": "ch_ak47_fmj",
+      "player_rank": 69,
+      "prerequisite": "ch_marksman_ak47_5",
+      "rewards": [
+        "xmags"
+      ]
+    },
+    {
+      "challenge_id": "ch_ak47_mastery",
+      "player_rank": 69,
+      "prerequisite": null,
+      "rewards": []
+    },
+    {
+      "challenge_id": "tier_40_masada",
+      "player_rank": 47,
+      "prerequisite": null,
+      "rewards": []
+    },
+    {
+      "challenge_id": "ch_marksman_masada",
+      "player_rank": 47,
+      "prerequisite": null,
+      "rewards": [
+        "gl",
+        "reflex",
+        "silencer",
+        "acog",
+        "fmj"
+      ]
+    },
+    {
+      "challenge_id": "ch_expert_masada",
+      "player_rank": 47,
+      "prerequisite": null,
+      "rewards": [
+        "woodland",
+        "digital",
+        "red_urban",
+        "blue_tiger",
+        "red_tiger",
+        "orange_fall"
+      ]
+    },
+    {
+      "challenge_id": "ch_masada_gl",
+      "player_rank": 47,
+      "prerequisite": "ch_marksman_masada",
+      "rewards": [
+        "shotgun"
+      ]
+    },
+    {
+      "challenge_id": "ch_masada_reflex",
+      "player_rank": 47,
+      "prerequisite": "ch_marksman_masada_2",
+      "rewards": [
+        "eotech"
+      ]
+    },
+    {
+      "challenge_id": "ch_masada_silencer",
+      "player_rank": 47,
+      "prerequisite": "ch_marksman_masada_3",
+      "rewards": [
+        "heartbeat"
+      ]
+    },
+    {
+      "challenge_id": "ch_masada_acog",
+      "player_rank": 47,
+      "prerequisite": "ch_marksman_masada_4",
+      "rewards": [
+        "thermal"
+      ]
+    },
+    {
+      "challenge_id": "ch_masada_fmj",
+      "player_rank": 47,
+      "prerequisite": "ch_marksman_masada_5",
+      "rewards": [
+        "xmags"
+      ]
+    },
+    {
+      "challenge_id": "ch_masada_mastery",
+      "player_rank": 47,
+      "prerequisite": null,
+      "rewards": []
+    },
+    {
+      "challenge_id": "tier_36_m16",
+      "player_rank": 39,
+      "prerequisite": null,
+      "rewards": []
+    },
+    {
+      "challenge_id": "ch_marksman_m16",
+      "player_rank": 39,
+      "prerequisite": null,
+      "rewards": [
+        "gl",
+        "reflex",
+        "silencer",
+        "acog",
+        "fmj"
+      ]
+    },
+    {
+      "challenge_id": "ch_expert_m16",
+      "player_rank": 39,
+      "prerequisite": null,
+      "rewards": [
+        "woodland",
+        "digital",
+        "red_urban",
+        "blue_tiger",
+        "red_tiger",
+        "orange_fall"
+      ]
+    },
+    {
+      "challenge_id": "ch_m16_gl",
+      "player_rank": 39,
+      "prerequisite": "ch_marksman_m16",
+      "rewards": [
+        "shotgun"
+      ]
+    },
+    {
+      "challenge_id": "ch_m16_reflex",
+      "player_rank": 39,
+      "prerequisite": "ch_marksman_m16_2",
+      "rewards": [
+        "eotech"
+      ]
+    },
+    {
+      "challenge_id": "ch_m16_silencer",
+      "player_rank": 39,
+      "prerequisite": "ch_marksman_m16_3",
+      "rewards": [
+        "heartbeat"
+      ]
+    },
+    {
+      "challenge_id": "ch_m16_acog",
+      "player_rank": 39,
+      "prerequisite": "ch_marksman_m16_4",
+      "rewards": [
+        "thermal"
+      ]
+    },
+    {
+      "challenge_id": "ch_m16_fmj",
+      "player_rank": 39,
+      "prerequisite": "ch_marksman_m16_5",
+      "rewards": [
+        "xmags"
+      ]
+    },
+    {
+      "challenge_id": "ch_m16_mastery",
+      "player_rank": 39,
+      "prerequisite": null,
+      "rewards": []
+    },
+    {
+      "challenge_id": "tier_52_tavor",
+      "player_rank": 19,
+      "prerequisite": null,
+      "rewards": []
+    },
+    {
+      "challenge_id": "ch_marksman_tavor",
+      "player_rank": 19,
+      "prerequisite": null,
+      "rewards": [
+        "gl",
+        "reflex",
+        "silencer",
+        "acog",
+        "fmj"
+      ]
+    },
+    {
+      "challenge_id": "ch_expert_tavor",
+      "player_rank": 19,
+      "prerequisite": null,
+      "rewards": [
+        "woodland",
+        "digital",
+        "red_urban",
+        "blue_tiger",
+        "red_tiger",
+        "orange_fall"
+      ]
+    },
+    {
+      "challenge_id": "ch_tavor_gl",
+      "player_rank": 19,
+      "prerequisite": "ch_marksman_tavor",
+      "rewards": [
+        "shotgun"
+      ]
+    },
+    {
+      "challenge_id": "ch_tavor_reflex",
+      "player_rank": 19,
+      "prerequisite": "ch_marksman_tavor_2",
+      "rewards": [
+        "eotech"
+      ]
+    },
+    {
+      "challenge_id": "ch_tavor_silencer",
+      "player_rank": 19,
+      "prerequisite": "ch_marksman_tavor_3",
+      "rewards": [
+        "heartbeat"
+      ]
+    },
+    {
+      "challenge_id": "ch_tavor_acog",
+      "player_rank": 19,
+      "prerequisite": "ch_marksman_tavor_4",
+      "rewards": [
+        "thermal"
+      ]
+    },
+    {
+      "challenge_id": "ch_tavor_fmj",
+      "player_rank": 19,
+      "prerequisite": "ch_marksman_tavor_5",
+      "rewards": [
+        "xmags"
+      ]
+    },
+    {
+      "challenge_id": "ch_tavor_mastery",
+      "player_rank": 19,
+      "prerequisite": null,
+      "rewards": []
+    },
+    {
+      "challenge_id": "tier_32_fn2000",
+      "player_rank": 59,
+      "prerequisite": null,
+      "rewards": []
+    },
+    {
+      "challenge_id": "ch_marksman_fn2000",
+      "player_rank": 59,
+      "prerequisite": null,
+      "rewards": [
+        "gl",
+        "reflex",
+        "silencer",
+        "acog",
+        "fmj"
+      ]
+    },
+    {
+      "challenge_id": "ch_expert_fn2000",
+      "player_rank": 59,
+      "prerequisite": null,
+      "rewards": [
+        "woodland",
+        "digital",
+        "red_urban",
+        "blue_tiger",
+        "red_tiger",
+        "orange_fall"
+      ]
+    },
+    {
+      "challenge_id": "ch_fn2000_gl",
+      "player_rank": 59,
+      "prerequisite": "ch_marksman_fn2000",
+      "rewards": [
+        "shotgun"
+      ]
+    },
+    {
+      "challenge_id": "ch_fn2000_reflex",
+      "player_rank": 59,
+      "prerequisite": "ch_marksman_fn2000_2",
+      "rewards": [
+        "eotech"
+      ]
+    },
+    {
+      "challenge_id": "ch_fn2000_silencer",
+      "player_rank": 59,
+      "prerequisite": "ch_marksman_fn2000_3",
+      "rewards": [
+        "heartbeat"
+      ]
+    },
+    {
+      "challenge_id": "ch_fn2000_acog",
+      "player_rank": 59,
+      "prerequisite": "ch_marksman_fn2000_4",
+      "rewards": [
+        "thermal"
+      ]
+    },
+    {
+      "challenge_id": "ch_fn2000_fmj",
+      "player_rank": 59,
+      "prerequisite": "ch_marksman_fn2000_5",
+      "rewards": [
+        "xmags"
+      ]
+    },
+    {
+      "challenge_id": "ch_fn2000_mastery",
+      "player_rank": 59,
+      "prerequisite": null,
+      "rewards": []
+    },
+    {
+      "challenge_id": "tier_35_m4",
+      "player_rank": 4,
+      "prerequisite": null,
+      "rewards": []
+    },
+    {
+      "challenge_id": "ch_marksman_m4",
+      "player_rank": 4,
+      "prerequisite": null,
+      "rewards": [
+        "gl",
+        "reflex",
+        "silencer",
+        "acog",
+        "fmj",
+        "title"
+      ]
+    },
+    {
+      "challenge_id": "ch_expert_m4",
+      "player_rank": 4,
+      "prerequisite": null,
+      "rewards": [
+        "woodland",
+        "digital",
+        "red_urban",
+        "blue_tiger",
+        "red_tiger",
+        "orange_fall"
+      ]
+    },
+    {
+      "challenge_id": "ch_m4_gl",
+      "player_rank": 4,
+      "prerequisite": "ch_marksman_m4",
+      "rewards": [
+        "shotgun"
+      ]
+    },
+    {
+      "challenge_id": "ch_m4_reflex",
+      "player_rank": 4,
+      "prerequisite": "ch_marksman_m4_2",
+      "rewards": [
+        "eotech"
+      ]
+    },
+    {
+      "challenge_id": "ch_m4_silencer",
+      "player_rank": 4,
+      "prerequisite": "ch_marksman_m4_3",
+      "rewards": [
+        "heartbeat"
+      ]
+    },
+    {
+      "challenge_id": "ch_m4_acog",
+      "player_rank": 4,
+      "prerequisite": "ch_marksman_m4_4",
+      "rewards": [
+        "thermal"
+      ]
+    },
+    {
+      "challenge_id": "ch_m4_fmj",
+      "player_rank": 4,
+      "prerequisite": "ch_marksman_m4_5",
+      "rewards": [
+        "xmags"
+      ]
+    },
+    {
+      "challenge_id": "ch_m4_mastery",
+      "player_rank": 4,
+      "prerequisite": null,
+      "rewards": []
+    },
+    {
+      "challenge_id": "tier_49_scar",
+      "player_rank": 7,
+      "prerequisite": null,
+      "rewards": []
+    },
+    {
+      "challenge_id": "ch_marksman_scar",
+      "player_rank": 7,
+      "prerequisite": null,
+      "rewards": [
+        "gl",
+        "reflex",
+        "silencer",
+        "acog",
+        "fmj"
+      ]
+    },
+    {
+      "challenge_id": "ch_expert_scar",
+      "player_rank": 7,
+      "prerequisite": null,
+      "rewards": [
+        "woodland",
+        "digital",
+        "red_urban",
+        "blue_tiger",
+        "red_tiger",
+        "orange_fall"
+      ]
+    },
+    {
+      "challenge_id": "ch_scar_gl",
+      "player_rank": 7,
+      "prerequisite": "ch_marksman_scar",
+      "rewards": [
+        "shotgun"
+      ]
+    },
+    {
+      "challenge_id": "ch_scar_reflex",
+      "player_rank": 7,
+      "prerequisite": "ch_marksman_scar_2",
+      "rewards": [
+        "eotech"
+      ]
+    },
+    {
+      "challenge_id": "ch_scar_silencer",
+      "player_rank": 7,
+      "prerequisite": "ch_marksman_scar_3",
+      "rewards": [
+        "heartbeat"
+      ]
+    },
+    {
+      "challenge_id": "ch_scar_acog",
+      "player_rank": 7,
+      "prerequisite": "ch_marksman_scar_4",
+      "rewards": [
+        "thermal"
+      ]
+    },
+    {
+      "challenge_id": "ch_scar_fmj",
+      "player_rank": 7,
+      "prerequisite": "ch_marksman_scar_5",
+      "rewards": [
+        "xmags"
+      ]
+    },
+    {
+      "challenge_id": "ch_scar_mastery",
+      "player_rank": 7,
+      "prerequisite": null,
+      "rewards": []
+    },
+    {
+      "challenge_id": "tier_30_fal",
+      "player_rank": 27,
+      "prerequisite": null,
+      "rewards": []
+    },
+    {
+      "challenge_id": "ch_marksman_fal",
+      "player_rank": 27,
+      "prerequisite": null,
+      "rewards": [
+        "gl",
+        "reflex",
+        "silencer",
+        "acog",
+        "fmj"
+      ]
+    },
+    {
+      "challenge_id": "ch_expert_fal",
+      "player_rank": 27,
+      "prerequisite": null,
+      "rewards": [
+        "woodland",
+        "digital",
+        "red_urban",
+        "blue_tiger",
+        "red_tiger",
+        "orange_fall"
+      ]
+    },
+    {
+      "challenge_id": "ch_fal_gl",
+      "player_rank": 27,
+      "prerequisite": "ch_marksman_fal",
+      "rewards": [
+        "shotgun"
+      ]
+    },
+    {
+      "challenge_id": "ch_fal_reflex",
+      "player_rank": 27,
+      "prerequisite": "ch_marksman_fal_2",
+      "rewards": [
+        "eotech"
+      ]
+    },
+    {
+      "challenge_id": "ch_fal_silencer",
+      "player_rank": 27,
+      "prerequisite": "ch_marksman_fal_3",
+      "rewards": [
+        "heartbeat"
+      ]
+    },
+    {
+      "challenge_id": "ch_fal_acog",
+      "player_rank": 27,
+      "prerequisite": "ch_marksman_fal_4",
+      "rewards": [
+        "thermal"
+      ]
+    },
+    {
+      "challenge_id": "ch_fal_fmj",
+      "player_rank": 27,
+      "prerequisite": "ch_marksman_fal_5",
+      "rewards": [
+        "xmags"
+      ]
+    },
+    {
+      "challenge_id": "ch_fal_mastery",
+      "player_rank": 27,
+      "prerequisite": null,
+      "rewards": []
+    },
+    {
+      "challenge_id": "tier_31_famas",
+      "player_rank": 4,
+      "prerequisite": null,
+      "rewards": []
+    },
+    {
+      "challenge_id": "ch_marksman_famas",
+      "player_rank": 4,
+      "prerequisite": null,
+      "rewards": [
+        "gl",
+        "reflex",
+        "silencer",
+        "acog",
+        "fmj"
+      ]
+    },
+    {
+      "challenge_id": "ch_expert_famas",
+      "player_rank": 4,
+      "prerequisite": null,
+      "rewards": [
+        "woodland",
+        "digital",
+        "red_urban",
+        "blue_tiger",
+        "red_tiger",
+        "orange_fall"
+      ]
+    },
+    {
+      "challenge_id": "ch_famas_gl",
+      "player_rank": 4,
+      "prerequisite": "ch_marksman_famas",
+      "rewards": [
+        "shotgun"
+      ]
+    },
+    {
+      "challenge_id": "ch_famas_reflex",
+      "player_rank": 4,
+      "prerequisite": "ch_marksman_famas_2",
+      "rewards": [
+        "eotech"
+      ]
+    },
+    {
+      "challenge_id": "ch_famas_silencer",
+      "player_rank": 4,
+      "prerequisite": "ch_marksman_famas_3",
+      "rewards": [
+        "heartbeat"
+      ]
+    },
+    {
+      "challenge_id": "ch_famas_acog",
+      "player_rank": 4,
+      "prerequisite": "ch_marksman_famas_4",
+      "rewards": [
+        "thermal"
+      ]
+    },
+    {
+      "challenge_id": "ch_famas_fmj",
+      "player_rank": 4,
+      "prerequisite": "ch_marksman_famas_5",
+      "rewards": [
+        "xmags"
+      ]
+    },
+    {
+      "challenge_id": "ch_famas_mastery",
+      "player_rank": 4,
+      "prerequisite": null,
+      "rewards": []
+    },
+    {
+      "challenge_id": "tier_43_mp5k",
+      "player_rank": 4,
+      "prerequisite": null,
+      "rewards": []
+    },
+    {
+      "challenge_id": "ch_marksman_mp5k",
+      "player_rank": 4,
+      "prerequisite": null,
+      "rewards": [
+        "rof",
+        "reflex",
+        "silencer",
+        "acog",
+        "fmj",
+        "title"
+      ]
+    },
+    {
+      "challenge_id": "ch_expert_mp5k",
+      "player_rank": 4,
+      "prerequisite": null,
+      "rewards": [
+        "woodland",
+        "digital",
+        "red_urban",
+        "blue_tiger",
+        "red_tiger",
+        "orange_fall"
+      ]
+    },
+    {
+      "challenge_id": "ch_mp5k_rof",
+      "player_rank": 4,
+      "prerequisite": "ch_marksman_mp5k",
+      "rewards": [
+        "akimbo"
+      ]
+    },
+    {
+      "challenge_id": "ch_mp5k_reflex",
+      "player_rank": 4,
+      "prerequisite": "ch_marksman_mp5k_2",
+      "rewards": [
+        "eotech"
+      ]
+    },
+    {
+      "challenge_id": "ch_mp5k_acog",
+      "player_rank": 4,
+      "prerequisite": "ch_marksman_mp5k_4",
+      "rewards": [
+        "thermal"
+      ]
+    },
+    {
+      "challenge_id": "ch_mp5k_fmj",
+      "player_rank": 4,
+      "prerequisite": "ch_marksman_mp5k_5",
+      "rewards": [
+        "xmags"
+      ]
+    },
+    {
+      "challenge_id": "ch_mp5k_mastery",
+      "player_rank": 4,
+      "prerequisite": null,
+      "rewards": []
+    },
+    {
+      "challenge_id": "tier_56_uzi",
+      "player_rank": 43,
+      "prerequisite": null,
+      "rewards": []
+    },
+    {
+      "challenge_id": "ch_marksman_uzi",
+      "player_rank": 43,
+      "prerequisite": null,
+      "rewards": [
+        "rof",
+        "reflex",
+        "silencer",
+        "acog",
+        "fmj",
+        "title"
+      ]
+    },
+    {
+      "challenge_id": "ch_expert_uzi",
+      "player_rank": 43,
+      "prerequisite": null,
+      "rewards": [
+        "woodland",
+        "digital",
+        "red_urban",
+        "blue_tiger",
+        "red_tiger",
+        "orange_fall"
+      ]
+    },
+    {
+      "challenge_id": "ch_uzi_rof",
+      "player_rank": 43,
+      "prerequisite": "ch_marksman_uzi",
+      "rewards": [
+        "akimbo"
+      ]
+    },
+    {
+      "challenge_id": "ch_uzi_reflex",
+      "player_rank": 43,
+      "prerequisite": "ch_marksman_uzi_2",
+      "rewards": [
+        "eotech"
+      ]
+    },
+    {
+      "challenge_id": "ch_uzi_acog",
+      "player_rank": 43,
+      "prerequisite": "ch_marksman_uzi_4",
+      "rewards": [
+        "thermal"
+      ]
+    },
+    {
+      "challenge_id": "ch_uzi_fmj",
+      "player_rank": 43,
+      "prerequisite": "ch_marksman_uzi_5",
+      "rewards": [
+        "xmags"
+      ]
+    },
+    {
+      "challenge_id": "ch_uzi_mastery",
+      "player_rank": 43,
+      "prerequisite": null,
+      "rewards": []
+    },
+    {
+      "challenge_id": "tier_34_kriss",
+      "player_rank": 11,
+      "prerequisite": null,
+      "rewards": []
+    },
+    {
+      "challenge_id": "ch_marksman_kriss",
+      "player_rank": 11,
+      "prerequisite": null,
+      "rewards": [
+        "rof",
+        "reflex",
+        "silencer",
+        "acog",
+        "fmj",
+        "title"
+      ]
+    },
+    {
+      "challenge_id": "ch_expert_kriss",
+      "player_rank": 11,
+      "prerequisite": null,
+      "rewards": [
+        "woodland",
+        "digital",
+        "red_urban",
+        "blue_tiger",
+        "red_tiger",
+        "orange_fall"
+      ]
+    },
+    {
+      "challenge_id": "ch_kriss_rof",
+      "player_rank": 11,
+      "prerequisite": "ch_marksman_kriss",
+      "rewards": [
+        "akimbo"
+      ]
+    },
+    {
+      "challenge_id": "ch_kriss_reflex",
+      "player_rank": 11,
+      "prerequisite": "ch_marksman_kriss_2",
+      "rewards": [
+        "eotech"
+      ]
+    },
+    {
+      "challenge_id": "ch_kriss_acog",
+      "player_rank": 11,
+      "prerequisite": "ch_marksman_kriss_4",
+      "rewards": [
+        "thermal"
+      ]
+    },
+    {
+      "challenge_id": "ch_kriss_fmj",
+      "player_rank": 11,
+      "prerequisite": "ch_marksman_kriss_5",
+      "rewards": [
+        "xmags"
+      ]
+    },
+    {
+      "challenge_id": "ch_kriss_mastery",
+      "player_rank": 11,
+      "prerequisite": null,
+      "rewards": []
+    },
+    {
+      "challenge_id": "tier_54_ump45",
+      "player_rank": 4,
+      "prerequisite": null,
+      "rewards": []
+    },
+    {
+      "challenge_id": "ch_marksman_ump45",
+      "player_rank": 4,
+      "prerequisite": null,
+      "rewards": [
+        "rof",
+        "reflex",
+        "silencer",
+        "acog",
+        "fmj",
+        "title"
+      ]
+    },
+    {
+      "challenge_id": "ch_expert_ump45",
+      "player_rank": 4,
+      "prerequisite": null,
+      "rewards": [
+        "woodland",
+        "digital",
+        "red_urban",
+        "blue_tiger",
+        "red_tiger",
+        "orange_fall"
+      ]
+    },
+    {
+      "challenge_id": "ch_ump45_rof",
+      "player_rank": 4,
+      "prerequisite": "ch_marksman_ump45",
+      "rewards": [
+        "akimbo"
+      ]
+    },
+    {
+      "challenge_id": "ch_ump45_reflex",
+      "player_rank": 4,
+      "prerequisite": "ch_marksman_ump45_2",
+      "rewards": [
+        "eotech"
+      ]
+    },
+    {
+      "challenge_id": "ch_ump45_acog",
+      "player_rank": 4,
+      "prerequisite": "ch_marksman_ump45_4",
+      "rewards": [
+        "thermal"
+      ]
+    },
+    {
+      "challenge_id": "ch_ump45_fmj",
+      "player_rank": 4,
+      "prerequisite": "ch_marksman_ump45_5",
+      "rewards": [
+        "xmags"
+      ]
+    },
+    {
+      "challenge_id": "ch_ump45_mastery",
+      "player_rank": 4,
+      "prerequisite": null,
+      "rewards": []
+    },
+    {
+      "challenge_id": "tier_44_p90",
+      "player_rank": 23,
+      "prerequisite": null,
+      "rewards": []
+    },
+    {
+      "challenge_id": "ch_marksman_p90",
+      "player_rank": 23,
+      "prerequisite": null,
+      "rewards": [
+        "rof",
+        "reflex",
+        "silencer",
+        "acog",
+        "fmj",
+        "title"
+      ]
+    },
+    {
+      "challenge_id": "ch_expert_p90",
+      "player_rank": 23,
+      "prerequisite": null,
+      "rewards": [
+        "woodland",
+        "digital",
+        "red_urban",
+        "blue_tiger",
+        "red_tiger",
+        "orange_fall"
+      ]
+    },
+    {
+      "challenge_id": "ch_p90_rof",
+      "player_rank": 23,
+      "prerequisite": "ch_marksman_p90",
+      "rewards": [
+        "akimbo"
+      ]
+    },
+    {
+      "challenge_id": "ch_p90_reflex",
+      "player_rank": 23,
+      "prerequisite": "ch_marksman_p90_2",
+      "rewards": [
+        "eotech"
+      ]
+    },
+    {
+      "challenge_id": "ch_p90_acog",
+      "player_rank": 23,
+      "prerequisite": "ch_marksman_p90_4",
+      "rewards": [
+        "thermal"
+      ]
+    },
+    {
+      "challenge_id": "ch_p90_fmj",
+      "player_rank": 23,
+      "prerequisite": "ch_marksman_p90_5",
+      "rewards": [
+        "xmags"
+      ]
+    },
+    {
+      "challenge_id": "ch_p90_mastery",
+      "player_rank": 23,
+      "prerequisite": null,
+      "rewards": []
+    },
+    {
+      "challenge_id": "tier_27_cheytac",
+      "player_rank": 4,
+      "prerequisite": null,
+      "rewards": []
+    },
+    {
+      "challenge_id": "ch_marksman_cheytac",
+      "player_rank": 4,
+      "prerequisite": null,
+      "rewards": [
+        "silencer",
+        "acog",
+        "fmj"
+      ]
+    },
+    {
+      "challenge_id": "ch_expert_cheytac",
+      "player_rank": 4,
+      "prerequisite": null,
+      "rewards": [
+        "woodland",
+        "digital",
+        "red_urban",
+        "blue_tiger",
+        "red_tiger",
+        "orange_fall"
+      ]
+    },
+    {
+      "challenge_id": "ch_cheytac_silencer",
+      "player_rank": 4,
+      "prerequisite": "ch_marksman_cheytac",
+      "rewards": [
+        "heartbeat"
+      ]
+    },
+    {
+      "challenge_id": "ch_cheytac_acog",
+      "player_rank": 4,
+      "prerequisite": "ch_marksman_cheytac_2",
+      "rewards": [
+        "thermal"
+      ]
+    },
+    {
+      "challenge_id": "ch_cheytac_fmj",
+      "player_rank": 4,
+      "prerequisite": "ch_marksman_cheytac_3",
+      "rewards": [
+        "xmags"
+      ]
+    },
+    {
+      "challenge_id": "ch_cheytac_mastery",
+      "player_rank": 4,
+      "prerequisite": null,
+      "rewards": []
+    },
+    {
+      "challenge_id": "tier_37_m21",
+      "player_rank": 55,
+      "prerequisite": null,
+      "rewards": []
+    },
+    {
+      "challenge_id": "ch_marksman_m21",
+      "player_rank": 55,
+      "prerequisite": null,
+      "rewards": [
+        "silencer",
+        "acog",
+        "fmj"
+      ]
+    },
+    {
+      "challenge_id": "ch_expert_m21",
+      "player_rank": 55,
+      "prerequisite": null,
+      "rewards": [
+        "woodland",
+        "digital",
+        "red_urban",
+        "blue_tiger",
+        "red_tiger",
+        "orange_fall"
+      ]
+    },
+    {
+      "challenge_id": "ch_m21_silencer",
+      "player_rank": 55,
+      "prerequisite": "ch_marksman_m21",
+      "rewards": [
+        "heartbeat"
+      ]
+    },
+    {
+      "challenge_id": "ch_m21_acog",
+      "player_rank": 55,
+      "prerequisite": "ch_marksman_m21_2",
+      "rewards": [
+        "thermal"
+      ]
+    },
+    {
+      "challenge_id": "ch_m21_fmj",
+      "player_rank": 55,
+      "prerequisite": "ch_marksman_m21_3",
+      "rewards": [
+        "xmags"
+      ]
+    },
+    {
+      "challenge_id": "ch_m21_mastery",
+      "player_rank": 55,
+      "prerequisite": null,
+      "rewards": []
+    },
+    {
+      "challenge_id": "tier_24_barrett",
+      "player_rank": 4,
+      "prerequisite": null,
+      "rewards": []
+    },
+    {
+      "challenge_id": "ch_marksman_barrett",
+      "player_rank": 4,
+      "prerequisite": null,
+      "rewards": [
+        "silencer",
+        "acog",
+        "fmj"
+      ]
+    },
+    {
+      "challenge_id": "ch_expert_barrett",
+      "player_rank": 4,
+      "prerequisite": null,
+      "rewards": [
+        "woodland",
+        "digital",
+        "red_urban",
+        "blue_tiger",
+        "red_tiger",
+        "orange_fall"
+      ]
+    },
+    {
+      "challenge_id": "ch_barrett_silencer",
+      "player_rank": 4,
+      "prerequisite": "ch_marksman_barrett",
+      "rewards": [
+        "heartbeat"
+      ]
+    },
+    {
+      "challenge_id": "ch_barrett_acog",
+      "player_rank": 4,
+      "prerequisite": "ch_marksman_barrett_2",
+      "rewards": [
+        "thermal"
+      ]
+    },
+    {
+      "challenge_id": "ch_barrett_fmj",
+      "player_rank": 4,
+      "prerequisite": "ch_marksman_barrett_3",
+      "rewards": [
+        "xmags"
+      ]
+    },
+    {
+      "challenge_id": "ch_barrett_mastery",
+      "player_rank": 4,
+      "prerequisite": null,
+      "rewards": []
+    },
+    {
+      "challenge_id": "tier_57_wa2000",
+      "player_rank": 35,
+      "prerequisite": null,
+      "rewards": []
+    },
+    {
+      "challenge_id": "ch_marksman_wa2000",
+      "player_rank": 35,
+      "prerequisite": null,
+      "rewards": [
+        "silencer",
+        "acog",
+        "fmj"
+      ]
+    },
+    {
+      "challenge_id": "ch_expert_wa2000",
+      "player_rank": 35,
+      "prerequisite": null,
+      "rewards": [
+        "woodland",
+        "digital",
+        "red_urban",
+        "blue_tiger",
+        "red_tiger",
+        "orange_fall"
+      ]
+    },
+    {
+      "challenge_id": "ch_wa2000_silencer",
+      "player_rank": 35,
+      "prerequisite": "ch_marksman_wa2000",
+      "rewards": [
+        "heartbeat"
+      ]
+    },
+    {
+      "challenge_id": "ch_wa2000_acog",
+      "player_rank": 35,
+      "prerequisite": "ch_marksman_wa2000_2",
+      "rewards": [
+        "thermal"
+      ]
+    },
+    {
+      "challenge_id": "ch_wa2000_fmj",
+      "player_rank": 35,
+      "prerequisite": "ch_marksman_wa2000_3",
+      "rewards": [
+        "xmags"
+      ]
+    },
+    {
+      "challenge_id": "ch_wa2000_mastery",
+      "player_rank": 35,
+      "prerequisite": null,
+      "rewards": []
+    },
+    {
+      "challenge_id": "tier_33_glock",
+      "player_rank": 21,
+      "prerequisite": null,
+      "rewards": []
+    },
+    {
+      "challenge_id": "ch_marksman_glock",
+      "player_rank": 21,
+      "prerequisite": null,
+      "rewards": [
+        "reflex",
+        "silencer",
+        "fmj",
+        "akimbo",
+        "eotech",
+        "xmags"
+      ]
+    },
+    {
+      "challenge_id": "ch_expert_glock",
+      "player_rank": 21,
+      "prerequisite": null,
+      "rewards": []
+    },
+    {
+      "challenge_id": "tier_53_tmp",
+      "player_rank": 57,
+      "prerequisite": null,
+      "rewards": []
+    },
+    {
+      "challenge_id": "ch_marksman_tmp",
+      "player_rank": 57,
+      "prerequisite": null,
+      "rewards": [
+        "reflex",
+        "silencer",
+        "fmj",
+        "akimbo",
+        "eotech",
+        "xmags"
+      ]
+    },
+    {
+      "challenge_id": "ch_expert_tmp",
+      "player_rank": 57,
+      "prerequisite": null,
+      "rewards": []
+    },
+    {
+      "challenge_id": "tier_25_beretta393",
+      "player_rank": 37,
+      "prerequisite": null,
+      "rewards": []
+    },
+    {
+      "challenge_id": "ch_marksman_beretta393",
+      "player_rank": 37,
+      "prerequisite": null,
+      "rewards": [
+        "reflex",
+        "silencer",
+        "fmj",
+        "akimbo",
+        "eotech",
+        "xmags"
+      ]
+    },
+    {
+      "challenge_id": "ch_expert_beretta393",
+      "player_rank": 37,
+      "prerequisite": null,
+      "rewards": []
+    },
+    {
+      "challenge_id": "tier_45_pp2000",
+      "player_rank": 4,
+      "prerequisite": null,
+      "rewards": []
+    },
+    {
+      "challenge_id": "ch_marksman_pp2000",
+      "player_rank": 4,
+      "prerequisite": null,
+      "rewards": [
+        "reflex",
+        "silencer",
+        "fmj",
+        "akimbo",
+        "eotech",
+        "xmags"
+      ]
+    },
+    {
+      "challenge_id": "ch_expert_pp2000",
+      "player_rank": 4,
+      "prerequisite": null,
+      "rewards": []
+    },
+    {
+      "challenge_id": "tier_51_striker",
+      "player_rank": 33,
+      "prerequisite": null,
+      "rewards": []
+    },
+    {
+      "challenge_id": "ch_marksman_striker",
+      "player_rank": 33,
+      "prerequisite": null,
+      "rewards": [
+        "reflex",
+        "silencer",
+        "grip",
+        "fmj",
+        "eotech",
+        "xmags"
+      ]
+    },
+    {
+      "challenge_id": "ch_expert_striker",
+      "player_rank": 33,
+      "prerequisite": null,
+      "rewards": []
+    },
+    {
+      "challenge_id": "tier_21_aa12",
+      "player_rank": 17,
+      "prerequisite": null,
+      "rewards": []
+    },
+    {
+      "challenge_id": "ch_marksman_aa12",
+      "player_rank": 17,
+      "prerequisite": null,
+      "rewards": [
+        "reflex",
+        "silencer",
+        "grip",
+        "fmj",
+        "eotech",
+        "xmags"
+      ]
+    },
+    {
+      "challenge_id": "ch_expert_aa12",
+      "player_rank": 17,
+      "prerequisite": null,
+      "rewards": []
+    },
+    {
+      "challenge_id": "tier_39_m1014",
+      "player_rank": 53,
+      "prerequisite": null,
+      "rewards": []
+    },
+    {
+      "challenge_id": "ch_marksman_m1014",
+      "player_rank": 53,
+      "prerequisite": null,
+      "rewards": [
+        "reflex",
+        "silencer",
+        "grip",
+        "fmj",
+        "eotech",
+        "xmags"
+      ]
+    },
+    {
+      "challenge_id": "ch_expert_m1014",
+      "player_rank": 53,
+      "prerequisite": null,
+      "rewards": []
+    },
+    {
+      "challenge_id": "tier_50_spas12",
+      "player_rank": 4,
+      "prerequisite": null,
+      "rewards": []
+    },
+    {
+      "challenge_id": "ch_marksman_spas12",
+      "player_rank": 4,
+      "prerequisite": null,
+      "rewards": [
+        "reflex",
+        "silencer",
+        "grip",
+        "fmj",
+        "eotech",
+        "xmags"
+      ]
+    },
+    {
+      "challenge_id": "ch_expert_spas12",
+      "player_rank": 4,
+      "prerequisite": null,
+      "rewards": []
+    },
+    {
+      "challenge_id": "tier_42_model1887",
+      "player_rank": 66,
+      "prerequisite": null,
+      "rewards": []
+    },
+    {
+      "challenge_id": "ch_marksman_model1887",
+      "player_rank": 66,
+      "prerequisite": null,
+      "rewards": [
+        "akimbo",
+        "fmj"
+      ]
+    },
+    {
+      "challenge_id": "ch_expert_model1887",
+      "player_rank": 66,
+      "prerequisite": null,
+      "rewards": []
+    },
+    {
+      "challenge_id": "tier_46_ranger",
+      "player_rank": 41,
+      "prerequisite": null,
+      "rewards": []
+    },
+    {
+      "challenge_id": "ch_marksman_ranger",
+      "player_rank": 41,
+      "prerequisite": null,
+      "rewards": [
+        "akimbo",
+        "fmj"
+      ]
+    },
+    {
+      "challenge_id": "ch_expert_ranger",
+      "player_rank": 41,
+      "prerequisite": null,
+      "rewards": []
+    },
+    {
+      "challenge_id": "tier_26_beretta",
+      "player_rank": 45,
+      "prerequisite": null,
+      "rewards": []
+    },
+    {
+      "challenge_id": "ch_marksman_beretta",
+      "player_rank": 45,
+      "prerequisite": null,
+      "rewards": [
+        "fmj",
+        "silencer",
+        "akimbo",
+        "tactical",
+        "xmags",
+        "title"
+      ]
+    },
+    {
+      "challenge_id": "ch_expert_beretta",
+      "player_rank": 61,
+      "prerequisite": null,
+      "rewards": []
+    },
+    {
+      "challenge_id": "tier_55_usp",
+      "player_rank": 4,
+      "prerequisite": null,
+      "rewards": []
+    },
+    {
+      "challenge_id": "ch_marksman_usp",
+      "player_rank": 4,
+      "prerequisite": null,
+      "rewards": [
+        "fmj",
+        "silencer",
+        "akimbo",
+        "tactical",
+        "xmags",
+        "title"
+      ]
+    },
+    {
+      "challenge_id": "ch_expert_usp",
+      "player_rank": 4,
+      "prerequisite": null,
+      "rewards": []
+    },
+    {
+      "challenge_id": "tier_29_deserteagle",
+      "player_rank": 61,
+      "prerequisite": null,
+      "rewards": []
+    },
+    {
+      "challenge_id": "ch_marksman_deserteagle",
+      "player_rank": 61,
+      "prerequisite": null,
+      "rewards": [
+        "fmj",
+        "akimbo",
+        "tactical"
+      ]
+    },
+    {
+      "challenge_id": "ch_expert_deserteagle",
+      "player_rank": 61,
+      "prerequisite": null,
+      "rewards": []
+    },
+    {
+      "challenge_id": "tier_28_coltanaconda",
+      "player_rank": 25,
+      "prerequisite": null,
+      "rewards": []
+    },
+    {
+      "challenge_id": "ch_marksman_coltanaconda",
+      "player_rank": 25,
+      "prerequisite": null,
+      "rewards": [
+        "fmj",
+        "akimbo",
+        "tactical"
+      ]
+    },
+    {
+      "challenge_id": "ch_expert_coltanaconda",
+      "player_rank": 25,
+      "prerequisite": null,
+      "rewards": []
+    },
+    {
+      "challenge_id": "ch_ghillie",
+      "player_rank": 5,
+      "prerequisite": null,
+      "rewards": [
+        "arctic",
+        "red_urban",
+        "desert"
+      ]
+    }
+  ]
+}
