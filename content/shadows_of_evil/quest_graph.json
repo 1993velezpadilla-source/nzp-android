@@ -163,27 +163,30 @@
     {
       "id": "flag_jackie",
       "requires": [
-        "flag_nero"
+        "book_trigger"
       ],
       "objective": "Next-round flag defense at two marked sites, return to Jackie Keeper"
     },
     {
       "id": "flag_jessica",
       "requires": [
-        "flag_jackie"
+        "book_trigger"
       ],
       "objective": "Next-round flag defense at two marked sites, return to Jessica Keeper"
     },
     {
       "id": "flag_floyd",
       "requires": [
-        "flag_jessica"
+        "book_trigger"
       ],
       "objective": "Next-round flag defense at two marked sites, return to Floyd Keeper"
     },
     {
       "id": "keepers_ready",
       "requires": [
+        "flag_nero",
+        "flag_jackie",
+        "flag_jessica",
         "flag_floyd"
       ],
       "events": [
