@@ -34,7 +34,15 @@ def split_top_entities(source: str):
 
 
 def entity_keys(block: str):
-    return dict(re.findall(r'^"([^"]+)"\\s+"([^"]*)"\\s*    raise SystemExit("full soe.map braces are unbalanced")
+    pairs = re.findall(r'"([^"]+)"[ \t]+"([^"]*)"', block)
+    return dict(pairs)
+
+
+entity_blocks = split_top_entities(text)
+entity_props = [entity_keys(block) for block in entity_blocks]
+
+if text.count("{") != text.count("}"):
+    raise SystemExit("full soe.map braces are unbalanced")
 if text.count('"classname" "worldspawn"') != 1:
     raise SystemExit("full city must contain exactly one worldspawn")
 if '"mapversion" "220"' not in text:
