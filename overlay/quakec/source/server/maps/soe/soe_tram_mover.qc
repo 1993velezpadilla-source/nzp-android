@@ -36,6 +36,16 @@ void() SoE_TramMoverArrived =
     float arrived = self.soe_tram_move_destination;
     entity marker = SoE_FindTramStationMarker(arrived);
 
+    // A late SUB_CalcMove callback from an aborted/older ride must not
+    // overwrite the logical station of a newer Tram cycle.
+    if (!soe_tram_in_transit ||
+        arrived <= 0 ||
+        soe_tram_destination != arrived) {
+        self.soe_tram_move_destination = 0;
+        self.velocity = '0 0 0';
+        return;
+    }
+
     soe_tram_current_station = arrived;
     soe_tram_destination = 0;
     soe_tram_in_transit = false;
