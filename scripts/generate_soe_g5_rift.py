@@ -9,6 +9,8 @@ from generate_soe_g1_blockout import (
     FLOOR_TEX, WALL_TEX, CEILING_TEX, BLOCK_TEX, TRIGGER_TEX, NULL_TEX,
 )
 
+from soe_mainquest_geometry import append_phase_mainquest_entities
+
 ROOT=Path(__file__).resolve().parents[1]
 SPEC_PATH=ROOT/"content"/"shadows_of_evil"/"g5_rift_blockout.json"
 OUTPUT_PATH=ROOT/"overlay"/"assets"/"source"/"maps"/"soe_g5"/"soe_g5.map"
@@ -159,6 +161,9 @@ def gen(spec):
     # Lower-floor Mule/Widow details + station debris anchors.
     ents.append(point_entity("info_notnull",(-448,-240,32),targetname="soe_g5_widows_box_spacing_anchor"))
     ents.append(point_entity("info_notnull",(384,-80,24),targetname="soe_g5_subway_car_anchor"))
+
+    # Cross-phase Reborn Sword / Flag quest anchors from the shared source of truth.
+    append_phase_mainquest_entities(ents, "g5", point_entity)
 
     for org,b in [
         ((-448,-160,112),260),((448,-160,112),240),((0,-64,128),220),
