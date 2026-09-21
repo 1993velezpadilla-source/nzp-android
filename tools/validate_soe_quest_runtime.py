@@ -262,6 +262,14 @@ runtime_guards = {
         finale_qc,
         "!soe_tram_in_transit && cvar(\"soe_solo_finale\") == 0",
     ),
+    "Tram controller ignores duplicate ride starts": (
+        tram_qc,
+        "if (soe_tram_in_transit)\n        return;",
+    ),
+    "Tram mid-route failure fully stops mover velocity": (
+        tram_mover_qc,
+        "self.velocity = '0 0 0';",
+    ),
     "Tram mover recovers from missing route markers": (
         tram_mover_qc,
         "if (destination == world || hub == world) {",
