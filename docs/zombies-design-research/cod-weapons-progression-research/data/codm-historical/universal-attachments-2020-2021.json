@@ -1,0 +1,300 @@
+{
+  "provenance": {
+    "source": "https://gist.github.com/s0md3v/90637ef45d0ff23b9bfb86ec9b47fdd7",
+    "source_type": "historical community measurement/helper",
+    "source_license": "GPLv3 as stated in source",
+    "created": "2021-03-10",
+    "snapshot_note": "Historical early-CODM Gunsmith test vectors. Do not treat as 2026 balance.",
+    "modifier_semantics": "Reported percentage-like deltas preserved as source data. Exact runtime composition semantics are not asserted."
+  },
+  "attachments": [
+    {
+      "id": "tactical_suppressor",
+      "name": "Tactical Suppressor",
+      "slot": "muzzle",
+      "d": {
+        "ads_time": 5,
+        "ads_move_speed": -5
+      }
+    },
+    {
+      "id": "owc_light_suppressor",
+      "name": "OWC Light Suppressor",
+      "slot": "muzzle",
+      "d": {
+        "range": -20
+      }
+    },
+    {
+      "id": "owc_light_compensator",
+      "name": "OWC Light Compensator",
+      "slot": "muzzle",
+      "d": {
+        "v_recoil": -11.1,
+        "h_recoil": -7,
+        "ads_time": 6,
+        "ads_spread": 8
+      }
+    },
+    {
+      "id": "mip_light_flash_guard",
+      "name": "MIP Light Flash Guard",
+      "slot": "muzzle",
+      "d": {
+        "ads_spread": -9.2,
+        "hip_spread": -7.7,
+        "ads_time": 5
+      }
+    },
+    {
+      "id": "rtc_light_muzzle_brake",
+      "name": "RTC Light Muzzle Brake",
+      "slot": "muzzle",
+      "d": {
+        "h_recoil": -10.5,
+        "v_recoil": -7.8,
+        "ads_time": 5,
+        "ads_spread": 8
+      }
+    },
+    {
+      "id": "monolithic_suppressor",
+      "name": "Monolithic Suppressor",
+      "slot": "muzzle",
+      "d": {
+        "range": 25,
+        "ads_spread": 7,
+        "ads_time": 7,
+        "ads_move_speed": -5
+      }
+    },
+    {
+      "id": "mip_light",
+      "name": "MIP Light",
+      "slot": "barrel",
+      "d": {
+        "ads_time": -10,
+        "ads_spread": 8
+      }
+    },
+    {
+      "id": "mip_light_barrel_short",
+      "name": "MIP Light Barrel (Short)",
+      "slot": "barrel",
+      "d": {
+        "ads_time": -12,
+        "move_speed": 3,
+        "ads_spread": 3,
+        "v_recoil": 11.2
+      }
+    },
+    {
+      "id": "owc_marksman",
+      "name": "OWC Marksman",
+      "slot": "barrel",
+      "d": {
+        "ads_spread": -8,
+        "range": 30,
+        "h_recoil": -16.5
+      },
+      "unresolved": {
+        "v_recoil": "source snippet records 5.9 without a sign"
+      }
+    },
+    {
+      "id": "ykm_light_stock",
+      "name": "YKM Light Stock",
+      "slot": "stock",
+      "d": {
+        "ads_move_speed": 25,
+        "ads_spread": 6.7
+      }
+    },
+    {
+      "id": "ykm_combat_stock",
+      "name": "YKM Combat Stock",
+      "slot": "stock",
+      "d": {
+        "ads_time": -8,
+        "ads_spread": 6.5,
+        "flinch": 6,
+        "v_recoil": 3.9
+      }
+    },
+    {
+      "id": "mip_strike_stock",
+      "name": "MIP Strike Stock",
+      "slot": "stock",
+      "d": {
+        "ads_spread": -7.5,
+        "flinch": -10,
+        "h_recoil": -8,
+        "ads_time": 12,
+        "ads_move_speed": -15
+      }
+    },
+    {
+      "id": "no_stock",
+      "name": "No Stock",
+      "slot": "stock",
+      "d": {
+        "ads_time": -13,
+        "move_speed": 3,
+        "ads_spread": 9.6,
+        "flinch": 8,
+        "v_recoil": 12.9
+      }
+    },
+    {
+      "id": "enhanced_bolt",
+      "name": "Enhanced Bolt",
+      "slot": "perk",
+      "d": {
+        "fire_interval": -13
+      }
+    },
+    {
+      "id": "sleight_of_hand",
+      "name": "Sleight of Hand",
+      "slot": "perk",
+      "d": {
+        "reload_time": -15
+      }
+    },
+    {
+      "id": "owc_laser_tactical",
+      "name": "OWC Laser - Tactical",
+      "slot": "laser",
+      "d": {
+        "ads_time": -9,
+        "ads_spread": -9.4
+      }
+    },
+    {
+      "id": "rtc_laser_1mw",
+      "name": "RTC Laser 1mW",
+      "slot": "laser",
+      "d": {
+        "hip_spread": -14.5
+      }
+    },
+    {
+      "id": "mip_laser_5mw",
+      "name": "MIP Laser 5mW",
+      "slot": "laser",
+      "d": {
+        "hip_spread": -13.5,
+        "fire_delay": -25
+      }
+    },
+    {
+      "id": "strike_foregrip",
+      "name": "Strike Foregrip",
+      "slot": "underbarrel",
+      "d": {
+        "v_recoil": -8.3,
+        "ads_spread": -3.8,
+        "move_speed": -1
+      }
+    },
+    {
+      "id": "merc_foregrip",
+      "name": "Merc Foregrip",
+      "slot": "underbarrel",
+      "d": {
+        "v_recoil": -6.9,
+        "hip_spread": -3,
+        "ads_move_speed": -10,
+        "ads_time": 10
+      }
+    },
+    {
+      "id": "operator_foregrip",
+      "name": "Operator Foregrip",
+      "slot": "underbarrel",
+      "d": {
+        "v_recoil": -13.9,
+        "ads_time": 8
+      }
+    },
+    {
+      "id": "ranger_foregrip",
+      "name": "Ranger Foregrip",
+      "slot": "underbarrel",
+      "d": {
+        "v_recoil": -13.8,
+        "ads_spread": -12.9,
+        "ads_move_speed": -10,
+        "ads_time": 15
+      }
+    },
+    {
+      "id": "tactical_foregrip_a",
+      "name": "Tactical Foregrip A",
+      "slot": "underbarrel",
+      "d": {
+        "ads_spread": -10,
+        "move_speed": -1
+      }
+    },
+    {
+      "id": "fast_reload",
+      "name": "Fast Reload",
+      "slot": "magazine",
+      "d": {
+        "reload_time": -15
+      }
+    },
+    {
+      "id": "extended_mag_a",
+      "name": "Extended Mag A",
+      "slot": "magazine",
+      "d": {
+        "move_speed": -10,
+        "reload_time": 5
+      }
+    },
+    {
+      "id": "stippled_grip_tape",
+      "name": "Stippled Grip Tape",
+      "slot": "rear_grip",
+      "d": {
+        "ads_time": -5,
+        "fire_delay": -15,
+        "ads_spread": 12
+      }
+    },
+    {
+      "id": "granulated_grip_tape",
+      "name": "Granulated Grip Tape",
+      "slot": "rear_grip",
+      "d": {
+        "ads_spread": -11.9,
+        "ads_move_speed": -4
+      }
+    }
+  ],
+  "combination_space": {
+    "slot_counts": {
+      "muzzle": 6,
+      "barrel": 3,
+      "stock": 4,
+      "perk": 2,
+      "laser": 3,
+      "underbarrel": 5,
+      "magazine": 2,
+      "rear_grip": 2
+    },
+    "combinations_exactly_0_to_5": [
+      1,
+      27,
+      311,
+      1997,
+      7824,
+      19168
+    ],
+    "combinations_1_to_5": 29327,
+    "combinations_exactly_5": 19168,
+    "counting_rule": "at most one attachment per slot; this historical dataset is a common/universal subset, not the full modern per-weapon compatibility graph"
+  }
+}
