@@ -1,0 +1,5 @@
+# Integrated Morg City is still a gameplay/blockout compile target.
+# Use fast VIS in CI while topology, occluders, art and final lightmap budgets
+# are still changing. Final/release-quality verification will explicitly use
+# compile-maps.sh --full (-full VIS / -extra RAD).
+hlvis_args="-fast"
