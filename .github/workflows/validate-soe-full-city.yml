@@ -52,3 +52,10 @@ jobs:
 
       - name: Require integrated BSP output
         run: test -s upstream-assets/common/maps/soe.bsp
+
+      - name: Upload integrated BSP artifact
+        uses: actions/upload-artifact@v4
+        with:
+          name: soe-integrated-bsp
+          path: upstream-assets/common/maps/soe.bsp
+          if-no-files-found: error
