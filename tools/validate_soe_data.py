@@ -27,6 +27,7 @@ FILES = {
     "g4": "g4_waterfront_blockout.json",
     "g5": "g5_rift_blockout.json",
     "g6": "g6_sacred_place_blockout.json",
+    "g7": "g7_tram_blockout.json",
 }
 
 data = {}
@@ -39,7 +40,7 @@ for name, filename in FILES.items():
 if data["manifest"]["id"] != "soe":
     raise SystemExit("manifest id must be soe")
 
-for name in ("quest", "side", "audit", "lore", "achievements", "districts", "enemies", "world", "beast", "buildables", "finale", "geometry", "topology", "g1", "g2", "g3", "g4", "g5", "g6"):
+for name in ("quest", "side", "audit", "lore", "achievements", "districts", "enemies", "world", "beast", "buildables", "finale", "geometry", "topology", "g1", "g2", "g3", "g4", "g5", "g6", "g7"):
     if data[name].get("map") != "soe":
         raise SystemExit(f"{name} map id mismatch")
 
@@ -310,6 +311,43 @@ if keepers != [1, 2, 3, 4]:
 if sum(1 for a in g6_anchors if a.get("classname") == "soe_shadowman_node") < 6:
     raise SystemExit("Sacred Place must retain at least six Shadowman movement nodes")
 
+# G7 Tram/finale contract.
+if data["g7"].get("phase") != "G7" or data["g7"].get("district") != "tram_network":
+    raise SystemExit("Tram G7 blockout metadata changed unexpectedly")
+if data["g7"].get("stationIds") != {"canal": 1, "footlight": 2, "waterfront": 3}:
+    raise SystemExit("G7 station ID contract changed")
+if data["g7"]["tram"].get("cost") != 500:
+    raise SystemExit("Tram ride must retain 500-point cost")
+if data["g7"]["tram"].get("route") != "station -> Junction hub -> destination":
+    raise SystemExit("all G7 Tram rides must traverse Junction")
+buttons = data["g7"].get("buttons", [])
+if len(buttons) != 6:
+    raise SystemExit("G7 must retain two destination buttons at each station")
+for station_id in (1, 2, 3):
+    destinations = sorted(
+        b["destination"] for b in buttons if b["station"] == station_id
+    )
+    if destinations != sorted(x for x in (1, 2, 3) if x != station_id):
+        raise SystemExit(f"G7 station {station_id} lost one destination")
+if any(b.get("cost") != 500 for b in buttons):
+    raise SystemExit("all G7 Tram controls must cost 500")
+symbols = data["g7"].get("symbolWindows", [])
+if sorted(s.get("style") for s in symbols) != [1, 2, 3]:
+    raise SystemExit("G7 symbol windows must map Canal/Footlight/Waterfront styles 1..3")
+finale_boxes = data["g7"].get("finale", {}).get("stationBoxes", [])
+if sorted(b.get("style") for b in finale_boxes) != [1, 2, 3]:
+    raise SystemExit("G7 finale station boxes must retain three unique rail bits")
+if data["g7"]["finale"].get("railWindowSeconds") != 30:
+    raise SystemExit("G7 finale rail window must remain 30 seconds")
+if data["g7"]["finale"].get("gatewormAbsentSeconds") != 20:
+    raise SystemExit("G7 Gateworm absence window must remain 20 seconds")
+if len(data["g7"]["finale"].get("keepers", [])) != 3:
+    raise SystemExit("G7 finale must retain three Junction Keepers")
+if len(data["g7"]["finale"].get("beastTorches", [])) < 3:
+    raise SystemExit("G7 finale must retain curse-torch Beast access")
+if len(data["g7"]["finale"].get("cleanseWisps", [])) < 4:
+    raise SystemExit("G7 finale must retain corruption cleanse wisps")
+
 # Runtime coverage anti-regression: documented critical systems must have
 # mapper-facing/runtime implementations, not just JSON descriptions.
 overlay_dir = ROOT / "overlay" / "quakec" / "source" / "server" / "maps" / "soe"
@@ -337,6 +375,10 @@ required_runtime_symbols = {
     "soe_gateworm_pedestal": "Sacred Place Gateworm pedestal",
     "soe_final_ritual_altar": "fifth ritual altar",
     "soe_tram_button": "tram purchase/control",
+    "soe_tram_mover": "physical stoppable Tram mover",
+    "soe_tram_station_marker": "Tram station marker",
+    "soe_tram_hub_marker": "Junction Tram hub marker",
+    "soe_tram_symbol_window": "randomized Tram symbol window",
     "soe_rift_portal": "Rift portal",
     "soe_harvest_pod": "Harvest Pod",
     "soe_servant_build_table": "Apothicon Servant build table",
@@ -360,6 +402,7 @@ required_runtime_symbols = {
     "soe_finale_station_box": "finale station shock box",
     "soe_finale_train_hit": "finale tram/Gateworm event",
     "soe_finale_keeper": "finale central Keeper",
+    "soe_finale_gateworm_visual": "self-restoring finale Gateworm visual",
     "soe_margwa_mask_heart": "Margwa Mask Tram heart target",
     "soe_margwa_mask_spawn": "Margwa Mask pickup spawn",
     "soe_sal_laundry_trigger": "Sal DeLuca laundry grenade trigger",
@@ -397,6 +440,11 @@ if 'mapname == "soe_g5"' not in qc_text:
     raise SystemExit("SoE G5 blockout must activate the Shadows runtime")
 if 'mapname == "soe_g6"' not in qc_text:
     raise SystemExit("SoE G6 blockout must activate the Shadows runtime")
+if 'mapname == "soe_g7"' not in qc_text:
+    raise SystemExit("SoE G7 blockout must activate the Shadows runtime")
+
+if "!soe_tram_in_transit" not in qc_text or 'cvar("soe_solo_finale") == 0' not in qc_text:
+    raise SystemExit("classic finale must require a moving Tram for station shocks")
 
 patcher = (ROOT / "scripts" / "apply_soe_quakec_overlay.py").read_text(encoding="utf-8")
 if "soe_active && !soe_pap_unlocked" not in patcher:
