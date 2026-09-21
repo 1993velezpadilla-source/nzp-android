@@ -134,7 +134,7 @@ def gen(spec):
 
     for d in spec["buyableDoors"]:
         ents.append(brush_entity("func_door_nzp",d["mins"],d["maxs"],NULL_TEX,
-                                 targetname=d["id"],cost=d["cost"],speed=100,sounds=1,
+                                 targetname=d["id"],wayTarget=d["id"],cost=d["cost"],speed=100,sounds=1,
                                  wait=4,lip=8,distance=96,dmg=0,health=0,spawnflags=0))
 
     for group in spec["randomized"]:
