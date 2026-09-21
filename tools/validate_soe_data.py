@@ -591,8 +591,16 @@ if source.get("redistribution") != "do_not_bundle_without_permission":
     raise SystemExit("source geometry redistribution guard was removed")
 
 lock = json.loads((ROOT / "upstreams.lock.json").read_text(encoding="utf-8"))
-if len(lock.get("repositories", [])) < 3:
+if len(lock.get("repositories", [])) < 5:
     raise SystemExit("upstream lock file is incomplete")
+locked_repos = {r.get("name"): r for r in lock.get("repositories", [])}
+spawn_zone_lock = locked_repos.get("spawn-zone-tool")
+if not spawn_zone_lock:
+    raise SystemExit("spawn-zone-tool must be pinned for integrated runtime builds")
+if spawn_zone_lock.get("commit") != "3c6f9b87208026d7d639565deed64e541ffb18bf":
+    raise SystemExit("spawn-zone-tool pin changed without validation")
+if 'zone_patch = "#define MAX_ZONES\\t\\t\\t\\t\\t64"' not in patcher:
+    raise SystemExit("integrated Morg City must retain 64-zone QuakeC capacity patch")
 
 print(
     "SOE data OK: "
