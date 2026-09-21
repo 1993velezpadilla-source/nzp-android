@@ -185,6 +185,22 @@ runtime_guards = {
         shadow_qc,
         'SoE_PlayerCount() >= 4 || cvar("soe_solo_finale") != 0',
     ),
+    "finale converts surviving Margwas to purple": (
+        finale_qc,
+        "zombie.soe_margwa_purple = true;",
+    ),
+    "finale clears normal zombies through NZP death cleanup": (
+        finale_qc,
+        "Zombie_Death_Cleanup(zombie);",
+    ),
+    "finale immediately returns cleared zombies to the pool": (
+        finale_qc,
+        "removeZombie();",
+    ),
+    "finale population transition runs before combat freeze": (
+        finale_qc,
+        "SoE_FinaleTransitionPopulation();",
+    ),
     "finale corruption minimum cadence is 30 seconds": (
         finale_qc,
         "#define SOE_FINALE_CORRUPTION_MIN_SECONDS 30",
@@ -246,6 +262,11 @@ runtime_guards = {
 for label, (source, token) in runtime_guards.items():
     if token not in source:
         raise SystemExit(f"missing quest runtime contract: {label}")
+
+transition_call = finale_qc.index("SoE_FinaleTransitionPopulation();")
+combat_freeze = finale_qc.index("Remaining_Zombies = 9999;")
+if transition_call > combat_freeze:
+    raise SystemExit("finale population transition must run before the synthetic combat counter is installed")
 
 # Verify every global quest stage is both defined and used by progression code.
 stages = [
