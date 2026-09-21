@@ -190,7 +190,7 @@ for zone in (
         raise SystemExit(f"surface zone lost during merge: {zone}")
 
 for required in (
-    '"adjacent_zones" "easy_street, canal_entry, footlight_entry, waterfront_entry"',
+    '"adjacent_zones" "easy_street, canal_entry, footlight_entry, waterfront_entry, rift_junction_shortcut"',
     '"adjacent_zones" "junction, canal_lower"',
     '"adjacent_zones" "junction, footlight_main"',
     '"adjacent_zones" "junction, waterfront_lower"',
