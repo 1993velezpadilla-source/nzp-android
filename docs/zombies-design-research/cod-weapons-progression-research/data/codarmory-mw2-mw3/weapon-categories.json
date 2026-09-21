@@ -1,0 +1,98 @@
+{
+  "provenance": {
+    "source_repository": "tzurbaev/codarmory.com",
+    "source_revision": "04408ef38fb8e64531503e8a1148b6676374e4b8",
+    "source_license": "MIT",
+    "source_license_sha": "7d6c82434ffc93394cb16ef06006933d4d6fbe78",
+    "source_files": {
+      "weapons": {
+        "path": "src/database/weapons.json",
+        "sha": "64172609f446619be9e9f8170e761e39a3b3be69"
+      },
+      "attachments": {
+        "path": "src/database/attachments.json",
+        "sha": "217d2a4b0f6172cf167d50558000f5ab0731acac"
+      },
+      "attachment_stats": {
+        "path": "src/database/attachment-stats.json",
+        "sha": "4bd265b5ce02f260448bd9ef0855d6c63bdb7aa1"
+      },
+      "attachment_categories": {
+        "path": "src/database/attachment-categories.json",
+        "sha": "e0f583bd0284e3b5bd0fdfbff9bd7e4c6fff22b6"
+      },
+      "weapon_categories": {
+        "path": "src/database/categories.json",
+        "sha": "7477d08a0db8a02f9e3f7687e85ba697feaecccd"
+      },
+      "platforms": {
+        "path": "src/database/platforms.json",
+        "sha": "04ec0d5c1ce14b5df3426fd33341e7831a8c75ec"
+      }
+    },
+    "transformed_on": "2026-09-21",
+    "transformation": "Removed descriptions/art paths and retained technical/factual identity, compatibility, pros/cons and unlock relationships."
+  },
+  "categories": [
+    {
+      "id": "assault-rifles",
+      "name": "Assault Rifles",
+      "alias": null,
+      "slot": "primary"
+    },
+    {
+      "id": "battle-rifles",
+      "name": "Battle Rifles",
+      "alias": null,
+      "slot": "primary"
+    },
+    {
+      "id": "shotguns",
+      "name": "Shotguns",
+      "alias": null,
+      "slot": "primary"
+    },
+    {
+      "id": "smgs",
+      "name": "SMGs",
+      "alias": "Submachine guns",
+      "slot": "primary"
+    },
+    {
+      "id": "lmgs",
+      "name": "LMGs",
+      "alias": "Light machine guns",
+      "slot": "primary"
+    },
+    {
+      "id": "marksman-rifles",
+      "name": "Marksman Rifles",
+      "alias": null,
+      "slot": "primary"
+    },
+    {
+      "id": "sniper-rifles",
+      "name": "Sniper Rifles",
+      "alias": null,
+      "slot": "primary"
+    },
+    {
+      "id": "handguns",
+      "name": "Handguns",
+      "alias": null,
+      "slot": "secondary"
+    },
+    {
+      "id": "launchers",
+      "name": "Launchers",
+      "alias": null,
+      "slot": "secondary"
+    },
+    {
+      "id": "melee",
+      "name": "Melee",
+      "alias": null,
+      "slot": "secondary"
+    }
+  ]
+}
