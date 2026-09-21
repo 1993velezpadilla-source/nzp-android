@@ -269,10 +269,18 @@ void() SoE_FinaleStationBoxTouch =
         return;
 
     other.semi_actions |= SEMIACTION_USE;
+    // Re-shocking an already charged station during the same cycle must not
+    // refresh the global rail timer. Otherwise one player could keep a partial
+    // rail state alive forever by repeatedly using the same box.
+    if (soe_finale_station_mask & station_bit)
+        return;
+
     soe_finale_station_mask = soe_finale_station_mask | station_bit;
 
-    // Rails remain blue/electrified for the coordination window.
-    soe_finale_rail_window_until = time + 30;
+    // The first successful station shock starts the fixed coordination window.
+    if (soe_finale_rail_window_until <= time)
+        soe_finale_rail_window_until = time + 30;
+
     SoE_FireEntityTargets(self);
 };
 
