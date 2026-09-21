@@ -209,6 +209,10 @@ runtime_guards = {
         finale_qc,
         "} else if (!player.downed) {",
     ),
+    "finale reset clears per-player corruption state": (
+        finale_qc,
+        "SoE_FinaleClearPlayerCorruption(player);",
+    ),
     "finale exposes a corruption reset for full bleed-out respawn": (
         finale_qc,
         "SoE_FinaleClearPlayerCorruption",
