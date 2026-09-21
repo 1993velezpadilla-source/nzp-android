@@ -14,6 +14,19 @@ overlay_root = Path(__file__).resolve().parents[1] / "overlay" / "quakec"
 if not (root / "progs" / "ssqc.src").exists():
     raise SystemExit(f"not an NZ:P QuakeC checkout: {root}")
 
+# Full Morg City currently reaches the stock zoning ceiling (32 zones).
+# Give large maps safe headroom without changing per-frame work unless they
+# actually define more zones.
+custom_qc = root / "source" / "server" / "defs" / "custom.qc"
+custom_text = custom_qc.read_text(encoding="utf-8")
+zone_anchor = "#define MAX_ZONES\t\t\t\t\t32"
+zone_patch = "#define MAX_ZONES\t\t\t\t\t64"
+if zone_patch not in custom_text:
+    if zone_anchor not in custom_text:
+        raise SystemExit("MAX_ZONES anchor changed; inspect pinned upstream")
+    custom_text = custom_text.replace(zone_anchor, zone_patch, 1)
+    custom_qc.write_text(custom_text, encoding="utf-8")
+
 # Copy every SoE server module, not just the state file.
 src_dir = overlay_root / "source" / "server" / "maps" / "soe"
 dst_dir = root / "source" / "server" / "maps" / "soe"
