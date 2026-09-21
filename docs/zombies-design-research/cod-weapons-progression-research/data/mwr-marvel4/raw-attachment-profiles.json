@@ -1,0 +1,503 @@
+{
+  "provenance": {
+    "source": "Modern Warfare Remastered Weapon Stats by Marvel4",
+    "spreadsheet_url": "https://docs.google.com/spreadsheets/d/1Aqb8m9Fd5ebnLG4PPzy-Nt9DqzYheHz2HXV_G7lutTg/edit",
+    "spreadsheet_id": "1Aqb8m9Fd5ebnLG4PPzy-Nt9DqzYheHz2HXV_G7lutTg",
+    "observed_at": "2026-09-21",
+    "source_type": "community technical/raw-definition reference",
+    "sheet": "Raw Attachments",
+    "raw_rows": 119,
+    "raw_columns": 2,
+    "transformation": "Identical technical rows deduplicated; attachment source ID preserved as alias."
+  },
+  "field_names": [
+    "ATTACHMENTFILE",
+    "displayName"
+  ],
+  "unique_profile_count": 16,
+  "profiles": [
+    {
+      "profile_id": "mwr_att_0001",
+      "aliases": [
+        [
+          "defaultattachment"
+        ],
+        [
+          "glpremwrak47"
+        ],
+        [
+          "glpremwr"
+        ],
+        [
+          "masterkeypremwr"
+        ],
+        [
+          "glpremwrg3"
+        ],
+        [
+          "glpremwrg36c"
+        ],
+        [
+          "glpremwrm14"
+        ],
+        [
+          "glpremwrm16"
+        ],
+        [
+          "glpremwrm4"
+        ],
+        [
+          "glpremwraugast"
+        ],
+        [
+          "akimbomwr"
+        ],
+        [
+          "bloodmwr"
+        ],
+        [
+          "akimbomwrhidden"
+        ],
+        [
+          "code_sharedreticles"
+        ]
+      ],
+      "stats": {}
+    },
+    {
+      "profile_id": "mwr_att_0002",
+      "aliases": [
+        [
+          "glmwrak47"
+        ]
+      ],
+      "stats": {
+        "displayName": "GP-25"
+      }
+    },
+    {
+      "profile_id": "mwr_att_0003",
+      "aliases": [
+        [
+          "reflexmwrak47"
+        ],
+        [
+          "reflexmwr"
+        ],
+        [
+          "reflexmwrg3"
+        ],
+        [
+          "reflexmwrg36c"
+        ],
+        [
+          "reflexmwrm14"
+        ],
+        [
+          "reflexmwrm16"
+        ],
+        [
+          "reflexmwrm4"
+        ],
+        [
+          "reflexmwraugast"
+        ],
+        [
+          "reflexmwraprsmg"
+        ],
+        [
+          "reflexmwrak74u"
+        ],
+        [
+          "reflexmwruzi"
+        ],
+        [
+          "reflexmwrmp5"
+        ],
+        [
+          "reflexmwrp90"
+        ],
+        [
+          "reflexmwrskorpion"
+        ],
+        [
+          "reflexmwraugsmg"
+        ],
+        [
+          "reflexmwrfeblmg"
+        ],
+        [
+          "reflexmwrjunlmg"
+        ],
+        [
+          "reflexmwrm60e4"
+        ],
+        [
+          "reflexmwrrpd"
+        ],
+        [
+          "reflexmwrsaw"
+        ],
+        [
+          "reflexmwrm1014"
+        ],
+        [
+          "reflexmwrwinchester1200"
+        ]
+      ],
+      "stats": {
+        "displayName": "Red Dot Sight"
+      }
+    },
+    {
+      "profile_id": "mwr_att_0004",
+      "aliases": [
+        [
+          "silencermwrak47"
+        ],
+        [
+          "silencermwr"
+        ],
+        [
+          "silencermwraprast"
+        ],
+        [
+          "silencermwrg3"
+        ],
+        [
+          "silencermwrg36c"
+        ],
+        [
+          "silencermwrm14"
+        ],
+        [
+          "silencermwrm16"
+        ],
+        [
+          "silencermwrm4"
+        ],
+        [
+          "silencermwrxmlar"
+        ],
+        [
+          "silencermwraugast"
+        ],
+        [
+          "silencermwraprsmg"
+        ],
+        [
+          "silencermwrak74u"
+        ],
+        [
+          "silencermwruzi"
+        ],
+        [
+          "silencermwrmp5"
+        ],
+        [
+          "silencermwrp90"
+        ],
+        [
+          "silencermwrskorpion"
+        ],
+        [
+          "silencermwraugsmg"
+        ],
+        [
+          "silencermwrberetta"
+        ],
+        [
+          "silencermwrusp"
+        ],
+        [
+          "silencermwrcolt45"
+        ],
+        [
+          "silencermwraprpst"
+        ]
+      ],
+      "stats": {
+        "displayName": "Suppressed"
+      }
+    },
+    {
+      "profile_id": "mwr_att_0005",
+      "aliases": [
+        [
+          "acogmwrak47"
+        ],
+        [
+          "acogmwr"
+        ],
+        [
+          "acogmwraprast"
+        ],
+        [
+          "acogmwrg3"
+        ],
+        [
+          "acogmwrg36c"
+        ],
+        [
+          "acogmwrm14"
+        ],
+        [
+          "acogmwrm16"
+        ],
+        [
+          "acogmwrm4"
+        ],
+        [
+          "acogmwrxmlar"
+        ],
+        [
+          "acogmwraugast"
+        ],
+        [
+          "acogmwrfebsmg"
+        ],
+        [
+          "acogmwraprsmg"
+        ],
+        [
+          "acogmwrak74u"
+        ],
+        [
+          "acogmwruzi"
+        ],
+        [
+          "acogmwrmp5"
+        ],
+        [
+          "acogmwrp90"
+        ],
+        [
+          "acogmwrskorpion"
+        ],
+        [
+          "acogmwraugsmg"
+        ],
+        [
+          "acogmwrfeblmg"
+        ],
+        [
+          "acogmwrjunlmg"
+        ],
+        [
+          "acogmwrbarrett"
+        ],
+        [
+          "acogmwrdragunov"
+        ],
+        [
+          "acogmwrm21"
+        ],
+        [
+          "acogmwrm40a3"
+        ],
+        [
+          "acogmwrremington700"
+        ],
+        [
+          "acogmwrdmr25"
+        ],
+        [
+          "acogmwrjunsnp"
+        ],
+        [
+          "acogmwrm60e4"
+        ],
+        [
+          "acogmwrrpd"
+        ],
+        [
+          "acogmwrsaw"
+        ]
+      ],
+      "stats": {
+        "displayName": "ACOG"
+      }
+    },
+    {
+      "profile_id": "mwr_att_0006",
+      "aliases": [
+        [
+          "holosightmwr"
+        ]
+      ],
+      "stats": {
+        "displayName": "Holographic"
+      }
+    },
+    {
+      "profile_id": "mwr_att_0007",
+      "aliases": [
+        [
+          "thermalmwr"
+        ],
+        [
+          "thermalmwrsaw"
+        ],
+        [
+          "thermalmwrm60e4"
+        ],
+        [
+          "thermalmwrrpd"
+        ]
+      ],
+      "stats": {
+        "displayName": "Thermal Sight"
+      }
+    },
+    {
+      "profile_id": "mwr_att_0008",
+      "aliases": [
+        [
+          "glmwr"
+        ],
+        [
+          "glmwraprast"
+        ],
+        [
+          "glmwrg3"
+        ],
+        [
+          "glmwrg36c"
+        ],
+        [
+          "glmwrm14"
+        ],
+        [
+          "glmwrm16"
+        ],
+        [
+          "glmwrm4"
+        ],
+        [
+          "glmwrxmlar"
+        ],
+        [
+          "glmwraugast"
+        ]
+      ],
+      "stats": {
+        "displayName": "M203"
+      }
+    },
+    {
+      "profile_id": "mwr_att_0009",
+      "aliases": [
+        [
+          "masterkeymwr"
+        ]
+      ],
+      "stats": {
+        "displayName": "Masterkey"
+      }
+    },
+    {
+      "profile_id": "mwr_att_0010",
+      "aliases": [
+        [
+          "heartbeatmwr"
+        ]
+      ],
+      "stats": {
+        "displayName": "Heartbeat"
+      }
+    },
+    {
+      "profile_id": "mwr_att_0011",
+      "aliases": [
+        [
+          "longbarrelmwr"
+        ]
+      ],
+      "stats": {
+        "displayName": "Advanced Rifling"
+      }
+    },
+    {
+      "profile_id": "mwr_att_0012",
+      "aliases": [
+        [
+          "xmagmwr"
+        ]
+      ],
+      "stats": {
+        "displayName": "Extended Mags"
+      }
+    },
+    {
+      "profile_id": "mwr_att_0013",
+      "aliases": [
+        [
+          "reflexvarmwr"
+        ]
+      ],
+      "stats": {
+        "displayName": "Reflex Variant"
+      }
+    },
+    {
+      "profile_id": "mwr_att_0014",
+      "aliases": [
+        [
+          "gripmwr"
+        ],
+        [
+          "gripmwrkam12"
+        ],
+        [
+          "gripmwrfeblmg"
+        ],
+        [
+          "gripmwrjunlmg"
+        ],
+        [
+          "gripmwrm1014"
+        ],
+        [
+          "gripmwrwinchester1200"
+        ],
+        [
+          "gripmwrm60e4"
+        ],
+        [
+          "gripmwrrpd"
+        ],
+        [
+          "gripmwrsaw"
+        ]
+      ],
+      "stats": {
+        "displayName": "Foregrip"
+      }
+    },
+    {
+      "profile_id": "mwr_att_0015",
+      "aliases": [
+        [
+          "tacknifemwr"
+        ],
+        [
+          "tacknifemwrdeserteagle"
+        ]
+      ],
+      "stats": {
+        "displayName": "Tactical Knife"
+      }
+    },
+    {
+      "profile_id": "mwr_att_0016",
+      "aliases": [
+        [
+          "varzoommwr"
+        ]
+      ],
+      "stats": {
+        "displayName": "Variable Zoom"
+      }
+    }
+  ]
+}
