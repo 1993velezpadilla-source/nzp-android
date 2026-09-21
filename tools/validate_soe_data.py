@@ -28,6 +28,7 @@ FILES = {
     "g5": "g5_rift_blockout.json",
     "g6": "g6_sacred_place_blockout.json",
     "g7": "g7_tram_blockout.json",
+    "mainquest_geometry": "mainquest_geometry.json",
 }
 
 data = {}
@@ -40,7 +41,7 @@ for name, filename in FILES.items():
 if data["manifest"]["id"] != "soe":
     raise SystemExit("manifest id must be soe")
 
-for name in ("quest", "side", "audit", "lore", "achievements", "districts", "enemies", "world", "beast", "buildables", "finale", "geometry", "topology", "g1", "g2", "g3", "g4", "g5", "g6", "g7"):
+for name in ("quest", "side", "audit", "lore", "achievements", "districts", "enemies", "world", "beast", "buildables", "finale", "geometry", "topology", "g1", "g2", "g3", "g4", "g5", "g6", "g7", "mainquest_geometry"):
     if data[name].get("map") != "soe":
         raise SystemExit(f"{name} map id mismatch")
 
@@ -347,6 +348,58 @@ if len(data["g7"]["finale"].get("beastTorches", [])) < 3:
     raise SystemExit("G7 finale must retain curse-torch Beast access")
 if len(data["g7"]["finale"].get("cleanseWisps", [])) < 4:
     raise SystemExit("G7 finale must retain corruption cleanse wisps")
+
+# Cross-phase Reborn Sword / Flag geometry contract.
+mq = data["mainquest_geometry"]
+if mq.get("status") != "provisional_transforms_canonical_topology":
+    raise SystemExit("main-quest geometry status/policy changed unexpectedly")
+
+circles = mq.get("rebornCircles", [])
+if len(circles) != 4 or sorted(c.get("style") for c in circles) != [1, 2, 4, 8]:
+    raise SystemExit("main-quest geometry must retain four Reborn circles with bits 1/2/4/8")
+if {c.get("phase") for c in circles} != {"g1", "g2", "g3", "g4"}:
+    raise SystemExit("Reborn circles must remain one-per-surface-district phase")
+
+reborn_keepers = mq.get("ritualKeepers", [])
+if len(reborn_keepers) != 4 or sorted(k.get("style") for k in reborn_keepers) != [1, 2, 3, 4]:
+    raise SystemExit("main-quest geometry must retain four player-slot Reborn Keepers")
+
+if mq.get("book", {}).get("phase") != "g1" or mq["book"].get("classname") != "soe_mainquest_book":
+    raise SystemExit("Nero main-quest book must remain in G1")
+if mq.get("flagSpawn", {}).get("phase") != "g5" or mq["flagSpawn"].get("classname") != "soe_flag_spawn":
+    raise SystemExit("quest Flag spawn must remain in the G5 Rift")
+
+districts = mq.get("districts", [])
+if len(districts) != 4:
+    raise SystemExit("main-quest flag geometry must retain exactly four districts")
+expected_ids = {"junction": 1, "footlight": 2, "waterfront": 3, "canals": 4}
+for district in districts:
+    did = district.get("id")
+    if did not in expected_ids or district.get("runtimeId") != expected_ids[did]:
+        raise SystemExit(f"flag runtime district mapping changed: {did}")
+    sites = district.get("sites", [])
+    if len(sites) != 2 or sorted(s.get("index") for s in sites) != [1, 2]:
+        raise SystemExit(f"{did} must retain flag sites 1 and 2")
+    if not district.get("flagKeeper"):
+        raise SystemExit(f"{did} Flag Keeper missing")
+    if len(district.get("shadowmanSpawns", [])) < 3:
+        raise SystemExit(f"{did} needs at least three Flag Shadowman spawn markers")
+
+# Standalone phase generators must consume the shared main-quest source.
+for phase, generator in {
+    "g1": "generate_soe_g1_blockout.py",
+    "g2": "generate_soe_g2_canal.py",
+    "g3": "generate_soe_g3_footlight.py",
+    "g4": "generate_soe_g4_waterfront.py",
+    "g5": "generate_soe_g5_rift.py",
+}.items():
+    generator_text = (ROOT / "scripts" / generator).read_text(encoding="utf-8")
+    call = f'append_phase_mainquest_entities('
+    phase_token = f'"{phase}"'
+    if "from soe_mainquest_geometry import append_phase_mainquest_entities" not in generator_text:
+        raise SystemExit(f"{phase} generator no longer imports shared main-quest geometry")
+    if call not in generator_text or phase_token not in generator_text:
+        raise SystemExit(f"{phase} generator no longer injects its main-quest entities")
 
 # Runtime coverage anti-regression: documented critical systems must have
 # mapper-facing/runtime implementations, not just JSON descriptions.
