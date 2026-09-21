@@ -206,16 +206,25 @@ def patch_zone_adjacency(entity: str):
         return entity
 
     zone = zone_name(entity)
-    overrides = {
-        "junction": "easy_street, canal_entry, footlight_entry, waterfront_entry",
+    adjacency_overrides = {
+        "junction": "easy_street, canal_entry, footlight_entry, waterfront_entry, rift_junction_shortcut",
         "canal_entry": "junction, canal_lower",
         "footlight_entry": "junction, footlight_main",
         "waterfront_entry": "junction, waterfront_lower",
         "rift_junction_shortcut": "rift_upper, junction",
+        "rift_sacred_gate": "rift_lower, sacred_entry",
+        "sacred_entry": "rift_sacred_gate, sacred_far",
+    }
+    doorway_overrides = {
+        "canal_entry": "junction_to_canal_stub",
+        "footlight_entry": "junction_to_footlight_stub",
+        "waterfront_entry": "junction_to_waterfront_stub",
     }
 
-    if zone in overrides:
-        entity = set_entity_key(entity, "adjacent_zones", overrides[zone])
+    if zone in adjacency_overrides:
+        entity = set_entity_key(entity, "adjacent_zones", adjacency_overrides[zone])
+    if zone in doorway_overrides:
+        entity = set_entity_key(entity, "door_way_targets", doorway_overrides[zone])
 
     return entity
 
