@@ -15,4 +15,8 @@ jobs:
       - uses: actions/setup-python@v5
         with:
           python-version: "3.12"
-      - run: python tools/validate_soe_data.py
+      - name: Validate SoE data contracts
+        run: python tools/validate_soe_data.py
+
+      - name: Validate end-to-end quest runtime contracts
+        run: python tools/validate_soe_quest_runtime.py
