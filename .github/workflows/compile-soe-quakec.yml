@@ -33,6 +33,12 @@ jobs:
       - name: Apply SoE overlay
         run: python3 scripts/apply_soe_quakec_overlay.py .upstream/quakec
 
+      - name: Verify integrated zoning capacity patch
+        run: grep -Eq '^#define MAX_ZONES[[:space:]]+64        run: |
+          chmod +x .upstream/quakec/tools/qc-compiler-gnu.sh
+          .upstream/quakec/tools/qc-compiler-gnu.sh
+ .upstream/quakec/source/server/defs/custom.qc
+
       - name: Compile server QuakeC
         run: |
           chmod +x .upstream/quakec/tools/qc-compiler-gnu.sh
