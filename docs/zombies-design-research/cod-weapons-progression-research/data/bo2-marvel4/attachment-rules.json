@@ -1,0 +1,184 @@
+{
+  "provenance": {
+    "source": "Black Ops II Weapon Stats by Marvel4",
+    "spreadsheet_url": "https://docs.google.com/spreadsheets/d/1dtrPCWPf9B-ZFIWzXHntapBM_Ra88WJnMGQDmakmJto/edit",
+    "spreadsheet_id": "1dtrPCWPf9B-ZFIWzXHntapBM_Ra88WJnMGQDmakmJto",
+    "observed_at": "2026-09-21",
+    "source_type": "community technical measurement/reference",
+    "transformation": "Three-level spreadsheet headers normalized into dot-delimited keys; only factual weapon rows and attachment-rule text retained.",
+    "caution": "Community technical data; preserve attribution and verify disputed values against a second source before treating as canonical."
+  },
+  "count": 34,
+  "attachments": [
+    {
+      "name": "Reflex Sight",
+      "effect": "FOV = 50",
+      "source_row": 4
+    },
+    {
+      "name": "EOTech Sight",
+      "effect": "FOV = 45, Centerspeed * 1.01",
+      "source_row": 5
+    },
+    {
+      "name": "ACOG",
+      "effect": "FOV = 35, Idle Amount * 0.1, Centerspeed * 1.02",
+      "source_row": 6
+    },
+    {
+      "name": "ACOG (Sniper Rifle)",
+      "effect": "FOV = 35, Centerspeed * 0.9",
+      "source_row": 7
+    },
+    {
+      "name": "Target Finder",
+      "effect": "FOV = 45, Idle Amount * 0.1",
+      "source_row": 8
+    },
+    {
+      "name": "Hybrid Optic",
+      "effect": "FOV = 30/50",
+      "source_row": 9
+    },
+    {
+      "name": "Hybrid Optic (LMG)",
+      "effect": "FOV = 30/45",
+      "source_row": 10
+    },
+    {
+      "name": "Millimeter Scanner",
+      "effect": "FOV = 60",
+      "source_row": 11
+    },
+    {
+      "name": "Variable Zoom",
+      "effect": "FOV = 15/35, Idle Amount * 0.95",
+      "source_row": 12
+    },
+    {
+      "name": "Variable Zoom (LMG)",
+      "effect": "FOV = 12.5/30, Idle Amount * 0.95, Centerspeed * 0.9",
+      "source_row": 13
+    },
+    {
+      "name": "Dual Band Scope",
+      "effect": "Centerspeed * 0.95",
+      "source_row": 14
+    },
+    {
+      "name": "Dual Band Scope (LMG)",
+      "effect": "Centerspeed * 0.9",
+      "source_row": 15
+    },
+    {
+      "name": "Dual Band Scope (Crossbow)",
+      "effect": "FOV = 25, Centerspeed * 0.95",
+      "source_row": 16
+    },
+    {
+      "name": "Iron Sights",
+      "effect": "FOV = 50, Idle Amount * 0.5, ADS Time * 0.85",
+      "source_row": 17
+    },
+    {
+      "name": "Quickdraw",
+      "effect": "ADS Time * 0.6",
+      "source_row": 18
+    },
+    {
+      "name": "Quickdraw (SMG)",
+      "effect": "ADS Time * 0.5",
+      "source_row": 19
+    },
+    {
+      "name": "Quickdraw (LMG)",
+      "effect": "ADS Time * 0.75",
+      "source_row": 20
+    },
+    {
+      "name": "Grip",
+      "effect": "Centerspeed * 1.02",
+      "source_row": 21
+    },
+    {
+      "name": "Grip (SMG)",
+      "effect": "Centerspeed * 1.015",
+      "source_row": 22
+    },
+    {
+      "name": "Stock",
+      "effect": "ADS Movement Speed = 0.88",
+      "source_row": 23
+    },
+    {
+      "name": "Stock (SMG)",
+      "effect": "ADS Movement Speed = 1",
+      "source_row": 24
+    },
+    {
+      "name": "Stock (LMG)",
+      "effect": "ADS Movement Speed = 0.72",
+      "source_row": 25
+    },
+    {
+      "name": "Laser Sight",
+      "effect": "Hipspread * 0.625",
+      "source_row": 26
+    },
+    {
+      "name": "Laser Sight (SMG, Sniper Rifle)",
+      "effect": "Hipspread * 0.725",
+      "source_row": 27
+    },
+    {
+      "name": "Laser Sight (LMG)",
+      "effect": "Hipspread * 0.55",
+      "source_row": 28
+    },
+    {
+      "name": "Suppressor",
+      "effect": "Range * 0.7, Centerspeed * 0.98",
+      "source_row": 29
+    },
+    {
+      "name": "Suppressor (SVU-AS)",
+      "effect": "Range * 0.7, Centerspeed * 0.9",
+      "source_row": 30
+    },
+    {
+      "name": "Suppressor (Shotgun, Handgun)",
+      "effect": "Range * 0.9, Centerspeed * 0.98",
+      "source_row": 31
+    },
+    {
+      "name": "Extended Mags",
+      "effect": "Reload Time * 1.1, Reload Empty Time * 1.1, Reload Add Time * 1.1",
+      "source_row": 32
+    },
+    {
+      "name": "Long Barrel",
+      "effect": "Range * 1.16",
+      "source_row": 33
+    },
+    {
+      "name": "Rapid Fire",
+      "effect": "Range * 0.6, Fire Time * 0.75, Hipspread * 1.2, Centerspeed * 0.85",
+      "source_row": 34
+    },
+    {
+      "name": "Rapid Fire (SMG)",
+      "effect": "Range * 0.4, Fire Time * 0.66, Hipspread * 1.3, Centerspeed * 0.85",
+      "source_row": 35
+    },
+    {
+      "name": "Rapid Fire (Chicom CQB, Skorpion EVO)",
+      "effect": "Range * 0.25, Fire Time * 0.66, Hipspread * 1.3, Centerspeed * 0.85",
+      "source_row": 36
+    },
+    {
+      "name": "Ballistics CPU",
+      "effect": "Idle Amount * 0.7",
+      "source_row": 37
+    }
+  ]
+}
