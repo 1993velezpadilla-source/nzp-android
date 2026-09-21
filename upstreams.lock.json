@@ -20,6 +20,11 @@
       "name": "assets",
       "url": "https://github.com/nzp-team/assets.git",
       "commit": "c8135a66e00bb64577912fbf792f8fef7f47658e"
+    },
+    {
+      "name": "spawn-zone-tool",
+      "url": "https://github.com/nzp-team/spawn-zone-tool.git",
+      "commit": "3c6f9b87208026d7d639565deed64e541ffb18bf"
     }
   ]
 }
