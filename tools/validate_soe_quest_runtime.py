@@ -209,6 +209,10 @@ runtime_guards = {
         finale_qc,
         "} else if (!player.downed) {",
     ),
+    "all finale corruption cleanup routes through the shared reset helper": (
+        finale_qc,
+        "SoE_FinaleClearPlayerCorruption(other);",
+    ),
     "finale reset clears per-player corruption state": (
         finale_qc,
         "SoE_FinaleClearPlayerCorruption(player);",
