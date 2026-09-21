@@ -28,6 +28,11 @@ Most long-session bugs come from interactions between those systems, not from th
 - `MULTIPLAYER_AUTHORITY_SECURITY.md`
 - `MAP_CONFIG_EDITOR_MODDING.md`
 - `VALIDATION_TEST_MATRIX.md`
+- `ROUND_STALL_RECOVERY.md`
+- `INTERACTION_SYSTEM.md`
+- `POWER_ZONES_TELEPORTERS.md`
+- `AUDIO_FEEDBACK_DIRECTOR.md`
+- `SESSION_RESET_LIFECYCLE.md`
 - `SOURCE_MANIFEST.md`
 
 ## Primary reusable references
