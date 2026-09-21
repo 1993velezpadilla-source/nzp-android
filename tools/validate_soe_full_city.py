@@ -20,6 +20,17 @@ if '"mapversion" "220"' not in text:
 if '"wad" "../../textures/wad/Example_02.wad"' not in text:
     raise SystemExit("full city WAD path wrong")
 
+# Integrated blockout lights must be static so VHLT never burns the 32-slot
+# switched-light budget before the visual pass.
+for block in text.split("}\n"):
+    m = re.search(r'"classname" "([^"]+)"', block)
+    if not m or not m.group(1).startswith("light"):
+        continue
+    if '"targetname"' in block:
+        raise SystemExit("full-city light retained targetname and would consume MAX_SWITCHED_LIGHTS")
+    if '"style"' in block:
+        raise SystemExit("full-city blockout light retained explicit style")
+
 # Only G1's actual match spawns survive the assembly.
 for i in range(1,5):
     token=f'"classname" "info_player_{i}_spawn"'
