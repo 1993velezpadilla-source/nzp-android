@@ -1,0 +1,485 @@
+{
+  "snapshot": "2026-09-21",
+  "policy": "Prefer CC0 for assets committed to public repo. Keep assets with raw-redistribution restrictions out of Git history and record source/license metadata only.",
+  "count": 30,
+  "license_counts": {
+    "CC0-1.0": 27,
+    "PER_SOURCE_CC0_CLAIM": 2,
+    "SONNISS_GDC_BUNDLE_LICENSE": 1
+  },
+  "assets": [
+    {
+      "id": "quaternius-ultimate-guns",
+      "name": "Quaternius Ultimate Guns Pack",
+      "url": "https://quaternius.com/packs/ultimategun.html",
+      "license": "CC0-1.0",
+      "commercialAllowed": true,
+      "redistributionAllowed": true,
+      "rawRepoAllowed": true,
+      "categories": [
+        "3d_model",
+        "gun"
+      ],
+      "notes": "40 gun models; FBX/OBJ/Blend."
+    },
+    {
+      "id": "quaternius-animated-guns",
+      "name": "Quaternius Animated Guns Pack",
+      "url": "https://quaternius.com/packs/animatedguns.html",
+      "license": "CC0-1.0",
+      "commercialAllowed": true,
+      "redistributionAllowed": true,
+      "rawRepoAllowed": true,
+      "categories": [
+        "3d_model",
+        "gun",
+        "animation"
+      ],
+      "notes": "6 animated firearm models."
+    },
+    {
+      "id": "quaternius-scifi-modular-guns",
+      "name": "Quaternius Sci-Fi Modular Guns",
+      "url": "https://quaternius.com/packs/scifimodularguns.html",
+      "license": "CC0-1.0",
+      "commercialAllowed": true,
+      "redistributionAllowed": true,
+      "rawRepoAllowed": true,
+      "categories": [
+        "3d_model",
+        "gun",
+        "modular",
+        "wonder_weapon"
+      ],
+      "notes": "78 modular/assembled models."
+    },
+    {
+      "id": "quaternius-zombie-apocalypse",
+      "name": "Quaternius Zombie Apocalypse Kit",
+      "url": "https://quaternius.com/packs/zombieapocalypsekit.html",
+      "license": "CC0-1.0",
+      "commercialAllowed": true,
+      "redistributionAllowed": true,
+      "rawRepoAllowed": true,
+      "categories": [
+        "3d_model",
+        "character",
+        "zombie",
+        "dog",
+        "vehicle",
+        "environment",
+        "animation"
+      ],
+      "notes": "~60 models; four playable characters with animations, enemies, dogs and props."
+    },
+    {
+      "id": "quaternius-animated-zombie",
+      "name": "Quaternius Animated Zombie",
+      "url": "https://quaternius.com/packs/animatedzombie.html",
+      "license": "CC0-1.0",
+      "commercialAllowed": true,
+      "redistributionAllowed": true,
+      "rawRepoAllowed": true,
+      "categories": [
+        "3d_model",
+        "zombie",
+        "animation"
+      ]
+    },
+    {
+      "id": "quaternius-ultimate-monsters",
+      "name": "Quaternius Ultimate Monsters",
+      "url": "https://quaternius.com/packs/ultimatemonsters.html",
+      "license": "CC0-1.0",
+      "commercialAllowed": true,
+      "redistributionAllowed": true,
+      "rawRepoAllowed": true,
+      "categories": [
+        "3d_model",
+        "monster",
+        "special_enemy",
+        "animation"
+      ],
+      "notes": "50 animated monster models."
+    },
+    {
+      "id": "kenney-impact-sounds",
+      "name": "Kenney Impact Sounds",
+      "url": "https://kenney.nl/assets/impact-sounds",
+      "license": "CC0-1.0",
+      "commercialAllowed": true,
+      "redistributionAllowed": true,
+      "rawRepoAllowed": true,
+      "categories": [
+        "audio",
+        "impact",
+        "bullet_impact",
+        "debris"
+      ],
+      "notes": "~130 audio files."
+    },
+    {
+      "id": "kenney-rpg-audio",
+      "name": "Kenney RPG Audio",
+      "url": "https://kenney.nl/assets/rpg-audio",
+      "license": "CC0-1.0",
+      "commercialAllowed": true,
+      "redistributionAllowed": true,
+      "rawRepoAllowed": true,
+      "categories": [
+        "audio",
+        "footstep",
+        "foley",
+        "weapon"
+      ]
+    },
+    {
+      "id": "kenney-ui-audio",
+      "name": "Kenney UI Audio",
+      "url": "https://kenney.nl/assets/ui-audio",
+      "license": "CC0-1.0",
+      "commercialAllowed": true,
+      "redistributionAllowed": true,
+      "rawRepoAllowed": true,
+      "categories": [
+        "audio",
+        "ui"
+      ]
+    },
+    {
+      "id": "kenney-interface-sounds",
+      "name": "Kenney Interface Sounds",
+      "url": "https://kenney.nl/assets/interface-sounds",
+      "license": "CC0-1.0",
+      "commercialAllowed": true,
+      "redistributionAllowed": true,
+      "rawRepoAllowed": true,
+      "categories": [
+        "audio",
+        "ui",
+        "interaction"
+      ]
+    },
+    {
+      "id": "kenney-digital-audio",
+      "name": "Kenney Digital Audio",
+      "url": "https://kenney.nl/assets/digital-audio",
+      "license": "CC0-1.0",
+      "commercialAllowed": true,
+      "redistributionAllowed": true,
+      "rawRepoAllowed": true,
+      "categories": [
+        "audio",
+        "electronic",
+        "trap",
+        "powerup",
+        "quest"
+      ]
+    },
+    {
+      "id": "kenney-library",
+      "name": "Kenney Asset Library",
+      "url": "https://kenney.nl/assets",
+      "license": "CC0-1.0",
+      "commercialAllowed": true,
+      "redistributionAllowed": true,
+      "rawRepoAllowed": true,
+      "categories": [
+        "3d_model",
+        "2d",
+        "ui",
+        "audio",
+        "prototype",
+        "environment"
+      ]
+    },
+    {
+      "id": "oga-free-firearm",
+      "name": "OpenGameArt Free Firearm Sound Library",
+      "url": "https://opengameart.org/content/the-free-firearm-sound-library",
+      "license": "CC0-1.0",
+      "commercialAllowed": true,
+      "redistributionAllowed": true,
+      "rawRepoAllowed": true,
+      "categories": [
+        "audio",
+        "gunshot"
+      ],
+      "notes": "Multiple real firearm recordings; strong source for layered gunshot design."
+    },
+    {
+      "id": "oga-gunshot-sounds",
+      "name": "OpenGameArt Gunshot Sounds",
+      "url": "https://opengameart.org/content/gunshot-sounds",
+      "license": "CC0-1.0",
+      "commercialAllowed": true,
+      "redistributionAllowed": true,
+      "rawRepoAllowed": true,
+      "categories": [
+        "audio",
+        "gunshot"
+      ],
+      "notes": "Includes several real firearm families."
+    },
+    {
+      "id": "oga-gun-reload-sfx",
+      "name": "OpenGameArt Gun Reload Sound Effects",
+      "url": "https://opengameart.org/content/gun-reload-sound-effects",
+      "license": "CC0-1.0",
+      "commercialAllowed": true,
+      "redistributionAllowed": true,
+      "rawRepoAllowed": true,
+      "categories": [
+        "audio",
+        "reload",
+        "foley"
+      ]
+    },
+    {
+      "id": "oga-gun-reload-sounds",
+      "name": "OpenGameArt Gun Reload Sounds",
+      "url": "https://opengameart.org/content/gun-reload-sounds",
+      "license": "CC0-1.0",
+      "commercialAllowed": true,
+      "redistributionAllowed": true,
+      "rawRepoAllowed": true,
+      "categories": [
+        "audio",
+        "reload",
+        "pump",
+        "action"
+      ]
+    },
+    {
+      "id": "oga-zombies-pack",
+      "name": "OpenGameArt Zombies Sound Pack",
+      "url": "https://opengameart.org/content/zombies-sound-pack",
+      "license": "CC0-1.0",
+      "commercialAllowed": true,
+      "redistributionAllowed": true,
+      "rawRepoAllowed": true,
+      "categories": [
+        "audio",
+        "zombie",
+        "vocal"
+      ],
+      "notes": "24 WAV zombie sounds."
+    },
+    {
+      "id": "oga-zomby-sfx",
+      "name": "OpenGameArt Zomby SFX Pack",
+      "url": "https://opengameart.org/content/zomby-sfx-pack",
+      "license": "CC0-1.0",
+      "commercialAllowed": true,
+      "redistributionAllowed": true,
+      "rawRepoAllowed": true,
+      "categories": [
+        "audio",
+        "zombie"
+      ]
+    },
+    {
+      "id": "oga-zombie-moans",
+      "name": "OpenGameArt Zombie noises and moans",
+      "url": "https://opengameart.org/content/zombie-noises-and-moans",
+      "license": "CC0-1.0",
+      "commercialAllowed": true,
+      "redistributionAllowed": true,
+      "rawRepoAllowed": true,
+      "categories": [
+        "audio",
+        "zombie",
+        "vocal"
+      ]
+    },
+    {
+      "id": "oga-footsteps",
+      "name": "OpenGameArt Footsteps",
+      "url": "https://opengameart.org/content/footsteps-0",
+      "license": "CC0-1.0",
+      "commercialAllowed": true,
+      "redistributionAllowed": true,
+      "rawRepoAllowed": true,
+      "categories": [
+        "audio",
+        "footstep"
+      ]
+    },
+    {
+      "id": "oga-explosions",
+      "name": "OpenGameArt Explosions",
+      "url": "https://opengameart.org/content/explosions-4",
+      "license": "CC0-1.0",
+      "commercialAllowed": true,
+      "redistributionAllowed": true,
+      "rawRepoAllowed": true,
+      "categories": [
+        "audio",
+        "explosion"
+      ]
+    },
+    {
+      "id": "oga-residue",
+      "name": "OpenGameArt Residue SFX",
+      "url": "https://opengameart.org/content/residue-sfx",
+      "license": "CC0-1.0",
+      "commercialAllowed": true,
+      "redistributionAllowed": true,
+      "rawRepoAllowed": true,
+      "categories": [
+        "audio",
+        "gunshot",
+        "explosion",
+        "impact"
+      ]
+    },
+    {
+      "id": "polyhaven",
+      "name": "Poly Haven",
+      "url": "https://polyhaven.com/",
+      "license": "CC0-1.0",
+      "commercialAllowed": true,
+      "redistributionAllowed": true,
+      "rawRepoAllowed": true,
+      "categories": [
+        "3d_model",
+        "texture",
+        "pbr",
+        "hdri",
+        "environment"
+      ],
+      "notes": "Asset license CC0; API-client terms are separate."
+    },
+    {
+      "id": "ambientcg",
+      "name": "ambientCG",
+      "url": "https://ambientcg.com/",
+      "license": "CC0-1.0",
+      "commercialAllowed": true,
+      "redistributionAllowed": true,
+      "rawRepoAllowed": true,
+      "categories": [
+        "texture",
+        "pbr",
+        "hdri",
+        "3d_model",
+        "environment"
+      ]
+    },
+    {
+      "id": "cc0tree",
+      "name": "CC0Tree",
+      "url": "https://github.com/SkywolfGameStudios/CC0Tree",
+      "license": "CC0-1.0",
+      "licenseSha": "0e259d42c996742e9e3cba14c677129b2c1b6311",
+      "commercialAllowed": true,
+      "redistributionAllowed": true,
+      "rawRepoAllowed": true,
+      "categories": [
+        "3d_model",
+        "environment",
+        "prop",
+        "mobile_optimized"
+      ],
+      "notes": "Public FBX library; lightweight/game-ready."
+    },
+    {
+      "id": "gobkit-free",
+      "name": "Gobkit Free 3D Assets",
+      "url": "https://github.com/Ariescar/gobkit-free-assets",
+      "license": "CC0-1.0",
+      "licenseSha": "31e15c68af2daa2cb6e9310f7054cfd3d5f24e4b",
+      "commercialAllowed": true,
+      "redistributionAllowed": true,
+      "rawRepoAllowed": true,
+      "categories": [
+        "3d_model",
+        "rigged",
+        "animation",
+        "enemy",
+        "animal",
+        "nature"
+      ],
+      "notes": "GLB, rigged/animated low-poly assets."
+    },
+    {
+      "id": "tiddybub-2d",
+      "name": "Tiddybub 2D Assets",
+      "url": "https://github.com/Tiddybub/2d-assets",
+      "license": "CC0-1.0",
+      "licenseSha": "690cd58a479fbac2ee6a8e7f2f9f427300c6795b",
+      "commercialAllowed": true,
+      "redistributionAllowed": true,
+      "rawRepoAllowed": true,
+      "categories": [
+        "2d",
+        "ui",
+        "vfx",
+        "environment",
+        "vehicle",
+        "sprite"
+      ],
+      "notes": "Large curated library with per-pack SOURCE.md."
+    },
+    {
+      "id": "petroulacl-fps-kit",
+      "name": "FPS Asset Kit",
+      "url": "https://github.com/petroulacl/fps-asset-kit",
+      "license": "PER_SOURCE_CC0_CLAIM",
+      "commercialAllowed": true,
+      "redistributionAllowed": "verify-per-source",
+      "rawRepoAllowed": "after-manifest-verification",
+      "categories": [
+        "3d_model",
+        "gun",
+        "audio",
+        "gunshot",
+        "footstep",
+        "texture",
+        "pbr",
+        "hdri"
+      ],
+      "notes": "README says ~1.1GB curated CC0/public-domain assets; no root LICENSE resolved, so verify embedded source manifests before import."
+    },
+    {
+      "id": "petroulacl-environment",
+      "name": "FPS Buildings Environment Kit",
+      "url": "https://github.com/petroulacl/fps-buildings-env-kit",
+      "license": "PER_SOURCE_CC0_CLAIM",
+      "commercialAllowed": true,
+      "redistributionAllowed": "verify-per-source",
+      "rawRepoAllowed": "after-manifest-verification",
+      "categories": [
+        "3d_model",
+        "building",
+        "road",
+        "vegetation",
+        "texture",
+        "hdri",
+        "environment"
+      ],
+      "notes": "README identifies Kenney/Quaternius/Poly Haven/ambientCG sources; verify per-source manifests."
+    },
+    {
+      "id": "sonniss-gdc",
+      "name": "Sonniss GameAudioGDC Bundles",
+      "url": "https://sonniss.com/gameaudiogdc/",
+      "license": "SONNISS_GDC_BUNDLE_LICENSE",
+      "licenseUrl": "https://sonniss.com/gdc-bundle-license/",
+      "commercialAllowed": true,
+      "redistributionAllowed": false,
+      "rawRepoAllowed": false,
+      "categories": [
+        "audio",
+        "professional_sfx",
+        "weapon",
+        "foley",
+        "ambience",
+        "creature",
+        "vehicle",
+        "explosion"
+      ],
+      "notes": "May be used/modified in finished games; do not redistribute raw/re-designed sounds as a sound library/asset pack/SDK. Current 2026 license also restricts AI/ML training."
+    }
+  ]
+}
