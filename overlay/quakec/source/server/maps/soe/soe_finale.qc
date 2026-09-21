@@ -33,6 +33,8 @@ float soe_finale_next_corruption_at;
 .float soe_finale_corrupt_deadline;
 
 void(entity victim, entity attacker, float damage, float d_style) DamageHandler;
+void(entity ent) Zombie_Death_Cleanup;
+void() removeZombie;
 
 void() SoE_ResetFinale =
 {
@@ -45,6 +47,35 @@ void() SoE_ResetFinale =
     soe_finale_gateworm_absent_until = 0;
     soe_finale_next_margwa_at = 0;
     soe_finale_next_corruption_at = 0;
+};
+
+void() SoE_FinaleTransitionPopulation =
+{
+    entity zombie = find(world, classname, "ai_zombie");
+    entity old_self = self;
+
+    while (zombie != world) {
+        entity next = find(zombie, classname, "ai_zombie");
+
+        if (zombie.aistatus == "1") {
+            if (zombie.soe_special_type == SOE_SPECIAL_MARGWA) {
+                // Existing Margwas transition into the purple finale variant.
+                zombie.soe_margwa_purple = true;
+            } else {
+                // The canonical finale removes the normal zombie population.
+                // Use NZ:P's cleanup path so barricade ownership, limbs and
+                // pooled slots cannot leak into the endless-Margwa phase.
+                Zombie_Death_Cleanup(zombie);
+                self = zombie;
+                removeZombie();
+                self = old_self;
+            }
+        }
+
+        zombie = next;
+    }
+
+    self = old_self;
 };
 
 void() SoE_FinaleBegin =
@@ -61,6 +92,8 @@ void() SoE_FinaleBegin =
     soe_finale_rail_window_until = 0;
     soe_finale_next_margwa_at = time + 1;
     soe_finale_next_corruption_at = time + SOE_FINALE_CORRUPTION_MIN_SECONDS + (random() * (SOE_FINALE_CORRUPTION_MAX_SECONDS - SOE_FINALE_CORRUPTION_MIN_SECONDS));
+
+    SoE_FinaleTransitionPopulation();
 
     // Freeze normal round completion; finale enemies are an independent stream.
     Remaining_Zombies = 9999;
