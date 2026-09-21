@@ -249,6 +249,14 @@ runtime_guards = {
         finale_qc,
         "#define SOE_FINALE_BEAST_CORRUPTION_DRAIN 40",
     ),
+    "duplicate station shocks cannot refresh the rail window": (
+        finale_qc,
+        "if (soe_finale_station_mask & station_bit)",
+    ),
+    "rail coordination timer starts only once per cycle": (
+        finale_qc,
+        "if (soe_finale_rail_window_until <= time)",
+    ),
     "station shocks require moving Tram in classic": (
         finale_qc,
         "!soe_tram_in_transit && cvar(\"soe_solo_finale\") == 0",
