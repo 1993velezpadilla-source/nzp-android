@@ -14,6 +14,7 @@ on:
       - "overlay/quakec/**"
       - "scripts/apply_soe_quakec_overlay.py"
       - "upstreams.lock.json"
+      - ".github/workflows/compile-soe-quakec.yml"
 
 jobs:
   compile:
@@ -34,10 +35,7 @@ jobs:
         run: python3 scripts/apply_soe_quakec_overlay.py .upstream/quakec
 
       - name: Verify integrated zoning capacity patch
-        run: grep -Eq '^#define MAX_ZONES[[:space:]]+64        run: |
-          chmod +x .upstream/quakec/tools/qc-compiler-gnu.sh
-          .upstream/quakec/tools/qc-compiler-gnu.sh
- .upstream/quakec/source/server/defs/custom.qc
+        run: grep -Eq '^#define MAX_ZONES[[:space:]]+64' .upstream/quakec/source/server/defs/custom.qc
 
       - name: Compile server QuakeC
         run: |
