@@ -166,6 +166,22 @@ runtime_guards = {
         shadow_qc,
         "SoE_StartFinale();",
     ),
+    "finale corruption minimum cadence is 30 seconds": (
+        finale_qc,
+        "#define SOE_FINALE_CORRUPTION_MIN_SECONDS 30",
+    ),
+    "finale corruption maximum cadence is 45 seconds": (
+        finale_qc,
+        "#define SOE_FINALE_CORRUPTION_MAX_SECONDS 45",
+    ),
+    "finale corruption cleanse deadline is 15 seconds": (
+        finale_qc,
+        "#define SOE_FINALE_CLEANSE_DEADLINE_SECONDS 15",
+    ),
+    "finale corruption drains 40 Beast meter": (
+        finale_qc,
+        "#define SOE_FINALE_BEAST_CORRUPTION_DRAIN 40",
+    ),
     "station shocks require moving Tram in classic": (
         finale_qc,
         "!soe_tram_in_transit && cvar(\"soe_solo_finale\") == 0",
