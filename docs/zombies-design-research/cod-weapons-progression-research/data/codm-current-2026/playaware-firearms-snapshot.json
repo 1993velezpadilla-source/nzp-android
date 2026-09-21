@@ -1,0 +1,816 @@
+{
+  "provenance": {
+    "source_url": "https://playaware.gg/games/call-of-duty-mobile/wiki",
+    "observed_at": "2026-09-21",
+    "source_type": "community/fandom-derived current roster snapshot",
+    "source_attribution": "PlayAware page states its data comes from callofduty.fandom.com (CC BY-SA).",
+    "warning": "Live-service data. Version by observation date; do not overwrite historical snapshots.",
+    "page_reported_entry_count": 159,
+    "note": "This file contains firearm/launcher entries from the page. Melee, mounted, unusable, manufacturer and wonder-weapon categories are intentionally separated from this firearms snapshot."
+  },
+  "count": 132,
+  "class_counts": {
+    "handgun": 10,
+    "light_machine_gun": 14,
+    "submachine_gun": 33,
+    "assault_rifle": 38,
+    "sniper_rifle": 14,
+    "marksman_rifle": 7,
+    "shotgun": 12,
+    "launcher": 4
+  },
+  "records": [
+    {
+      "name": ".357 Magnum",
+      "class": "handgun",
+      "stat_text": "Multiplayer & Battle Royale: 82-60-40-34-25; Zombies: 150 dmg; 200 RPM",
+      "data_status": "published_in_source_snapshot"
+    },
+    {
+      "name": "725",
+      "class": "handgun",
+      "stat_text": "Multiplayer & Battle Royale: 25x9; Slug: 92-55 dmg; 379 RPM",
+      "data_status": "published_in_source_snapshot"
+    },
+    {
+      "name": "Crossbow",
+      "class": "handgun",
+      "stat_text": "80 dmg; Sticky Grenade/Thermite Bolt: 45; Zombies: 1200 dmg; 26 RPM",
+      "data_status": "published_in_source_snapshot"
+    },
+    {
+      "name": "Desert Eagle",
+      "class": "handgun",
+      "stat_text": "Multiplayer & Battle Royale: 70; Akimbo: 60 dmg; 280 RPM",
+      "data_status": "published_in_source_snapshot"
+    },
+    {
+      "name": "L-CAR 9",
+      "class": "handgun",
+      "stat_text": "Multiplayer & Battle Royale: 26-22-15; Zombies: 71 dmg; 723 RPM",
+      "data_status": "published_in_source_snapshot"
+    },
+    {
+      "name": "M1911",
+      "class": "handgun",
+      "stat_text": "35 dmg; 374 RPM; Lightweight Trigger: 497 RPM",
+      "data_status": "published_in_source_snapshot"
+    },
+    {
+      "name": "Machine Pistol (WWII)",
+      "class": "handgun",
+      "stat_text": "Multiplayer & Battle Royale: 22-17-13; Zombies: 30 dmg; 896 RPM",
+      "data_status": "published_in_source_snapshot"
+    },
+    {
+      "name": "Makarov",
+      "class": "handgun",
+      "stat_text": "Multiplayer & Battle Royale: 30-24-19; Zombies: 30 dmg; 335 RPM; Full-auto: 657 RPM",
+      "data_status": "published_in_source_snapshot"
+    },
+    {
+      "name": "Nail Gun",
+      "class": "handgun",
+      "stat_text": "Multiplayer & Battle Royale: 34-31-24; Zombies: 71 dmg; 522 RPM",
+      "data_status": "published_in_source_snapshot"
+    },
+    {
+      "name": "Renetti",
+      "class": "handgun",
+      "stat_text": "28-25-22 dmg; 720 RPM per burst; 460 RPM overall",
+      "data_status": "published_in_source_snapshot"
+    },
+    {
+      "name": "Ameli",
+      "class": "light_machine_gun",
+      "stat_text": null,
+      "data_status": "listed_without_numeric_stats_in_source_snapshot"
+    },
+    {
+      "name": "Chain SAW",
+      "class": "light_machine_gun",
+      "stat_text": "30-24-22 dmg; 750 RPM",
+      "data_status": "published_in_source_snapshot"
+    },
+    {
+      "name": "Dingo",
+      "class": "light_machine_gun",
+      "stat_text": "MP: 28-24-19; BR: 28-24-22; Zombies: 41 dmg; 723 RPM",
+      "data_status": "published_in_source_snapshot"
+    },
+    {
+      "name": "DP-28",
+      "class": "light_machine_gun",
+      "stat_text": null,
+      "data_status": "listed_without_numeric_stats_in_source_snapshot"
+    },
+    {
+      "name": "Hades",
+      "class": "light_machine_gun",
+      "stat_text": "29-22 dmg; Rapid Fire Barrel: 31-22; 652 RPM base; 740 RPM Rapid Fire",
+      "data_status": "published_in_source_snapshot"
+    },
+    {
+      "name": "L86 LSW",
+      "class": "light_machine_gun",
+      "stat_text": "28-24-20-19 dmg; 617 RPM",
+      "data_status": "published_in_source_snapshot"
+    },
+    {
+      "name": "M249 SAW",
+      "class": "light_machine_gun",
+      "stat_text": "MP: 30-24-20; BR: 30-24-22; Zombies: 41 dmg; 750 RPM",
+      "data_status": "published_in_source_snapshot"
+    },
+    {
+      "name": "M4LMG",
+      "class": "light_machine_gun",
+      "stat_text": "32-25 dmg; 632 RPM",
+      "data_status": "published_in_source_snapshot"
+    },
+    {
+      "name": "MG36",
+      "class": "light_machine_gun",
+      "stat_text": "31-28-23-19 dmg; 706 RPM",
+      "data_status": "published_in_source_snapshot"
+    },
+    {
+      "name": "MG42",
+      "class": "light_machine_gun",
+      "stat_text": "MP: 22-19-18-16; BR: 22-19-15; Zombies: 50 dmg; 1034 RPM",
+      "data_status": "published_in_source_snapshot"
+    },
+    {
+      "name": "PKM",
+      "class": "light_machine_gun",
+      "stat_text": "MP & BR: 33-32-31-25; Zombies: 46 dmg; 632 RPM",
+      "data_status": "published_in_source_snapshot"
+    },
+    {
+      "name": "QBB LSW",
+      "class": "light_machine_gun",
+      "stat_text": "30-28-24-18 dmg; 750 RPM",
+      "data_status": "published_in_source_snapshot"
+    },
+    {
+      "name": "RAAL MG",
+      "class": "light_machine_gun",
+      "stat_text": "MP: 34-32-30; BR: 34-32-26; Zombies: 50 dmg; 571 RPM",
+      "data_status": "published_in_source_snapshot"
+    },
+    {
+      "name": "RPD",
+      "class": "light_machine_gun",
+      "stat_text": "MP: 31-24-19; BR: 31-24; Zombies: 44 dmg; 659 RPM",
+      "data_status": "published_in_source_snapshot"
+    },
+    {
+      "name": "AK-74u",
+      "class": "submachine_gun",
+      "stat_text": "28-24-18-15 dmg; 769 RPM",
+      "data_status": "published_in_source_snapshot"
+    },
+    {
+      "name": "AUG",
+      "class": "submachine_gun",
+      "stat_text": "Base: 25-21-17-15; 5.56mm: 27-23-20-18 dmg; 751 RPM base; 682 RPM 5.56mm",
+      "data_status": "published_in_source_snapshot"
+    },
+    {
+      "name": "Bizon",
+      "class": "submachine_gun",
+      "stat_text": "28-24-22-16 dmg; 652 RPM",
+      "data_status": "published_in_source_snapshot"
+    },
+    {
+      "name": "Chicom CQB",
+      "class": "submachine_gun",
+      "stat_text": "32-26-20-17 dmg; 625 RPM overall",
+      "data_status": "published_in_source_snapshot"
+    },
+    {
+      "name": "Cordite",
+      "class": "submachine_gun",
+      "stat_text": "24-22-19-18-16 dmg; 800 RPM",
+      "data_status": "published_in_source_snapshot"
+    },
+    {
+      "name": "FSS Hurricane",
+      "class": "submachine_gun",
+      "stat_text": null,
+      "data_status": "listed_without_numeric_stats_in_source_snapshot"
+    },
+    {
+      "name": "GKS",
+      "class": "submachine_gun",
+      "stat_text": "34-32-25-19 dmg; 600 RPM",
+      "data_status": "published_in_source_snapshot"
+    },
+    {
+      "name": "HG 40",
+      "class": "submachine_gun",
+      "stat_text": "29-25-20-17 dmg; fire interval 90 ms; RPM unresolved in source",
+      "data_status": "published_in_source_snapshot"
+    },
+    {
+      "name": "ISO",
+      "class": "submachine_gun",
+      "stat_text": "MP & BR: 25-23-17-15; Zombies: 80 dmg; 882 RPM",
+      "data_status": "published_in_source_snapshot"
+    },
+    {
+      "name": "Kiparis",
+      "class": "submachine_gun",
+      "stat_text": "MP & BR: 27-23-17-15; Zombies: 56 dmg; 857 RPM",
+      "data_status": "published_in_source_snapshot"
+    },
+    {
+      "name": "KSP 45",
+      "class": "submachine_gun",
+      "stat_text": "MP & BR: 34-25-21; Zombies: 34 dmg; 560 RPM",
+      "data_status": "published_in_source_snapshot"
+    },
+    {
+      "name": "LAPA",
+      "class": "submachine_gun",
+      "stat_text": "MP & BR: 31-28-20-16; Zombies: 80 dmg; 698 RPM",
+      "data_status": "published_in_source_snapshot"
+    },
+    {
+      "name": "LC10",
+      "class": "submachine_gun",
+      "stat_text": null,
+      "data_status": "listed_without_numeric_stats_in_source_snapshot"
+    },
+    {
+      "name": "MAC-10",
+      "class": "submachine_gun",
+      "stat_text": "MP: 24-20-18-14; BR: 21-20-18-14; Zombies: 38 dmg; 1200 RPM",
+      "data_status": "published_in_source_snapshot"
+    },
+    {
+      "name": "MicroMG 9mm",
+      "class": "submachine_gun",
+      "stat_text": null,
+      "data_status": "listed_without_numeric_stats_in_source_snapshot"
+    },
+    {
+      "name": "MP5",
+      "class": "submachine_gun",
+      "stat_text": "Base: 25-23-17-15; 10mm: 26-23-17-15 dmg; 833 RPM/72 ms base; 758 RPM/79.2 ms 10mm",
+      "data_status": "published_in_source_snapshot"
+    },
+    {
+      "name": "MP7",
+      "class": "submachine_gun",
+      "stat_text": "23-21-19-14 dmg; 870 RPM/69 ms; Enhanced Bolt: 1000 RPM/60 ms",
+      "data_status": "published_in_source_snapshot"
+    },
+    {
+      "name": "MSMC",
+      "class": "submachine_gun",
+      "stat_text": "25-21-18-16 dmg; 932 RPM",
+      "data_status": "published_in_source_snapshot"
+    },
+    {
+      "name": "MX9",
+      "class": "submachine_gun",
+      "stat_text": "27-24-18-16 dmg; 857 RPM/70 ms",
+      "data_status": "published_in_source_snapshot"
+    },
+    {
+      "name": "P90",
+      "class": "submachine_gun",
+      "stat_text": "24-23-18-16 dmg; 800 RPM",
+      "data_status": "published_in_source_snapshot"
+    },
+    {
+      "name": "PDW-57",
+      "class": "submachine_gun",
+      "stat_text": "27-22-17-15 dmg; ~745 RPM (source marks uncertain)",
+      "data_status": "published_in_source_snapshot"
+    },
+    {
+      "name": "Pharo",
+      "class": "submachine_gun",
+      "stat_text": "MP: 34-26-24-19-16; BR: 34-26-21-19-16; Zombies: 68 dmg; RPM not shown",
+      "data_status": "published_in_source_snapshot"
+    },
+    {
+      "name": "PPSh-41",
+      "class": "submachine_gun",
+      "stat_text": "24-22-19-17 dmg; 822 RPM",
+      "data_status": "published_in_source_snapshot"
+    },
+    {
+      "name": "Razorback",
+      "class": "submachine_gun",
+      "stat_text": "30-23-19 dmg; 650 RPM base; 715 RPM Rapid Fire",
+      "data_status": "published_in_source_snapshot"
+    },
+    {
+      "name": "Skorpion EVO",
+      "class": "submachine_gun",
+      "stat_text": "MP & BR: 24-18-12.5-12; Zombies: 43 dmg; 1034 RPM",
+      "data_status": "published_in_source_snapshot"
+    },
+    {
+      "name": "Static-HV",
+      "class": "submachine_gun",
+      "stat_text": null,
+      "data_status": "listed_without_numeric_stats_in_source_snapshot"
+    },
+    {
+      "name": "Sten",
+      "class": "submachine_gun",
+      "stat_text": null,
+      "data_status": "listed_without_numeric_stats_in_source_snapshot"
+    },
+    {
+      "name": "Striker 45",
+      "class": "submachine_gun",
+      "stat_text": "MP & BR: 34-33-31-23; Zombies: 80 dmg; 600 RPM",
+      "data_status": "published_in_source_snapshot"
+    },
+    {
+      "name": "Switchblade X9",
+      "class": "submachine_gun",
+      "stat_text": "MP & BR: 27-22-18-15; Zombies: 50 dmg; 845 RPM",
+      "data_status": "published_in_source_snapshot"
+    },
+    {
+      "name": "TEC-9",
+      "class": "submachine_gun",
+      "stat_text": "31-24-21-16 dmg; 461 RPM base; 659 RPM full-auto repeater",
+      "data_status": "published_in_source_snapshot"
+    },
+    {
+      "name": "Uzi",
+      "class": "submachine_gun",
+      "stat_text": "MP & BR: 34-33-24-20; Zombies: 34 dmg; 600 RPM",
+      "data_status": "published_in_source_snapshot"
+    },
+    {
+      "name": "Vector",
+      "class": "submachine_gun",
+      "stat_text": "23-18-13-12 dmg; 1111 RPM/54 ms",
+      "data_status": "published_in_source_snapshot"
+    },
+    {
+      "name": "VMP",
+      "class": "submachine_gun",
+      "stat_text": null,
+      "data_status": "listed_without_numeric_stats_in_source_snapshot"
+    },
+    {
+      "name": "AK-47",
+      "class": "assault_rifle",
+      "stat_text": "MP: 33-26-23-21; 5.45: 25-21-17-15; BR: 33-26; BR 5.45: 25-21-20; Zombies: 60; Zombies 5.45: 52 dmg; 545 RPM",
+      "data_status": "published_in_source_snapshot"
+    },
+    {
+      "name": "AK117",
+      "class": "assault_rifle",
+      "stat_text": "MP: 25-24-19-15; BR: 25-22-18-15; Undead Siege: 43 dmg; 769 RPM",
+      "data_status": "published_in_source_snapshot"
+    },
+    {
+      "name": "AKBP",
+      "class": "assault_rifle",
+      "stat_text": "MP: 31-27-22-19; BR: 31-27-22; Zombies: 50; 7.62 40 Round Reload: 33-29-24-19 dmg; 660 RPM/91 ms",
+      "data_status": "published_in_source_snapshot"
+    },
+    {
+      "name": "AN-94",
+      "class": "assault_rifle",
+      "stat_text": "34-26-20 dmg; 545 RPM/110 ms",
+      "data_status": "published_in_source_snapshot"
+    },
+    {
+      "name": "AS VAL",
+      "class": "assault_rifle",
+      "stat_text": "Base: 28-19; 15 Round FMJ: 48-44 dmg; 800 RPM base; 320 RPM FMJ",
+      "data_status": "published_in_source_snapshot"
+    },
+    {
+      "name": "Bal-27",
+      "class": "assault_rifle",
+      "stat_text": null,
+      "data_status": "listed_without_numeric_stats_in_source_snapshot"
+    },
+    {
+      "name": "CR-56 AMAX",
+      "class": "assault_rifle",
+      "stat_text": "MP: 25-24-20-16; M67 MP: 48-44-35; BR: 28-24-22; M67 BR: 53-44-42 dmg; 710 RPM base; 275 RPM M67",
+      "data_status": "published_in_source_snapshot"
+    },
+    {
+      "name": "Cronen Squall",
+      "class": "assault_rifle",
+      "stat_text": null,
+      "data_status": "listed_without_numeric_stats_in_source_snapshot"
+    },
+    {
+      "name": "EM2",
+      "class": "assault_rifle",
+      "stat_text": "MP: 36-32-24; BR: 36-32-27; Zombies: 58 dmg; 536 RPM",
+      "data_status": "published_in_source_snapshot"
+    },
+    {
+      "name": "F2000",
+      "class": "assault_rifle",
+      "stat_text": "MP: 24-22-16; BR: 24-20-17; Zombies: 48 dmg; 811 RPM",
+      "data_status": "published_in_source_snapshot"
+    },
+    {
+      "name": "FAL",
+      "class": "assault_rifle",
+      "stat_text": "MP & BR: 46-45-36; Zombies: 45 dmg; 400 RPM",
+      "data_status": "published_in_source_snapshot"
+    },
+    {
+      "name": "FAMAS",
+      "class": "assault_rifle",
+      "stat_text": "MP & BR: 27-20-19; Undead Siege: 49 dmg; 668 RPM",
+      "data_status": "published_in_source_snapshot"
+    },
+    {
+      "name": "FFAR",
+      "class": "assault_rifle",
+      "stat_text": "MP & BR: 24-22-17-16; Zombies: 38 dmg; 909 RPM",
+      "data_status": "published_in_source_snapshot"
+    },
+    {
+      "name": "G37H",
+      "class": "assault_rifle",
+      "stat_text": "26-19 dmg; 628 RPM",
+      "data_status": "published_in_source_snapshot"
+    },
+    {
+      "name": "Grau 5.56",
+      "class": "assault_rifle",
+      "stat_text": "MP & BR: 27-24-21-18; Zombies: 48 dmg; 732 RPM",
+      "data_status": "published_in_source_snapshot"
+    },
+    {
+      "name": "Groza",
+      "class": "assault_rifle",
+      "stat_text": "MP & BR: 26-24-18; Zombies: 48 dmg; 750 RPM",
+      "data_status": "published_in_source_snapshot"
+    },
+    {
+      "name": "HBRa3",
+      "class": "assault_rifle",
+      "stat_text": "26-17 dmg; 697 RPM",
+      "data_status": "published_in_source_snapshot"
+    },
+    {
+      "name": "HVK-30",
+      "class": "assault_rifle",
+      "stat_text": "MP: 24-23-18-17; BR: 24-23-18; Zombies: 47 dmg; 714 RPM",
+      "data_status": "published_in_source_snapshot"
+    },
+    {
+      "name": "ICR-1",
+      "class": "assault_rifle",
+      "stat_text": "MP & BR: 30-28-24; Zombies: 55 dmg; 600 RPM",
+      "data_status": "published_in_source_snapshot"
+    },
+    {
+      "name": "ISO Hemlock",
+      "class": "assault_rifle",
+      "stat_text": null,
+      "data_status": "listed_without_numeric_stats_in_source_snapshot"
+    },
+    {
+      "name": "Kilo 141",
+      "class": "assault_rifle",
+      "stat_text": "MP & BR: 29-25-23-19; Zombies: 48 dmg; 682 RPM",
+      "data_status": "published_in_source_snapshot"
+    },
+    {
+      "name": "KN-44",
+      "class": "assault_rifle",
+      "stat_text": "28-19 dmg; 628 RPM",
+      "data_status": "published_in_source_snapshot"
+    },
+    {
+      "name": "Krig 6",
+      "class": "assault_rifle",
+      "stat_text": "MP & BR: 30-25-24-21; Zombies: 48 dmg; 652 RPM",
+      "data_status": "published_in_source_snapshot"
+    },
+    {
+      "name": "Lachmann-556",
+      "class": "assault_rifle",
+      "stat_text": null,
+      "data_status": "listed_without_numeric_stats_in_source_snapshot"
+    },
+    {
+      "name": "M13",
+      "class": "assault_rifle",
+      "stat_text": "MP & BR: 24 dmg; RPM not shown",
+      "data_status": "published_in_source_snapshot"
+    },
+    {
+      "name": "M16",
+      "class": "assault_rifle",
+      "stat_text": "30-27-24; Zombies: 84 dmg; 521 RPM overall; 618 RPM Wild Fire",
+      "data_status": "published_in_source_snapshot"
+    },
+    {
+      "name": "M4A1",
+      "class": "assault_rifle",
+      "stat_text": "MP: 26-25-20-19; BR: 26-25-20; Zombies: 48 dmg; 682 RPM",
+      "data_status": "published_in_source_snapshot"
+    },
+    {
+      "name": "Maddox RFB",
+      "class": "assault_rifle",
+      "stat_text": "MP: 28-25-23-18; BR: 28-25-23-21; Zombies: 48 dmg; 723 RPM",
+      "data_status": "published_in_source_snapshot"
+    },
+    {
+      "name": "Man-O-War",
+      "class": "assault_rifle",
+      "stat_text": "MP: 37-30-24; BR: 37-30-28; Undead Siege: 65 dmg; 500 RPM",
+      "data_status": "published_in_source_snapshot"
+    },
+    {
+      "name": "Oden",
+      "class": "assault_rifle",
+      "stat_text": "MP & BR: 48-45-36; Zombies: 78 dmg; 414 RPM",
+      "data_status": "published_in_source_snapshot"
+    },
+    {
+      "name": "Peacekeeper MK2",
+      "class": "assault_rifle",
+      "stat_text": "Base: 26-18; Rapid Fire Barrel: 34-17 dmg; 652 RPM base; 744 RPM barrel",
+      "data_status": "published_in_source_snapshot"
+    },
+    {
+      "name": "SCAR-H",
+      "class": "assault_rifle",
+      "stat_text": "MP: 32-20; BR: 32-25 dmg; 571 RPM",
+      "data_status": "published_in_source_snapshot"
+    },
+    {
+      "name": "SwordFish",
+      "class": "assault_rifle",
+      "stat_text": "MP & BR: 26-24; Halberd Mag: 24-12; Undead Siege: 55; Halberd: 54 dmg; RPM not shown",
+      "data_status": "published_in_source_snapshot"
+    },
+    {
+      "name": "TAR-21",
+      "class": "assault_rifle",
+      "stat_text": "MP & BR: 25-23-22-18-15; Zombies: 58 dmg; 857 RPM",
+      "data_status": "published_in_source_snapshot"
+    },
+    {
+      "name": "Type 19",
+      "class": "assault_rifle",
+      "stat_text": "MP: 28-24-22-17; BR: 28-24-22-19; Zombies: 48 dmg; 750 RPM",
+      "data_status": "published_in_source_snapshot"
+    },
+    {
+      "name": "Type 25",
+      "class": "assault_rifle",
+      "stat_text": "MP: 24-22-19-16; BR: 25-22-20-17; Zombies: 47 dmg; 857 RPM",
+      "data_status": "published_in_source_snapshot"
+    },
+    {
+      "name": "Vargo 52",
+      "class": "assault_rifle",
+      "stat_text": "MP & BR: 31-26-23-20; Zombies: 48 dmg; 659 RPM",
+      "data_status": "published_in_source_snapshot"
+    },
+    {
+      "name": "XM4",
+      "class": "assault_rifle",
+      "stat_text": "MP & BR: 28-24-21-17; Zombies: 28 dmg; 750 RPM",
+      "data_status": "published_in_source_snapshot"
+    },
+    {
+      "name": "AS50",
+      "class": "sniper_rifle",
+      "stat_text": "MP & BR: 85; Undead Siege: 500 dmg; 150 RPM",
+      "data_status": "published_in_source_snapshot"
+    },
+    {
+      "name": "DL Q33",
+      "class": "sniper_rifle",
+      "stat_text": "MP & BR: 90; Undead Siege: 1200 dmg; 53.57 RPM",
+      "data_status": "published_in_source_snapshot"
+    },
+    {
+      "name": "Dragunov",
+      "class": "sniper_rifle",
+      "stat_text": "MP & BR: 80 dmg; 182 RPM",
+      "data_status": "published_in_source_snapshot"
+    },
+    {
+      "name": "HDR",
+      "class": "sniper_rifle",
+      "stat_text": "MP & BR: 91-89; Zombies: 1400 dmg; 42 RPM",
+      "data_status": "published_in_source_snapshot"
+    },
+    {
+      "name": "Koshka",
+      "class": "sniper_rifle",
+      "stat_text": "MP & BR: 90-75; Zombies: 1300 dmg; 53.57 RPM",
+      "data_status": "published_in_source_snapshot"
+    },
+    {
+      "name": "L96A1",
+      "class": "sniper_rifle",
+      "stat_text": "91-80 dmg; 50 RPM",
+      "data_status": "published_in_source_snapshot"
+    },
+    {
+      "name": "Locus",
+      "class": "sniper_rifle",
+      "stat_text": "MP & BR: 95; Undead Siege: 1000 dmg; 54 RPM",
+      "data_status": "published_in_source_snapshot"
+    },
+    {
+      "name": "M14 EBR",
+      "class": "sniper_rifle",
+      "stat_text": "MP: 91-82-74; BR: 91-75-74 dmg; 240 RPM",
+      "data_status": "published_in_source_snapshot"
+    },
+    {
+      "name": "Mosin-Nagant",
+      "class": "sniper_rifle",
+      "stat_text": null,
+      "data_status": "listed_without_numeric_stats_in_source_snapshot"
+    },
+    {
+      "name": "NA-45",
+      "class": "sniper_rifle",
+      "stat_text": "MP & BR: 120-55 explosion; 30 direct; Undead Siege: 40 direct dmg; 600 RPM; Lightweight Trigger 750 RPM",
+      "data_status": "published_in_source_snapshot"
+    },
+    {
+      "name": "Outlaw",
+      "class": "sniper_rifle",
+      "stat_text": "MP & BR: 90; Undead Siege: 900 dmg; 58 RPM",
+      "data_status": "published_in_source_snapshot"
+    },
+    {
+      "name": "Rytec AMR",
+      "class": "sniper_rifle",
+      "stat_text": "MP & BR: 80; Thermite Mag 60; Explosive Mag 80 dmg; 120 RPM base; 75 RPM magazine options",
+      "data_status": "published_in_source_snapshot"
+    },
+    {
+      "name": "XPR-50",
+      "class": "sniper_rifle",
+      "stat_text": "MP & BR: 80-75; Zombies: 250 dmg; 240 RPM",
+      "data_status": "published_in_source_snapshot"
+    },
+    {
+      "name": "ZRG 20mm",
+      "class": "sniper_rifle",
+      "stat_text": "MP & BR: 95-80; Zombies: 1300 dmg; 46 RPM",
+      "data_status": "published_in_source_snapshot"
+    },
+    {
+      "name": "Kar98k",
+      "class": "marksman_rifle",
+      "stat_text": "MP & BR: 85; Thermite Reload: 61-56 dmg; 50 RPM",
+      "data_status": "published_in_source_snapshot"
+    },
+    {
+      "name": "M1 Garand",
+      "class": "marksman_rifle",
+      "stat_text": null,
+      "data_status": "listed_without_numeric_stats_in_source_snapshot"
+    },
+    {
+      "name": "M14",
+      "class": "marksman_rifle",
+      "stat_text": null,
+      "data_status": "listed_without_numeric_stats_in_source_snapshot"
+    },
+    {
+      "name": "MK2 Carbine",
+      "class": "marksman_rifle",
+      "stat_text": "MP & BR: 80 dmg; 56 RPM base; 112 RPM .30-30 Ammo",
+      "data_status": "published_in_source_snapshot"
+    },
+    {
+      "name": "SKS",
+      "class": "marksman_rifle",
+      "stat_text": "MP & BR: 60 dmg; 379 RPM",
+      "data_status": "published_in_source_snapshot"
+    },
+    {
+      "name": "SP-R 208",
+      "class": "marksman_rifle",
+      "stat_text": "MP: 72 dmg; 60 RPM",
+      "data_status": "published_in_source_snapshot"
+    },
+    {
+      "name": "Type 63",
+      "class": "marksman_rifle",
+      "stat_text": "MP & BR: 63-54; Zombies: 500 dmg; 353 RPM",
+      "data_status": "published_in_source_snapshot"
+    },
+    {
+      "name": "AA-12",
+      "class": "shotgun",
+      "stat_text": "16-8-6-5 x12; Slug 87-78-67-66; FRAG-12 30-26-16-6; 339 RPM base; 256 RPM FRAG-12",
+      "data_status": "published_in_source_snapshot"
+    },
+    {
+      "name": "Argus",
+      "class": "shotgun",
+      "stat_text": "MP: 28-24-19-13 x8; BR: 28-24-19-16 x8; Zombies: 100 x8 dmg; 63 RPM",
+      "data_status": "published_in_source_snapshot"
+    },
+    {
+      "name": "Einhorn Revolving",
+      "class": "shotgun",
+      "stat_text": "MP: 18-15-14-10 x12; BR: 16-14-13-10 x12; Zombies: 100 x12 dmg; 300 RPM",
+      "data_status": "published_in_source_snapshot"
+    },
+    {
+      "name": "KRM-262",
+      "class": "shotgun",
+      "stat_text": "26-25-15-11 x12; Slug 110-108-100-96 dmg; 60 RPM",
+      "data_status": "published_in_source_snapshot"
+    },
+    {
+      "name": "M1216",
+      "class": "shotgun",
+      "stat_text": "16-13-10-7 x8; FF Birdshot 8-7-4-3 x20 dmg; RPM not shown",
+      "data_status": "published_in_source_snapshot"
+    },
+    {
+      "name": "Model 1887",
+      "class": "shotgun",
+      "stat_text": "26-25-11-7 x15; Thunder Rounds x13; Slug 121-114-91-87 dmg; 47 RPM; RTC Extended Light Barrel 44.6 RPM",
+      "data_status": "published_in_source_snapshot"
+    },
+    {
+      "name": "MX Guardian",
+      "class": "shotgun",
+      "stat_text": null,
+      "data_status": "listed_without_numeric_stats_in_source_snapshot"
+    },
+    {
+      "name": "Origin 12 Shotgun",
+      "class": "shotgun",
+      "stat_text": "21-17-15-13 x8; Slug 54-47-30-28 dmg; RPM not shown",
+      "data_status": "published_in_source_snapshot"
+    },
+    {
+      "name": "R9-0 Shotgun",
+      "class": "shotgun",
+      "stat_text": "17-15-10 x12; Slug 113.34-70.01-40.83 dmg; 300 RPM",
+      "data_status": "published_in_source_snapshot"
+    },
+    {
+      "name": "Striker",
+      "class": "shotgun",
+      "stat_text": "20-16-14-10 x10; Slug 83-76-59-40 dmg; 261 RPM",
+      "data_status": "published_in_source_snapshot"
+    },
+    {
+      "name": "VLK Rogue",
+      "class": "shotgun",
+      "stat_text": "34-25-17-15; pellet 8 dmg; 120 RPM",
+      "data_status": "published_in_source_snapshot"
+    },
+    {
+      "name": "W1200",
+      "class": "shotgun",
+      "stat_text": "25-18-16-11 x12; Slug 110-103-101-96 dmg; 82 RPM",
+      "data_status": "published_in_source_snapshot"
+    },
+    {
+      "name": "AT4",
+      "class": "launcher",
+      "stat_text": "300 MP & Undead Siege; 290 BR dmg",
+      "data_status": "published_in_source_snapshot"
+    },
+    {
+      "name": "D13 Sector",
+      "class": "launcher",
+      "stat_text": "100 MP dmg",
+      "data_status": "published_in_source_snapshot"
+    },
+    {
+      "name": "FHJ-18 AA",
+      "class": "launcher",
+      "stat_text": "300 MP & Undead Siege; 150 BR dmg",
+      "data_status": "published_in_source_snapshot"
+    },
+    {
+      "name": "Thumper",
+      "class": "launcher",
+      "stat_text": "160 MP dmg",
+      "data_status": "published_in_source_snapshot"
+    }
+  ]
+}
