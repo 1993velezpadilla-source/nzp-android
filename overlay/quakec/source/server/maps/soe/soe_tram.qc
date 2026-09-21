@@ -153,6 +153,15 @@ void() SoE_TramArrivalUse =
     if (self.style <= 0)
         return;
 
+    // Arrival targets can be fired more than once by overlapping mover/mapper
+    // chains. Ignore stale arrivals when no ride is active, and reject a
+    // mismatched station while a specific destination is still pending.
+    if (!soe_tram_in_transit)
+        return;
+
+    if (soe_tram_destination > 0 && self.style != soe_tram_destination)
+        return;
+
     soe_tram_current_station = self.style;
     soe_tram_destination = 0;
     soe_tram_in_transit = false;
