@@ -31,6 +31,19 @@ for block in text.split("}\n"):
     if '"style"' in block:
         raise SystemExit("full-city blockout light retained explicit style")
 
+# SoE gameplay entities may legitimately use the generic style field for
+# ritual/district/part IDs. In VHLT that key collides with texlight/lightstyle
+# handling, so every styled SoE entity in the integrated map must opt out.
+for block in text.split("}\n"):
+    cls_match = re.search(r'"classname" "([^"]+)"', block)
+    if not cls_match or not cls_match.group(1).startswith("soe_"):
+        continue
+    if re.search(r'^"style"\s+"[^"]+"', block, re.MULTILINE):
+        if '"zhlt_usestyle" "null"' not in block:
+            raise SystemExit(
+                f"styled SoE entity missing VHLT lightstyle escape: {cls_match.group(1)}"
+            )
+
 # Only G1's actual match spawns survive the assembly.
 for i in range(1,5):
     token=f'"classname" "info_player_{i}_spawn"'
