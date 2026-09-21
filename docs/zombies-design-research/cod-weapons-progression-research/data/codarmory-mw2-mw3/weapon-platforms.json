@@ -1,0 +1,174 @@
+{
+  "provenance": {
+    "source_repository": "tzurbaev/codarmory.com",
+    "source_revision": "04408ef38fb8e64531503e8a1148b6676374e4b8",
+    "source_license": "MIT",
+    "source_license_sha": "7d6c82434ffc93394cb16ef06006933d4d6fbe78",
+    "source_files": {
+      "weapons": {
+        "path": "src/database/weapons.json",
+        "sha": "64172609f446619be9e9f8170e761e39a3b3be69"
+      },
+      "attachments": {
+        "path": "src/database/attachments.json",
+        "sha": "217d2a4b0f6172cf167d50558000f5ab0731acac"
+      },
+      "attachment_stats": {
+        "path": "src/database/attachment-stats.json",
+        "sha": "4bd265b5ce02f260448bd9ef0855d6c63bdb7aa1"
+      },
+      "attachment_categories": {
+        "path": "src/database/attachment-categories.json",
+        "sha": "e0f583bd0284e3b5bd0fdfbff9bd7e4c6fff22b6"
+      },
+      "weapon_categories": {
+        "path": "src/database/categories.json",
+        "sha": "7477d08a0db8a02f9e3f7687e85ba697feaecccd"
+      },
+      "platforms": {
+        "path": "src/database/platforms.json",
+        "sha": "04ec0d5c1ce14b5df3426fd33341e7831a8c75ec"
+      }
+    },
+    "transformed_on": "2026-09-21",
+    "transformation": "Removed descriptions/art paths and retained technical/factual identity, compatibility, pros/cons and unlock relationships."
+  },
+  "platforms": [
+    {
+      "id": "m4",
+      "name": "M4 Platform"
+    },
+    {
+      "id": "taq",
+      "name": "Tactique Verte Platform"
+    },
+    {
+      "id": "kastovia",
+      "name": "Kastovia Platform"
+    },
+    {
+      "id": "bruen-ops",
+      "name": "Bruen Ops Platform"
+    },
+    {
+      "id": "lachmann",
+      "name": "Lachmann & Meer Platform"
+    },
+    {
+      "id": "bruen-bullpup",
+      "name": "Bruen Bullpup Platform"
+    },
+    {
+      "id": "ordnance",
+      "name": "Ordnance Weapon Platform"
+    },
+    {
+      "id": "lmp",
+      "name": "LMP Platform"
+    },
+    {
+      "id": "taq-defense",
+      "name": "Tactique Defense Platform"
+    },
+    {
+      "id": "fennec",
+      "name": "Fennec Platform"
+    },
+    {
+      "id": "lockwood",
+      "name": "Lockwood Sport Platform"
+    },
+    {
+      "id": "expedite",
+      "name": "Expedite Platform"
+    },
+    {
+      "id": "bryson-800",
+      "name": "Bryson 800 Series Platform"
+    },
+    {
+      "id": "sakin",
+      "name": "Sakin MG Platform"
+    },
+    {
+      "id": "raal",
+      "name": "Raal MG Platform"
+    },
+    {
+      "id": "bryson-long",
+      "name": "Bryson Long Rifle Platform"
+    },
+    {
+      "id": "mark-2",
+      "name": "Mark 2 Platform"
+    },
+    {
+      "id": "mrba",
+      "name": "MRBA Platform"
+    },
+    {
+      "id": "imperatorium",
+      "name": "Imperatorium Platform"
+    },
+    {
+      "id": "signal",
+      "name": "Signal Platform"
+    },
+    {
+      "id": "bruen-890",
+      "name": "Bruen 890 Platform"
+    },
+    {
+      "id": "sakin-g",
+      "name": "Sakin G Series Platform"
+    },
+    {
+      "id": "xrk",
+      "name": "XRK Platform"
+    },
+    {
+      "id": "basilisk-500",
+      "name": "Basilisk 500 Platform"
+    },
+    {
+      "id": "iso",
+      "name": "ISO Platform"
+    },
+    {
+      "id": "fjx-imperium",
+      "name": "FJX Imperium Platform"
+    },
+    {
+      "id": "hailfire",
+      "name": "Hailfire Platform"
+    },
+    {
+      "id": "ftag-siege",
+      "name": "FTAC Siege"
+    },
+    {
+      "id": "tidal-recon",
+      "name": "Tidal Recon Platform"
+    },
+    {
+      "id": "mx-guardian",
+      "name": "MX Guardian Platform"
+    },
+    {
+      "id": "feret",
+      "name": "Feret Platform"
+    },
+    {
+      "id": "carrack",
+      "name": "Carrack Platform"
+    },
+    {
+      "id": "daemon",
+      "name": "Daemon Platform"
+    },
+    {
+      "id": "geist",
+      "name": "Geist Platform"
+    }
+  ]
+}
