@@ -105,6 +105,10 @@ runtime_guards = {
         ritual_qc,
         "soe_gateworm_placed_mask != 15",
     ),
+    "four district rituals open integrated Sacred Place access": (
+        (QC / "soe_entities.qc").read_text(encoding="utf-8"),
+        'find(world, targetname, "soe_full_sacred_access")',
+    ),
     "fifth ritual unlocks Pack-a-Punch": (
         ritual_qc,
         "SoE_UnlockPackAPunch();",
