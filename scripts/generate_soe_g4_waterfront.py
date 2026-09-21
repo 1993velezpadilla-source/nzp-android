@@ -9,6 +9,8 @@ from generate_soe_g1_blockout import (
     FLOOR_TEX, WALL_TEX, CEILING_TEX, BLOCK_TEX, TRIGGER_TEX, NULL_TEX,
 )
 
+from soe_mainquest_geometry import append_phase_mainquest_entities
+
 ROOT=Path(__file__).resolve().parents[1]
 SPEC_PATH=ROOT/"content"/"shadows_of_evil"/"g4_waterfront_blockout.json"
 OUTPUT_PATH=ROOT/"overlay"/"assets"/"source"/"maps"/"soe_g4"/"soe_g4.map"
@@ -155,6 +157,9 @@ def gen(spec):
 
     # Inert portal anchor until G5.
     ents.append(point_entity("info_notnull",(128,-848,-24),targetname="soe_g4_rift_portal_anchor"))
+
+    # Cross-phase Reborn Sword / Flag quest anchors from the shared source of truth.
+    append_phase_mainquest_entities(ents, "g4", point_entity)
 
     for org,b in [((320,-608,176),300),((384,-920,144),220),((384,-1184,256),260),
                   ((-96,-1088,192),300),((448,-1376,176),300),((128,-848,64),180)]:
