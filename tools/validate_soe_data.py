@@ -109,6 +109,13 @@ if len(data["finale"]["flagDefense"]["sites"]) != 4 or sum(len(v) for v in data[
     raise SystemExit("all eight flag-defense sites must remain tracked")
 if data["finale"]["fourPlayerFinale"]["originalRequiresPlayers"] != 4:
     raise SystemExit("Classic finale must preserve four-player requirement")
+corruption = data["finale"]["fourPlayerFinale"].get("corruption", {})
+if corruption.get("firstCleanseDeadlineSeconds") != 15:
+    raise SystemExit("finale corruption cleanse deadline must remain 15 seconds")
+if corruption.get("repeatIntervalSeconds") != "30-45":
+    raise SystemExit("finale corruption repeat interval must remain 30-45 seconds")
+if corruption.get("beastFailureMeterPercent") != 40:
+    raise SystemExit("finale corruption Beast failure must drain 40 percent")
 if len(data["side"]["sideQuests"]) < 16:
     raise SystemExit("one or more tracked SoE side quests/events disappeared")
 
