@@ -1,0 +1,217 @@
+{
+  "provenance": {
+    "source": "Black Ops III Weapon Stats by Marvel4",
+    "spreadsheet_url": "https://docs.google.com/spreadsheets/d/1k7jVpX782zoAIDGqj61l1Yw5qoPf1QVHpM01mwa-tTI/edit",
+    "spreadsheet_id": "1k7jVpX782zoAIDGqj61l1Yw5qoPf1QVHpM01mwa-tTI",
+    "observed_at": "2026-09-21",
+    "source_type": "community technical measurement/reference"
+  },
+  "count": 41,
+  "attachments": [
+    {
+      "name": "Reflex Sight",
+      "effect": "FOV = 50",
+      "source_row": 4
+    },
+    {
+      "name": "Recon",
+      "effect": "FOV = 35, Idle Amount * 0.1, Centerspeed * 1.1, ADS Recoil Reduction + 0.1",
+      "source_row": 5
+    },
+    {
+      "name": "Recon (KN-44, HVK-30, Man-O-War, M16, Galil, SMG)",
+      "effect": "FOV = 35, Idle Amount * 0.1, Centerspeed * 1.1, ADS Recoil Reduction + 0.05",
+      "source_row": 6
+    },
+    {
+      "name": "Recon (HG 40, DIY 11 Renovator, PPSh-41)",
+      "effect": "FOV = 35, Idle Amount * 0.1, Centerspeed * 1.1, ADS Recoil Reduction + 0.1",
+      "source_row": 7
+    },
+    {
+      "name": "Recon (Sniper Rifle)",
+      "effect": "FOV = 35, Centerspeed * 0.9, ADS Recoil Reduction + 0.1",
+      "source_row": 8
+    },
+    {
+      "name": "Varix 3",
+      "effect": "FOV = 30/52, Centerspeed * 1.1, ADS Recoil Reduction + 0.05",
+      "source_row": 9
+    },
+    {
+      "name": "Varix 3 (KN-44, HVK-30, Man-O-War, M16, Galil, SMG, LMG)",
+      "effect": "FOV = 30/52, Centerspeed * 1.1, ADS Recoil Reduction + 0.025",
+      "source_row": 10
+    },
+    {
+      "name": "Varix 3 (HG 40, DIY 11 Renovator, PPSh-41)",
+      "effect": "FOV = 30/52, Centerspeed * 1.1, ADS Recoil Reduction + 0.05",
+      "source_row": 11
+    },
+    {
+      "name": "BOA 3",
+      "effect": "FOV = 45, Centerspeed * 1.1",
+      "source_row": 12
+    },
+    {
+      "name": "Thermal",
+      "effect": "FOV = 41, Centerspeed * 1.1, ADS Recoil Reduction + 0.1",
+      "source_row": 13
+    },
+    {
+      "name": "Thermal (KN-44, HVK-30, Man-O-War, M16, Galil)",
+      "effect": "FOV = 41, Centerspeed * 1.1, ADS Recoil Reduction + 0.05",
+      "source_row": 14
+    },
+    {
+      "name": "ELO",
+      "effect": "FOV = 50",
+      "source_row": 15
+    },
+    {
+      "name": "LRx3",
+      "effect": "FOV = 35",
+      "source_row": 16
+    },
+    {
+      "name": "Quickdraw",
+      "effect": "ADS Time * 0.7",
+      "source_row": 17
+    },
+    {
+      "name": "Quickdraw (LMG)",
+      "effect": "ADS Time * 0.8",
+      "source_row": 18
+    },
+    {
+      "name": "Grip",
+      "effect": "ADS Recoil Reduction + 0.075",
+      "source_row": 19
+    },
+    {
+      "name": "Stock",
+      "effect": "ADS Movement Speed = 0.68, ADS Firing Movement Speed = 0.57",
+      "source_row": 20
+    },
+    {
+      "name": "Stock (Peacekeeper MK2, LV8 Basilisk)",
+      "effect": "ADS Movement Speed = 0.8, ADS Firing Movement Speed = 0.7",
+      "source_row": 21
+    },
+    {
+      "name": "Stock (SMG)",
+      "effect": "ADS Movement Speed = 1",
+      "source_row": 22
+    },
+    {
+      "name": "Stock (Weevil, Vesper, Pharo, Razorback, HG 40, PPSh-41)",
+      "effect": "ADS Movement Speed = 1.04",
+      "source_row": 23
+    },
+    {
+      "name": "Stock (LMG)",
+      "effect": "ADS Movement Speed = 0.68, ADS Firing Movement Speed = 0.24",
+      "source_row": 24
+    },
+    {
+      "name": "Stock (Sniper Rifle)",
+      "effect": "ADS Movement Speed = 0.6, ADS Firing Movement Speed = 0.48",
+      "source_row": 25
+    },
+    {
+      "name": "Stock (Shotgun)",
+      "effect": "ADS Movement Speed = 1.04, ADS Firing Movement Speed = 1.04",
+      "source_row": 26
+    },
+    {
+      "name": "Laser Sight",
+      "effect": "Hipspread * 0.45",
+      "source_row": 27
+    },
+    {
+      "name": "Laser Sight (SMG)",
+      "effect": "Hipspread * 0.65",
+      "source_row": 28
+    },
+    {
+      "name": "Laser Sight (Razorback, HG 40, DIY 11 Renovator, PPSh-41)",
+      "effect": "Hipspread * 0.45",
+      "source_row": 29
+    },
+    {
+      "name": "Suppressor",
+      "effect": "Range * 0.7",
+      "source_row": 30
+    },
+    {
+      "name": "Suppressor (AR)",
+      "effect": "Range * 0.35",
+      "source_row": 31
+    },
+    {
+      "name": "Suppressor (KN-44)",
+      "effect": "Range * 0.7",
+      "source_row": 32
+    },
+    {
+      "name": "Suppressor (LMG)",
+      "effect": "Range * 0.1",
+      "source_row": 33
+    },
+    {
+      "name": "Suppressor (Shotgun)",
+      "effect": "Range * 0.7 (Minimum Damage Range * 1)",
+      "source_row": 34
+    },
+    {
+      "name": "Suppressor (Argus)",
+      "effect": "Damage * 0.9 (Base Damage * 1)",
+      "source_row": 35
+    },
+    {
+      "name": "High Caliber",
+      "effect": "Head Multiplier = 1.5",
+      "source_row": 36
+    },
+    {
+      "name": "High Caliber (Sheiva, MX Garand, M14)",
+      "effect": "Head Multiplier = 1.8",
+      "source_row": 37
+    },
+    {
+      "name": "Long Barrel",
+      "effect": "Range * 1.13",
+      "source_row": 38
+    },
+    {
+      "name": "Long Barrel (AR)",
+      "effect": "Range * 2",
+      "source_row": 39
+    },
+    {
+      "name": "Long Barrel (KN-44)",
+      "effect": "Range * 1.13",
+      "source_row": 40
+    },
+    {
+      "name": "Long Barrel (KVK 99m)",
+      "effect": "Range * 1.3",
+      "source_row": 41
+    },
+    {
+      "name": "Long Barrel (SMG)",
+      "effect": "5th Damage Range * 1.25, Minimum Damage Range * 1.25",
+      "source_row": 42
+    },
+    {
+      "name": "Long Barrel (Shotgun)",
+      "effect": "Minimum Damage Range * 1.13, Minimum Base Damage * 0.8",
+      "source_row": 43
+    },
+    {
+      "name": "Ballistics CPU",
+      "effect": "Idle Amount * 0.25",
+      "source_row": 44
+    }
+  ]
+}
