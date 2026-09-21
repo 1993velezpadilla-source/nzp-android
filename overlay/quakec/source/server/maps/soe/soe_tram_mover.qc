@@ -6,6 +6,8 @@
     finale one exact crossing event for the giant Gateworm.
 */
 
+void(vector tdest, float tspeed, void() func) SUB_CalcMove;
+
 .float soe_tram_move_destination;
 .vector soe_tram_model_mins;
 .float soe_tram_symbol_value;
