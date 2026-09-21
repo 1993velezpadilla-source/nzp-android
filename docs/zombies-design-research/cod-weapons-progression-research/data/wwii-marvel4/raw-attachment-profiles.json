@@ -1,0 +1,494 @@
+{
+  "provenance": {
+    "source": "WWII Weapon Stats by Marvel4",
+    "spreadsheet_url": "https://docs.google.com/spreadsheets/d/1iDXw217L3w1nylJQV8Z7dv0RN-Az0YYve7rM7WEmumk/edit",
+    "sheet": "Raw Attachments",
+    "observed_at": "2026-09-21",
+    "raw_rows": 229,
+    "raw_columns": 2,
+    "transformation": "Identical technical attachment rows deduplicated; source IDs preserved as aliases.",
+    "source_type": "community technical/raw-definition reference"
+  },
+  "field_names": [
+    "ATTACHMENTFILE",
+    "displayName"
+  ],
+  "unique_profile_count": 31,
+  "profiles": [
+    {
+      "profile_id": "wwii_att_0001",
+      "aliases": [
+        "defaultattachment",
+        "hold_breath_1",
+        "hold_breath_3",
+        "shield_charge"
+      ],
+      "stats": {}
+    },
+    {
+      "profile_id": "wwii_att_0002",
+      "aliases": [
+        "akimbo",
+        "akimbo_fullauto",
+        "akimbo_fullauto_zm",
+        "akimbo_zm"
+      ],
+      "stats": {
+        "displayName": "Akimbo"
+      }
+    },
+    {
+      "profile_id": "wwii_att_0003",
+      "aliases": [
+        "aperture_sight",
+        "aperture_sight_1897",
+        "aperture_sight_austen",
+        "aperture_sight_avs36",
+        "aperture_sight_bar",
+        "aperture_sight_bechowiec",
+        "aperture_sight_beretta",
+        "aperture_sight_blyskawica",
+        "aperture_sight_bren",
+        "aperture_sight_charlton",
+        "aperture_sight_chatelleroult",
+        "aperture_sight_dp28",
+        "aperture_sight_emp44",
+        "aperture_sight_erma",
+        "aperture_sight_federov",
+        "aperture_sight_fg42",
+        "aperture_sight_g43",
+        "aperture_sight_greasegun",
+        "aperture_sight_grofuss",
+        "aperture_sight_kgm21",
+        "aperture_sight_lad",
+        "aperture_sight_lewis",
+        "aperture_sight_m1919",
+        "aperture_sight_m1935",
+        "aperture_sight_m1941",
+        "aperture_sight_m1a1",
+        "aperture_sight_m1garand",
+        "aperture_sight_m2carbine",
+        "aperture_sight_m2hyde",
+        "aperture_sight_m30",
+        "aperture_sight_mas38",
+        "aperture_sight_mg15",
+        "aperture_sight_mg42",
+        "aperture_sight_mg81",
+        "aperture_sight_model21",
+        "aperture_sight_mp28",
+        "aperture_sight_mp40",
+        "aperture_sight_nambu",
+        "aperture_sight_ppsh41",
+        "aperture_sight_ribeyrolles",
+        "aperture_sight_sten",
+        "aperture_sight_sterling",
+        "aperture_sight_stg44",
+        "aperture_sight_sudaev",
+        "aperture_sight_svt40",
+        "aperture_sight_thompson",
+        "aperture_sight_tokyo",
+        "aperture_sight_type100",
+        "aperture_sight_type5",
+        "aperture_sight_type99",
+        "aperture_sight_vmg1927",
+        "aperture_sight_volk",
+        "aperture_sight_walther",
+        "aperture_sight_wimmer",
+        "aperture_sight_zk383"
+      ],
+      "stats": {
+        "displayName": "Reflex Sight"
+      }
+    },
+    {
+      "profile_id": "wwii_att_0004",
+      "aliases": [
+        "bayonet",
+        "bayonet_allies",
+        "bayonet_axis",
+        "bayonet_m1garand"
+      ],
+      "stats": {
+        "displayName": "Bayonet"
+      }
+    },
+    {
+      "profile_id": "wwii_att_0005",
+      "aliases": [
+        "bipod_1",
+        "bipod_2",
+        "bipod_3"
+      ],
+      "stats": {
+        "displayName": "Bipod"
+      }
+    },
+    {
+      "profile_id": "wwii_att_0006",
+      "aliases": [
+        "compensator_greasegun"
+      ],
+      "stats": {
+        "displayName": "WEAPON_COMPENSATOR"
+      }
+    },
+    {
+      "profile_id": "wwii_att_0007",
+      "aliases": [
+        "dragon_breath",
+        "dragon_breath_bolt_action",
+        "dragon_breath_bolt_action_1",
+        "dragon_breath_bolt_action_2",
+        "dragon_breath_bolt_action_3",
+        "dragon_breath_break",
+        "dragon_breath_break_1",
+        "dragon_breath_break_2",
+        "dragon_breath_break_3",
+        "dragon_breath_magazine",
+        "dragon_breath_magazine_1",
+        "dragon_breath_magazine_2",
+        "dragon_breath_magazine_3"
+      ],
+      "stats": {
+        "displayName": "Incendiary Shells"
+      }
+    },
+    {
+      "profile_id": "wwii_att_0008",
+      "aliases": [
+        "explosive_tips_dp28"
+      ],
+      "stats": {
+        "displayName": "Explosive Tips"
+      }
+    },
+    {
+      "profile_id": "wwii_att_0009",
+      "aliases": [
+        "extended_mag",
+        "extended_mag_1897",
+        "extended_mag_bar",
+        "extended_mag_beretta",
+        "extended_mag_bren",
+        "extended_mag_enfield",
+        "extended_mag_fg42",
+        "extended_mag_g43",
+        "extended_mag_greasegun",
+        "extended_mag_kar98k",
+        "extended_mag_kbsp1938",
+        "extended_mag_lewis",
+        "extended_mag_luger",
+        "extended_mag_m1911",
+        "extended_mag_m1919",
+        "extended_mag_m1941",
+        "extended_mag_m1a1",
+        "extended_mag_m1garand",
+        "extended_mag_m712",
+        "extended_mag_mg15",
+        "extended_mag_mg42",
+        "extended_mag_mg42_zm",
+        "extended_mag_mp28",
+        "extended_mag_mp40",
+        "extended_mag_ppsh41",
+        "extended_mag_springfield",
+        "extended_mag_sten",
+        "extended_mag_stg44",
+        "extended_mag_svt40",
+        "extended_mag_thompson",
+        "extended_mag_type100",
+        "extended_mag_type99",
+        "extended_mag_volk"
+      ],
+      "stats": {
+        "displayName": "Extended Mag"
+      }
+    },
+    {
+      "profile_id": "wwii_att_0010",
+      "aliases": [
+        "extended_range",
+        "extended_range_rifle",
+        "extended_range_shotgun",
+        "extended_range_smg"
+      ],
+      "stats": {
+        "displayName": "Advanced Rifling"
+      }
+    },
+    {
+      "profile_id": "wwii_att_0011",
+      "aliases": [
+        "fast_ads",
+        "fast_ads_lmg",
+        "fast_ads_smg"
+      ],
+      "stats": {
+        "displayName": "Quickdraw"
+      }
+    },
+    {
+      "profile_id": "wwii_att_0012",
+      "aliases": [
+        "fast_bolt_dp28"
+      ],
+      "stats": {
+        "displayName": "Fast Bolt"
+      }
+    },
+    {
+      "profile_id": "wwii_att_0013",
+      "aliases": [
+        "fast_mag_dp28"
+      ],
+      "stats": {
+        "displayName": "Fast Reload"
+      }
+    },
+    {
+      "profile_id": "wwii_att_0014",
+      "aliases": [
+        "fmj"
+      ],
+      "stats": {
+        "displayName": "Full Metal Jacket"
+      }
+    },
+    {
+      "profile_id": "wwii_att_0015",
+      "aliases": [
+        "grenade_launcher",
+        "grenade_launcher_allies",
+        "grenade_launcher_axis",
+        "grenade_launcher_m1garand"
+      ],
+      "stats": {
+        "displayName": "Rifle Grenade"
+      }
+    },
+    {
+      "profile_id": "wwii_att_0016",
+      "aliases": [
+        "grip"
+      ],
+      "stats": {
+        "displayName": "Grip"
+      }
+    },
+    {
+      "profile_id": "wwii_att_0017",
+      "aliases": [
+        "head_damage",
+        "head_damage_zm"
+      ],
+      "stats": {
+        "displayName": "High Caliber"
+      }
+    },
+    {
+      "profile_id": "wwii_att_0018",
+      "aliases": [
+        "hipfire",
+        "hipfire_smg"
+      ],
+      "stats": {
+        "displayName": "Steady Aim"
+      }
+    },
+    {
+      "profile_id": "wwii_att_0019",
+      "aliases": [
+        "iron_sight_sniper",
+        "iron_sight_sniper_mosin",
+        "iron_sights_m30"
+      ],
+      "stats": {
+        "displayName": "Iron Sight"
+      }
+    },
+    {
+      "profile_id": "wwii_att_0020",
+      "aliases": [
+        "lens_sight",
+        "lens_sight_ribeyrolles",
+        "lens_sight_small"
+      ],
+      "stats": {
+        "displayName": "Lens Sight"
+      }
+    },
+    {
+      "profile_id": "wwii_att_0021",
+      "aliases": [
+        "m30_rifle",
+        "m30_rifle_blades"
+      ],
+      "stats": {
+        "displayName": "Rifle Bullet"
+      }
+    },
+    {
+      "profile_id": "wwii_att_0022",
+      "aliases": [
+        "muzzle",
+        "muzzle_grease_gun_base_barrel",
+        "muzzle_smg",
+        "muzzle_zk383"
+      ],
+      "stats": {
+        "displayName": "WEAPON_MUZZLE_STANDARD"
+      }
+    },
+    {
+      "profile_id": "wwii_att_0023",
+      "aliases": [
+        "rapid_fire",
+        "rapid_fire_lmg",
+        "rapid_fire_shotgun_rechamber",
+        "rapid_fire_sniper",
+        "rapid_fire_sniper_fastbolt",
+        "zk_alt"
+      ],
+      "stats": {
+        "displayName": "Rapid Fire"
+      }
+    },
+    {
+      "profile_id": "wwii_att_0024",
+      "aliases": [
+        "reduced_sway"
+      ],
+      "stats": {
+        "displayName": "Ballistic Calibration"
+      }
+    },
+    {
+      "profile_id": "wwii_att_0025",
+      "aliases": [
+        "special_grip"
+      ],
+      "stats": {
+        "displayName": "Special Grip"
+      }
+    },
+    {
+      "profile_id": "wwii_att_0026",
+      "aliases": [
+        "suppressor",
+        "suppressor_allies",
+        "suppressor_axis",
+        "suppressor_greasegun_1",
+        "suppressor_greasegun_2",
+        "suppressor_greasegun_3",
+        "suppressor_smg",
+        "suppressor_smg_allies_1",
+        "suppressor_smg_allies_2",
+        "suppressor_smg_allies_3",
+        "suppressor_smg_axis_1",
+        "suppressor_smg_axis_2",
+        "suppressor_smg_axis_3",
+        "suppressor_zk383"
+      ],
+      "stats": {
+        "displayName": "Suppressor"
+      }
+    },
+    {
+      "profile_id": "wwii_att_0027",
+      "aliases": [
+        "tactical_knife"
+      ],
+      "stats": {
+        "displayName": "Tactical Knife"
+      }
+    },
+    {
+      "profile_id": "wwii_att_0028",
+      "aliases": [
+        "telescopic2_sight_delisle",
+        "telescopic2_sight_enfield",
+        "telescopic2_sight_kar98k",
+        "telescopic2_sight_kbsp1938",
+        "telescopic2_sight_leveraction",
+        "telescopic2_sight_mas36",
+        "telescopic2_sight_mosin",
+        "telescopic2_sight_ptrs41",
+        "telescopic2_sight_sdk",
+        "telescopic2_sight_springfield",
+        "telescopic2_sight_type38",
+        "telescopic2_sight_wz35"
+      ],
+      "stats": {
+        "displayName": "6x Optic"
+      }
+    },
+    {
+      "profile_id": "wwii_att_0029",
+      "aliases": [
+        "telescopic_sight",
+        "telescopic_sight_avs36",
+        "telescopic_sight_bar",
+        "telescopic_sight_bren",
+        "telescopic_sight_charlton",
+        "telescopic_sight_chatelleroult",
+        "telescopic_sight_delisle",
+        "telescopic_sight_dp28",
+        "telescopic_sight_enfield",
+        "telescopic_sight_federov",
+        "telescopic_sight_fg42",
+        "telescopic_sight_g43",
+        "telescopic_sight_grofuss",
+        "telescopic_sight_kar98k",
+        "telescopic_sight_kbsp1938",
+        "telescopic_sight_kgm21",
+        "telescopic_sight_lad",
+        "telescopic_sight_leveraction",
+        "telescopic_sight_lewis",
+        "telescopic_sight_m1919",
+        "telescopic_sight_m1935",
+        "telescopic_sight_m1941",
+        "telescopic_sight_m1a1",
+        "telescopic_sight_m1garand",
+        "telescopic_sight_m2carbine",
+        "telescopic_sight_mas36",
+        "telescopic_sight_mg15",
+        "telescopic_sight_mg42",
+        "telescopic_sight_mg81",
+        "telescopic_sight_mosin",
+        "telescopic_sight_ptrs41",
+        "telescopic_sight_sdk",
+        "telescopic_sight_springfield",
+        "telescopic_sight_stg44",
+        "telescopic_sight_sudaev",
+        "telescopic_sight_svt40",
+        "telescopic_sight_type38",
+        "telescopic_sight_type5",
+        "telescopic_sight_type99",
+        "telescopic_sight_vmg1927",
+        "telescopic_sight_volk",
+        "telescopic_sight_wimmer",
+        "telescopic_sight_wz35"
+      ],
+      "stats": {
+        "displayName": "4x Optic"
+      }
+    },
+    {
+      "profile_id": "wwii_att_0030",
+      "aliases": [
+        "tribolt_dp28"
+      ],
+      "stats": {
+        "displayName": "Tri-bolt"
+      }
+    },
+    {
+      "profile_id": "wwii_att_0031",
+      "aliases": [
+        "grenade_launcher_blades"
+      ],
+      "stats": {
+        "displayName": "Defective Rifle Grenade"
+      }
+    }
+  ]
+}
