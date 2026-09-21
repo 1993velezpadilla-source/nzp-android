@@ -53,7 +53,8 @@
       "whiteMist": "cleanses corruption",
       "normalFailure": "player down",
       "beastFailure": "removes 40 percent of the Beast meter",
-      "beastFailureMeterPercent": 40
+      "beastFailureMeterPercent": 40,
+      "downedBehavior": "infection continues while downed; an expired uncleansed infection remains armed through a revive and can immediately down the player again"
     },
     "enemyOverride": "normal zombies de-spawn and stop spawning; surviving Margwas convert to the purple finale variant, and purple-mouth Margwas then spawn indefinitely",
     "beastOverride": "infinite time but Margwas attack and damage Beast meter",
@@ -65,7 +66,7 @@
     },
     "railElectrifiedSeconds": 30,
     "keeperAction": "Shock all three Junction Keepers while rails are electrified and Gateworm is absent after the tram hit; if timing is missed the Gateworm returns and the rail/tram cycle repeats",
-    "bleedOutRule": "rounds stop progressing; bled-out players respawn when train is called",
+    "bleedOutRule": "rounds stop progressing; bled-out players respawn when train is called, and a full bleed-out clears the old corruption before respawn",
     "sequence": [
       "kill purple Margwas near curse torches to relight Beast access",
       "shock all three tram-station electrical boxes while the tram is moving",
