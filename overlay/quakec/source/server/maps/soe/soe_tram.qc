@@ -63,6 +63,11 @@ void() SoE_TramControllerUse =
     // A mapper can target this entity from station buttons. It intentionally
     // owns no movement itself: the actual tram brush remains a stock func_train
     // following path_corners, while this tracks SoE quest/game state.
+    // Ignore duplicate target fires while a ride is already active; otherwise
+    // route sequence and ride-start side effects can execute twice.
+    if (soe_tram_in_transit)
+        return;
+
     SoE_TramRespawnFinaleSpectators();
     soe_tram_in_transit = true;
     soe_tram_route_sequence = soe_tram_route_sequence + 1;
