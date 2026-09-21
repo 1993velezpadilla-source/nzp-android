@@ -39,6 +39,16 @@ jobs:
           ref: c8135a66e00bb64577912fbf792f8fef7f47658e
           path: upstream-assets
 
+      - name: Checkout pinned NZ:P spawn-zone tool
+        uses: actions/checkout@v4
+        with:
+          repository: nzp-team/spawn-zone-tool
+          ref: 3c6f9b87208026d7d639565deed64e541ffb18bf
+          path: spawn-zone-tool
+
+      - name: Install spawn-zone tool requirements
+        run: python -m pip install -r spawn-zone-tool/requirements.txt
+
       - name: Apply project asset overlay
         run: python scripts/apply_soe_asset_overlay.py --assets-root upstream-assets
 
@@ -46,16 +56,22 @@ jobs:
         working-directory: upstream-assets
         run: bash tools/compile-wads.sh
 
-      - name: Compile integrated soe.map with NZ:P VHLT pipeline
+      - name: Compile integrated runtime map package
         working-directory: upstream-assets
-        run: bash tools/compile-maps.sh -m soe/soe.map
+        run: bash tools/compile-maps.sh -m soe/soe.map --zone-tool-path ../spawn-zone-tool
 
-      - name: Require integrated BSP output
-        run: test -s upstream-assets/common/maps/soe.bsp
+      - name: Require integrated BSP and NSZ output
+        run: |
+          test -s upstream-assets/common/maps/soe.bsp
+          test -s upstream-assets/common/maps/soe.nsz
+          grep -q '^number_of_zones: 32 upstream-assets/common/maps/soe.nsz
 
-      - name: Upload integrated BSP artifact
+      - name: Upload integrated Morg City runtime artifact
         uses: actions/upload-artifact@v4
         with:
-          name: soe-integrated-bsp
-          path: upstream-assets/common/maps/soe.bsp
+          name: soe-integrated-runtime
+          path: |
+            upstream-assets/common/maps/soe.bsp
+            upstream-assets/common/maps/soe.nsz
+            upstream-assets/source/maps/soe/soe.map
           if-no-files-found: error
