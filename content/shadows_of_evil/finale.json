@@ -55,7 +55,7 @@
       "beastFailure": "removes 40 percent of the Beast meter",
       "beastFailureMeterPercent": 40
     },
-    "enemyOverride": "normal zombies stop; purple-mouth Margwas spawn",
+    "enemyOverride": "normal zombies de-spawn and stop spawning; surviving Margwas convert to the purple finale variant, and purple-mouth Margwas then spawn indefinitely",
     "beastOverride": "infinite time but Margwas attack and damage Beast meter",
     "giantGateworm": "Junction track intersection; station boxes electrify rails first, then moving tram removes/crushes Gateworm",
     "stationRailBoxes": {
