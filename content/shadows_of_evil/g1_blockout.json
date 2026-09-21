@@ -335,7 +335,8 @@
         -352,
         40
       ],
-      "targetname": "soe_g1_rift_access_power"
+      "targetname": "soe_g1_rift_access_power",
+      "target": "soe_full_junction_rift_access"
     },
     {
       "classname": "perk_revive",
