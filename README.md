@@ -24,3 +24,25 @@ NZ:P gameplay-core reference pack:
 - [Fan-Made Special Catalog](docs/zombies-design-research/special-rounds-open-research/FANMADE_SPECIAL_CATALOG.md)
 - [Modern Special Rounds](docs/zombies-design-research/special-rounds-open-research/MODERN_SPECIAL_ROUNDS.md)
 - [Implementation Checklist](docs/zombies-design-research/special-rounds-open-research/IMPLEMENTATION_CHECKLIST.md)
+
+
+## Zombies core systems research
+
+- [Core Systems Research Index](docs/zombies-design-research/core-systems-open-research/README.md)
+- [Power-ups / Drop Director](docs/zombies-design-research/core-systems-open-research/POWERUPS_DROP_DIRECTOR.md)
+- [Weapon Economy / Wall Buys](docs/zombies-design-research/core-systems-open-research/WEAPON_ECONOMY_WALLBUYS.md)
+- [Mystery Box / Loot Director](docs/zombies-design-research/core-systems-open-research/MYSTERY_BOX_LOOT_DIRECTOR.md)
+- [Pack-a-Punch Upgrade Pipeline](docs/zombies-design-research/core-systems-open-research/PACK_A_PUNCH_UPGRADE_PIPELINE.md)
+- [Perks / Status Effects](docs/zombies-design-research/core-systems-open-research/PERKS_STATUS_EFFECTS.md)
+- [Downed / Revive / Respawn](docs/zombies-design-research/core-systems-open-research/DOWNED_REVIVE_RESPAWN.md)
+- [Quest Logic / Buildables](docs/zombies-design-research/core-systems-open-research/QUEST_LOGIC_BUILDABLES.md)
+- [Traps / World Events](docs/zombies-design-research/core-systems-open-research/TRAPS_WORLD_EVENTS.md)
+- [Crawlers / Dismemberment](docs/zombies-design-research/core-systems-open-research/COMBAT_CRAWLERS_DISMEMBERMENT.md)
+- [Multiplayer Authority / Security](docs/zombies-design-research/core-systems-open-research/MULTIPLAYER_AUTHORITY_SECURITY.md)
+- [Round Stall Recovery](docs/zombies-design-research/core-systems-open-research/ROUND_STALL_RECOVERY.md)
+- [Interaction System](docs/zombies-design-research/core-systems-open-research/INTERACTION_SYSTEM.md)
+- [Power / Zones / Teleporters](docs/zombies-design-research/core-systems-open-research/POWER_ZONES_TELEPORTERS.md)
+- [Map Config / Editor / Modding](docs/zombies-design-research/core-systems-open-research/MAP_CONFIG_EDITOR_MODDING.md)
+- [Audio / Feedback Director](docs/zombies-design-research/core-systems-open-research/AUDIO_FEEDBACK_DIRECTOR.md)
+- [Session Reset Lifecycle](docs/zombies-design-research/core-systems-open-research/SESSION_RESET_LIFECYCLE.md)
+- [Validation Test Matrix](docs/zombies-design-research/core-systems-open-research/VALIDATION_TEST_MATRIX.md)
