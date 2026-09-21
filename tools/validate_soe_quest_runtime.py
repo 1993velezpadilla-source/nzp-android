@@ -66,6 +66,12 @@ require_dependency("apothicon_sword", ["apothicon_egg"])
 require_dependency("arch_ovum", ["apothicon_sword"])
 require_dependency("reborn_sword", ["arch_ovum"])
 require_dependency("book_trigger", ["reborn_sword", "fifth_ritual"])
+for flag_state in ("flag_nero", "flag_jackie", "flag_jessica", "flag_floyd"):
+    require_dependency(flag_state, ["book_trigger"])
+require_dependency(
+    "keepers_ready",
+    ["flag_nero", "flag_jackie", "flag_jessica", "flag_floyd"],
+)
 require_dependency("shadowman_boss", ["keepers_ready"])
 require_dependency("infinite_margwa_phase", ["shadowman_boss"])
 require_dependency("station_shocks", ["infinite_margwa_phase"])
