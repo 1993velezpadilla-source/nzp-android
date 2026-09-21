@@ -1,0 +1,373 @@
+{
+  "schemaVersion": 1,
+  "map": "soe",
+  "status": "provisional_transforms_canonical_topology",
+  "purpose": "Cross-phase physical anchors required by the Reborn Sword and Flag/Shadowman main-quest runtime.",
+  "policy": "Location descriptions follow public walkthrough evidence; coordinates are clean-room blockout transforms and remain calibration targets.",
+  "playerSlotKeeperMapping": [
+    {
+      "style": 1,
+      "slot": "player 1",
+      "presentation": "Nero / Easy Street ritual"
+    },
+    {
+      "style": 2,
+      "slot": "player 2",
+      "presentation": "Jessica / Footlight ritual"
+    },
+    {
+      "style": 3,
+      "slot": "player 3",
+      "presentation": "Floyd / Waterfront ritual"
+    },
+    {
+      "style": 4,
+      "slot": "player 4",
+      "presentation": "Jackie / Canals ritual"
+    }
+  ],
+  "rebornCircles": [
+    {
+      "phase": "g1",
+      "district": "junction",
+      "style": 1,
+      "origin": [
+        224,
+        272,
+        32
+      ],
+      "evidence": "Junction near the Fountain Pen / Easy Street exit"
+    },
+    {
+      "phase": "g2",
+      "district": "canals",
+      "style": 2,
+      "origin": [
+        96,
+        1112,
+        32
+      ],
+      "evidence": "Canals in front of Ruby Rabbit / build-table area"
+    },
+    {
+      "phase": "g3",
+      "district": "footlight",
+      "style": 4,
+      "origin": [
+        1248,
+        48,
+        32
+      ],
+      "evidence": "in front of Black Lace Burlesque"
+    },
+    {
+      "phase": "g4",
+      "district": "waterfront",
+      "style": 8,
+      "origin": [
+        96,
+        -1088,
+        -24
+      ],
+      "evidence": "outside The Anvil on the pier / ritual-room frontage"
+    }
+  ],
+  "ritualKeepers": [
+    {
+      "phase": "g1",
+      "district": "junction",
+      "classname": "soe_reborn_keeper",
+      "style": 1,
+      "origin": [
+        -320,
+        424,
+        192
+      ],
+      "targetname": "soe_mq_reborn_keeper_nero"
+    },
+    {
+      "phase": "g3",
+      "district": "footlight",
+      "classname": "soe_reborn_keeper",
+      "style": 2,
+      "origin": [
+        1600,
+        112,
+        48
+      ],
+      "targetname": "soe_mq_reborn_keeper_jessica"
+    },
+    {
+      "phase": "g4",
+      "district": "waterfront",
+      "classname": "soe_reborn_keeper",
+      "style": 3,
+      "origin": [
+        -64,
+        -1088,
+        48
+      ],
+      "targetname": "soe_mq_reborn_keeper_floyd"
+    },
+    {
+      "phase": "g2",
+      "district": "canals",
+      "classname": "soe_reborn_keeper",
+      "style": 4,
+      "origin": [
+        -64,
+        1120,
+        160
+      ],
+      "targetname": "soe_mq_reborn_keeper_jackie"
+    }
+  ],
+  "book": {
+    "phase": "g1",
+    "classname": "soe_mainquest_book",
+    "origin": [
+      -384,
+      432,
+      184
+    ],
+    "targetname": "soe_mq_nero_book",
+    "evidence": "Nero ritual room; usable only after active sword owners have upgraded and PaP is open"
+  },
+  "flagSpawn": {
+    "phase": "g5",
+    "classname": "soe_flag_spawn",
+    "origin": [
+      0,
+      32,
+      -48
+    ],
+    "targetname": "soe_mq_flag_spawn_rift",
+    "evidence": "Underground Rift"
+  },
+  "districts": [
+    {
+      "id": "junction",
+      "phase": "g1",
+      "runtimeId": 1,
+      "sites": [
+        {
+          "index": 1,
+          "origin": [
+            560,
+            -96,
+            40
+          ],
+          "targetname": "soe_mq_flag_junction_1",
+          "evidence": "after Rift stairs / outside Footlight entrance"
+        },
+        {
+          "index": 2,
+          "origin": [
+            288,
+            208,
+            40
+          ],
+          "targetname": "soe_mq_flag_junction_2",
+          "evidence": "beside the central Reborn ritual circle"
+        }
+      ],
+      "flagKeeper": {
+        "origin": [
+          -272,
+          424,
+          192
+        ],
+        "targetname": "soe_mq_flag_keeper_junction"
+      },
+      "shadowmanSpawns": [
+        [
+          512,
+          -48,
+          96
+        ],
+        [
+          352,
+          256,
+          96
+        ],
+        [
+          96,
+          176,
+          96
+        ]
+      ]
+    },
+    {
+      "id": "footlight",
+      "phase": "g3",
+      "runtimeId": 2,
+      "sites": [
+        {
+          "index": 1,
+          "origin": [
+            864,
+            -96,
+            40
+          ],
+          "targetname": "soe_mq_flag_footlight_1",
+          "evidence": "just after first door from Junction"
+        },
+        {
+          "index": 2,
+          "origin": [
+            1168,
+            32,
+            40
+          ],
+          "targetname": "soe_mq_flag_footlight_2",
+          "evidence": "after second door among the cars"
+        }
+      ],
+      "flagKeeper": {
+        "origin": [
+          1656,
+          112,
+          48
+        ],
+        "targetname": "soe_mq_flag_keeper_footlight"
+      },
+      "shadowmanSpawns": [
+        [
+          928,
+          -192,
+          112
+        ],
+        [
+          1120,
+          176,
+          112
+        ],
+        [
+          1360,
+          -192,
+          112
+        ]
+      ]
+    },
+    {
+      "id": "waterfront",
+      "phase": "g4",
+      "runtimeId": 3,
+      "sites": [
+        {
+          "index": 1,
+          "origin": [
+            320,
+            -688,
+            40
+          ],
+          "targetname": "soe_mq_flag_waterfront_1",
+          "evidence": "just after first door from Junction"
+        },
+        {
+          "index": 2,
+          "origin": [
+            320,
+            -864,
+            -24
+          ],
+          "targetname": "soe_mq_flag_waterfront_2",
+          "evidence": "farther down before second door / Anvil ritual approach"
+        }
+      ],
+      "flagKeeper": {
+        "origin": [
+          -8,
+          -1088,
+          48
+        ],
+        "targetname": "soe_mq_flag_keeper_waterfront"
+      },
+      "shadowmanSpawns": [
+        [
+          256,
+          -752,
+          96
+        ],
+        [
+          480,
+          -848,
+          96
+        ],
+        [
+          160,
+          -960,
+          96
+        ]
+      ]
+    },
+    {
+      "id": "canals",
+      "phase": "g2",
+      "runtimeId": 4,
+      "sites": [
+        {
+          "index": 1,
+          "origin": [
+            320,
+            688,
+            40
+          ],
+          "targetname": "soe_mq_flag_canals_1",
+          "evidence": "just after first door from Junction"
+        },
+        {
+          "index": 2,
+          "origin": [
+            224,
+            944,
+            -48
+          ],
+          "targetname": "soe_mq_flag_canals_2",
+          "evidence": "before second access / ritual-site approach"
+        }
+      ],
+      "flagKeeper": {
+        "origin": [
+          -8,
+          1120,
+          160
+        ],
+        "targetname": "soe_mq_flag_keeper_canals"
+      },
+      "shadowmanSpawns": [
+        [
+          256,
+          752,
+          96
+        ],
+        [
+          432,
+          912,
+          96
+        ],
+        [
+          128,
+          1040,
+          96
+        ]
+      ]
+    }
+  ],
+  "acceptance": [
+    "exactly four Reborn circles exist with style bits 1,2,4,8",
+    "exactly four Reborn Keepers exist with player-slot styles 1..4",
+    "Nero book exists only in G1 ritual-room geometry",
+    "exactly one Flag spawn marker exists in G5 Rift",
+    "each flag district has exactly two sites with health/site indices 1 and 2",
+    "flag district runtime IDs remain Junction=1 Footlight=2 Waterfront=3 Canals=4",
+    "each district has one Flag Keeper using the same runtime district ID",
+    "each district has at least three Shadowman harassment spawn markers",
+    "all transforms remain provisional until merged-map traversal calibration"
+  ],
+  "references": [
+    "https://steamcommunity.com/sharedfiles/filedetails/?id=1716003126",
+    "https://steamcommunity.com/sharedfiles/filedetails/?id=550319350",
+    "https://codzombified.blogspot.com/2015/11/shadows-of-evil-complete-easter-egg_20.html"
+  ]
+}
