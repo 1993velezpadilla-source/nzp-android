@@ -336,6 +336,12 @@ void() SoE_FinaleComplete =
 
     soe_finale_complete = true;
 
+    // The Gateworm is gone at successful completion. Keep the visual/global
+    // state consistent instead of leaving a stale "present" flag after the
+    // quest has transitioned to COMPLETE.
+    soe_finale_gateworm_present = false;
+    soe_giant_gateworm_hit = true;
+
     // Completion can happen while the Gateworm is absent and rails are still
     // charged. Retire every transient finale timer/mask immediately so no
     // stale timeout or corruption cadence survives into post-quest play.
