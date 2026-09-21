@@ -31,6 +31,7 @@ include_lines = [
     "maps/soe/soe_entities.qc\n",
     "maps/soe/soe_perks.qc\n",
     "maps/soe/soe_tram.qc\n",
+    "maps/soe/soe_tram_mover.qc\n",
     "maps/soe/soe_specials.qc\n",
     "maps/soe/soe_widows_wine.qc\n",
     "maps/soe/soe_rift_encounters.qc\n",
