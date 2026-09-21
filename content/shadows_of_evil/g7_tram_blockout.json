@@ -1,0 +1,430 @@
+{
+  "schemaVersion": 1,
+  "map": "soe",
+  "phase": "G7",
+  "district": "tram_network",
+  "status": "provisional_blockout_spec",
+  "scalePolicy": "Clean-room functional rail network. Station spacing and speeds are provisional; quest timing and station topology are locked.",
+  "stationIds": {
+    "canal": 1,
+    "footlight": 2,
+    "waterfront": 3
+  },
+  "proposedBounds": {
+    "mins": [
+      -1024,
+      -1024,
+      -96
+    ],
+    "maxs": [
+      1024,
+      1024,
+      384
+    ]
+  },
+  "stations": [
+    {
+      "id": "canal",
+      "style": 1,
+      "marker": [
+        -760,
+        440,
+        0
+      ],
+      "platform": [
+        -864,
+        360,
+        -16,
+        -448,
+        720,
+        0
+      ]
+    },
+    {
+      "id": "footlight",
+      "style": 2,
+      "marker": [
+        600,
+        440,
+        0
+      ],
+      "platform": [
+        448,
+        360,
+        -16,
+        864,
+        720,
+        0
+      ]
+    },
+    {
+      "id": "waterfront",
+      "style": 3,
+      "marker": [
+        -80,
+        -800,
+        0
+      ],
+      "platform": [
+        -288,
+        -896,
+        -16,
+        288,
+        -512,
+        0
+      ]
+    }
+  ],
+  "hub": {
+    "id": "junction",
+    "marker": [
+      -80,
+      -48,
+      0
+    ],
+    "purpose": "all rides pass here; finale Gateworm collision point"
+  },
+  "tram": {
+    "classname": "soe_tram_mover",
+    "targetname": "soe_g7_tram",
+    "initialStation": 1,
+    "speed": 170,
+    "mins": [
+      -760,
+      440,
+      0
+    ],
+    "maxs": [
+      -600,
+      536,
+      88
+    ],
+    "cost": 500,
+    "riderCollision": "MOVETYPE_PUSH",
+    "route": "station -> Junction hub -> destination"
+  },
+  "buttons": [
+    {
+      "station": 1,
+      "destination": 2,
+      "origin": [
+        -704,
+        384,
+        40
+      ],
+      "cost": 500
+    },
+    {
+      "station": 1,
+      "destination": 3,
+      "origin": [
+        -656,
+        384,
+        40
+      ],
+      "cost": 500
+    },
+    {
+      "station": 2,
+      "destination": 1,
+      "origin": [
+        656,
+        384,
+        40
+      ],
+      "cost": 500
+    },
+    {
+      "station": 2,
+      "destination": 3,
+      "origin": [
+        704,
+        384,
+        40
+      ],
+      "cost": 500
+    },
+    {
+      "station": 3,
+      "destination": 1,
+      "origin": [
+        -56,
+        -560,
+        40
+      ],
+      "cost": 500
+    },
+    {
+      "station": 3,
+      "destination": 2,
+      "origin": [
+        56,
+        -560,
+        40
+      ],
+      "cost": 500
+    }
+  ],
+  "symbolWindows": [
+    {
+      "district": "canal",
+      "style": 1,
+      "origin": [
+        -420,
+        248,
+        112
+      ],
+      "viewSide": "left / circular-window side"
+    },
+    {
+      "district": "footlight",
+      "style": 2,
+      "origin": [
+        420,
+        248,
+        112
+      ],
+      "viewSide": "left / apartment-window side"
+    },
+    {
+      "district": "waterfront",
+      "style": 3,
+      "origin": [
+        0,
+        -344,
+        112
+      ],
+      "viewSide": "right / warehouse-window side"
+    }
+  ],
+  "finale": {
+    "stationBoxes": [
+      {
+        "district": "canal",
+        "style": 1,
+        "origin": [
+          -624,
+          604,
+          112
+        ],
+        "placement": "above back train door"
+      },
+      {
+        "district": "footlight",
+        "style": 2,
+        "origin": [
+          624,
+          604,
+          112
+        ],
+        "placement": "between station train doors"
+      },
+      {
+        "district": "waterfront",
+        "style": 3,
+        "origin": [
+          0,
+          -604,
+          112
+        ],
+        "placement": "above back train door"
+      }
+    ],
+    "trainHit": {
+      "classname": "soe_finale_train_hit",
+      "origin": [
+        0,
+        0,
+        48
+      ],
+      "targetname": "soe_g7_train_hit",
+      "target": "soe_g7_gateworm_visual"
+    },
+    "giantGateworm": {
+      "classname": "soe_finale_gateworm_visual",
+      "origin": [
+        0,
+        0,
+        64
+      ],
+      "targetname": "soe_g7_gateworm_visual"
+    },
+    "keepers": [
+      {
+        "style": 1,
+        "origin": [
+          -176,
+          112,
+          40
+        ]
+      },
+      {
+        "style": 2,
+        "origin": [
+          176,
+          112,
+          40
+        ]
+      },
+      {
+        "style": 3,
+        "origin": [
+          0,
+          -176,
+          40
+        ]
+      }
+    ],
+    "beastTorches": [
+      {
+        "origin": [
+          -320,
+          160,
+          32
+        ],
+        "districtApproach": "Canal"
+      },
+      {
+        "origin": [
+          320,
+          160,
+          32
+        ],
+        "districtApproach": "Footlight"
+      },
+      {
+        "origin": [
+          0,
+          -320,
+          32
+        ],
+        "districtApproach": "Waterfront"
+      }
+    ],
+    "cleanseWisps": [
+      [
+        -240,
+        0,
+        32
+      ],
+      [
+        240,
+        0,
+        32
+      ],
+      [
+        0,
+        224,
+        32
+      ],
+      [
+        0,
+        -240,
+        32
+      ],
+      [
+        -480,
+        320,
+        32
+      ],
+      [
+        480,
+        320,
+        32
+      ]
+    ],
+    "classicRule": "all 3 station boxes are shocked by Beasts while tram is moving",
+    "portableSoloRule": "soe_solo_finale 1 allows sequential station/keeper shocks",
+    "railWindowSeconds": 30,
+    "gatewormAbsentSeconds": 20
+  },
+  "detailAnchors": [
+    {
+      "classname": "info_notnull",
+      "origin": [
+        -640,
+        520,
+        48
+      ],
+      "targetname": "soe_g7_canal_phone_anchor"
+    },
+    {
+      "classname": "info_notnull",
+      "origin": [
+        640,
+        520,
+        48
+      ],
+      "targetname": "soe_g7_footlight_phone_anchor"
+    },
+    {
+      "classname": "info_notnull",
+      "origin": [
+        0,
+        -688,
+        48
+      ],
+      "targetname": "soe_g7_waterfront_phone_anchor"
+    },
+    {
+      "classname": "info_notnull",
+      "origin": [
+        -736,
+        640,
+        40
+      ],
+      "targetname": "soe_g7_canal_gobblegum_anchor"
+    },
+    {
+      "classname": "info_notnull",
+      "origin": [
+        736,
+        640,
+        40
+      ],
+      "targetname": "soe_g7_footlight_gobblegum_anchor"
+    },
+    {
+      "classname": "info_notnull",
+      "origin": [
+        192,
+        -816,
+        40
+      ],
+      "targetname": "soe_g7_waterfront_gobblegum_anchor"
+    },
+    {
+      "classname": "info_notnull",
+      "origin": [
+        -680,
+        472,
+        48
+      ],
+      "targetname": "soe_g7_bootlegger_tram_anchor",
+      "status": "moving wallbuy attachment deferred until cleared Bootlegger weapon/runtime exists"
+    }
+  ],
+  "acceptance": [
+    "Tram starts at Canal station and physically carries riders as a MOVETYPE_PUSH brush",
+    "every paid ride costs 500",
+    "every ride traverses Junction before reaching destination",
+    "two destinations are selectable from each of three stations",
+    "the Tram stops at the destination rather than looping continuously",
+    "three unique randomized symbol values are exposed through Canal/Footlight/Waterfront symbol-window entities",
+    "Canal symbol window uses the documented left/circular-window side",
+    "Waterfront symbol window uses the documented right/warehouse side",
+    "Footlight symbol window uses the documented left/apartment side",
+    "classic finale station boxes require the Tram to be moving",
+    "all three finale station boxes set a shared 30-second rail window",
+    "a Junction hub pass invokes the finale train-hit entity",
+    "giant Gateworm visual disappears after valid Tram hit and returns after failed 20-second Keeper window",
+    "three Junction finale Keepers must all be shocked while Gateworm is absent",
+    "curse torches and white cleanse wisps exist for finale pressure loop",
+    "G7 does not invent a Bootlegger substitute weapon"
+  ],
+  "references": [
+    "https://steamcommunity.com/sharedfiles/filedetails/?id=563005850",
+    "https://www.codzombie.com/maps/shadows-of-evil",
+    "https://www.codzombiesguides.com/main-quests/black-ops-3/shadows-of-evil/"
+  ]
+}
