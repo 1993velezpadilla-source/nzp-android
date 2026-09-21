@@ -329,6 +329,13 @@ void() soe_finale_train_hit =
     setsize(self, '0 0 0', '0 0 0');
 };
 
+void() SoE_FinaleResetRailCycle =
+{
+    soe_finale_station_mask = 0;
+    soe_finale_keeper_mask = 0;
+    soe_finale_rail_window_until = 0;
+};
+
 void() SoE_FinaleComplete =
 {
     if (soe_finale_complete)
@@ -534,13 +541,6 @@ void() SoE_FinaleUpdateCorruption =
 
         player = find(player, classname, "player");
     }
-};
-
-void() SoE_FinaleResetRailCycle =
-{
-    soe_finale_station_mask = 0;
-    soe_finale_keeper_mask = 0;
-    soe_finale_rail_window_until = 0;
 };
 
 void() SoE_FinaleFrame =
