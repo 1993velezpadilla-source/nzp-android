@@ -52,7 +52,8 @@
       "repeatIntervalSeconds": "30-45",
       "whiteMist": "cleanses corruption",
       "normalFailure": "player down",
-      "beastFailure": "removes Beast meter chunk"
+      "beastFailure": "removes 40 percent of the Beast meter",
+      "beastFailureMeterPercent": 40
     },
     "enemyOverride": "normal zombies stop; purple-mouth Margwas spawn",
     "beastOverride": "infinite time but Margwas attack and damage Beast meter",
