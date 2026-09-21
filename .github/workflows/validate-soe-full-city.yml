@@ -70,7 +70,20 @@ jobs:
         run: |
           test -s upstream-assets/common/maps/soe.bsp
           test -s upstream-assets/common/maps/soe.nsz
-          grep -q '^number_of_zones: 32$' upstream-assets/common/maps/soe.nsz
+          grep -q '^number_of_zones: 32      - name: Upload integrated Morg City runtime artifact
+        uses: actions/upload-artifact@v4
+        with:
+          name: soe-integrated-runtime
+          path: |
+            upstream-assets/common/maps/soe.bsp
+            upstream-assets/common/maps/soe.nsz
+            upstream-assets/source/maps/soe/soe.map
+            upstream-assets/soe-vhlt.log
+          if-no-files-found: error
+ upstream-assets/common/maps/soe.nsz
+
+      - name: Validate generated NZP spawn-zone runtime file
+        run: python tools/validate_soe_nsz.py --file upstream-assets/common/maps/soe.nsz --expected-zones 32
 
       - name: Upload integrated Morg City runtime artifact
         uses: actions/upload-artifact@v4
