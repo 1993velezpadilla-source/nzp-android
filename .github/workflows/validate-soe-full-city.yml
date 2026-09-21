@@ -59,7 +59,12 @@ jobs:
 
       - name: Compile integrated runtime map package
         working-directory: upstream-assets
-        run: bash tools/compile-maps.sh -m soe/soe.map --zone-tool-path "${GITHUB_WORKSPACE}/spawn-zone-tool"
+        run: |
+          set -o pipefail
+          bash tools/compile-maps.sh -m soe/soe.map --zone-tool-path "${GITHUB_WORKSPACE}/spawn-zone-tool" 2>&1 | tee soe-vhlt.log
+
+      - name: Enforce integrated mobile compile budgets
+        run: python tools/validate_soe_compile_budget.py --log upstream-assets/soe-vhlt.log
 
       - name: Require integrated BSP and NSZ output
         run: |
@@ -75,4 +80,5 @@ jobs:
             upstream-assets/common/maps/soe.bsp
             upstream-assets/common/maps/soe.nsz
             upstream-assets/source/maps/soe/soe.map
+            upstream-assets/soe-vhlt.log
           if-no-files-found: error
