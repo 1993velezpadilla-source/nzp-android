@@ -130,7 +130,44 @@ The following are independent guards:
 
 The full-city workflow regenerates `soe.map`, validates deterministic output,
 runs an integration audit, builds NZ:P WADs, compiles with the pinned VHLT
-pipeline, and requires a non-empty `soe.bsp`.
+pipeline, generates NZ:P spawn-zone runtime data with the pinned
+`spawn-zone-tool`, and requires both non-empty `soe.bsp` and `soe.nsz`.
+
+### First integrated runtime package green
+
+On 2026-09-21, workflow run `35553033084` completed successfully at commit
+`07c8144ffac41aba68b55f78ae2e7adf94de244f`.
+
+Published artifact: `soe-integrated-runtime` (artifact id `10619545472`,
+506,305 bytes, SHA-256
+`c71c102d691761812c220d7eb72993bd231bdde06e938c0aed1925256a4a001d`).
+
+The artifact contains:
+
+- `common/maps/soe.bsp`;
+- `common/maps/soe.nsz`;
+- generated `source/maps/soe/soe.map`.
+
+Smoke-build metrics from the successful run:
+
+- 5,358 BSP faces;
+- 3,854 clipnodes after reduction;
+- 957 planes after reduction;
+- 2 light styles;
+- 32 generated NZ:P spawn zones;
+- fast VIS / fast zero-bounce RAD for CI blockout validation.
+
+The integrated map currently reaches the stock NZ:P `MAX_ZONES=32` ceiling.
+The SoE QuakeC overlay therefore raises `MAX_ZONES` to 64, while the
+full-city validator enforces unique zone names, valid/symmetric adjacency,
+bounded adjacency/way-target counts, non-orphaned zombie spawn targets, and
+real door `wayTarget` resolution. The three district entry zones share their
+1000-point Junction door wayTargets so closed doors suppress adjacent-zone
+spawns correctly.
+
+CI smoke lighting is intentionally not release lighting. Final visual
+verification must use the release/full VIS and higher-quality RAD profile after
+topology, occlusion, art, and mobile performance budgets stabilize.
 
 ## Current calibration status
 
