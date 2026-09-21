@@ -55,9 +55,12 @@ void() SoE_TramMoverAtHub =
 
     entity destination = SoE_FindTramStationMarker(self.soe_tram_move_destination);
     if (destination == world) {
+        // The destination marker may disappear between departure and the hub.
+        // Abort with the same complete cleanup used by pre-departure failure.
         soe_tram_in_transit = false;
         soe_tram_destination = 0;
         self.soe_tram_move_destination = 0;
+        self.velocity = '0 0 0';
         return;
     }
 
