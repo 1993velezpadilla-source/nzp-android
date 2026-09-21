@@ -231,7 +231,7 @@
     {
       "id": "keeper_shocks",
       "requires": [
-        "station_shocks"
+        "train_gateworm_hit"
       ],
       "objective": "Shock Junction Keepers before Gateworm returns"
     },
