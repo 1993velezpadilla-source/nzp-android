@@ -336,6 +336,14 @@ void() SoE_FinaleComplete =
 
     soe_finale_complete = true;
 
+    // Completion can happen while the Gateworm is absent and rails are still
+    // charged. Retire every transient finale timer/mask immediately so no
+    // stale timeout or corruption cadence survives into post-quest play.
+    SoE_FinaleResetRailCycle();
+    soe_finale_gateworm_absent_until = 0;
+    soe_finale_next_margwa_at = 0;
+    soe_finale_next_corruption_at = 0;
+
     // Fire ending/cutscene/sky targets before changing the global quest stage.
     SoE_FireEntityTargets(self);
 
