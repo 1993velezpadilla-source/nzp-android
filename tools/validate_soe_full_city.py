@@ -267,6 +267,27 @@ if '"targetname" "soe_full_tram_junction_hub"' not in text:
 if '"target" "soe_full_train_hit"' not in text:
     raise SystemExit("full-city Junction hub no longer fires finale train collision")
 
+# Resolve mapper target graph before runtime. Every SoE target/target2 must
+# resolve to at least one entity targetname in the assembled map. This catches
+# cross-phase links that BSP/NSZ compilation cannot validate.
+all_targetnames = {
+    p.get("targetname", "") for p in entity_props if p.get("targetname")
+}
+unresolved_targets = []
+for p in entity_props:
+    cls = p.get("classname", "")
+    if not cls.startswith("soe_"):
+        continue
+    for key in ("target", "target2"):
+        value = p.get(key, "")
+        if value and value not in all_targetnames:
+            unresolved_targets.append((cls, key, value, p.get("targetname", "")))
+if unresolved_targets:
+    sample = ", ".join(
+        f"{cls}.{key}->{value}" for cls, key, value, _ in unresolved_targets[:12]
+    )
+    raise SystemExit(f"unresolved SoE target graph edge(s): {sample}")
+
 # All generated main-quest/full-map targetnames are unique.
 names=re.findall(r'"targetname" "(soe_(?:mq|full)_[^"]+)"', text)
 dupes=[name for name,count in Counter(names).items() if count != 1]
