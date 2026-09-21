@@ -38,6 +38,33 @@ def entity_keys(block: str):
     return dict(pairs)
 
 
+def parse_origin(value: str):
+    parts = value.split()
+    if len(parts) != 3:
+        raise SystemExit(f"invalid origin: {value}")
+    return tuple(float(v) for v in parts)
+
+
+def brush_aabb(block: str):
+    coords = [
+        tuple(float(v) for v in match)
+        for match in re.findall(
+            r'\(\s*(-?\d+(?:\.\d+)?)\s+(-?\d+(?:\.\d+)?)\s+(-?\d+(?:\.\d+)?)\s*\)',
+            block,
+        )
+    ]
+    if not coords:
+        return None
+    mins = tuple(min(p[i] for p in coords) for i in range(3))
+    maxs = tuple(max(p[i] for p in coords) for i in range(3))
+    return mins, maxs
+
+
+def point_in_aabb(point, aabb, tolerance=0.01):
+    mins, maxs = aabb
+    return all(mins[i] - tolerance <= point[i] <= maxs[i] + tolerance for i in range(3))
+
+
 entity_blocks = split_top_entities(text)
 entity_props = [entity_keys(block) for block in entity_blocks]
 
@@ -127,6 +154,54 @@ while frontier:
 unreachable = sorted(set(zone_by_name) - reachable)
 if unreachable:
     raise SystemExit(f"spawn-zone graph has unreachable island(s): {unreachable}")
+
+# A correct targetname is not enough: transformed zombie spawns must still
+# physically live inside the spawn-zone volume that owns that target.
+zone_blocks = [
+    (entity_keys(block), block)
+    for block in entity_blocks
+    if entity_keys(block).get("classname") == "spawn_zone"
+]
+zones_by_target = {}
+all_zone_aabbs = []
+for p, block in zone_blocks:
+    aabb = brush_aabb(block)
+    if aabb is None:
+        raise SystemExit(f"spawn zone has no brush geometry: {p.get('zone_name', '<unnamed>')}")
+    all_zone_aabbs.append((p.get("zone_name", ""), aabb))
+    target = p.get("zone_target", "")
+    if target:
+        zones_by_target.setdefault(target, []).append((p.get("zone_name", ""), aabb))
+
+for p in entity_props:
+    if p.get("classname") != "spawn_zombie":
+        continue
+    target = p.get("targetname", "")
+    origin_value = p.get("origin", "")
+    if not target or not origin_value:
+        raise SystemExit("spawn_zombie missing targetname or origin")
+    owners = zones_by_target.get(target, [])
+    if len(owners) != 1:
+        raise SystemExit(f"spawn target must resolve to exactly one zone: {target} -> {len(owners)}")
+    zone_name_value, aabb = owners[0]
+    origin = parse_origin(origin_value)
+    if not point_in_aabb(origin, aabb):
+        raise SystemExit(
+            f"zombie spawn {origin_value} target {target} lies outside zone {zone_name_value} "
+            f"AABB {aabb}"
+        )
+
+# Match spawns also need to start inside the playable zone graph.
+for p in entity_props:
+    if not p.get("classname", "").startswith("info_player_"):
+        continue
+    origin_value = p.get("origin", "")
+    if not origin_value:
+        raise SystemExit(f"{p.get('classname')} missing origin")
+    origin = parse_origin(origin_value)
+    containing = [name for name, aabb in all_zone_aabbs if point_in_aabb(origin, aabb)]
+    if not containing:
+        raise SystemExit(f"player spawn {origin_value} is outside every runtime spawn zone")
 
 zone_targets = {p.get("zone_target", "") for p in zone_props if p.get("zone_target")}
 spawn_targets = {
