@@ -155,15 +155,23 @@ void() soe_tram_mover =
 
 void() soe_tram_station_marker =
 {
+    // Pure server-side locator. Never give path markers a render model.
     self.movetype = MOVETYPE_NONE;
     self.solid = SOLID_NOT;
+    self.model = "";
+    self.modelindex = 0;
+    self.effects = 0;
     setsize(self, '0 0 0', '0 0 0');
 };
 
 void() soe_tram_hub_marker =
 {
+    // Pure server-side locator. Never give path markers a render model.
     self.movetype = MOVETYPE_NONE;
     self.solid = SOLID_NOT;
+    self.model = "";
+    self.modelindex = 0;
+    self.effects = 0;
     setsize(self, '0 0 0', '0 0 0');
 };
 
