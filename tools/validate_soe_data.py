@@ -555,6 +555,13 @@ if data["quest"]["modes"]["portableSolo"]["finaleSynchronizationWindowSeconds"] 
     raise SystemExit("portable finale sync window must match 30-second rail runtime")
 
 quest_by_id = {state["id"]: state for state in states}
+for flag_state in ("flag_nero", "flag_jackie", "flag_jessica", "flag_floyd"):
+    if quest_by_id[flag_state]["requires"] != ["book_trigger"]:
+        raise SystemExit(f"{flag_state} must remain independently selectable after the Book")
+if quest_by_id["keepers_ready"]["requires"] != [
+    "flag_nero", "flag_jackie", "flag_jessica", "flag_floyd"
+]:
+    raise SystemExit("Shadowman Keepers must require all four district flag deliveries")
 if quest_by_id["station_shocks"]["requires"] != ["infinite_margwa_phase"]:
     raise SystemExit("station shocks must precede the tram Gateworm hit")
 if quest_by_id["train_gateworm_hit"]["requires"] != ["station_shocks"]:
