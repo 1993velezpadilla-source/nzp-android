@@ -155,8 +155,10 @@ unreachable = sorted(set(zone_by_name) - reachable)
 if unreachable:
     raise SystemExit(f"spawn-zone graph has unreachable island(s): {unreachable}")
 
-# A correct targetname is not enough: transformed zombie spawns must still
-# physically live inside the spawn-zone volume that owns that target.
+# A correct targetname is not enough: transformed zombie spawns must stay
+# physically near the spawn-zone volume that owns that target. Window/barricade
+# spawns intentionally sit just outside the player zone, so allow a bounded
+# 96-unit exterior apron while still catching broken transforms.
 zone_blocks = [
     (entity_keys(block), block)
     for block in entity_blocks
@@ -185,10 +187,10 @@ for p in entity_props:
         raise SystemExit(f"spawn target must resolve to exactly one zone: {target} -> {len(owners)}")
     zone_name_value, aabb = owners[0]
     origin = parse_origin(origin_value)
-    if not point_in_aabb(origin, aabb):
+    if not point_in_aabb(origin, aabb, tolerance=96):
         raise SystemExit(
-            f"zombie spawn {origin_value} target {target} lies outside zone {zone_name_value} "
-            f"AABB {aabb}"
+            f"zombie spawn {origin_value} target {target} is farther than the 96-unit "
+            f"spawn apron for zone {zone_name_value} AABB {aabb}"
         )
 
 # Match spawns also need to start inside the playable zone graph.
