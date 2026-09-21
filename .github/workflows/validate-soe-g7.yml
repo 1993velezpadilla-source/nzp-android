@@ -1,0 +1,41 @@
+name: Validate Shadows of Evil G7 Tram blockout
+
+on:
+  push:
+    branches:
+      - main
+      - feature/shadows-of-evil-completion
+  pull_request:
+
+jobs:
+  validate-and-compile:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout project
+        uses: actions/checkout@v4
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+      - name: Generate Tram G7 map
+        run: python scripts/generate_soe_g7_tram.py
+      - name: Verify generated map is deterministic
+        run: python scripts/generate_soe_g7_tram.py --check
+      - name: Static G7 map validation
+        run: python tools/validate_soe_g7_map.py
+      - name: Checkout pinned NZ:P assets
+        uses: actions/checkout@v4
+        with:
+          repository: nzp-team/assets
+          ref: c8135a66e00bb64577912fbf792f8fef7f47658e
+          path: upstream-assets
+      - name: Apply project asset overlay
+        run: python scripts/apply_soe_asset_overlay.py --assets-root upstream-assets
+      - name: Compile NZ:P WADs
+        working-directory: upstream-assets
+        run: bash tools/compile-wads.sh
+      - name: Compile G7 with NZ:P VHLT pipeline
+        working-directory: upstream-assets
+        run: bash tools/compile-maps.sh -m soe_g7/soe_g7.map
+      - name: Require BSP output
+        run: test -s upstream-assets/common/maps/soe_g7.bsp
