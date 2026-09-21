@@ -1,0 +1,137 @@
+{
+  "provenance": {
+    "source": "Modern Warfare 3 Weapon Stats by Marvel4",
+    "spreadsheet_url": "https://docs.google.com/spreadsheets/d/19mKj_ilXQwLDwpglST7DosYrOhWEOKOqIRcexJCt39I/edit",
+    "spreadsheet_id": "19mKj_ilXQwLDwpglST7DosYrOhWEOKOqIRcexJCt39I",
+    "observed_at": "2026-09-21",
+    "source_type": "community technical measurement/reference"
+  },
+  "count": 25,
+  "attachments": [
+    {
+      "name": "Red Dot Sight",
+      "effect": "ADS Time = 0.3, FOV = 50",
+      "source_row": 4
+    },
+    {
+      "name": "Red Dot Sight (SMG, MP)",
+      "effect": "ADS Time = 0.2, FOV = 50",
+      "source_row": 5
+    },
+    {
+      "name": "Red Dot Sight (LMG)",
+      "effect": "ADS Time = 0.38, FOV = 50",
+      "source_row": 6
+    },
+    {
+      "name": "Holographic Sight",
+      "effect": "ADS Time = 0.3, FOV = 45",
+      "source_row": 7
+    },
+    {
+      "name": "Holographic Sight (SMG, MP)",
+      "effect": "ADS Time = 0.2, FOV = 45",
+      "source_row": 8
+    },
+    {
+      "name": "Holographic Sight (LMG)",
+      "effect": "ADS Time = 0.38, FOV = 45",
+      "source_row": 9
+    },
+    {
+      "name": "ACOG",
+      "effect": "ADS Time = 0.38, FOV = 30",
+      "source_row": 10
+    },
+    {
+      "name": "ACOG (SMG)",
+      "effect": "ADS Time = 0.25, FOV = 30",
+      "source_row": 11
+    },
+    {
+      "name": "Hybrid Sight",
+      "effect": "ADS Time = 0.38/0.35, FOV = 30/55",
+      "source_row": 12
+    },
+    {
+      "name": "HAMR Scope",
+      "effect": "ADS Time = 0.25/0.35, FOV = 30/50",
+      "source_row": 13
+    },
+    {
+      "name": "Thermal",
+      "effect": "ADS Time = 0.38, FOV = 30, Idle Speed * 2",
+      "source_row": 14
+    },
+    {
+      "name": "Thermal (SMG)",
+      "effect": "ADS Time = 0.25, FOV = 30, Idle Speed * 2",
+      "source_row": 15
+    },
+    {
+      "name": "Variable Zoom",
+      "effect": "FOV = 8/15/25, Idle Speed * 2",
+      "source_row": 16
+    },
+    {
+      "name": "Suppressor",
+      "effect": "Range * 0.75",
+      "source_row": 17
+    },
+    {
+      "name": "Rapid Fire",
+      "effect": "Fire Time * 0.8",
+      "source_row": 18
+    },
+    {
+      "name": "Extended Mags",
+      "effect": "Max Ammo * 1.5, Start Ammo * 1.5, Mag Size * 1.5",
+      "source_row": 19
+    },
+    {
+      "name": "Grip",
+      "effect": "Viewkick * 0.9, Centerspeed * 1.25",
+      "source_row": 20
+    },
+    {
+      "name": "Akimbo",
+      "effect": "Fire Time * 1.25",
+      "source_row": 21
+    },
+    {
+      "name": "Kick",
+      "effect": "Gunkick * 0.9, Viewkick * 0.9",
+      "source_row": 23
+    },
+    {
+      "name": "Focus",
+      "effect": "Flinch * 0.5",
+      "source_row": 24
+    },
+    {
+      "name": "Stability",
+      "effect": "Idle Amount * 0.75, Idle Speed * 0.75",
+      "source_row": 25
+    },
+    {
+      "name": "Melee",
+      "effect": "Melee Time * 0.65",
+      "source_row": 26
+    },
+    {
+      "name": "Speed",
+      "effect": "Movement Speed * 1.1",
+      "source_row": 27
+    },
+    {
+      "name": "Damage",
+      "effect": "Damage * 1.4",
+      "source_row": 28
+    },
+    {
+      "name": "Range",
+      "effect": "Range * 1.25",
+      "source_row": 29
+    }
+  ]
+}
