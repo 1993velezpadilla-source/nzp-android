@@ -102,6 +102,14 @@ runtime_guards = {
         state_qc,
         "soe_quest_stage = SOE_QUEST_PAP_OPEN;",
     ),
+    "quest reset clears finale subsystem state": (
+        state_qc,
+        "SoE_ResetFinale();",
+    ),
+    "quest reset clears Tram subsystem state": (
+        state_qc,
+        "SoE_ResetTransportState();",
+    ),
     "finale start advances stage": (
         state_qc,
         "soe_quest_stage = SOE_QUEST_FINALE;",
