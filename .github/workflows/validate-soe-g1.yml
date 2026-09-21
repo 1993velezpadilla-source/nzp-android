@@ -19,7 +19,10 @@ jobs:
         with:
           python-version: "3.12"
 
-      - name: Verify generated map is current
+      - name: Generate Easy Street / Junction G1 map
+        run: python scripts/generate_soe_g1_blockout.py
+
+      - name: Verify generated map is deterministic
         run: python scripts/generate_soe_g1_blockout.py --check
 
       - name: Static G1 map validation
