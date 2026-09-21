@@ -508,6 +508,13 @@ void() SoE_FinaleUpdateCorruption =
     }
 };
 
+void() SoE_FinaleResetRailCycle =
+{
+    soe_finale_station_mask = 0;
+    soe_finale_keeper_mask = 0;
+    soe_finale_rail_window_until = 0;
+};
+
 void() SoE_FinaleFrame =
 {
     if (!soe_finale_active)
@@ -537,9 +544,7 @@ void() SoE_FinaleFrame =
     if (soe_finale_station_mask != 0 &&
         soe_finale_rail_window_until > 0 &&
         time >= soe_finale_rail_window_until) {
-        soe_finale_station_mask = 0;
-        soe_finale_keeper_mask = 0;
-        soe_finale_rail_window_until = 0;
+        SoE_FinaleResetRailCycle();
     }
 
     // Failed train opening: Gateworm returns and the rail cycle must repeat.
@@ -548,9 +553,7 @@ void() SoE_FinaleFrame =
         time >= soe_finale_gateworm_absent_until) {
         soe_finale_gateworm_present = true;
         soe_giant_gateworm_hit = false;
-        soe_finale_keeper_mask = 0;
-        soe_finale_station_mask = 0;
-        soe_finale_rail_window_until = 0;
+        SoE_FinaleResetRailCycle();
         soe_finale_gateworm_absent_until = 0;
     }
 };
