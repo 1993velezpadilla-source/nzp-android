@@ -289,6 +289,10 @@ runtime_guards = {
         finale_qc,
         "if (soe_finale_gateworm_present ||",
     ),
+    "duplicate Keeper shocks do not advance finale": (
+        finale_qc,
+        "if (soe_finale_keeper_mask & keeper_bit)",
+    ),
     "all three Keepers finish finale": (
         finale_qc,
         "if (soe_finale_keeper_mask == 7)",
