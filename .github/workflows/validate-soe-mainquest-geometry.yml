@@ -1,0 +1,31 @@
+name: Validate Shadows of Evil main-quest geometry
+
+on:
+  push:
+    branches:
+      - main
+      - feature/shadows-of-evil-completion
+  pull_request:
+
+jobs:
+  quest-geometry:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout project
+        uses: actions/checkout@v4
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+      - name: Generate G1 Easy Street / Junction
+        run: python scripts/generate_soe_g1_blockout.py
+      - name: Generate G2 Canals
+        run: python scripts/generate_soe_g2_canal.py
+      - name: Generate G3 Footlight
+        run: python scripts/generate_soe_g3_footlight.py
+      - name: Generate G4 Waterfront
+        run: python scripts/generate_soe_g4_waterfront.py
+      - name: Generate G5 Rift
+        run: python scripts/generate_soe_g5_rift.py
+      - name: Validate physical main-quest coverage
+        run: python tools/validate_soe_mainquest_geometry.py
