@@ -274,6 +274,10 @@ runtime_guards = {
         tram_qc,
         "if (soe_tram_in_transit)\n        return;",
     ),
+    "physical Tram arrival rejects stale callbacks": (
+        tram_mover_qc,
+        "soe_tram_destination != arrived",
+    ),
     "Tram mid-route failure fully stops mover velocity": (
         tram_mover_qc,
         "self.velocity = '0 0 0';",
@@ -317,6 +321,10 @@ runtime_guards = {
     "all three Keepers finish finale": (
         finale_qc,
         "if (soe_finale_keeper_mask == 7)",
+    ),
+    "finale completion keeps Gateworm removed": (
+        finale_qc,
+        "soe_finale_gateworm_present = false;",
     ),
     "finale completion retires rail-cycle state": (
         finale_qc,
