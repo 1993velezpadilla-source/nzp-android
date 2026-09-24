@@ -40,11 +40,11 @@ public final class MainActivity extends Activity {
 
         final TextView status = new TextView(this);
         status.setText(
-            "IW4 NATIVE ARM64  •  TEST WORLD\n" +
+            "IW4 NATIVE ARM64  •  SANCTUM PREVIEW  •  NZP TOUCH\n" +
             bootStatus
         );
         status.setTextColor(Color.argb(185, 255, 255, 255));
-        status.setTextSize(11.0f);
+        status.setTextSize(10.0f);
         status.setGravity(Gravity.START);
         status.setPadding(18, 12, 18, 12);
         status.setBackgroundColor(Color.argb(90, 0, 0, 0));
