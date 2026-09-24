@@ -12,15 +12,21 @@ import javax.microedition.khronos.egl.EGLConfig;
 import javax.microedition.khronos.opengles.GL10;
 
 public final class GameSurfaceView extends GLSurfaceView implements GLSurfaceView.Renderer {
+    public interface StatusListener {
+        void onStatus(String text, boolean good);
+    }
+
     private static final String TAG = "IW4NativeSurface";
     private static final String SANCTUM_ASSET = "maps/sanctum_preview.snp1";
 
     private final byte[] sanctumPreview;
+    private final StatusListener statusListener;
 
     private float moveX;
     private float moveY;
     private float lookDx;
     private float lookDy;
+
     private boolean fire;
     private boolean ads;
     private boolean jump;
@@ -30,11 +36,13 @@ public final class GameSurfaceView extends GLSurfaceView implements GLSurfaceVie
     private boolean grenade;
     private boolean slide;
     private boolean pause;
+
     private volatile boolean rendererReady;
     private volatile boolean sanctumLoaded;
 
-    public GameSurfaceView(Context context) {
+    public GameSurfaceView(Context context, StatusListener statusListener) {
         super(context);
+        this.statusListener = statusListener;
         sanctumPreview = loadAsset(context, SANCTUM_ASSET);
 
         setEGLContextClientVersion(3);
@@ -90,20 +98,25 @@ public final class GameSurfaceView extends GLSurfaceView implements GLSurfaceVie
 
         if (!rendererReady) {
             Log.e(TAG, "Native GLES3 renderer initialization failed");
+            publishStatus("RENDERER INIT FAIL", false);
             return;
         }
 
         if (sanctumPreview == null || sanctumPreview.length == 0) {
             Log.e(TAG, "Packaged Sanctum preview asset is missing; using fallback room");
+            publishStatus("SANCTUM ASSET MISSING  •  FALLBACK ROOM", false);
             return;
         }
 
         sanctumLoaded = NativeBridge.rendererLoadSanctum(sanctumPreview);
-        Log.i(
-            TAG,
-            "Sanctum upload " + (sanctumLoaded ? "PASS" : "FAIL") +
-            " bytes=" + sanctumPreview.length
-        );
+
+        final String status =
+            sanctumLoaded
+                ? "SANCTUM 24K PASS  •  " + sanctumPreview.length + " BYTES"
+                : "SANCTUM LOAD FAIL  •  FALLBACK ROOM";
+
+        Log.i(TAG, status);
+        publishStatus(status, sanctumLoaded);
     }
 
     @Override
@@ -117,6 +130,7 @@ public final class GameSurfaceView extends GLSurfaceView implements GLSurfaceVie
         final float my;
         final float dx;
         final float dy;
+
         final boolean fireNow;
         final boolean adsNow;
         final boolean jumpNow;
@@ -132,8 +146,10 @@ public final class GameSurfaceView extends GLSurfaceView implements GLSurfaceVie
             my = moveY;
             dx = lookDx;
             dy = lookDy;
+
             lookDx = 0.0f;
             lookDy = 0.0f;
+
             fireNow = fire;
             adsNow = ads;
             jumpNow = jump;
@@ -146,15 +162,29 @@ public final class GameSurfaceView extends GLSurfaceView implements GLSurfaceVie
         }
 
         NativeBridge.rendererFrame(
-            mx, my, dx, dy,
-            fireNow, adsNow, jumpNow,
-            reloadNow, useNow, knifeNow,
-            grenadeNow, slideNow, pauseNow
+            mx,
+            my,
+            dx,
+            dy,
+            fireNow,
+            adsNow,
+            jumpNow,
+            reloadNow,
+            useNow,
+            knifeNow,
+            grenadeNow,
+            slideNow,
+            pauseNow
         );
     }
 
     public void shutdown() {
         queueEvent(NativeBridge::rendererShutdown);
+    }
+
+    private void publishStatus(String text, boolean good) {
+        if (statusListener == null) return;
+        post(() -> statusListener.onStatus(text, good));
     }
 
     private static byte[] loadAsset(Context context, String path) {
