@@ -6,10 +6,10 @@
 #include "iw4native/sanctum_preview.hpp"
 #include "iw4native/virtual_filesystem.hpp"
 
-#include <cassert>
 #include <cmath>
 #include <cstddef>
 #include <cstdint>
+#include <cstdlib>
 #include <filesystem>
 #include <fstream>
 #include <iostream>
@@ -17,41 +17,54 @@
 #include <string>
 #include <vector>
 
+namespace {
+
+void check(bool condition, const char* expression, const char* file, int line) {
+    if (condition) return;
+    std::cerr << "CHECK FAILED: " << expression
+              << " at " << file << ":" << line << "\n";
+    std::abort();
+}
+
+} // namespace
+
+#define CHECK(expression) check(static_cast<bool>(expression), #expression, __FILE__, __LINE__)
+
 int main() {
     {
         iw4native::MemoryArena arena(1024);
         auto* a = arena.allocate(1, 64);
         auto* b = arena.allocate(32, 16);
-        assert(a != nullptr);
-        assert(b != nullptr);
-        assert(reinterpret_cast<std::uintptr_t>(a) % 64 == 0);
-        assert(reinterpret_cast<std::uintptr_t>(b) % 16 == 0);
-        assert(arena.used() <= arena.capacity());
+        CHECK(a != nullptr);
+        CHECK(b != nullptr);
+        CHECK(reinterpret_cast<std::uintptr_t>(a) % 64 == 0);
+        CHECK(reinterpret_cast<std::uintptr_t>(b) % 16 == 0);
+        CHECK(arena.used() <= arena.capacity());
         arena.reset();
-        assert(arena.used() == 0);
+        CHECK(arena.used() == 0);
     }
 
     {
         iw4native::DvarRegistry dvars;
         dvars.registerString("mapname", "boot");
         dvars.registerInt("com_maxfps", 60);
-        assert(dvars.size() == 2);
-        assert(dvars.setString("mapname", "xziel_sanctum"));
-        assert(dvars.getString("mapname").value() == "xziel_sanctum");
-        assert(!dvars.setInt("mapname", 5));
+        CHECK(dvars.size() == 2);
+        CHECK(dvars.setString("mapname", "xziel_sanctum"));
+        CHECK(dvars.getString("mapname").value() == "xziel_sanctum");
+        CHECK(!dvars.setInt("mapname", 5));
     }
 
     {
         int called = 0;
         iw4native::CommandBuffer buffer;
         buffer.addCommand("ping", [&](const std::vector<std::string>& args) {
-            assert(args.size() == 1);
-            assert(args[0] == "pong");
+            CHECK(args.size() == 1);
+            CHECK(args[0] == "pong");
             ++called;
         });
         buffer.enqueue("ping pong");
-        assert(buffer.executeAll() == 1);
-        assert(called == 1);
+        CHECK(buffer.executeAll() == 1);
+        CHECK(called == 1);
     }
 
     {
@@ -60,10 +73,10 @@ int main() {
         record.type = iw4native::AssetType::World;
         record.name = "xziel_sanctum";
         record.payload = {std::byte{7}, std::byte{8}};
-        assert(assets.insert(std::move(record)));
-        assert(!assets.insert({iw4native::AssetType::World, "xziel_sanctum", {}}));
-        assert(assets.contains(iw4native::AssetType::World, "xziel_sanctum"));
-        assert(assets.find(iw4native::AssetType::World, "xziel_sanctum")->payload.size() == 2);
+        CHECK(assets.insert(std::move(record)));
+        CHECK(!assets.insert({iw4native::AssetType::World, "xziel_sanctum", {}}));
+        CHECK(assets.contains(iw4native::AssetType::World, "xziel_sanctum"));
+        CHECK(assets.find(iw4native::AssetType::World, "xziel_sanctum")->payload.size() == 2);
     }
 
     {
@@ -77,13 +90,13 @@ int main() {
         }
 
         iw4native::VirtualFileSystem vfs(tempRoot);
-        assert(vfs.exists("maps/sanctum.bin"));
-        assert(!vfs.exists("../escape.bin"));
-        assert(!vfs.readBinary("../escape.bin"));
+        CHECK(vfs.exists("maps/sanctum.bin"));
+        CHECK(!vfs.exists("../escape.bin"));
+        CHECK(!vfs.readBinary("../escape.bin"));
 
         const auto bytes = vfs.readBinary("maps/sanctum.bin");
-        assert(bytes);
-        assert(bytes->size() == 5);
+        CHECK(bytes);
+        CHECK(bytes->size() == 5);
 
         std::filesystem::remove_all(tempRoot);
     }
@@ -103,7 +116,7 @@ int main() {
         };
         const auto pushF32 = [&](float value) {
             std::uint32_t bits = 0;
-            static_assert(sizeof(bits) == sizeof(value));
+            static_CHECK(sizeof(bits) == sizeof(value));
             std::memcpy(&bits, &value, sizeof(bits));
             pushU32(bits);
         };
@@ -129,46 +142,46 @@ int main() {
         std::vector<iw4native::PreviewVertex> vertices;
         iw4native::PreviewSceneInfo scene;
         std::string error;
-        assert(iw4native::decodeSanctumPreview(bytes, vertices, scene, &error));
-        assert(error.empty());
-        assert(vertices.size() == 3);
-        assert(vertices[0].x == 0.0f);
-        assert(vertices[1].x > 9.99f);
-        assert(vertices[2].y > 19.99f);
-        assert(vertices[2].z > 29.99f);
-        assert(scene.spawnX == 5.0f);
-        assert(scene.spawnY == 2.0f);
-        assert(scene.spawnZ == 28.0f);
-        assert(scene.lookZ == 12.0f);
-        assert(vertices[0].r > 0.99f);
-        assert(vertices[0].g < 0.01f);
-        assert(vertices[0].b < 0.01f);
+        CHECK(iw4native::decodeSanctumPreview(bytes, vertices, scene, &error));
+        CHECK(error.empty());
+        CHECK(vertices.size() == 3);
+        CHECK(vertices[0].x == 0.0f);
+        CHECK(vertices[1].x > 9.99f);
+        CHECK(vertices[2].y > 19.99f);
+        CHECK(vertices[2].z > 29.99f);
+        CHECK(scene.spawnX == 5.0f);
+        CHECK(scene.spawnY == 2.0f);
+        CHECK(scene.spawnZ == 28.0f);
+        CHECK(scene.lookZ == 12.0f);
+        CHECK(vertices[0].r > 0.99f);
+        CHECK(vertices[0].g < 0.01f);
+        CHECK(vertices[0].b < 0.01f);
 
         const float normalLength = std::sqrt(
             vertices[0].nx * vertices[0].nx +
             vertices[0].ny * vertices[0].ny +
             vertices[0].nz * vertices[0].nz);
-        assert(std::abs(normalLength - 1.0f) < 0.0001f);
-        assert(vertices[0].nx == vertices[1].nx);
-        assert(vertices[0].ny == vertices[1].ny);
-        assert(vertices[0].nz == vertices[1].nz);
-        assert(vertices[0].nx == vertices[2].nx);
-        assert(vertices[0].ny == vertices[2].ny);
-        assert(vertices[0].nz == vertices[2].nz);
+        CHECK(std::abs(normalLength - 1.0f) < 0.0001f);
+        CHECK(vertices[0].nx == vertices[1].nx);
+        CHECK(vertices[0].ny == vertices[1].ny);
+        CHECK(vertices[0].nz == vertices[1].nz);
+        CHECK(vertices[0].nx == vertices[2].nx);
+        CHECK(vertices[0].ny == vertices[2].ny);
+        CHECK(vertices[0].nz == vertices[2].nz);
 
         bytes.pop_back();
-        assert(!iw4native::decodeSanctumPreview(bytes, vertices, scene, &error));
+        CHECK(!iw4native::decodeSanctumPreview(bytes, vertices, scene, &error));
     }
 
     {
         const auto report = iw4native::bootStandalone(
             "linux-test", "xziel_sanctum", 8ull * 1024ull * 1024ull);
-        assert(report.ok);
-        assert(report.mapName == "xziel_sanctum");
-        assert(report.commandsExecuted == 3);
-        assert(report.dvarCount == 3);
-        assert(report.assetCount == 1);
-        assert(report.message.find("standalone core initialized") != std::string::npos);
+        CHECK(report.ok);
+        CHECK(report.mapName == "xziel_sanctum");
+        CHECK(report.commandsExecuted == 3);
+        CHECK(report.dvarCount == 3);
+        CHECK(report.assetCount == 1);
+        CHECK(report.message.find("standalone core initialized") != std::string::npos);
     }
 
     std::cout << "IW4 native standalone core smoke: PASS\n";
