@@ -110,10 +110,12 @@ int main() {
         bytes.insert(bytes.end(), {
             std::byte{'S'}, std::byte{'N'}, std::byte{'P'}, std::byte{'1'}
         });
-        pushU32(1);
+        pushU32(2);
         pushU32(1);
         pushF32(0.0f); pushF32(0.0f); pushF32(0.0f);
         pushF32(10.0f); pushF32(20.0f); pushF32(30.0f);
+        pushF32(5.0f); pushF32(2.0f); pushF32(28.0f);
+        pushF32(5.0f); pushF32(2.2f); pushF32(12.0f);
 
         const std::uint16_t quantized[] = {
             0, 0, 0,
@@ -124,21 +126,25 @@ int main() {
         pushU16(0xF800);
 
         std::vector<iw4native::PreviewVertex> vertices;
-        iw4native::PreviewBounds bounds;
+        iw4native::PreviewSceneInfo scene;
         std::string error;
-        assert(iw4native::decodeSanctumPreview(bytes, vertices, bounds, &error));
+        assert(iw4native::decodeSanctumPreview(bytes, vertices, scene, &error));
         assert(error.empty());
         assert(vertices.size() == 3);
         assert(vertices[0].x == 0.0f);
         assert(vertices[1].x > 9.99f);
         assert(vertices[2].y > 19.99f);
         assert(vertices[2].z > 29.99f);
+        assert(scene.spawnX == 5.0f);
+        assert(scene.spawnY == 2.0f);
+        assert(scene.spawnZ == 28.0f);
+        assert(scene.lookZ == 12.0f);
         assert(vertices[0].r > 0.99f);
         assert(vertices[0].g < 0.01f);
         assert(vertices[0].b < 0.01f);
 
         bytes.pop_back();
-        assert(!iw4native::decodeSanctumPreview(bytes, vertices, bounds, &error));
+        assert(!iw4native::decodeSanctumPreview(bytes, vertices, scene, &error));
     }
 
     {
