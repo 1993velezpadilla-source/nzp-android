@@ -50,7 +50,7 @@ int main() {
         assert(report.ok);
         assert(report.mapName == "xziel_sanctum");
         assert(report.commandsExecuted == 3);
-        assert(report.dvarCount == 3);
+        assert(report.dvarCount == 3);\n        assert(report.message.find("standalone core initialized") != std::string::npos);
     }
 
     std::cout << "IW4 native standalone core smoke: PASS\n";
