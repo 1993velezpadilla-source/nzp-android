@@ -395,11 +395,24 @@ void rendererFrame(float moveX,
                    float lookDeltaY,
                    bool firePressed,
                    bool adsPressed,
-                   bool jumpPressed) {
+                   bool jumpPressed,
+                   bool reloadPressed,
+                   bool usePressed,
+                   bool knifePressed,
+                   bool grenadePressed,
+                   bool slidePressed,
+                   bool pausePressed) {
     if (!gReady) return;
 
-    constexpr float moveSpeed = 0.085f;
+    const float moveSpeed = slidePressed ? 0.135f : 0.085f;
     constexpr float lookSpeed = 0.0036f;
+
+    if (pausePressed) {
+        moveX = 0.0f;
+        moveY = 0.0f;
+        lookDeltaX = 0.0f;
+        lookDeltaY = 0.0f;
+    }
 
     gYaw -= lookDeltaX * lookSpeed;
     gPitch -= lookDeltaY * lookSpeed;
@@ -443,7 +456,8 @@ void rendererFrame(float moveX,
     const float fov = adsPressed ? 52.0f : 72.0f;
     const float aspect = static_cast<float>(gWidth) / static_cast<float>(gHeight);
 
-    const Vec3 eye{gPlayerX, gPlayerY + jumpHeight, gPlayerZ};
+    const float stanceOffset = slidePressed ? -0.52f : 0.0f;
+    const Vec3 eye{gPlayerX, gPlayerY + jumpHeight + stanceOffset, gPlayerZ};
     const Vec3 dir{
         -std::sin(gYaw) * std::cos(gPitch),
         std::sin(gPitch),
@@ -459,8 +473,16 @@ void rendererFrame(float moveX,
         gSanctumLoaded ? 180.0f : 80.0f);
     const Mat4 mvp = multiply(proj, view);
 
-    if (firePressed) {
+    if (pausePressed) {
+        glClearColor(0.010f, 0.010f, 0.012f, 1.0f);
+    } else if (firePressed) {
         glClearColor(0.055f, 0.018f, 0.014f, 1.0f);
+    } else if (grenadePressed) {
+        glClearColor(0.040f, 0.045f, 0.016f, 1.0f);
+    } else if (knifePressed) {
+        glClearColor(0.040f, 0.016f, 0.045f, 1.0f);
+    } else if (reloadPressed || usePressed) {
+        glClearColor(0.018f, 0.030f, 0.040f, 1.0f);
     } else {
         glClearColor(0.018f, 0.020f, 0.024f, 1.0f);
     }
