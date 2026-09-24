@@ -7,6 +7,7 @@
 #include "iw4native/virtual_filesystem.hpp"
 
 #include <cassert>
+#include <cmath>
 #include <cstddef>
 #include <cstdint>
 #include <filesystem>
@@ -142,6 +143,18 @@ int main() {
         assert(vertices[0].r > 0.99f);
         assert(vertices[0].g < 0.01f);
         assert(vertices[0].b < 0.01f);
+
+        const float normalLength = std::sqrt(
+            vertices[0].nx * vertices[0].nx +
+            vertices[0].ny * vertices[0].ny +
+            vertices[0].nz * vertices[0].nz);
+        assert(std::abs(normalLength - 1.0f) < 0.0001f);
+        assert(vertices[0].nx == vertices[1].nx);
+        assert(vertices[0].ny == vertices[1].ny);
+        assert(vertices[0].nz == vertices[1].nz);
+        assert(vertices[0].nx == vertices[2].nx);
+        assert(vertices[0].ny == vertices[2].ny);
+        assert(vertices[0].nz == vertices[2].nz);
 
         bytes.pop_back();
         assert(!iw4native::decodeSanctumPreview(bytes, vertices, scene, &error));
