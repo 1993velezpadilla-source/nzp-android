@@ -78,6 +78,38 @@ float dot(Vec3 a, Vec3 b) {
     return a.x*b.x + a.y*b.y + a.z*b.z;
 }
 
+std::size_t cameraVisibilityScore(
+    std::span<const PreviewVertex> vertices,
+    Vec3 eye,
+    Vec3 target) {
+    const Vec3 forward = normalize({
+        target.x - eye.x,
+        target.y - eye.y,
+        target.z - eye.z
+    });
+
+    std::size_t score = 0;
+    // One vertex per triangle is sufficient for a fast one-shot visibility
+    // probe and avoids spending meaningful startup time on the full 72k verts.
+    for (std::size_t i = 0; i < vertices.size(); i += 3) {
+        const Vec3 delta{
+            vertices[i].x - eye.x,
+            vertices[i].y - eye.y,
+            vertices[i].z - eye.z
+        };
+        const float distanceSq = dot(delta, delta);
+        if (distanceSq <= 0.01f) continue;
+
+        const float front = dot(delta, forward);
+        if (front <= 0.05f) continue;
+
+        // Generous cone: this only rejects geometry clearly behind/off-axis.
+        const float cosineSq = (front * front) / distanceSq;
+        if (cosineSq >= 0.30f) ++score;
+    }
+    return score;
+}
+
 Mat4 lookAt(Vec3 eye, Vec3 center, Vec3 up) {
     const Vec3 f = normalize({center.x-eye.x, center.y-eye.y, center.z-eye.z});
     const Vec3 s = normalize(cross(f, up));
@@ -361,29 +393,44 @@ bool rendererLoadSanctum(const std::byte* data, std::size_t size) {
 
     const auto& bounds = scene.bounds;
 
-    // The original auto-spawn was placed at the extreme captured edge of the
-    // photogrammetry bounds. On-device this can legitimately point through
-    // empty scan space and look like a black screen even though the VBO loaded.
-    // For the native preview gate, start closer to the useful center while
-    // preserving the scan-derived walkable floor height.
+    // A scan's axis-aligned center can be empty space, and an edge-derived
+    // spawn can also land behind disconnected photogrammetry fragments.
+    // Score several sane camera candidates against the decoded triangles and
+    // choose the one that actually sees the most map geometry.
     const float centerX = (bounds.minX + bounds.maxX) * 0.5f;
     const float centerZ = (bounds.minZ + bounds.maxZ) * 0.5f;
     const float widthX = bounds.maxX - bounds.minX;
     const float depthZ = bounds.maxZ - bounds.minZ;
+    const Vec3 look{scene.lookX, scene.lookY, scene.lookZ};
 
-    gPlayerY = scene.spawnY;
+    const std::array<Vec3, 7> cameraCandidates{{
+        {scene.spawnX, scene.spawnY, scene.spawnZ},
+        {centerX + widthX * 0.16f, scene.spawnY, centerZ},
+        {centerX - widthX * 0.16f, scene.spawnY, centerZ},
+        {centerX, scene.spawnY, centerZ + depthZ * 0.16f},
+        {centerX, scene.spawnY, centerZ - depthZ * 0.16f},
+        {centerX + widthX * 0.28f, scene.spawnY, centerZ},
+        {centerX, scene.spawnY, centerZ + depthZ * 0.28f}
+    }};
 
-    if (widthX >= depthZ) {
-        gPlayerX = centerX + widthX * 0.16f;
-        gPlayerZ = centerZ;
-    } else {
-        gPlayerX = centerX;
-        gPlayerZ = centerZ + depthZ * 0.16f;
+    std::size_t bestCamera = 0;
+    std::size_t bestScore = cameraVisibilityScore(vertices, cameraCandidates[0], look);
+    for (std::size_t i = 1; i < cameraCandidates.size(); ++i) {
+        const std::size_t score =
+            cameraVisibilityScore(vertices, cameraCandidates[i], look);
+        if (score > bestScore) {
+            bestScore = score;
+            bestCamera = i;
+        }
     }
 
-    const float lookX = scene.lookX;
-    const float lookY = scene.lookY;
-    const float lookZ = scene.lookZ;
+    gPlayerX = cameraCandidates[bestCamera].x;
+    gPlayerY = cameraCandidates[bestCamera].y;
+    gPlayerZ = cameraCandidates[bestCamera].z;
+
+    const float lookX = look.x;
+    const float lookY = look.y;
+    const float lookZ = look.z;
 
     const float dx = lookX - gPlayerX;
     const float dy = lookY - gPlayerY;
@@ -396,10 +443,11 @@ bool rendererLoadSanctum(const std::byte* data, std::size_t size) {
     __android_log_print(
         ANDROID_LOG_INFO,
         kTag,
-        "Sanctum preview loaded: %d vertices, bounds=(%.2f %.2f %.2f)-(%.2f %.2f %.2f) camera=(%.2f %.2f %.2f) look=(%.2f %.2f %.2f)",
+        "Sanctum preview loaded: %d vertices, bounds=(%.2f %.2f %.2f)-(%.2f %.2f %.2f) camera[%zu score=%zu]=(%.2f %.2f %.2f) look=(%.2f %.2f %.2f)",
         gSanctumVertexCount,
         bounds.minX, bounds.minY, bounds.minZ,
         bounds.maxX, bounds.maxY, bounds.maxZ,
+        bestCamera, bestScore,
         gPlayerX, gPlayerY, gPlayerZ,
         lookX, lookY, lookZ);
 
