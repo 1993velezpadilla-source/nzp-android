@@ -4,7 +4,8 @@
 
 int main(int argc, char** argv) {
     const std::string map = argc > 1 ? argv[1] : "xziel_sanctum";
-    const auto report = iw4native::bootStandalone("linux-host", map, 32ull * 1024ull * 1024ull);
+    const auto report = iw4native::bootStandalone(
+        "linux-host", map, 32ull * 1024ull * 1024ull);
 
     std::cout
         << "iw4native.ok=" << (report.ok ? "true" : "false") << "\n"
@@ -12,6 +13,7 @@ int main(int argc, char** argv) {
         << "map=" << report.mapName << "\n"
         << "arenaBytes=" << report.arenaBytes << "\n"
         << "dvarCount=" << report.dvarCount << "\n"
+        << "assetCount=" << report.assetCount << "\n"
         << "commandsExecuted=" << report.commandsExecuted << "\n"
         << "message=" << report.message << "\n";
 
