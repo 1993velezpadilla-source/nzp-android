@@ -15,7 +15,7 @@ permissions:
 jobs:
   build-native-apk:
     runs-on: ubuntu-latest
-    timeout-minutes: 30
+    timeout-minutes: 45
 
     steps:
       - uses: actions/checkout@v5
@@ -36,6 +36,20 @@ jobs:
           test -n "$SDKMANAGER"
           yes | "$SDKMANAGER" --licenses >/dev/null || true
           "$SDKMANAGER"             "platform-tools"             "platforms;android-35"             "build-tools;35.0.0"             "ndk;27.2.12479018"             "cmake;3.22.1"
+
+      - name: Build reproducible Sanctum mobile preview
+        shell: bash
+        run: |
+          set -euo pipefail
+          python3 -m pip install --quiet --upgrade pip
+          python3 -m pip install --quiet objaverse trimesh numpy huggingface_hub
+          mkdir -p build/sanctum-source
+          mkdir -p iw4-native/android-app/app/src/main/assets/maps
+          python3 iw4-native/tools/build_sanctum_preview.py             --cache-dir build/sanctum-source             --out iw4-native/android-app/app/src/main/assets/maps/sanctum_preview.snp1             --report iw4-native/android-app/app/src/main/assets/maps/sanctum_preview_report.json             --target-triangles 24000
+          test -s iw4-native/android-app/app/src/main/assets/maps/sanctum_preview.snp1
+          test -s iw4-native/android-app/app/src/main/assets/maps/sanctum_preview_report.json
+          test -s iw4-native/android-app/app/src/main/assets/maps/SANCTUM_ATTRIBUTION.txt
+          cat iw4-native/android-app/app/src/main/assets/maps/sanctum_preview_report.json
 
       - name: Set up Gradle
         uses: gradle/actions/setup-gradle@v4
@@ -59,6 +73,8 @@ jobs:
 
           unzip -l "$APK" | tee iw4-native/android-app/apk-contents.txt
           grep -q 'lib/arm64-v8a/libiw4native.so' iw4-native/android-app/apk-contents.txt
+          grep -q 'assets/maps/sanctum_preview.snp1' iw4-native/android-app/apk-contents.txt
+          grep -q 'assets/maps/SANCTUM_ATTRIBUTION.txt' iw4-native/android-app/apk-contents.txt
 
           rm -rf build/apk-check
           mkdir -p build/apk-check
@@ -88,5 +104,7 @@ jobs:
             iw4-native/android-app/apk-badging.txt
             iw4-native/android-app/apk-contents.txt
             iw4-native/android-app/native-elf.txt
+            iw4-native/android-app/app/src/main/assets/maps/sanctum_preview_report.json
+            iw4-native/android-app/app/src/main/assets/maps/SANCTUM_ATTRIBUTION.txt
           if-no-files-found: error
           retention-days: 14
