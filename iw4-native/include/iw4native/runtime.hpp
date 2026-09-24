@@ -12,6 +12,7 @@ struct BootReport {
     std::string mapName;
     std::uint64_t arenaBytes = 0;
     std::size_t dvarCount = 0;
+    std::size_t assetCount = 0;
     std::size_t commandsExecuted = 0;
     std::string message;
 };
