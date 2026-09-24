@@ -1,10 +1,13 @@
 #include "iw4native/runtime.hpp"
 
+#include "iw4native/asset_database.hpp"
 #include "iw4native/command_buffer.hpp"
 #include "iw4native/dvar.hpp"
 #include "iw4native/memory_arena.hpp"
 
+#include <cstddef>
 #include <cstdint>
+#include <vector>
 
 namespace iw4native {
 
@@ -43,6 +46,18 @@ BootReport bootStandalone(const std::string& platformName,
     dvars.registerInt("com_maxfps", 60);
     dvars.registerInt("sv_running", 0);
 
+    AssetDatabase assets;
+    AssetRecord mapManifest;
+    mapManifest.type = AssetType::RawFile;
+    mapManifest.name = mapName + ".manifest";
+    mapManifest.payload = {
+        std::byte{1}, std::byte{0}, std::byte{0}, std::byte{0}
+    };
+    if (!assets.insert(std::move(mapManifest))) {
+        report.message = "asset database bootstrap failed";
+        return report;
+    }
+
     CommandBuffer commands;
     commands.addCommand("map", [&](const std::vector<std::string>& args) {
         if (!args.empty()) dvars.setString("mapname", args.front());
@@ -66,6 +81,7 @@ BootReport bootStandalone(const std::string& platformName,
 
     report.commandsExecuted = commands.executeAll();
     report.dvarCount = dvars.size();
+    report.assetCount = assets.size();
 
     const auto activeMap = dvars.getString("mapname");
     const auto maxFps = dvars.getInt("com_maxfps");
@@ -74,8 +90,10 @@ BootReport bootStandalone(const std::string& platformName,
     if (!activeMap || *activeMap != mapName ||
         !maxFps || *maxFps != 60 ||
         !serverRunning || *serverRunning != 1 ||
+        !assets.contains(AssetType::RawFile, mapName + ".manifest") ||
         report.commandsExecuted != 3 ||
-        report.dvarCount != 3) {
+        report.dvarCount != 3 ||
+        report.assetCount != 1) {
         report.message = "standalone core self-check failed";
         return report;
     }
