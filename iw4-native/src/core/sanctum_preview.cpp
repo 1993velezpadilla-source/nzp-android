@@ -7,9 +7,9 @@
 namespace iw4native {
 namespace {
 
-constexpr std::size_t kHeaderBytes = 36;
+constexpr std::size_t kHeaderBytes = 60;
 constexpr std::size_t kTriangleRecordBytes = 20;
-constexpr std::uint32_t kVersion = 1;
+constexpr std::uint32_t kVersion = 2;
 constexpr std::uint32_t kMaxTriangles = 1'000'000;
 
 std::uint16_t readU16(const std::byte* p) {
@@ -43,14 +43,22 @@ float decodeAxis(std::uint16_t q, float minValue, float maxValue) {
     return minValue + (maxValue - minValue) * t;
 }
 
+bool finite(float value) {
+    return std::isfinite(value);
+}
+
+bool nearBounds(float value, float minValue, float maxValue, float margin) {
+    return value >= minValue - margin && value <= maxValue + margin;
+}
+
 } // namespace
 
 bool decodeSanctumPreview(std::span<const std::byte> bytes,
                           std::vector<PreviewVertex>& vertices,
-                          PreviewBounds& bounds,
+                          PreviewSceneInfo& scene,
                           std::string* errorMessage) {
     vertices.clear();
-    bounds = {};
+    scene = {};
 
     if (bytes.size() < kHeaderBytes) {
         setError(errorMessage, "SNP1 preview is truncated");
@@ -84,6 +92,7 @@ bool decodeSanctumPreview(std::span<const std::byte> bytes,
         return false;
     }
 
+    auto& bounds = scene.bounds;
     bounds.minX = readF32(bytes.data() + 12);
     bounds.minY = readF32(bytes.data() + 16);
     bounds.minZ = readF32(bytes.data() + 20);
@@ -91,13 +100,22 @@ bool decodeSanctumPreview(std::span<const std::byte> bytes,
     bounds.maxY = readF32(bytes.data() + 28);
     bounds.maxZ = readF32(bytes.data() + 32);
 
-    const float boundValues[] = {
+    scene.spawnX = readF32(bytes.data() + 36);
+    scene.spawnY = readF32(bytes.data() + 40);
+    scene.spawnZ = readF32(bytes.data() + 44);
+    scene.lookX = readF32(bytes.data() + 48);
+    scene.lookY = readF32(bytes.data() + 52);
+    scene.lookZ = readF32(bytes.data() + 56);
+
+    const float values[] = {
         bounds.minX, bounds.minY, bounds.minZ,
-        bounds.maxX, bounds.maxY, bounds.maxZ
+        bounds.maxX, bounds.maxY, bounds.maxZ,
+        scene.spawnX, scene.spawnY, scene.spawnZ,
+        scene.lookX, scene.lookY, scene.lookZ
     };
-    for (const float value : boundValues) {
-        if (!std::isfinite(value)) {
-            setError(errorMessage, "SNP1 preview contains non-finite bounds");
+    for (const float value : values) {
+        if (!finite(value)) {
+            setError(errorMessage, "SNP1 preview contains non-finite scene metadata");
             return false;
         }
     }
@@ -106,6 +124,24 @@ bool decodeSanctumPreview(std::span<const std::byte> bytes,
         !(bounds.maxY > bounds.minY) ||
         !(bounds.maxZ > bounds.minZ)) {
         setError(errorMessage, "SNP1 preview bounds are degenerate");
+        return false;
+    }
+
+    const float horizontalMargin =
+        std::max(bounds.maxX - bounds.minX, bounds.maxZ - bounds.minZ) * 0.10f + 1.0f;
+    const float verticalMargin = (bounds.maxY - bounds.minY) * 0.10f + 2.0f;
+
+    if (!nearBounds(scene.spawnX, bounds.minX, bounds.maxX, horizontalMargin) ||
+        !nearBounds(scene.spawnZ, bounds.minZ, bounds.maxZ, horizontalMargin) ||
+        !nearBounds(scene.spawnY, bounds.minY, bounds.maxY, verticalMargin)) {
+        setError(errorMessage, "SNP1 preview spawn is outside sane map bounds");
+        return false;
+    }
+
+    if (!nearBounds(scene.lookX, bounds.minX, bounds.maxX, horizontalMargin) ||
+        !nearBounds(scene.lookZ, bounds.minZ, bounds.maxZ, horizontalMargin) ||
+        !nearBounds(scene.lookY, bounds.minY, bounds.maxY, verticalMargin)) {
+        setError(errorMessage, "SNP1 preview look target is outside sane map bounds");
         return false;
     }
 
