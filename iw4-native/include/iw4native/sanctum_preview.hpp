@@ -26,9 +26,19 @@ struct PreviewBounds {
     float maxZ = 0.0f;
 };
 
+struct PreviewSceneInfo {
+    PreviewBounds bounds;
+    float spawnX = 0.0f;
+    float spawnY = 0.0f;
+    float spawnZ = 0.0f;
+    float lookX = 0.0f;
+    float lookY = 0.0f;
+    float lookZ = 0.0f;
+};
+
 bool decodeSanctumPreview(std::span<const std::byte> bytes,
                           std::vector<PreviewVertex>& vertices,
-                          PreviewBounds& bounds,
+                          PreviewSceneInfo& scene,
                           std::string* errorMessage = nullptr);
 
 } // namespace iw4native
