@@ -341,7 +341,7 @@ public final class TouchHudView extends View {
         drawCell(canvas, nx(SLIDE_X), ny(SLIDE_Y), rh(ACTION_R_H),
             slidePressed, false, ICON_CROUCH);
         drawCell(canvas, nx(KNIFE_X), ny(KNIFE_Y), rh(ACTION_R_H),
-            knifePressed, false, ICON_WEAPON);
+            knifePressed, false, ICON_KNIFE);
         drawCell(canvas, nx(GRENADE_X), ny(GRENADE_Y), rh(SMALL_R_H),
             grenadePressed, false, ICON_GRENADE);
     }
@@ -355,6 +355,7 @@ public final class TouchHudView extends View {
     private static final int ICON_WEAPON = 7;
     private static final int ICON_SWITCH = 8;
     private static final int ICON_GRENADE = 9;
+    private static final int ICON_KNIFE = 10;
 
     private void drawCell(
         Canvas canvas,
@@ -427,6 +428,10 @@ public final class TouchHudView extends View {
 
             case ICON_GRENADE:
                 drawGrenade(canvas, cx, cy, r);
+                break;
+
+            case ICON_KNIFE:
+                drawKnife(canvas, cx, cy, r);
                 break;
 
             default:
@@ -574,6 +579,35 @@ public final class TouchHudView extends View {
         path.lineTo(cx - r * 0.52f, cy + r * 0.08f);
         path.close();
         canvas.drawPath(path, fill);
+    }
+
+    private void drawKnife(Canvas canvas, float cx, float cy, float r) {
+        canvas.save();
+        canvas.rotate(-38.0f, cx, cy);
+
+        // Handle.
+        fill.setColor(WHITE);
+        canvas.drawRoundRect(
+            new RectF(cx - r * 0.12f, cy + r * 0.18f,
+                cx + r * 0.12f, cy + r * 0.68f),
+            r * 0.08f, r * 0.08f, fill);
+
+        // Guard.
+        canvas.drawRoundRect(
+            new RectF(cx - r * 0.32f, cy + r * 0.10f,
+                cx + r * 0.32f, cy + r * 0.24f),
+            r * 0.05f, r * 0.05f, fill);
+
+        // Blade.
+        path.reset();
+        path.moveTo(cx - r * 0.16f, cy + r * 0.10f);
+        path.lineTo(cx - r * 0.10f, cy - r * 0.62f);
+        path.lineTo(cx + r * 0.07f, cy - r * 0.82f);
+        path.lineTo(cx + r * 0.16f, cy + r * 0.10f);
+        path.close();
+        canvas.drawPath(path, fill);
+
+        canvas.restore();
     }
 
     private void drawGrenade(Canvas canvas, float cx, float cy, float r) {
