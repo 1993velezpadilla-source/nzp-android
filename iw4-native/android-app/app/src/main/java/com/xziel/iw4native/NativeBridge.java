@@ -8,4 +8,17 @@ public final class NativeBridge {
     private NativeBridge() {}
 
     public static native String bootProbe(String mapName);
+
+    public static native boolean rendererInit();
+    public static native void rendererResize(int width, int height);
+    public static native void rendererFrame(
+        float moveX,
+        float moveY,
+        float lookDx,
+        float lookDy,
+        boolean fire,
+        boolean ads,
+        boolean jump
+    );
+    public static native void rendererShutdown();
 }
