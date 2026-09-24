@@ -13,6 +13,11 @@ mkdir -p dist
 adb devices -l
 adb install -r "$APK"
 adb logcat -c || true
+
+# Suppress Android's one-time immersive-mode education overlay so the
+# screenshot contains only the actual game surface and HUD.
+adb shell settings put secure immersive_mode_confirmations confirmed || true
+
 adb shell am force-stop com.xziel.iw4native || true
 adb shell am start -W -n com.xziel.iw4native/.MainActivity
 
