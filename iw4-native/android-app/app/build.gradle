@@ -2,6 +2,8 @@ plugins {
     id 'com.android.application'
 }
 
+def screenshotBuild = project.hasProperty('screenshotBuild')
+
 android {
     namespace 'com.xziel.iw4native'
     compileSdk 35
@@ -14,7 +16,11 @@ android {
         versionName '0.3-sanctum-nzp-floating'
 
         ndk {
-            abiFilters 'arm64-v8a'
+            if (screenshotBuild) {
+                abiFilters 'x86_64'
+            } else {
+                abiFilters 'arm64-v8a'
+            }
         }
 
         externalNativeBuild {
