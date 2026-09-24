@@ -360,13 +360,34 @@ bool rendererLoadSanctum(const std::byte* data, std::size_t size) {
     gSanctumLoaded = gSanctumVertexCount > 0;
 
     const auto& bounds = scene.bounds;
-    gPlayerX = scene.spawnX;
-    gPlayerY = scene.spawnY;
-    gPlayerZ = scene.spawnZ;
 
-    const float dx = scene.lookX - scene.spawnX;
-    const float dy = scene.lookY - scene.spawnY;
-    const float dz = scene.lookZ - scene.spawnZ;
+    // The original auto-spawn was placed at the extreme captured edge of the
+    // photogrammetry bounds. On-device this can legitimately point through
+    // empty scan space and look like a black screen even though the VBO loaded.
+    // For the native preview gate, start closer to the useful center while
+    // preserving the scan-derived walkable floor height.
+    const float centerX = (bounds.minX + bounds.maxX) * 0.5f;
+    const float centerZ = (bounds.minZ + bounds.maxZ) * 0.5f;
+    const float widthX = bounds.maxX - bounds.minX;
+    const float depthZ = bounds.maxZ - bounds.minZ;
+
+    gPlayerY = scene.spawnY;
+
+    if (widthX >= depthZ) {
+        gPlayerX = centerX + widthX * 0.16f;
+        gPlayerZ = centerZ;
+    } else {
+        gPlayerX = centerX;
+        gPlayerZ = centerZ + depthZ * 0.16f;
+    }
+
+    const float lookX = scene.lookX;
+    const float lookY = scene.lookY;
+    const float lookZ = scene.lookZ;
+
+    const float dx = lookX - gPlayerX;
+    const float dy = lookY - gPlayerY;
+    const float dz = lookZ - gPlayerZ;
     const float horizontal = std::sqrt(dx * dx + dz * dz);
     gYaw = std::atan2(-dx, -dz);
     gPitch = std::atan2(dy, std::max(horizontal, 0.0001f));
@@ -375,10 +396,12 @@ bool rendererLoadSanctum(const std::byte* data, std::size_t size) {
     __android_log_print(
         ANDROID_LOG_INFO,
         kTag,
-        "Sanctum preview loaded: %d vertices, bounds=(%.2f %.2f %.2f)-(%.2f %.2f %.2f)",
+        "Sanctum preview loaded: %d vertices, bounds=(%.2f %.2f %.2f)-(%.2f %.2f %.2f) camera=(%.2f %.2f %.2f) look=(%.2f %.2f %.2f)",
         gSanctumVertexCount,
         bounds.minX, bounds.minY, bounds.minZ,
-        bounds.maxX, bounds.maxY, bounds.maxZ);
+        bounds.maxX, bounds.maxY, bounds.maxZ,
+        gPlayerX, gPlayerY, gPlayerZ,
+        lookX, lookY, lookZ);
 
     return gSanctumLoaded;
 }
@@ -476,15 +499,20 @@ void rendererFrame(float moveX,
     if (pausePressed) {
         glClearColor(0.010f, 0.010f, 0.012f, 1.0f);
     } else if (firePressed) {
-        glClearColor(0.055f, 0.018f, 0.014f, 1.0f);
+        glClearColor(0.085f, 0.020f, 0.015f, 1.0f);
     } else if (grenadePressed) {
-        glClearColor(0.040f, 0.045f, 0.016f, 1.0f);
+        glClearColor(0.050f, 0.055f, 0.018f, 1.0f);
     } else if (knifePressed) {
-        glClearColor(0.040f, 0.016f, 0.045f, 1.0f);
+        glClearColor(0.050f, 0.018f, 0.055f, 1.0f);
     } else if (reloadPressed || usePressed) {
-        glClearColor(0.018f, 0.030f, 0.040f, 1.0f);
+        glClearColor(0.020f, 0.038f, 0.052f, 1.0f);
+    } else if (gSanctumLoaded) {
+        // Deliberately non-black so an on-device screenshot immediately tells
+        // us that the GL loop is alive even before textured lighting lands.
+        glClearColor(0.070f, 0.085f, 0.105f, 1.0f);
     } else {
-        glClearColor(0.018f, 0.020f, 0.024f, 1.0f);
+        // Fallback room should never present as a silent black screen.
+        glClearColor(0.110f, 0.035f, 0.030f, 1.0f);
     }
     glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
 
