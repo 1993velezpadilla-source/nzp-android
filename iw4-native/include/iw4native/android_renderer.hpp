@@ -2,11 +2,13 @@
 
 #include <cstddef>
 #include <cstdint>
+#include <string>
 
 namespace iw4native::android {
 
 bool rendererInit();
 bool rendererLoadSanctum(const std::byte* data, std::size_t size);
+std::string rendererDiagnostic();
 void rendererResize(int width, int height);
 void rendererFrame(float moveX,
                    float moveY,
