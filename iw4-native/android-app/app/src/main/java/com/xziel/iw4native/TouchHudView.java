@@ -13,17 +13,17 @@ import android.view.MotionEvent;
 import android.view.View;
 
 /**
- * NZP-inspired mobile HUD.
+ * Nazi Zombies Portable-inspired mobile HUD.
  *
- * Visual contract from the original reference:
- * - large translucent grey action wheel on the right;
- * - bright yellow/lime outer ring;
- * - dark circular action cells inside the wheel;
- * - white pictogram glyphs;
- * - center FIRE cartridge with yellow focus ring;
- * - separate AIM crosshair and AIM+FIRE crosshair+cartridge;
- * - stance / weapon / reload / switch controls arranged radially;
- * - independent left movement joystick.
+ * Visual contract:
+ * - independent floating touch controls, never a giant radial wheel;
+ * - translucent charcoal circular skins with a subtle grey rim;
+ * - white pictogram glyphs instead of text labels;
+ * - FIRE is a cartridge/bullet;
+ * - AIM is a crosshair;
+ * - AIM+FIRE is a crosshair plus cartridge;
+ * - controls stay clear of the world center and preserve right-side free-look;
+ * - independent left movement joystick and full multitouch input.
  */
 public final class TouchHudView extends View {
     private static final int NONE = 0;
@@ -43,11 +43,32 @@ public final class TouchHudView extends View {
     private static final float JOY_X = 0.155f;
     private static final float JOY_Y = 0.765f;
 
-    // Right radial wheel. Values intentionally derive from screen height so
-    // the proportions remain close to the original NZP skin across aspect ratios.
-    private static final float WHEEL_X = 0.830f;
-    private static final float WHEEL_Y = 0.615f;
-    private static final float WHEEL_R_H = 0.245f;
+    // Floating right-side layout. Coordinates are normalized so the same skin
+    // remains usable across phones, foldables and tablets.
+    private static final float FIRE_X = 0.900f;
+    private static final float FIRE_Y = 0.585f;
+    private static final float ADS_FIRE_X = 0.815f;
+    private static final float ADS_FIRE_Y = 0.430f;
+    private static final float ADS_X = 0.710f;
+    private static final float ADS_Y = 0.555f;
+    private static final float RELOAD_X = 0.830f;
+    private static final float RELOAD_Y = 0.735f;
+    private static final float USE_X = 0.620f;
+    private static final float USE_Y = 0.675f;
+    private static final float JUMP_X = 0.705f;
+    private static final float JUMP_Y = 0.790f;
+    private static final float KNIFE_X = 0.920f;
+    private static final float KNIFE_Y = 0.795f;
+    private static final float GRENADE_X = 0.845f;
+    private static final float GRENADE_Y = 0.275f;
+    private static final float SLIDE_X = 0.760f;
+    private static final float SLIDE_Y = 0.845f;
+    private static final float PAUSE_X = 0.965f;
+    private static final float PAUSE_Y = 0.075f;
+
+    private static final float FIRE_R_H = 0.069f;
+    private static final float ACTION_R_H = 0.051f;
+    private static final float SMALL_R_H = 0.045f;
 
     private static final int YELLOW = Color.rgb(226, 235, 18);
     private static final int WHITE = Color.rgb(250, 250, 250);
@@ -96,7 +117,7 @@ public final class TouchHudView extends View {
 
         drawWorldCrosshair(canvas);
         drawJoystick(canvas);
-        drawActionWheel(canvas);
+        drawActionButtons(canvas);
         drawPause(canvas);
     }
 
@@ -179,53 +200,36 @@ public final class TouchHudView extends View {
         return true;
     }
 
-    private float wheelCx() {
-        return WHEEL_X * getWidth();
+    private float nx(float value) {
+        return value * getWidth();
     }
 
-    private float wheelCy() {
-        return WHEEL_Y * getHeight();
+    private float ny(float value) {
+        return value * getHeight();
     }
 
-    private float wheelR() {
-        return WHEEL_R_H * getHeight();
-    }
-
-    private float buttonR() {
-        return wheelR() * 0.178f;
-    }
-
-    private float buttonX(float dx) {
-        return wheelCx() + dx * wheelR();
-    }
-
-    private float buttonY(float dy) {
-        return wheelCy() + dy * wheelR();
+    private float rh(float value) {
+        return value * getHeight();
     }
 
     private int hitRole(float px, float py) {
-        final float r = buttonR() * 1.08f;
-
-        if (circleHit(px, py, getWidth() * 0.962f, getHeight() * 0.080f,
-            getHeight() * 0.047f)) return PAUSE;
-
-        // Match the radial reference: aim upper-left, reload upper-right,
-        // fire in the highlighted centre, bullet/aim combo on right.
-        if (circleHit(px, py, buttonX(-0.43f), buttonY(-0.52f), r)) return ADS;
-        if (circleHit(px, py, buttonX( 0.32f), buttonY(-0.52f), r)) return RELOAD;
-        if (circleHit(px, py, buttonX( 0.00f), buttonY(-0.02f), r * 1.13f)) return FIRE;
-        if (circleHit(px, py, buttonX( 0.52f), buttonY(-0.03f), r)) return ADS_FIRE;
-        if (circleHit(px, py, buttonX(-0.53f), buttonY( 0.03f), r)) return JUMP;
-        if (circleHit(px, py, buttonX(-0.56f), buttonY( 0.47f), r)) return SLIDE;
-        if (circleHit(px, py, buttonX( 0.02f), buttonY( 0.50f), r * 1.20f)) return KNIFE;
-        if (circleHit(px, py, buttonX( 0.61f), buttonY( 0.42f), r * 0.88f)) return USE;
-        if (circleHit(px, py, buttonX(-0.13f), buttonY( 0.76f), r * 0.73f)) return GRENADE;
+        // Hit targets are deliberately a little larger than the visible skin.
+        if (circleHit(px, py, nx(PAUSE_X), ny(PAUSE_Y), rh(0.051f))) return PAUSE;
+        if (circleHit(px, py, nx(FIRE_X), ny(FIRE_Y), rh(FIRE_R_H * 1.20f))) return FIRE;
+        if (circleHit(px, py, nx(ADS_FIRE_X), ny(ADS_FIRE_Y), rh(ACTION_R_H * 1.22f))) return ADS_FIRE;
+        if (circleHit(px, py, nx(ADS_X), ny(ADS_Y), rh(ACTION_R_H * 1.22f))) return ADS;
+        if (circleHit(px, py, nx(RELOAD_X), ny(RELOAD_Y), rh(ACTION_R_H * 1.20f))) return RELOAD;
+        if (circleHit(px, py, nx(USE_X), ny(USE_Y), rh(ACTION_R_H * 1.20f))) return USE;
+        if (circleHit(px, py, nx(JUMP_X), ny(JUMP_Y), rh(ACTION_R_H * 1.20f))) return JUMP;
+        if (circleHit(px, py, nx(KNIFE_X), ny(KNIFE_Y), rh(ACTION_R_H * 1.20f))) return KNIFE;
+        if (circleHit(px, py, nx(GRENADE_X), ny(GRENADE_Y), rh(SMALL_R_H * 1.22f))) return GRENADE;
+        if (circleHit(px, py, nx(SLIDE_X), ny(SLIDE_Y), rh(ACTION_R_H * 1.20f))) return SLIDE;
 
         final float joyCx = JOY_X * getWidth();
         final float joyCy = JOY_Y * getHeight();
         if (circleHit(px, py, joyCx, joyCy, getHeight() * 0.145f)) return MOVE;
 
-        // Empty right-side space is free-look, including unused wheel gaps.
+        // Any untouched area on the right half remains camera free-look.
         if (px > getWidth() * 0.45f) return LOOK;
         return NONE;
     }
@@ -319,48 +323,27 @@ public final class TouchHudView extends View {
         canvas.drawCircle(knobX, knobY, inner, stroke);
     }
 
-    private void drawActionWheel(Canvas canvas) {
-        final float cx = wheelCx();
-        final float cy = wheelCy();
-        final float radius = wheelR();
-
-        // Smoky translucent background from the NZP reference.
-        fill.setColor(Color.argb(82, 118, 118, 108));
-        canvas.drawCircle(cx, cy, radius, fill);
-
-        // Soft inner dark tint.
-        fill.setColor(Color.argb(38, 20, 20, 18));
-        canvas.drawCircle(cx, cy, radius * 0.94f, fill);
-
-        // The defining neon yellow/lime ring.
-        stroke.setStyle(Paint.Style.STROKE);
-        stroke.setStrokeWidth(Math.max(4.0f, getHeight() * 0.0055f));
-        stroke.setColor(Color.argb(240, 226, 235, 18));
-        canvas.drawCircle(cx, cy, radius * 0.985f, stroke);
-
-        // Cells arranged like the reference screenshot.
-        drawCell(canvas, buttonX(-0.43f), buttonY(-0.52f), buttonR(),
+    private void drawActionButtons(Canvas canvas) {
+        // No enclosing wheel: every control floats independently like the
+        // reference mobile skin while leaving maximum visibility of the map.
+        drawCell(canvas, nx(ADS_X), ny(ADS_Y), rh(ACTION_R_H),
             adsPressed, false, ICON_AIM);
-        drawCell(canvas, buttonX( 0.32f), buttonY(-0.52f), buttonR(),
-            reloadPressed, false, ICON_RELOAD_BULLETS);
-        drawCell(canvas, buttonX(-0.53f), buttonY( 0.03f), buttonR(),
-            jumpPressed, false, ICON_RUN);
-        drawCell(canvas, buttonX(-0.56f), buttonY( 0.47f), buttonR(),
-            slidePressed, false, ICON_CROUCH);
-        drawCell(canvas, buttonX( 0.52f), buttonY(-0.03f), buttonR(),
+        drawCell(canvas, nx(ADS_FIRE_X), ny(ADS_FIRE_Y), rh(ACTION_R_H),
             adsFirePressed, false, ICON_AIM_FIRE);
-        drawCell(canvas, buttonX( 0.61f), buttonY( 0.42f), buttonR() * 0.88f,
-            usePressed, false, ICON_SWITCH);
-        drawCell(canvas, buttonX(-0.13f), buttonY( 0.76f), buttonR() * 0.73f,
-            grenadePressed, false, ICON_GRENADE);
-
-        // Main center FIRE is larger and gets its own yellow ring.
-        drawCell(canvas, buttonX(0.00f), buttonY(-0.02f), buttonR() * 1.13f,
+        drawCell(canvas, nx(FIRE_X), ny(FIRE_Y), rh(FIRE_R_H),
             firePressed, true, ICON_BULLET);
-
-        // Large weapon/melee silhouette on the bottom, as in the reference.
-        drawCell(canvas, buttonX(0.02f), buttonY(0.50f), buttonR() * 1.20f,
+        drawCell(canvas, nx(RELOAD_X), ny(RELOAD_Y), rh(ACTION_R_H),
+            reloadPressed, false, ICON_RELOAD_BULLETS);
+        drawCell(canvas, nx(USE_X), ny(USE_Y), rh(ACTION_R_H),
+            usePressed, false, ICON_SWITCH);
+        drawCell(canvas, nx(JUMP_X), ny(JUMP_Y), rh(ACTION_R_H),
+            jumpPressed, false, ICON_RUN);
+        drawCell(canvas, nx(SLIDE_X), ny(SLIDE_Y), rh(ACTION_R_H),
+            slidePressed, false, ICON_CROUCH);
+        drawCell(canvas, nx(KNIFE_X), ny(KNIFE_Y), rh(ACTION_R_H),
             knifePressed, false, ICON_WEAPON);
+        drawCell(canvas, nx(GRENADE_X), ny(GRENADE_Y), rh(SMALL_R_H),
+            grenadePressed, false, ICON_GRENADE);
     }
 
     private static final int ICON_AIM = 1;
@@ -602,8 +585,8 @@ public final class TouchHudView extends View {
     }
 
     private void drawPause(Canvas canvas) {
-        final float cx = getWidth() * 0.962f;
-        final float cy = getHeight() * 0.080f;
+        final float cx = nx(PAUSE_X);
+        final float cy = ny(PAUSE_Y);
         final float r = getHeight() * 0.038f;
 
         fill.setColor(Color.argb(pausePressed ? 190 : 135, 42, 42, 42));
