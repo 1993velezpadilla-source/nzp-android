@@ -1,5 +1,6 @@
 #include "iw4native/sanctum_preview.hpp"
 
+#include <algorithm>
 #include <cmath>
 #include <cstring>
 #include <limits>
@@ -162,15 +163,48 @@ bool decodeSanctumPreview(std::span<const std::byte> bytes,
         const float blue =
             static_cast<float>(rgb565 & 31) / 31.0f;
 
+        float px[3]{};
+        float py[3]{};
+        float pz[3]{};
         for (int vertex = 0; vertex < 3; ++vertex) {
             const int base = vertex * 3;
+            px[vertex] = decodeAxis(q[base + 0], bounds.minX, bounds.maxX);
+            py[vertex] = decodeAxis(q[base + 1], bounds.minY, bounds.maxY);
+            pz[vertex] = decodeAxis(q[base + 2], bounds.minZ, bounds.maxZ);
+        }
+
+        const float e1x = px[1] - px[0];
+        const float e1y = py[1] - py[0];
+        const float e1z = pz[1] - pz[0];
+        const float e2x = px[2] - px[0];
+        const float e2y = py[2] - py[0];
+        const float e2z = pz[2] - pz[0];
+
+        float nx = e1y * e2z - e1z * e2y;
+        float ny = e1z * e2x - e1x * e2z;
+        float nz = e1x * e2y - e1y * e2x;
+        const float normalLength = std::sqrt(nx * nx + ny * ny + nz * nz);
+        if (normalLength > 1.0e-8f) {
+            nx /= normalLength;
+            ny /= normalLength;
+            nz /= normalLength;
+        } else {
+            nx = 0.0f;
+            ny = 1.0f;
+            nz = 0.0f;
+        }
+
+        for (int vertex = 0; vertex < 3; ++vertex) {
             vertices.push_back({
-                decodeAxis(q[base + 0], bounds.minX, bounds.maxX),
-                decodeAxis(q[base + 1], bounds.minY, bounds.maxY),
-                decodeAxis(q[base + 2], bounds.minZ, bounds.maxZ),
+                px[vertex],
+                py[vertex],
+                pz[vertex],
                 red,
                 green,
-                blue
+                blue,
+                nx,
+                ny,
+                nz
             });
         }
 
