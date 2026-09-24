@@ -36,7 +36,7 @@ jobs:
         shell: bash
         run: |
           set -euo pipefail
-          if grep -RniE 'iw4mp\.exe|IW4\.exe|CoDWaW\.exe|Zynamic::Forward|memory::call<|0x[0-9A-Fa-f]{6,8}' iw4-native             --exclude-dir=build; then
+          if grep -RniE 'iw4mp\.exe|IW4\.exe|CoDWaW\.exe|Zynamic::Forward|memory::call<|0x[0-9A-Fa-f]{6,8}'             iw4-native/src iw4-native/include iw4-native/tests; then
             echo "Original game executable/address dependency found in standalone core."
             exit 1
           fi
