@@ -24,6 +24,12 @@ public final class GameSurfaceView extends GLSurfaceView implements GLSurfaceVie
     private boolean fire;
     private boolean ads;
     private boolean jump;
+    private boolean reload;
+    private boolean use;
+    private boolean knife;
+    private boolean grenade;
+    private boolean slide;
+    private boolean pause;
     private volatile boolean rendererReady;
     private volatile boolean sanctumLoaded;
 
@@ -47,10 +53,26 @@ public final class GameSurfaceView extends GLSurfaceView implements GLSurfaceVie
         lookDy += dy;
     }
 
-    public synchronized void setButtons(boolean firePressed, boolean adsPressed, boolean jumpPressed) {
+    public synchronized void setButtons(
+        boolean firePressed,
+        boolean adsPressed,
+        boolean jumpPressed,
+        boolean reloadPressed,
+        boolean usePressed,
+        boolean knifePressed,
+        boolean grenadePressed,
+        boolean slidePressed,
+        boolean pausePressed
+    ) {
         fire = firePressed;
         ads = adsPressed;
         jump = jumpPressed;
+        reload = reloadPressed;
+        use = usePressed;
+        knife = knifePressed;
+        grenade = grenadePressed;
+        slide = slidePressed;
+        pause = pausePressed;
     }
 
     public boolean isRendererReady() {
@@ -98,6 +120,12 @@ public final class GameSurfaceView extends GLSurfaceView implements GLSurfaceVie
         final boolean fireNow;
         final boolean adsNow;
         final boolean jumpNow;
+        final boolean reloadNow;
+        final boolean useNow;
+        final boolean knifeNow;
+        final boolean grenadeNow;
+        final boolean slideNow;
+        final boolean pauseNow;
 
         synchronized (this) {
             mx = moveX;
@@ -109,9 +137,20 @@ public final class GameSurfaceView extends GLSurfaceView implements GLSurfaceVie
             fireNow = fire;
             adsNow = ads;
             jumpNow = jump;
+            reloadNow = reload;
+            useNow = use;
+            knifeNow = knife;
+            grenadeNow = grenade;
+            slideNow = slide;
+            pauseNow = pause;
         }
 
-        NativeBridge.rendererFrame(mx, my, dx, dy, fireNow, adsNow, jumpNow);
+        NativeBridge.rendererFrame(
+            mx, my, dx, dy,
+            fireNow, adsNow, jumpNow,
+            reloadNow, useNow, knifeNow,
+            grenadeNow, slideNow, pauseNow
+        );
     }
 
     public void shutdown() {
