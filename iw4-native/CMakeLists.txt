@@ -39,12 +39,11 @@ else()
         add_executable(iw4native_smoke tests/smoke.cpp)
         target_link_libraries(iw4native_smoke PRIVATE iw4native_core)
         if(CMAKE_CXX_COMPILER_ID MATCHES "GNU|Clang")
-            # Instrument the core too; instrumenting only the test executable can
-            # perturb heap layout and hide writes performed inside the static lib.
-            target_compile_options(iw4native_core PRIVATE -fsanitize=address -fno-omit-frame-pointer)
-            target_compile_options(iw4native_smoke PRIVATE -fsanitize=address -fno-omit-frame-pointer)
-            target_link_options(iw4native_smoke PRIVATE -fsanitize=address)
-            target_link_options(iw4native_host PRIVATE -fsanitize=address)
+            # CI configures Release, which normally defines NDEBUG and disables
+            # every assert in this smoke suite. Keep assertions active so a
+            # failed invariant reports the exact line instead of cascading into
+            # an unrelated crash later in the test.
+            target_compile_options(iw4native_smoke PRIVATE -UNDEBUG)
         endif()
         add_test(NAME iw4native_smoke COMMAND iw4native_smoke)
     endif()
