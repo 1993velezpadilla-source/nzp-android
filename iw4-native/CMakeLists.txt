@@ -8,14 +8,17 @@ set(CMAKE_CXX_EXTENSIONS OFF)
 option(IW4NATIVE_BUILD_TESTS "Build host-side tests" ON)
 
 add_library(iw4native_core STATIC
+    src/core/asset_database.cpp
     src/core/command_buffer.cpp
     src/core/dvar.cpp
     src/core/memory_arena.cpp
     src/core/runtime.cpp
+    src/core/virtual_filesystem.cpp
 )
 
 target_include_directories(iw4native_core PUBLIC include)
 target_compile_definitions(iw4native_core PRIVATE IW4NATIVE_STANDALONE=1)
+set_target_properties(iw4native_core PROPERTIES POSITION_INDEPENDENT_CODE ON)
 
 if(ANDROID)
     add_library(iw4native SHARED
