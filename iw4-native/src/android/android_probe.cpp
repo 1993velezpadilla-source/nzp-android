@@ -96,6 +96,15 @@ Java_com_xziel_iw4native_NativeBridge_rendererLoadSanctum(
 }
 
 extern "C"
+JNIEXPORT jstring JNICALL
+Java_com_xziel_iw4native_NativeBridge_rendererDiagnostic(
+    JNIEnv* env,
+    jclass) {
+    const std::string diagnostic = iw4native::android::rendererDiagnostic();
+    return env->NewStringUTF(diagnostic.c_str());
+}
+
+extern "C"
 JNIEXPORT void JNICALL
 Java_com_xziel_iw4native_NativeBridge_rendererResize(
     JNIEnv*,
