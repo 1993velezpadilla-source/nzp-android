@@ -3,6 +3,7 @@
 #include "iw4native/dvar.hpp"
 #include "iw4native/memory_arena.hpp"
 #include "iw4native/runtime.hpp"
+#include "iw4native/sanctum_preview.hpp"
 #include "iw4native/virtual_filesystem.hpp"
 
 #include <cassert>
@@ -11,6 +12,7 @@
 #include <filesystem>
 #include <fstream>
 #include <iostream>
+#include <cstring>
 #include <string>
 #include <vector>
 
@@ -83,6 +85,60 @@ int main() {
         assert(bytes->size() == 5);
 
         std::filesystem::remove_all(tempRoot);
+    }
+
+
+    {
+        std::vector<std::byte> bytes;
+        const auto pushU16 = [&](std::uint16_t value) {
+            bytes.push_back(static_cast<std::byte>(value & 255));
+            bytes.push_back(static_cast<std::byte>((value >> 8) & 255));
+        };
+        const auto pushU32 = [&](std::uint32_t value) {
+            bytes.push_back(static_cast<std::byte>(value & 255));
+            bytes.push_back(static_cast<std::byte>((value >> 8) & 255));
+            bytes.push_back(static_cast<std::byte>((value >> 16) & 255));
+            bytes.push_back(static_cast<std::byte>((value >> 24) & 255));
+        };
+        const auto pushF32 = [&](float value) {
+            std::uint32_t bits = 0;
+            static_assert(sizeof(bits) == sizeof(value));
+            std::memcpy(&bits, &value, sizeof(bits));
+            pushU32(bits);
+        };
+
+        bytes.insert(bytes.end(), {
+            std::byte{'S'}, std::byte{'N'}, std::byte{'P'}, std::byte{'1'}
+        });
+        pushU32(1);
+        pushU32(1);
+        pushF32(0.0f); pushF32(0.0f); pushF32(0.0f);
+        pushF32(10.0f); pushF32(20.0f); pushF32(30.0f);
+
+        const std::uint16_t quantized[] = {
+            0, 0, 0,
+            65535, 0, 0,
+            0, 65535, 65535
+        };
+        for (const auto value : quantized) pushU16(value);
+        pushU16(0xF800);
+
+        std::vector<iw4native::PreviewVertex> vertices;
+        iw4native::PreviewBounds bounds;
+        std::string error;
+        assert(iw4native::decodeSanctumPreview(bytes, vertices, bounds, &error));
+        assert(error.empty());
+        assert(vertices.size() == 3);
+        assert(vertices[0].x == 0.0f);
+        assert(vertices[1].x > 9.99f);
+        assert(vertices[2].y > 19.99f);
+        assert(vertices[2].z > 29.99f);
+        assert(vertices[0].r > 0.99f);
+        assert(vertices[0].g < 0.01f);
+        assert(vertices[0].b < 0.01f);
+
+        bytes.pop_back();
+        assert(!iw4native::decodeSanctumPreview(bytes, vertices, bounds, &error));
     }
 
     {
