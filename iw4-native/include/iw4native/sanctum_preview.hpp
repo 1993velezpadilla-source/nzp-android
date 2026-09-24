@@ -15,6 +15,9 @@ struct PreviewVertex {
     float r = 1.0f;
     float g = 1.0f;
     float b = 1.0f;
+    float nx = 0.0f;
+    float ny = 1.0f;
+    float nz = 0.0f;
 };
 
 struct PreviewBounds {
