@@ -11,6 +11,7 @@
 #include <cstdint>
 #include <span>
 #include <string>
+#include <sstream>
 #include <vector>
 
 namespace iw4native::android {
@@ -274,6 +275,9 @@ GLuint gSanctumVbo = 0;
 GLsizei gSanctumVertexCount = 0;
 PreviewSceneInfo gSanctumScene{};
 bool gSanctumLoaded = false;
+std::size_t gCameraCandidate = 0;
+std::size_t gCameraVisibilityScore = 0;
+GLenum gLastGlError = GL_NO_ERROR;
 GLint gMvp = -1;
 int gWidth = 1;
 int gHeight = 1;
@@ -377,6 +381,17 @@ bool rendererLoadSanctum(const std::byte* data, std::size_t size) {
         static_cast<GLsizeiptr>(vertices.size() * sizeof(PreviewVertex)),
         vertices.data(),
         GL_STATIC_DRAW);
+    gLastGlError = glGetError();
+    if (gLastGlError != GL_NO_ERROR) {
+        __android_log_print(
+            ANDROID_LOG_ERROR,
+            kTag,
+            "Sanctum VBO upload failed: glError=0x%x",
+            static_cast<unsigned>(gLastGlError));
+        gSanctumLoaded = false;
+        glBindVertexArray(0);
+        return false;
+    }
 
     glVertexAttribPointer(
         0, 3, GL_FLOAT, GL_FALSE, sizeof(PreviewVertex), nullptr);
@@ -424,6 +439,9 @@ bool rendererLoadSanctum(const std::byte* data, std::size_t size) {
         }
     }
 
+    gCameraCandidate = bestCamera;
+    gCameraVisibilityScore = bestScore;
+
     gPlayerX = cameraCandidates[bestCamera].x;
     gPlayerY = cameraCandidates[bestCamera].y;
     gPlayerZ = cameraCandidates[bestCamera].z;
@@ -452,6 +470,17 @@ bool rendererLoadSanctum(const std::byte* data, std::size_t size) {
         lookX, lookY, lookZ);
 
     return gSanctumLoaded;
+}
+
+std::string rendererDiagnostic() {
+    std::ostringstream out;
+    out << (gReady ? "GL READY" : "GL NOT READY");
+    out << " • " << (gSanctumLoaded ? "SANCTUM GPU PASS" : "SANCTUM GPU FAIL");
+    out << " • vertices=" << gSanctumVertexCount;
+    out << " • camera=" << gCameraCandidate;
+    out << " • visible=" << gCameraVisibilityScore;
+    out << " • gl=0x" << std::hex << static_cast<unsigned>(gLastGlError);
+    return out.str();
 }
 
 void rendererResize(int width, int height) {
@@ -574,6 +603,11 @@ void rendererFrame(float moveX,
         glDrawArrays(GL_TRIANGLES, 0, static_cast<GLsizei>(kRoom.size()));
     }
     glBindVertexArray(0);
+
+    const GLenum frameError = glGetError();
+    if (frameError != GL_NO_ERROR) {
+        gLastGlError = frameError;
+    }
 }
 
 void rendererShutdown() {
@@ -587,6 +621,9 @@ void rendererShutdown() {
     gSanctumVertexCount = 0;
     gSanctumScene = {};
     gSanctumLoaded = false;
+    gCameraCandidate = 0;
+    gCameraVisibilityScore = 0;
+    gLastGlError = GL_NO_ERROR;
     gVbo = 0;
     gVao = 0;
     gProgram = 0;
