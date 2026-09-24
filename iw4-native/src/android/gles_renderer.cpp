@@ -240,7 +240,7 @@ GLuint gVbo = 0;
 GLuint gSanctumVao = 0;
 GLuint gSanctumVbo = 0;
 GLsizei gSanctumVertexCount = 0;
-PreviewBounds gSanctumBounds{};
+PreviewSceneInfo gSanctumScene{};
 bool gSanctumLoaded = false;
 GLint gMvp = -1;
 int gWidth = 1;
@@ -316,12 +316,12 @@ bool rendererLoadSanctum(const std::byte* data, std::size_t size) {
     if (!gReady || data == nullptr || size == 0) return false;
 
     std::vector<PreviewVertex> vertices;
-    PreviewBounds bounds;
+    PreviewSceneInfo scene;
     std::string error;
     if (!decodeSanctumPreview(
             std::span<const std::byte>(data, size),
             vertices,
-            bounds,
+            scene,
             &error)) {
         __android_log_print(
             ANDROID_LOG_ERROR,
@@ -356,14 +356,20 @@ bool rendererLoadSanctum(const std::byte* data, std::size_t size) {
     glBindVertexArray(0);
 
     gSanctumVertexCount = static_cast<GLsizei>(vertices.size());
-    gSanctumBounds = bounds;
+    gSanctumScene = scene;
     gSanctumLoaded = gSanctumVertexCount > 0;
 
-    gPlayerX = (bounds.minX + bounds.maxX) * 0.5f;
-    gPlayerY = bounds.minY + 1.70f;
-    gPlayerZ = bounds.maxZ - 2.0f;
-    gYaw = 0.0f;
-    gPitch = 0.0f;
+    const auto& bounds = scene.bounds;
+    gPlayerX = scene.spawnX;
+    gPlayerY = scene.spawnY;
+    gPlayerZ = scene.spawnZ;
+
+    const float dx = scene.lookX - scene.spawnX;
+    const float dy = scene.lookY - scene.spawnY;
+    const float dz = scene.lookZ - scene.spawnZ;
+    const float horizontal = std::sqrt(dx * dx + dz * dz);
+    gYaw = std::atan2(-dx, -dz);
+    gPitch = std::atan2(dy, std::max(horizontal, 0.0001f));
     gJumpPhase = 0.0f;
 
     __android_log_print(
@@ -410,16 +416,16 @@ void rendererFrame(float moveX,
     gPlayerZ += (rightZ * moveX + forwardZ * -moveY) * moveSpeed;
 
     if (gSanctumLoaded) {
-        const float padX = std::min(0.75f, (gSanctumBounds.maxX - gSanctumBounds.minX) * 0.05f);
-        const float padZ = std::min(0.75f, (gSanctumBounds.maxZ - gSanctumBounds.minZ) * 0.05f);
+        const float padX = std::min(0.75f, (gSanctumScene.bounds.maxX - gSanctumScene.bounds.minX) * 0.05f);
+        const float padZ = std::min(0.75f, (gSanctumScene.bounds.maxZ - gSanctumScene.bounds.minZ) * 0.05f);
         gPlayerX = std::clamp(
             gPlayerX,
-            gSanctumBounds.minX + padX,
-            gSanctumBounds.maxX - padX);
+            gSanctumScene.bounds.minX + padX,
+            gSanctumScene.bounds.maxX - padX);
         gPlayerZ = std::clamp(
             gPlayerZ,
-            gSanctumBounds.minZ + padZ,
-            gSanctumBounds.maxZ - padZ);
+            gSanctumScene.bounds.minZ + padZ,
+            gSanctumScene.bounds.maxZ - padZ);
     } else {
         gPlayerX = std::clamp(gPlayerX, -7.2f, 7.2f);
         gPlayerZ = std::clamp(gPlayerZ, -9.2f, 9.2f);
@@ -481,7 +487,7 @@ void rendererShutdown() {
     gSanctumVbo = 0;
     gSanctumVao = 0;
     gSanctumVertexCount = 0;
-    gSanctumBounds = {};
+    gSanctumScene = {};
     gSanctumLoaded = false;
     gVbo = 0;
     gVao = 0;
