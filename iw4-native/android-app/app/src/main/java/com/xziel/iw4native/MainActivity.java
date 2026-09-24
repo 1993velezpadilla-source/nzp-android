@@ -28,7 +28,7 @@ public final class MainActivity extends Activity {
 
         final TextView status = new TextView(this);
         status.setText(
-            "IW4 NATIVE ARM64  •  SANCTUM  •  NZP RADIAL TOUCH\n" +
+            "IW4 NATIVE ARM64  •  SANCTUM  •  NZP TOUCH\n" +
             bootStatus + "\n" +
             "RENDERER STARTING..."
         );
@@ -42,7 +42,7 @@ public final class MainActivity extends Activity {
             this,
             (text, good) -> {
                 status.setText(
-                    "IW4 NATIVE ARM64  •  SANCTUM  •  NZP RADIAL TOUCH\n" +
+                    "IW4 NATIVE ARM64  •  SANCTUM  •  NZP TOUCH\n" +
                     bootStatus + "\n" +
                     text
                 );
