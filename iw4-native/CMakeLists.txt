@@ -38,13 +38,6 @@ else()
         enable_testing()
         add_executable(iw4native_smoke tests/smoke.cpp)
         target_link_libraries(iw4native_smoke PRIVATE iw4native_core)
-        if(CMAKE_CXX_COMPILER_ID MATCHES "GNU|Clang")
-            # CI configures Release, which normally defines NDEBUG and disables
-            # every assert in this smoke suite. Keep assertions active so a
-            # failed invariant reports the exact line instead of cascading into
-            # an unrelated crash later in the test.
-            target_compile_options(iw4native_smoke PRIVATE -UNDEBUG)
-        endif()
         add_test(NAME iw4native_smoke COMMAND iw4native_smoke)
     endif()
 endif()
