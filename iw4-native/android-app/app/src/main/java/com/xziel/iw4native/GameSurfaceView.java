@@ -39,6 +39,7 @@ public final class GameSurfaceView extends GLSurfaceView implements GLSurfaceVie
 
     private volatile boolean rendererReady;
     private volatile boolean sanctumLoaded;
+    private boolean firstFrameDiagnosticPublished;
 
     public GameSurfaceView(Context context, StatusListener statusListener) {
         super(context);
@@ -95,6 +96,7 @@ public final class GameSurfaceView extends GLSurfaceView implements GLSurfaceVie
     public void onSurfaceCreated(GL10 gl, EGLConfig config) {
         rendererReady = NativeBridge.rendererInit();
         sanctumLoaded = false;
+        firstFrameDiagnosticPublished = false;
 
         if (!rendererReady) {
             Log.e(TAG, "Native GLES3 renderer initialization failed");
@@ -110,10 +112,11 @@ public final class GameSurfaceView extends GLSurfaceView implements GLSurfaceVie
 
         sanctumLoaded = NativeBridge.rendererLoadSanctum(sanctumPreview);
 
+        final String diagnostic = NativeBridge.rendererDiagnostic();
         final String status =
             sanctumLoaded
-                ? "SANCTUM 24K PASS  •  " + sanctumPreview.length + " BYTES"
-                : "SANCTUM LOAD FAIL  •  FALLBACK ROOM";
+                ? "SANCTUM LOAD PASS  •  " + sanctumPreview.length + " BYTES\n" + diagnostic
+                : "SANCTUM LOAD FAIL  •  FALLBACK ROOM\n" + diagnostic;
 
         Log.i(TAG, status);
         publishStatus(status, sanctumLoaded);
@@ -176,6 +179,17 @@ public final class GameSurfaceView extends GLSurfaceView implements GLSurfaceVie
             slideNow,
             pauseNow
         );
+
+        if (!firstFrameDiagnosticPublished) {
+            firstFrameDiagnosticPublished = true;
+            final String diagnostic = NativeBridge.rendererDiagnostic();
+            final boolean good =
+                sanctumLoaded &&
+                diagnostic.contains("SANCTUM GPU PASS") &&
+                diagnostic.contains("gl=0x0");
+            Log.i(TAG, "FIRST FRAME • " + diagnostic);
+            publishStatus("FIRST FRAME • " + diagnostic, good);
+        }
     }
 
     public void shutdown() {
