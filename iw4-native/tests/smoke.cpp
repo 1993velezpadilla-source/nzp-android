@@ -1,11 +1,18 @@
+#include "iw4native/asset_database.hpp"
 #include "iw4native/command_buffer.hpp"
 #include "iw4native/dvar.hpp"
 #include "iw4native/memory_arena.hpp"
 #include "iw4native/runtime.hpp"
+#include "iw4native/virtual_filesystem.hpp"
 
 #include <cassert>
+#include <cstddef>
 #include <cstdint>
+#include <filesystem>
+#include <fstream>
 #include <iostream>
+#include <string>
+#include <vector>
 
 int main() {
     {
@@ -45,12 +52,48 @@ int main() {
     }
 
     {
+        iw4native::AssetDatabase assets;
+        iw4native::AssetRecord record;
+        record.type = iw4native::AssetType::World;
+        record.name = "xziel_sanctum";
+        record.payload = {std::byte{7}, std::byte{8}};
+        assert(assets.insert(std::move(record)));
+        assert(!assets.insert({iw4native::AssetType::World, "xziel_sanctum", {}}));
+        assert(assets.contains(iw4native::AssetType::World, "xziel_sanctum"));
+        assert(assets.find(iw4native::AssetType::World, "xziel_sanctum")->payload.size() == 2);
+    }
+
+    {
+        const auto tempRoot = std::filesystem::temp_directory_path() / "iw4native-vfs-smoke";
+        std::filesystem::remove_all(tempRoot);
+        std::filesystem::create_directories(tempRoot / "maps");
+
+        {
+            std::ofstream out(tempRoot / "maps" / "sanctum.bin", std::ios::binary);
+            out << "XZIEL";
+        }
+
+        iw4native::VirtualFileSystem vfs(tempRoot);
+        assert(vfs.exists("maps/sanctum.bin"));
+        assert(!vfs.exists("../escape.bin"));
+        assert(!vfs.readBinary("../escape.bin"));
+
+        const auto bytes = vfs.readBinary("maps/sanctum.bin");
+        assert(bytes);
+        assert(bytes->size() == 5);
+
+        std::filesystem::remove_all(tempRoot);
+    }
+
+    {
         const auto report = iw4native::bootStandalone(
             "linux-test", "xziel_sanctum", 8ull * 1024ull * 1024ull);
         assert(report.ok);
         assert(report.mapName == "xziel_sanctum");
         assert(report.commandsExecuted == 3);
-        assert(report.dvarCount == 3);\n        assert(report.message.find("standalone core initialized") != std::string::npos);
+        assert(report.dvarCount == 3);
+        assert(report.assetCount == 1);
+        assert(report.message.find("standalone core initialized") != std::string::npos);
     }
 
     std::cout << "IW4 native standalone core smoke: PASS\n";
