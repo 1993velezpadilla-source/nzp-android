@@ -1,0 +1,100 @@
+name: IW4 Native Standalone Core
+
+on:
+  workflow_dispatch:
+  push:
+    branches:
+      - "research/iw4-t4-native-android"
+    paths:
+      - "iw4-native/**"
+      - ".github/workflows/iw4-native-standalone.yml"
+
+permissions:
+  contents: read
+
+jobs:
+  linux-host:
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+
+    steps:
+      - uses: actions/checkout@v5
+
+      - name: Configure
+        run: cmake -S iw4-native -B build/iw4-native-linux -G Ninja -DCMAKE_BUILD_TYPE=Release
+
+      - name: Build
+        run: cmake --build build/iw4-native-linux --parallel
+
+      - name: Run standalone host
+        run: build/iw4-native-linux/iw4native_host xziel_sanctum | tee build/iw4-native-linux/boot-report.txt
+
+      - name: Run tests
+        run: ctest --test-dir build/iw4-native-linux --output-on-failure
+
+      - name: Reject original-game runtime dependencies
+        shell: bash
+        run: |
+          set -euo pipefail
+          if grep -RniE 'iw4mp\.exe|IW4\.exe|CoDWaW\.exe|Zynamic::Forward|memory::call<|0x[0-9A-Fa-f]{6,8}' iw4-native             --exclude-dir=build; then
+            echo "Original game executable/address dependency found in standalone core."
+            exit 1
+          fi
+          echo "Standalone core has no original-game executable/address dependency."
+
+      - uses: actions/upload-artifact@v4
+        with:
+          name: iw4-native-linux-host
+          path: |
+            build/iw4-native-linux/iw4native_host
+            build/iw4-native-linux/boot-report.txt
+          retention-days: 14
+
+  android-arm64:
+    runs-on: ubuntu-latest
+    timeout-minutes: 20
+
+    steps:
+      - uses: actions/checkout@v5
+
+      - name: Set up Android SDK
+        uses: android-actions/setup-android@v3
+
+      - name: Install NDK and CMake
+        shell: bash
+        run: |
+          set -euo pipefail
+          yes | sdkmanager --licenses >/dev/null || true
+          sdkmanager "ndk;27.2.12479018" "cmake;3.22.1"
+
+      - name: Configure Android ARM64
+        shell: bash
+        run: |
+          set -euo pipefail
+          NDK="${ANDROID_SDK_ROOT}/ndk/27.2.12479018"
+          cmake             -S iw4-native             -B build/iw4-native-android             -G Ninja             -DCMAKE_BUILD_TYPE=Release             -DCMAKE_TOOLCHAIN_FILE="${NDK}/build/cmake/android.toolchain.cmake"             -DANDROID_ABI=arm64-v8a             -DANDROID_PLATFORM=android-26             -DIW4NATIVE_BUILD_TESTS=OFF
+
+      - name: Build Android ARM64 native library
+        run: cmake --build build/iw4-native-android --parallel
+
+      - name: Verify ARM64 ELF and dependency boundary
+        shell: bash
+        run: |
+          set -euo pipefail
+          SO="build/iw4-native-android/libiw4native.so"
+          test -s "$SO"
+          file "$SO" | tee build/iw4-native-android/elf-report.txt
+          grep -q 'ARM aarch64' build/iw4-native-android/elf-report.txt
+
+          if strings "$SO" | grep -Eiq 'iw4mp\.exe|IW4\.exe|CoDWaW\.exe'; then
+            echo "Original game executable dependency leaked into Android library."
+            exit 1
+          fi
+
+      - uses: actions/upload-artifact@v4
+        with:
+          name: iw4-native-android-arm64
+          path: |
+            build/iw4-native-android/libiw4native.so
+            build/iw4-native-android/elf-report.txt
+          retention-days: 14
