@@ -1,0 +1,92 @@
+name: IW4 Native Android APK
+
+on:
+  workflow_dispatch:
+  push:
+    branches:
+      - "research/iw4-t4-native-android"
+    paths:
+      - "iw4-native/**"
+      - ".github/workflows/iw4-native-apk.yml"
+
+permissions:
+  contents: read
+
+jobs:
+  build-native-apk:
+    runs-on: ubuntu-latest
+    timeout-minutes: 30
+
+    steps:
+      - uses: actions/checkout@v5
+
+      - name: Set up Java 17
+        uses: actions/setup-java@v5
+        with:
+          distribution: temurin
+          java-version: "17"
+
+      - name: Install Android build dependencies
+        shell: bash
+        run: |
+          set -euo pipefail
+          test -n "${ANDROID_HOME:-}"
+          echo "ANDROID_SDK_ROOT=${ANDROID_HOME}" >> "$GITHUB_ENV"
+          SDKMANAGER="$(find "${ANDROID_HOME}/cmdline-tools" -type f -name sdkmanager | sort | tail -n 1)"
+          test -n "$SDKMANAGER"
+          yes | "$SDKMANAGER" --licenses >/dev/null || true
+          "$SDKMANAGER"             "platform-tools"             "platforms;android-35"             "build-tools;35.0.0"             "ndk;27.2.12479018"             "cmake;3.22.1"
+
+      - name: Set up Gradle
+        uses: gradle/actions/setup-gradle@v4
+        with:
+          gradle-version: "8.9"
+
+      - name: Build debug APK
+        run: gradle -p iw4-native/android-app :app:assembleDebug --stacktrace
+
+      - name: Verify APK and native ABI
+        shell: bash
+        run: |
+          set -euo pipefail
+          APK="iw4-native/android-app/app/build/outputs/apk/debug/app-debug.apk"
+          test -s "$APK"
+
+          AAPT="${ANDROID_HOME}/build-tools/35.0.0/aapt"
+          "$AAPT" dump badging "$APK" | tee iw4-native/android-app/apk-badging.txt
+          grep -q "package: name='com.xziel.iw4native'" iw4-native/android-app/apk-badging.txt
+          grep -q "launchable-activity: name='com.xziel.iw4native.MainActivity'" iw4-native/android-app/apk-badging.txt
+
+          unzip -l "$APK" | tee iw4-native/android-app/apk-contents.txt
+          grep -q 'lib/arm64-v8a/libiw4native.so' iw4-native/android-app/apk-contents.txt
+
+          rm -rf build/apk-check
+          mkdir -p build/apk-check
+          unzip -q "$APK" 'lib/arm64-v8a/libiw4native.so' -d build/apk-check
+          file build/apk-check/lib/arm64-v8a/libiw4native.so | tee iw4-native/android-app/native-elf.txt
+          grep -q 'ARM aarch64' iw4-native/android-app/native-elf.txt
+
+          if unzip -l "$APK" | grep -Eiq '(^|/)(iw4mp\.exe|IW4\.exe|CoDWaW\.exe)$|\.ff$|\.iwd$|\.asi$|\.iwi$'; then
+            echo "Original game payload detected in native probe APK."
+            exit 1
+          fi
+
+          if strings build/apk-check/lib/arm64-v8a/libiw4native.so | grep -Eiq 'iw4mp\.exe|IW4\.exe|CoDWaW\.exe|Zynamic::Forward'; then
+            echo "Original runtime dependency detected in native library."
+            exit 1
+          fi
+
+          mkdir -p dist
+          cp "$APK" dist/IW4-Native-Android-Probe-debug.apk
+
+      - name: Upload native APK
+        uses: actions/upload-artifact@v4
+        with:
+          name: IW4-Native-Android-Probe-debug
+          path: |
+            dist/IW4-Native-Android-Probe-debug.apk
+            iw4-native/android-app/apk-badging.txt
+            iw4-native/android-app/apk-contents.txt
+            iw4-native/android-app/native-elf.txt
+          if-no-files-found: error
+          retention-days: 14
