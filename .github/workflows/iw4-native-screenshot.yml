@@ -81,19 +81,7 @@ jobs:
           ram-size: 4096M
           emulator-options: -no-window -gpu swiftshader_indirect -noaudio -no-boot-anim -camera-back none -no-snapshot
           disable-animations: true
-          script: |
-            test -s iw4-native/android-app/app/build/outputs/apk/debug/app-debug.apk
-            mkdir -p dist
-            adb install -r iw4-native/android-app/app/build/outputs/apk/debug/app-debug.apk
-            adb logcat -c
-            adb shell am force-stop com.xziel.iw4native
-            adb shell am start -W -n com.xziel.iw4native/.MainActivity
-            sleep 8
-            adb shell screencap -p /sdcard/iw4-native-sanctum.png
-            adb pull /sdcard/iw4-native-sanctum.png dist/iw4-native-sanctum.png
-            adb logcat -d > dist/iw4-native-logcat.txt
-            test -s dist/iw4-native-sanctum.png
-            file dist/iw4-native-sanctum.png
+          script: bash .github/scripts/iw4-capture-screenshot.sh
 
       - name: Upload screenshot
         uses: actions/upload-artifact@v4
