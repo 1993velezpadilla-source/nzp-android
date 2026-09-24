@@ -258,7 +258,13 @@ public final class TouchHudView extends View {
         game.setButtons(
             firePressed || adsFirePressed,
             adsPressed || adsFirePressed,
-            jumpPressed
+            jumpPressed,
+            reloadPressed,
+            usePressed,
+            knifePressed,
+            grenadePressed,
+            slidePressed,
+            pausePressed
         );
     }
 
