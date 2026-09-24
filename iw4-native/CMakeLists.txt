@@ -39,8 +39,12 @@ else()
         add_executable(iw4native_smoke tests/smoke.cpp)
         target_link_libraries(iw4native_smoke PRIVATE iw4native_core)
         if(CMAKE_CXX_COMPILER_ID MATCHES "GNU|Clang")
+            # Instrument the core too; instrumenting only the test executable can
+            # perturb heap layout and hide writes performed inside the static lib.
+            target_compile_options(iw4native_core PRIVATE -fsanitize=address -fno-omit-frame-pointer)
             target_compile_options(iw4native_smoke PRIVATE -fsanitize=address -fno-omit-frame-pointer)
             target_link_options(iw4native_smoke PRIVATE -fsanitize=address)
+            target_link_options(iw4native_host PRIVATE -fsanitize=address)
         endif()
         add_test(NAME iw4native_smoke COMMAND iw4native_smoke)
     endif()
