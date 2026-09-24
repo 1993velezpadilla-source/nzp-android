@@ -8,6 +8,7 @@ on:
     paths:
       - "iw4-native/**"
       - ".github/workflows/iw4-native-screenshot.yml"
+      - ".github/scripts/iw4-capture-screenshot.sh"
 
 permissions:
   contents: read
