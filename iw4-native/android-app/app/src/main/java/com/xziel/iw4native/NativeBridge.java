@@ -19,7 +19,13 @@ public final class NativeBridge {
         float lookDy,
         boolean fire,
         boolean ads,
-        boolean jump
+        boolean jump,
+        boolean reload,
+        boolean use,
+        boolean knife,
+        boolean grenade,
+        boolean slide,
+        boolean pause
     );
     public static native void rendererShutdown();
 }
