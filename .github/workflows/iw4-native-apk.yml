@@ -12,6 +12,10 @@ on:
 permissions:
   contents: read
 
+concurrency:
+  group: iw4-native-apk-${{ github.ref }}
+  cancel-in-progress: true
+
 jobs:
   build-native-apk:
     runs-on: ubuntu-latest
