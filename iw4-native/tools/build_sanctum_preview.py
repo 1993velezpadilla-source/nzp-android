@@ -4,16 +4,18 @@
 Input is the CC BY St Giles Cripplegate scan by artfletch, fetched through
 Objaverse using the same UID already used by the Xziel Sanctum pipeline.
 
-Output format SNP1:
+Output format SNP1 v2:
   4s  magic
   u32 version
   u32 triangle_count
   6xf32 global bounds (min xyz, max xyz)
+  3xf32 player spawn (xyz)
+  3xf32 look target (xyz)
   triangle_count records:
       9xu16 quantized xyz for three vertices
       u16 RGB565 material color
 
-This file intentionally contains geometry only. Textures are a later gate.
+This file intentionally contains geometry + spawn metadata only. Textures are a later gate.
 """
 
 from __future__ import annotations
@@ -116,6 +118,83 @@ def allocate_quotas(face_counts: list[int], target: int) -> list[int]:
     return quotas
 
 
+def dominant_floor_y(meshes) -> float:
+    # GLTF/GLB is Y-up. Accumulate area of upward-facing triangles into 25 cm
+    # floor bands, mirroring the dominant-floor logic from the original
+    # Sanctum Blender pipeline while avoiding its Z-up conversion.
+    buckets: dict[float, float] = {}
+
+    for _node, _name, mesh in meshes:
+        vertices = np.asarray(mesh.vertices, dtype=np.float64)
+        faces = np.asarray(mesh.faces, dtype=np.int64)
+        if len(faces) == 0:
+            continue
+
+        stride = max(1, len(faces) // 30000)
+        sampled = faces[::stride]
+        tri = vertices[sampled]
+
+        e1 = tri[:, 1] - tri[:, 0]
+        e2 = tri[:, 2] - tri[:, 0]
+        normals = np.cross(e1, e2)
+        lengths = np.linalg.norm(normals, axis=1)
+
+        valid = lengths > 1e-10
+        if not np.any(valid):
+            continue
+
+        normals[valid] /= lengths[valid, None]
+        areas = lengths * 0.5 * stride
+        centers_y = tri.mean(axis=1)[:, 1]
+
+        upward = valid & (normals[:, 1] > 0.58)
+        for y, area in zip(centers_y[upward], areas[upward]):
+            band = round(float(y) * 4.0) / 4.0
+            buckets[band] = buckets.get(band, 0.0) + float(area)
+
+    if not buckets:
+        raise RuntimeError("Could not identify an upward-facing Sanctum floor band")
+
+    # Very low disconnected scan fragments can have large area. Prefer a
+    # strong floor band near the middle/lower-middle of the vertical content,
+    # not the absolute minimum.
+    ranked = sorted(buckets.items(), key=lambda item: item[1], reverse=True)
+    strongest_area = ranked[0][1]
+    candidates = [item for item in ranked if item[1] >= strongest_area * 0.20]
+    return max(candidates, key=lambda item: item[1])[0]
+
+
+def build_spawn(global_min: np.ndarray,
+                global_max: np.ndarray,
+                floor_y: float) -> tuple[np.ndarray, np.ndarray]:
+    center = (global_min + global_max) * 0.5
+    width_x = global_max[0] - global_min[0]
+    depth_z = global_max[2] - global_min[2]
+
+    # Spawn near the farther captured edge and look toward the church center.
+    # Choosing the longer horizontal axis gives more exterior clearance.
+    if depth_z >= width_x:
+        spawn = np.array([
+            center[0],
+            floor_y + 1.70,
+            global_max[2] - max(1.5, depth_z * 0.04),
+        ], dtype=np.float64)
+    else:
+        spawn = np.array([
+            global_max[0] - max(1.5, width_x * 0.04),
+            floor_y + 1.70,
+            center[2],
+        ], dtype=np.float64)
+
+    look = np.array([
+        center[0],
+        floor_y + 2.10,
+        center[2],
+    ], dtype=np.float64)
+
+    return spawn, look
+
+
 def build_preview(source: Path, out_path: Path, target_triangles: int) -> dict:
     loaded = trimesh.load(source, force="scene", process=False)
     scene = loaded if isinstance(loaded, trimesh.Scene) else trimesh.Scene(loaded)
@@ -134,6 +213,9 @@ def build_preview(source: Path, out_path: Path, target_triangles: int) -> dict:
         global_max = np.maximum(global_max, bounds[1])
         face_counts.append(int(len(mesh.faces)))
 
+    floor_y = dominant_floor_y(meshes)
+    spawn, look_target = build_spawn(global_min, global_max, floor_y)
+
     quotas = allocate_quotas(face_counts, target_triangles)
     span = global_max - global_min
     span[span == 0.0] = 1.0
@@ -143,9 +225,11 @@ def build_preview(source: Path, out_path: Path, target_triangles: int) -> dict:
 
     with out_path.open("wb") as out:
         out.write(b"SNP1")
-        out.write(struct.pack("<I", 1))
+        out.write(struct.pack("<I", 2))
         out.write(struct.pack("<I", sum(quotas)))
         out.write(struct.pack("<6f", *(global_min.tolist() + global_max.tolist())))
+        out.write(struct.pack("<3f", *spawn.tolist()))
+        out.write(struct.pack("<3f", *look_target.tolist()))
 
         for ordinal, ((node_name, geom_name, mesh), quota) in enumerate(zip(meshes, quotas)):
             face_count = len(mesh.faces)
@@ -188,6 +272,9 @@ def build_preview(source: Path, out_path: Path, target_triangles: int) -> dict:
         "previewTriangles": selected_total,
         "boundsMin": global_min.tolist(),
         "boundsMax": global_max.tolist(),
+        "dominantFloorY": floor_y,
+        "playerSpawn": spawn.tolist(),
+        "lookTarget": look_target.tolist(),
         "outputBytes": out_path.stat().st_size,
     }
 
