@@ -1,0 +1,59 @@
+{
+  "schema": 1,
+  "generatedFromPublicGitTrees": true,
+  "projects": {
+    "OpenIW4": {
+      "sourceFiles": 55,
+      "totalSourceBytes": 138783,
+      "avgBytesPerSourceFile": 2523,
+      "tinyFilesLE100Bytes": 5,
+      "smallFilesLE500Bytes": 24,
+      "largeFilesGE5000Bytes": 7,
+      "knownRuntimeDependencySignals": {
+        "filesWithMemoryCallSearchHit": 15,
+        "filesWithReinterpretCastSearchHit": 20,
+        "filesWithIw4mpExeReference": 2,
+        "filesWithDirect3DCreate9Reference": 1
+      }
+    },
+    "OpenIW-lineage": {
+      "sourceFiles": 1397,
+      "totalSourceBytes": 2874386,
+      "avgBytesPerSourceFile": 2058,
+      "tinyFilesLE100Bytes": 710,
+      "smallFilesLE500Bytes": 845,
+      "largeFilesGE5000Bytes": 170,
+      "knownRuntimeDependencySignals": {
+        "filesWithZynamicForwardSearchHit": 2,
+        "filesWithReinterpretCastSearchHit": 3,
+        "filesWithIw4ExeReference": 1
+      }
+    },
+    "IW4x": {
+      "sourceFiles": 513,
+      "totalSourceBytes": 8585684,
+      "avgBytesPerSourceFile": 16736,
+      "tinyFilesLE100Bytes": 2,
+      "smallFilesLE500Bytes": 73,
+      "largeFilesGE5000Bytes": 128,
+      "note": "Very substantial community code, but designed to patch/extend original MW2 runtime."
+    },
+    "OpenAssetTools": {
+      "sourceFiles": 2016,
+      "totalSourceBytes": 8744670,
+      "avgBytesPerSourceFile": 4338,
+      "tinyFilesLE100Bytes": 29,
+      "smallFilesLE500Bytes": 659,
+      "largeFilesGE5000Bytes": 322,
+      "note": "Large asset/tooling codebase, not a client runtime."
+    },
+    "T4M": {
+      "sourceFiles": 27,
+      "note": "Direct x86 hook/patch project over CoDWaW.exe."
+    },
+    "T4M-Enhanced": {
+      "sourceFiles": 73,
+      "note": "Expanded T4 hook project; still not standalone."
+    }
+  }
+}
