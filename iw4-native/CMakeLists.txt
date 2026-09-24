@@ -23,8 +23,9 @@ set_target_properties(iw4native_core PROPERTIES POSITION_INDEPENDENT_CODE ON)
 if(ANDROID)
     add_library(iw4native SHARED
         src/android/android_probe.cpp
+        src/android/gles_renderer.cpp
     )
-    target_link_libraries(iw4native PRIVATE iw4native_core log android)
+    target_link_libraries(iw4native PRIVATE iw4native_core log android GLESv3)
     target_compile_definitions(iw4native PRIVATE IW4NATIVE_ANDROID=1)
 else()
     add_executable(iw4native_host
