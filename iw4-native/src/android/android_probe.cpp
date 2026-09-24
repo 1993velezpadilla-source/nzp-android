@@ -116,7 +116,13 @@ Java_com_xziel_iw4native_NativeBridge_rendererFrame(
     jfloat lookDy,
     jboolean fire,
     jboolean ads,
-    jboolean jump) {
+    jboolean jump,
+    jboolean reload,
+    jboolean use,
+    jboolean knife,
+    jboolean grenade,
+    jboolean slide,
+    jboolean pause) {
     iw4native::android::rendererFrame(
         moveX,
         moveY,
@@ -124,7 +130,13 @@ Java_com_xziel_iw4native_NativeBridge_rendererFrame(
         lookDy,
         fire == JNI_TRUE,
         ads == JNI_TRUE,
-        jump == JNI_TRUE);
+        jump == JNI_TRUE,
+        reload == JNI_TRUE,
+        use == JNI_TRUE,
+        knife == JNI_TRUE,
+        grenade == JNI_TRUE,
+        slide == JNI_TRUE,
+        pause == JNI_TRUE);
 }
 
 extern "C"
