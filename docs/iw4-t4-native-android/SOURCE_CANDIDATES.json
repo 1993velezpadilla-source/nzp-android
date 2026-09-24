@@ -1,0 +1,73 @@
+{
+  "schema": 1,
+  "project": "iw4-t4-native-android-research",
+  "xenoIsolation": true,
+  "candidates": [
+    {
+      "name": "OpenIW4",
+      "url": "https://github.com/OpenIW4/OpenIW4",
+      "commit": "78b2d2e4eeaa592842673a895fc8ed1f9e3e765b",
+      "license": "WTFPL-2.0",
+      "sourceFiles": 55,
+      "standalone": false,
+      "originalExeDependency": "loads iw4mp.exe; hardcoded addresses and memory::call thunks",
+      "priority": "primary"
+    },
+    {
+      "name": "OpenIW-lineage",
+      "url": "https://github.com/myraven2256/IW",
+      "commit": "3234d6f7c65ec9ff68bb4ad536c34b17c80023b7",
+      "license": "GPL-3.0",
+      "sourceFiles": 1397,
+      "standalone": false,
+      "originalExeDependency": "Zynamic::Forward and fixed IW4 addresses",
+      "priority": "secondary"
+    },
+    {
+      "name": "IW4x",
+      "url": "https://github.com/iw4x/iw4x-client",
+      "commit": "06f3c78bf7a4c62a4866f8bc3b56db2555f2dade",
+      "license": "GPL-3.0",
+      "sourceFiles": 513,
+      "standalone": false,
+      "originalExeDependency": "requires valid MW2 installation",
+      "priority": "reference"
+    },
+    {
+      "name": "OpenAssetTools",
+      "url": "https://github.com/Laupetin/OpenAssetTools",
+      "commit": "209d0105c3330e4d938965f336c7e4892b63a18e",
+      "license": "GPL-3.0",
+      "sourceFiles": 2016,
+      "standalone": false,
+      "role": "IW4/T4 asset-format and fastfile tooling",
+      "priority": "asset-tooling"
+    },
+    {
+      "name": "T4M",
+      "url": "https://github.com/iAmThatMichael/T4M",
+      "commit": "2306ce31ed5846ca76304a4de6e2029298b67495",
+      "sourceFiles": 27,
+      "standalone": false,
+      "originalExeDependency": "direct x86 hooks and process-memory patches into CoDWaW.exe",
+      "priority": "T4-reference"
+    },
+    {
+      "name": "T4M-Enhanced",
+      "url": "https://github.com/JBShady/T4M-Enhanced",
+      "commit": "2df929cbefabd64075891a3b9eeb69a18158aece",
+      "sourceFiles": 73,
+      "standalone": false,
+      "originalExeDependency": "DLL/ASI hook architecture over CoDWaW.exe",
+      "priority": "T4-reference"
+    }
+  ],
+  "excludedPayloadPatterns": [
+    "*.exe",
+    "*.dll",
+    "*.ff",
+    "*.iwd",
+    "*.asi",
+    "*.iwi"
+  ]
+}
