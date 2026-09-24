@@ -12,6 +12,10 @@ on:
 permissions:
   contents: read
 
+concurrency:
+  group: iw4-native-core-${{ github.ref }}
+  cancel-in-progress: true
+
 jobs:
   linux-host:
     runs-on: ubuntu-latest
