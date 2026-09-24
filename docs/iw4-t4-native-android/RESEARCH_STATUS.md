@@ -29,12 +29,16 @@ Wine/Winlator/emulation is not the target for this branch.
 Pinned commit: `78b2d2e4eeaa592842673a895fc8ed1f9e3e765b`
 
 The project describes itself as an attempt to document and reimplement
-important IW4MP functions. It contains substantial C++ under `src/`.
+important IW4MP functions. It contains 55 C/C++ source/header files in the
+current audited tree.
 
-It is **not standalone today**. Its current Windows bootstrap explicitly loads
-`iw4mp.exe`, and many functions/globals still use hard-coded original-binary
-addresses or thunks. The upstream repository also contains
-`runtime/iw4mp.exe`; that binary is intentionally excluded from our snapshot.
+It is **not standalone today**. Its Windows bootstrap explicitly loads
+`iw4mp.exe`, and public code search shows `memory::call` thunks in at least
+15 source files plus fixed-address globals/casts in at least 20 files. It also
+links Win32/D3D9 directly.
+
+The upstream repository contains `runtime/iw4mp.exe`; that executable is not
+copied into this research branch.
 
 License reported by upstream: WTFPL v2.
 
@@ -42,11 +46,15 @@ License reported by upstream: WTFPL v2.
 
 Pinned commit: `3234d6f7c65ec9ff68bb4ad536c34b17c80023b7`
 
-Contains C++ implementations for gameplay-adjacent systems including movement,
-weapons, animation and aim-assist. It is also **not standalone**: the current
-code uses `Zynamic::Forward(...)` and fixed addresses into an IW4 executable.
-The upstream repository contains `bin/IW4.exe`; that binary is intentionally
-excluded from our snapshot.
+This is much larger: 1,397 C/C++ source/header files in the audited tree.
+It contains gameplay-adjacent implementations for movement, weapons,
+animation, aim assist and many engine structures.
+
+It is still **not standalone**. The current bootstrap uses
+`Zynamic::Forward(...)` and fixed addresses into an IW4 executable, and its
+CMake copies `bin/IW4.exe` into the target MW2 directory.
+
+The upstream executable is not copied into this research branch.
 
 License reported by upstream: GPL-3.0.
 
@@ -54,9 +62,10 @@ License reported by upstream: GPL-3.0.
 
 Pinned commit: `06f3c78bf7a4c62a4866f8bc3b56db2555f2dade`
 
-Useful for IW4 structures, asset interfaces, hooks, networking/mod behavior and
-years of community fixes. It still requires an original MW2 installation and
-is therefore not our standalone runtime base.
+513 C/C++ source/header files in the audited tree. Extremely useful for IW4
+structures, assets, hooks, networking and years of community fixes. It still
+requires a valid original MW2 installation and therefore is not a standalone
+runtime base.
 
 License reported by upstream: GPL-3.0.
 
@@ -64,61 +73,71 @@ License reported by upstream: GPL-3.0.
 
 Pinned commit: `209d0105c3330e4d938965f336c7e4892b63a18e`
 
-Supports multiple asset types for both IW4 and T4 and is valuable for building
-our asset import/compile path. It is tooling, not a game runtime.
+2,016 C/C++ source/header files in the audited tree. Supports IW4 and T4 asset
+formats and custom fastfile tooling. It is tooling rather than a game runtime.
+For IW4/T4, several world/collision asset classes are still incomplete for
+disk load/build, so it cannot replace the renderer/world runtime by itself.
 
 License reported by upstream: GPL-3.0.
 
-### T4M / T4M-Enhanced — T4 runtime-hook references only
+### T4M — T4 runtime-hook reference
 
-Pinned references:
+Pinned commit: `2306ce31ed5846ca76304a4de6e2029298b67495`
 
-- `iAmThatMichael/T4M@2306ce31ed5846ca76304a4de6e2029298b67495`
-- `JBShady/T4M-Enhanced@2df929cbefabd64075891a3b9eeb69a18158aece`
+27 C/C++ source/header files. The audited source directly patches CoDWaW
+process memory, modifies the PE entry point, uses x86 inline assembly and calls
+engine functions through fixed addresses such as `0x00682040`.
 
-These load as DLL/ASI modifications into World at War. They are useful for
-documenting T4 addresses, structs and renderer/game behavior, but are not a
-standalone T4 engine. No clear permissive/open-source license was found at the
-repository root during this audit, so this branch records references only and
-does not mirror their source.
+It is not a standalone T4 engine.
+
+### T4M-Enhanced
+
+Pinned commit: `2df929cbefabd64075891a3b9eeb69a18158aece`
+
+73 C/C++ source/header files. More extensive than original T4M but still a
+DLL/ASI-style extension of CoDWaW.exe. Its repository also contains DirectX SDK
+binary tools/libraries, so this research branch records it as a reference only.
 
 ### World at War Mod Tools
 
 The public/reuploaded WaW Mod Tools contain map source, scripts, exporters,
-zone-source and many assets/tools, but they are not the complete T4 runtime.
-They are governed by the game/mod-tools EULA rather than a general open-source
-license, so they are not mirrored into this branch.
+zone-source and many authoring assets/tools, but they are not the complete T4
+runtime. They are governed by the game/mod-tools EULA rather than a general
+open-source license.
 
-## Source snapshot rule
+## What the internet search established
 
-The workflow `.github/workflows/iw4-t4-source-snapshot.yml` mirrors only
-source/documentation/build metadata from upstream projects with an explicit
-source license.
+The existence of custom maps, zombie mods, IW4x and T4M does **not** imply the
+community has a complete standalone copy of the original client engine. These
+projects can modify enormous portions of a game while still calling into the
+original executable for rendering, asset DB, platform, scripting or other
+subsystems.
 
-It rejects common game/runtime payload extensions:
+No complete, standalone, openly licensed IW4 or T4 client runtime was found in
+the public sources audited so far.
 
-- `.exe`
-- `.dll`
-- `.ff`
-- `.iwd`
-- `.asi`
-- `.iwi`
-- archives such as `.zip/.rar/.7z`
+## Best technical path found so far
 
-The source snapshots are engineering references, not a claim that any project
-is already a portable engine.
+OpenIW/OpenIW4 give us the most direct head start because real engine/gameplay
+functions have already been reconstructed in C++. The native Android experiment
+would therefore proceed by eliminating the original-executable dependency
+instead of starting from a blank engine.
 
-## First engineering question
+Immediate order:
 
-The next milestone is to quantify the dependency on the original Windows
-binary. The source census records:
+1. inventory every remaining thunk/fixed-address dependency;
+2. classify by platform, renderer, DB/assets, gameplay, script, network, sound;
+3. keep reconstructed C++ where it is already independent;
+4. replace thunks with standalone implementations;
+5. prove a host process can initialize without loading `iw4mp.exe`;
+6. compile that host on a non-Windows desktop target;
+7. add ARM64 Android NDK target;
+8. replace Win32 window/input/audio/filesystem;
+9. replace D3D9 renderer boundary;
+10. bring in Sanctum only after runtime initialization is standalone.
 
-- hard-coded address references;
-- `memory::call` thunks;
-- `Zynamic::Forward` calls;
-- Win32 API usage;
-- D3D9 usage;
-- source-file counts.
+## Research boundary
 
-The Android port starts only after those dependencies are explicit enough to
-replace subsystem-by-subsystem instead of guessing.
+This project may use public source-available reimplementations and documented
+formats. It does not store leaked/proprietary Infinity Ward/Treyarch source,
+original game executables, fastfiles, IWDs or other game payloads.
