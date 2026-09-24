@@ -13,6 +13,7 @@ add_library(iw4native_core STATIC
     src/core/dvar.cpp
     src/core/memory_arena.cpp
     src/core/runtime.cpp
+    src/core/sanctum_preview.cpp
     src/core/virtual_filesystem.cpp
 )
 
