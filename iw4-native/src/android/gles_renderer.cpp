@@ -1,4 +1,5 @@
 #include "iw4native/android_renderer.hpp"
+#include "iw4native/sanctum_preview.hpp"
 
 #include <GLES3/gl3.h>
 #include <android/log.h>
@@ -8,6 +9,9 @@
 #include <cmath>
 #include <cstddef>
 #include <cstdint>
+#include <span>
+#include <string>
+#include <vector>
 
 namespace iw4native::android {
 namespace {
@@ -233,6 +237,11 @@ constexpr std::array<Vertex, 150> kRoom = {{
 GLuint gProgram = 0;
 GLuint gVao = 0;
 GLuint gVbo = 0;
+GLuint gSanctumVao = 0;
+GLuint gSanctumVbo = 0;
+GLsizei gSanctumVertexCount = 0;
+PreviewBounds gSanctumBounds{};
+bool gSanctumLoaded = false;
 GLint gMvp = -1;
 int gWidth = 1;
 int gHeight = 1;
@@ -291,7 +300,7 @@ bool rendererInit() {
     glDisable(GL_CULL_FACE);
 
     gPlayerX = 0.0f;
-    gPlayerY = 0.0f;
+    gPlayerY = 0.62f;
     gPlayerZ = 5.2f;
     gYaw = 0.0f;
     gPitch = 0.0f;
@@ -301,6 +310,71 @@ bool rendererInit() {
     __android_log_print(ANDROID_LOG_INFO, kTag,
                         "GLES3 test-world renderer initialized");
     return true;
+}
+
+bool rendererLoadSanctum(const std::byte* data, std::size_t size) {
+    if (!gReady || data == nullptr || size == 0) return false;
+
+    std::vector<PreviewVertex> vertices;
+    PreviewBounds bounds;
+    std::string error;
+    if (!decodeSanctumPreview(
+            std::span<const std::byte>(data, size),
+            vertices,
+            bounds,
+            &error)) {
+        __android_log_print(
+            ANDROID_LOG_ERROR,
+            kTag,
+            "Sanctum preview decode failed: %s",
+            error.c_str());
+        return false;
+    }
+
+    if (gSanctumVbo) glDeleteBuffers(1, &gSanctumVbo);
+    if (gSanctumVao) glDeleteVertexArrays(1, &gSanctumVao);
+    gSanctumVbo = 0;
+    gSanctumVao = 0;
+
+    glGenVertexArrays(1, &gSanctumVao);
+    glGenBuffers(1, &gSanctumVbo);
+    glBindVertexArray(gSanctumVao);
+    glBindBuffer(GL_ARRAY_BUFFER, gSanctumVbo);
+    glBufferData(
+        GL_ARRAY_BUFFER,
+        static_cast<GLsizeiptr>(vertices.size() * sizeof(PreviewVertex)),
+        vertices.data(),
+        GL_STATIC_DRAW);
+
+    glVertexAttribPointer(
+        0, 3, GL_FLOAT, GL_FALSE, sizeof(PreviewVertex), nullptr);
+    glEnableVertexAttribArray(0);
+    glVertexAttribPointer(
+        1, 3, GL_FLOAT, GL_FALSE, sizeof(PreviewVertex),
+        reinterpret_cast<const void*>(3 * sizeof(float)));
+    glEnableVertexAttribArray(1);
+    glBindVertexArray(0);
+
+    gSanctumVertexCount = static_cast<GLsizei>(vertices.size());
+    gSanctumBounds = bounds;
+    gSanctumLoaded = gSanctumVertexCount > 0;
+
+    gPlayerX = (bounds.minX + bounds.maxX) * 0.5f;
+    gPlayerY = bounds.minY + 1.70f;
+    gPlayerZ = bounds.maxZ - 2.0f;
+    gYaw = 0.0f;
+    gPitch = 0.0f;
+    gJumpPhase = 0.0f;
+
+    __android_log_print(
+        ANDROID_LOG_INFO,
+        kTag,
+        "Sanctum preview loaded: %d vertices, bounds=(%.2f %.2f %.2f)-(%.2f %.2f %.2f)",
+        gSanctumVertexCount,
+        bounds.minX, bounds.minY, bounds.minZ,
+        bounds.maxX, bounds.maxY, bounds.maxZ);
+
+    return gSanctumLoaded;
 }
 
 void rendererResize(int width, int height) {
@@ -335,9 +409,21 @@ void rendererFrame(float moveX,
     gPlayerX += (rightX * moveX + forwardX * -moveY) * moveSpeed;
     gPlayerZ += (rightZ * moveX + forwardZ * -moveY) * moveSpeed;
 
-    // Keep this first proof inside the room.
-    gPlayerX = std::clamp(gPlayerX, -7.2f, 7.2f);
-    gPlayerZ = std::clamp(gPlayerZ, -9.2f, 9.2f);
+    if (gSanctumLoaded) {
+        const float padX = std::min(0.75f, (gSanctumBounds.maxX - gSanctumBounds.minX) * 0.05f);
+        const float padZ = std::min(0.75f, (gSanctumBounds.maxZ - gSanctumBounds.minZ) * 0.05f);
+        gPlayerX = std::clamp(
+            gPlayerX,
+            gSanctumBounds.minX + padX,
+            gSanctumBounds.maxX - padX);
+        gPlayerZ = std::clamp(
+            gPlayerZ,
+            gSanctumBounds.minZ + padZ,
+            gSanctumBounds.maxZ - padZ);
+    } else {
+        gPlayerX = std::clamp(gPlayerX, -7.2f, 7.2f);
+        gPlayerZ = std::clamp(gPlayerZ, -9.2f, 9.2f);
+    }
 
     if (jumpPressed && gJumpPhase <= 0.0f) gJumpPhase = 1.0f;
     float jumpHeight = 0.0f;
@@ -351,7 +437,7 @@ void rendererFrame(float moveX,
     const float fov = adsPressed ? 52.0f : 72.0f;
     const float aspect = static_cast<float>(gWidth) / static_cast<float>(gHeight);
 
-    const Vec3 eye{gPlayerX, 0.62f + jumpHeight, gPlayerZ};
+    const Vec3 eye{gPlayerX, gPlayerY + jumpHeight, gPlayerZ};
     const Vec3 dir{
         -std::sin(gYaw) * std::cos(gPitch),
         std::sin(gPitch),
@@ -360,7 +446,11 @@ void rendererFrame(float moveX,
     const Vec3 center{eye.x + dir.x, eye.y + dir.y, eye.z + dir.z};
 
     const Mat4 view = lookAt(eye, center, {0.0f, 1.0f, 0.0f});
-    const Mat4 proj = perspective(fov * kPi / 180.0f, aspect, 0.08f, 80.0f);
+    const Mat4 proj = perspective(
+        fov * kPi / 180.0f,
+        aspect,
+        0.08f,
+        gSanctumLoaded ? 180.0f : 80.0f);
     const Mat4 mvp = multiply(proj, view);
 
     if (firePressed) {
@@ -372,15 +462,27 @@ void rendererFrame(float moveX,
 
     glUseProgram(gProgram);
     glUniformMatrix4fv(gMvp, 1, GL_FALSE, mvp.m);
-    glBindVertexArray(gVao);
-    glDrawArrays(GL_TRIANGLES, 0, static_cast<GLsizei>(kRoom.size()));
+    if (gSanctumLoaded) {
+        glBindVertexArray(gSanctumVao);
+        glDrawArrays(GL_TRIANGLES, 0, gSanctumVertexCount);
+    } else {
+        glBindVertexArray(gVao);
+        glDrawArrays(GL_TRIANGLES, 0, static_cast<GLsizei>(kRoom.size()));
+    }
     glBindVertexArray(0);
 }
 
 void rendererShutdown() {
+    if (gSanctumVbo) glDeleteBuffers(1, &gSanctumVbo);
+    if (gSanctumVao) glDeleteVertexArrays(1, &gSanctumVao);
     if (gVbo) glDeleteBuffers(1, &gVbo);
     if (gVao) glDeleteVertexArrays(1, &gVao);
     if (gProgram) glDeleteProgram(gProgram);
+    gSanctumVbo = 0;
+    gSanctumVao = 0;
+    gSanctumVertexCount = 0;
+    gSanctumBounds = {};
+    gSanctumLoaded = false;
     gVbo = 0;
     gVao = 0;
     gProgram = 0;
