@@ -172,10 +172,13 @@ constexpr const char* kVertexShader = R"(
 #version 300 es
 layout(location=0) in vec3 aPosition;
 layout(location=1) in vec3 aColor;
+layout(location=2) in vec3 aNormal;
 uniform mat4 uMvp;
 out vec3 vColor;
+out vec3 vNormal;
 void main() {
     vColor = aColor;
+    vNormal = aNormal;
     gl_Position = uMvp * vec4(aPosition, 1.0);
 }
 )";
@@ -184,10 +187,20 @@ constexpr const char* kFragmentShader = R"(
 #version 300 es
 precision mediump float;
 in vec3 vColor;
+in vec3 vNormal;
 out vec4 outColor;
 void main() {
-    float fog = clamp(gl_FragCoord.z * 0.65, 0.0, 0.62);
-    vec3 c = mix(vColor, vec3(0.025, 0.028, 0.032), fog);
+    vec3 n = normalize(vNormal);
+    vec3 lightDir = normalize(vec3(-0.42, 0.82, 0.38));
+
+    // The scan can contain mixed triangle winding, so use two-sided diffuse
+    // lighting to preserve shape readability without back-face assumptions.
+    float diffuse = abs(dot(n, lightDir));
+    float lighting = 0.42 + diffuse * 0.58;
+
+    vec3 lit = vColor * lighting;
+    float fog = clamp(gl_FragCoord.z * 0.62, 0.0, 0.58);
+    vec3 c = mix(lit, vec3(0.025, 0.028, 0.032), fog);
     outColor = vec4(c, 1.0);
 }
 )";
@@ -328,6 +341,8 @@ bool rendererInit() {
     glVertexAttribPointer(1, 3, GL_FLOAT, GL_FALSE, sizeof(Vertex),
                           reinterpret_cast<const void*>(3 * sizeof(float)));
     glEnableVertexAttribArray(1);
+    glDisableVertexAttribArray(2);
+    glVertexAttrib3f(2, 0.0f, 1.0f, 0.0f);
 
     glBindVertexArray(0);
 
@@ -376,6 +391,7 @@ bool rendererLoadSanctum(const std::byte* data, std::size_t size) {
     glGenBuffers(1, &gSanctumVbo);
     glBindVertexArray(gSanctumVao);
     glBindBuffer(GL_ARRAY_BUFFER, gSanctumVbo);
+    while (glGetError() != GL_NO_ERROR) {}
     glBufferData(
         GL_ARRAY_BUFFER,
         static_cast<GLsizeiptr>(vertices.size() * sizeof(PreviewVertex)),
@@ -400,6 +416,10 @@ bool rendererLoadSanctum(const std::byte* data, std::size_t size) {
         1, 3, GL_FLOAT, GL_FALSE, sizeof(PreviewVertex),
         reinterpret_cast<const void*>(3 * sizeof(float)));
     glEnableVertexAttribArray(1);
+    glVertexAttribPointer(
+        2, 3, GL_FLOAT, GL_FALSE, sizeof(PreviewVertex),
+        reinterpret_cast<const void*>(6 * sizeof(float)));
+    glEnableVertexAttribArray(2);
     glBindVertexArray(0);
 
     gSanctumVertexCount = static_cast<GLsizei>(vertices.size());
