@@ -97,14 +97,14 @@ jobs:
           fi
 
           mkdir -p dist
-          cp "$APK" dist/IW4-Native-Sanctum-NZP-Radial-debug.apk
+          cp "$APK" dist/IW4-Native-Sanctum-NZP-Touch-debug.apk
 
       - name: Upload native APK
         uses: actions/upload-artifact@v4
         with:
-          name: IW4-Native-Sanctum-NZP-Radial-debug
+          name: IW4-Native-Sanctum-NZP-Touch-debug
           path: |
-            dist/IW4-Native-Sanctum-NZP-Radial-debug.apk
+            dist/IW4-Native-Sanctum-NZP-Touch-debug.apk
             iw4-native/android-app/apk-badging.txt
             iw4-native/android-app/apk-contents.txt
             iw4-native/android-app/native-elf.txt
