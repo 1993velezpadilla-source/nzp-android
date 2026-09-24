@@ -160,7 +160,7 @@ struct Vertex {
     float r, g, b;
 };
 
-constexpr std::array<Vertex, 144> kRoom = {{
+constexpr std::array<Vertex, 150> kRoom = {{
     // floor, 2 triangles
     {-8,-1,-10, .16f,.16f,.17f},{ 8,-1,-10, .16f,.16f,.17f},{ 8,-1, 10, .22f,.22f,.23f},
     {-8,-1,-10, .16f,.16f,.17f},{ 8,-1, 10, .22f,.22f,.23f},{-8,-1, 10, .22f,.22f,.23f},
