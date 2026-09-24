@@ -48,6 +48,54 @@ Java_com_xziel_iw4native_NativeBridge_rendererInit(
 }
 
 extern "C"
+JNIEXPORT jboolean JNICALL
+Java_com_xziel_iw4native_NativeBridge_rendererLoadSanctum(
+    JNIEnv* env,
+    jclass,
+    jbyteArray bytes) {
+    if (!bytes) {
+        __android_log_print(
+            ANDROID_LOG_ERROR,
+            kTag,
+            "rendererLoadSanctum called with null byte array");
+        return JNI_FALSE;
+    }
+
+    const jsize size = env->GetArrayLength(bytes);
+    if (size <= 0) {
+        __android_log_print(
+            ANDROID_LOG_ERROR,
+            kTag,
+            "rendererLoadSanctum called with empty byte array");
+        return JNI_FALSE;
+    }
+
+    jbyte* data = env->GetByteArrayElements(bytes, nullptr);
+    if (!data) {
+        __android_log_print(
+            ANDROID_LOG_ERROR,
+            kTag,
+            "rendererLoadSanctum could not map byte array");
+        return JNI_FALSE;
+    }
+
+    const bool ok = iw4native::android::rendererLoadSanctum(
+        reinterpret_cast<const std::byte*>(data),
+        static_cast<std::size_t>(size));
+
+    env->ReleaseByteArrayElements(bytes, data, JNI_ABORT);
+
+    __android_log_print(
+        ok ? ANDROID_LOG_INFO : ANDROID_LOG_ERROR,
+        kTag,
+        "rendererLoadSanctum result=%s bytes=%d",
+        ok ? "PASS" : "FAIL",
+        static_cast<int>(size));
+
+    return ok ? JNI_TRUE : JNI_FALSE;
+}
+
+extern "C"
 JNIEXPORT void JNICALL
 Java_com_xziel_iw4native_NativeBridge_rendererResize(
     JNIEnv*,
