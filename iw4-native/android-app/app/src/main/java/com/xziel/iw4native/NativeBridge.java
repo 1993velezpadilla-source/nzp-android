@@ -11,6 +11,7 @@ public final class NativeBridge {
 
     public static native boolean rendererInit();
     public static native boolean rendererLoadSanctum(byte[] bytes);
+    public static native String rendererDiagnostic();
     public static native void rendererResize(int width, int height);
     public static native void rendererFrame(
         float moveX,
