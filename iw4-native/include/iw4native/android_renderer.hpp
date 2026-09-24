@@ -14,7 +14,13 @@ void rendererFrame(float moveX,
                    float lookDeltaY,
                    bool firePressed,
                    bool adsPressed,
-                   bool jumpPressed);
+                   bool jumpPressed,
+                   bool reloadPressed,
+                   bool usePressed,
+                   bool knifePressed,
+                   bool grenadePressed,
+                   bool slidePressed,
+                   bool pausePressed);
 void rendererShutdown();
 
 } // namespace iw4native::android
