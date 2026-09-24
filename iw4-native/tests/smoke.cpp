@@ -116,7 +116,7 @@ int main() {
         };
         const auto pushF32 = [&](float value) {
             std::uint32_t bits = 0;
-            static_CHECK(sizeof(bits) == sizeof(value));
+            static_assert(sizeof(bits) == sizeof(value));
             std::memcpy(&bits, &value, sizeof(bits));
             pushU32(bits);
         };
